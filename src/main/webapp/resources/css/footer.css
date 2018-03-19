@@ -1,0 +1,18 @@
+@import "fonts.css";
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 15px;
+    background-color: #f1f1f1;
+    text-align: center;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+.cont-foo {
+    font-family: raleway;
+    font-weight: 800;
+    font-size: 11px;
+    color: #082a34;
+}
+

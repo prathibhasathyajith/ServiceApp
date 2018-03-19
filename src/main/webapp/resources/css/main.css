@@ -1,0 +1,43 @@
+@import "fonts.css";
+.cont-body{}
+.cont-breadCrumb{
+    position: fixed;
+    background-color: #801466;
+    margin: -20px 0px 0 -20px;
+    font-family: raleway;
+    font-size: 12px;
+    padding: 0px 20px 0 20px;
+    color: white;
+    z-index: 10;
+}
+.cont-msg{}
+.cont-form{
+    font-family: raleway;
+    padding: 15px;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border: 1px solid #f0f0f0;
+    font-size: 12px;
+}
+.cont-table{
+    padding: 10px;
+    background-color: #e4e4e4;
+    margin-bottom: 10px;
+}
+.image_card{
+    width: 100px;
+    height: 100px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 5px;
+}
+.cont-summary{
+    padding: 10px;
+    background-color: #e4e4e4;
+}
+.cont-summarycan{
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 50%;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="pglobal" namespace="/" extends="struts-default,json-default,jasperreports-default">
+        
+        <interceptors>
+            <interceptor name="ESAccesControl" class="com.election.interceptor.AccessControlInterceptor" />
+              
+            <interceptor-stack name="ESDefaultStack">
+                <interceptor-ref name="fileUpload">
+                    <param name="maximumSize">2097152</param>
+
+                </interceptor-ref>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="basicStack"/>
+                <interceptor-ref name="ESAccesControl"/>
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="ESDefaultStack"/>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end global error page for entire application ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
+                   
+        <global-results>
+            <result name="loginpage">/login.jsp</result>
+            <result name="multiaccess">/WEB-INF/pages/multiaccess.jsp</result>
+            <result name="acccontroler">/defaultaccesscontroler.jsp</result>
+        </global-results>  
+        
+    </package>
+    
+    <include file="control.xml"/>
+    <!-- Configuration for the default package. -->
+    <!--<package name="default" extends="struts-default">-->
+    <!--</package>-->
+</struts>

@@ -1,0 +1,87 @@
+@import "fonts.css";
+header {
+    background-color: #082a34;
+    background: linear-gradient(90deg, #b84199 0%, #b84199 240px, #ffffff 240px, #ffffff 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 5;
+    font-family: Raleway;
+    box-shadow: 50px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+
+header >.cont {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    padding: 10px;
+    float: left;
+}
+
+.coner {
+    float: right;
+    padding: 9px;
+    cursor: pointer;
+}
+
+.coner > .box {
+    height: 3px;
+    width: 21px;
+    background-color: red;
+    margin: 3px 3px 3px 3px;
+    background: linear-gradient(45deg, #0083db 0%, #c60fdb 100%);
+}
+
+.dropdown {
+    width: 75px;
+    background-color: #ffffff00;
+    margin: 8px 40px 7px 7px;
+    float: right;
+    position: fixed;
+    z-index: 5;
+    right: 0;
+    display: none;
+}
+
+.headerBut {
+    /*            background: linear-gradient(45deg, #0083db 0%, #0f98f3 100%);*/
+    height: 23px;
+    background-color: #972777;
+    border: 0px;
+    color: white;
+    padding-bottom: 2px;
+    outline: none;
+    text-align: center;
+}
+
+.headerBut > a{
+    outline: none;
+    text-decoration: none;
+}
+
+.headerBut:hover {
+    background-color: #555;
+    outline: none;
+    text-decoration: none;
+    color:white;
+}
+
+.changePassBut {
+    width: 125px;
+}
+
+.logoutBut {
+    width: 55px;
+}
+.cont-body {
+    padding: 60px 20px 40px 260px;
+}
+#sysType{
+    top: 26px;
+    left: 28px;
+    position: absolute;
+    font-size: 10px;
+    color: white;
+}

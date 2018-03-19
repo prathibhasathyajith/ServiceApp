@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    
+    <package name="login" extends="pglobal" namespace="/">
+        <action name="*UserLogin" method="{1}" class="com.serviceapp.action.login.LoginAction">
+            <result name="message">/login.jsp</result>
+            <result name="success">/WEB-INF/pages/home.jsp</result>
+            <result name="firstlogin" type="redirectAction">
+                <param name="actionName">Viewpaschanged</param>               
+            </result>
+        </action>
+    </package>
+</struts>
+
