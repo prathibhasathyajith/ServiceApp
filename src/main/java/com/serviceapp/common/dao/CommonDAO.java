@@ -6,6 +6,7 @@
 package com.serviceapp.common.dao;
 
 import com.serviceapp.listener.HibernateInit;
+import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
 import java.security.MessageDigest;
@@ -115,5 +116,28 @@ public class CommonDAO {
         return audit;
     }
     
+    public List<Status> getDefultStatusList(String statusCode)
+            throws Exception {
+
+        List<Status> statusList = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from Status as s where s.category=:statuscategorycode order by Upper(s.description) asc";
+            Query query = session.createQuery(sql).setString(
+                    "statuscategorycode", statusCode);
+            statusList = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return statusList;
+    }
     
 }

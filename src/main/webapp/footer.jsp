@@ -6,7 +6,7 @@
 
 <footer>
     <div class="cont-foo">
-        Local Government Election Campaign Review version 02.00
+        Project
     </div>
     <script src="${pageContext.request.contextPath}/resources/javascript/main.js" ></script>
 </footer>

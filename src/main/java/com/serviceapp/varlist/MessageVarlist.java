@@ -33,4 +33,7 @@ public class MessageVarlist {
     public static final String PASSWORD_CHANGE_SUCCESS = "Your password changed successfully. Please login with the new password.";
     public static final String ERROR_USER_INFO = "User session not found. Please login again.";
     public static final String ERROR_SESSION = "User session not found. Please login again.";
+    
+    public static final String COMMON_ERROR_PROCESS = "error occurred while processing";
+    public static final String COMMON_NOT_EXISTS = "Record does not exists";
 }

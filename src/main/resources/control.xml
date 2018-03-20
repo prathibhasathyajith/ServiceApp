@@ -16,5 +16,24 @@
             </result>
         </action>
     </package>
+    
+    <package name="usermanagement" extends="pglobal" namespace="/">
+        <action name="*Systemuser" method="{1}" class="com.serviceapp.action.usermanagement.SystemuserAction" >
+            <result name="message">/WEB-INF/pages/msgSpe.jsp</result>
+            <result name="view">/WEB-INF/pages/usermanagement/systemuser/systemuser.jsp</result> 
+            <result name="viewpopup">/WEB-INF/pages/usermanagement/systemuser/systemuserinsert.jsp</result>
+            <result name="detail">/WEB-INF/pages/usermanagement/systemuser/systemuseredit.jsp</result>
+            <result name="success"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="findDualAuthUsers" type="json"></result>
+            <result name="delete" type="json"></result>
+            <!--<result name="changepassword" type="json"></result>-->
+            <result name="changepassword" >/WEB-INF/pages/usermanagement/systemuser/systemuserpwdchange.jsp</result> 
+            <!--<result name="changepassword" >/WEB-INF/pages/controlpanel/usermanagement/systemuseredit.jsp</result>--> 
+            <result name="activate" type="json"></result>
+        </action>
+        
+    </package>
 </struts>
 

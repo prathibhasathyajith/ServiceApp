@@ -1,0 +1,117 @@
+
+@font-face {
+    font-family: Aller;
+    src: url(../Fonts/Aller_Bd.woff);
+    font-weight: bold;
+    font-style: normal;
+}
+html {
+    background-color: #fff;
+}
+body {
+    font: Aller;
+    padding: 0;
+    margin: 0;
+}
+h6{
+    padding: 0;
+    margin: 0;
+}
+.active {
+    background-color: #95a5a6;
+}
+.company-logo{
+    text-align: center;
+}
+
+/* The left-collapsing sidebar */
+
+.sidebar-left-collapse {
+    font-family: Aller;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #e0e0e0;
+    width: 230px;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px 0;
+    box-shadow: 2px 0px 5px 0px rgba(128, 128, 128, 0.49);
+}
+.sidebar-left-collapse .sidebar-links {
+    margin: 30px auto;
+}
+.sidebar-links div > a {
+    display: block;
+    text-decoration: none;
+    margin: 0 auto 5px auto;
+    padding: 2px 0 2px 15px;
+    
+    background-color: #34495e;
+    text-align: left;
+    color: #b3bcc5;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 2;
+    border-left-width: 12px;
+    border-left-style: solid;
+    transition: 0.2s;
+}
+.sidebar-links div > a:hover {
+    background-color: black;
+    border-left-width: 22px;
+}
+.sidebar-links div.selected > a {
+    background-color: #ffffff;
+    color: #565d63;
+/*    line-height: 2.3;*/
+    margin: 0;
+}
+.sidebar-links div ul.sub-links {
+    max-height: 0;
+    overflow: hidden;
+    list-style: none;
+    padding: 0 0 0 0;
+    color: #b3bcc5;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 24px;
+    margin: 0;
+/*    transition: 0.5s;*/
+}
+.sidebar-links div.selected ul.sub-links {
+    max-height: 270px;
+    padding: 6px 0 12px 0px;
+}
+.sidebar-links div .sub-links a {
+    text-decoration: none;
+    color: #34495e;
+    display: block;
+    text-align: left;
+}
+.sidebar-links > div > ul > li {
+    border-bottom: 1px solid gray;
+    transition: 0.1s;
+    padding: 1px 0 1px 20px;
+}
+.sidebar-links > div > ul > li:hover {
+    background-color: #bdbdbd;
+}
+
+/* Link Colors */
+
+.sidebar-links div.link-blue > a {
+    border-color: #487db2;
+}
+.sidebar-links div.link-red > a {
+    border-color: #da4545;
+}
+.sidebar-links div.link-yellow > a {
+    border-color: #d0d237;
+}
+.sidebar-links div.link-green > a {
+    border-color: #86be2e;
+}
+.sidebar-links div.link-default > a {
+    border-color: #f1c40f;
+}

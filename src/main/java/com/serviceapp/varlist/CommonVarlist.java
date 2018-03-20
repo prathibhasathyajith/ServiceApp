@@ -12,4 +12,6 @@ package com.serviceapp.varlist;
 public class CommonVarlist {
     public static final String STATUS_ACTIVE = "ACT";
     public static final String STATUS_DEACTIVE = "DEACT";
+    
+    public static final String STATUS_CATEGORY_GENERAL = "default";
 }

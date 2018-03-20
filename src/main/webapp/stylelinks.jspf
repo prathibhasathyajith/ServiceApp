@@ -9,6 +9,10 @@
 <link href="${pageContext.request.contextPath}/resources/css/nav.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet"/>
 
+<!--nav bar-->
+<link href="${pageContext.request.contextPath}/resources/navbar/css/style.css" rel="stylesheet"/>
+<script src="${pageContext.request.contextPath}/resources/navbar/js/main.js" ></script>
+
 
 <!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.blockUI.js"></script>
