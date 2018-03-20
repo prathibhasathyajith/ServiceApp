@@ -11,7 +11,7 @@
         
         <script type="text/javascript">
             function loadonstart(){
-                window.location="${pageContext.request.contextPath}/logoutLogin.action?";
+                window.location="${pageContext.request.contextPath}/LogoutUserLogin.action?";
             }
             window.onload=loadonstart(); 
         </script>

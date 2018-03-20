@@ -34,6 +34,32 @@
             <result name="activate" type="json"></result>
         </action>
         
+        <action name="*ChangePassword" method="{1}" class="com.serviceapp.action.usermanagement.PasswordResetAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="resetpassword">/defaultaccesscontroler.jsp</result>
+            <result name="logoutuser" type="json"></result>
+            <result name="view">/WEB-INF/pages/usermanagement/passwordreset.jsp</result>
+            <result name="success"></result>
+        </action>
+        <action name="*paschanged" method="{1}" class="com.serviceapp.action.usermanagement.PasswordResetAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="resetpassword">/defaultaccesscontroler.jsp</result>
+            <result name="logoutuser" type="json"></result>
+            <result name="view">/WEB-INF/pages/usermanagement/paschanged.jsp</result>
+            <result name="success"></result>
+        </action>
+        
+        
+    </package>
+    <package name="systemconfig" extends="pglobal" namespace="/">
+        <action name="*PasswordPolicy" method="{1}" class="com.serviceapp.action.systemconfig.PasswordPolicyAction" >
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="success"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="reset" type="json"></result>
+            <result name="view">/WEB-INF/pages/systemconfig/passwordpolicy.jsp</result>
+        </action>
     </package>
 </struts>
 

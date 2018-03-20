@@ -24,7 +24,7 @@ public class Passwordpolicy  implements java.io.Serializable {
      private Date createtime;
      private String description;
      private Long idleaccountexpiryperiod;
-     private Long initialpasswordexpirystatus;
+     private String initialpasswordexpirystatus;
      private Date lastupdatedtime;
      private String lastupdateduser;
      private Long maximumlength;
@@ -48,7 +48,7 @@ public class Passwordpolicy  implements java.io.Serializable {
         this.createtime = createtime;
         this.lastupdatedtime = lastupdatedtime;
     }
-    public Passwordpolicy(long passwordpolicyid, Date createtime, String description, Long idleaccountexpiryperiod, Long initialpasswordexpirystatus, Date lastupdatedtime, String lastupdateduser, Long maximumlength, Long minimumlength, Long minimumlowercasecharacters, Long minimumnumericalcharacters, Long minimumpasswordchangeperiod, Long minimumspecialcharacters, Long minimumuppercasecharacters, Long noofhistorypassword, Long noofinvalidloginattempt, Long passwordexpiryperiod, Long repeatcharactersallow) {
+    public Passwordpolicy(long passwordpolicyid, Date createtime, String description, Long idleaccountexpiryperiod, String initialpasswordexpirystatus, Date lastupdatedtime, String lastupdateduser, Long maximumlength, Long minimumlength, Long minimumlowercasecharacters, Long minimumnumericalcharacters, Long minimumpasswordchangeperiod, Long minimumspecialcharacters, Long minimumuppercasecharacters, Long noofhistorypassword, Long noofinvalidloginattempt, Long passwordexpiryperiod, Long repeatcharactersallow) {
        this.passwordpolicyid = passwordpolicyid;
        this.createtime = createtime;
        this.description = description;
@@ -112,12 +112,12 @@ public class Passwordpolicy  implements java.io.Serializable {
     }
 
     
-    @Column(name="INITIALPASSWORDEXPIRYSTATUS", precision=11, scale=0)
-    public Long getInitialpasswordexpirystatus() {
+    @Column(name="INITIALPASSWORDEXPIRYSTATUS", length = 10)
+    public String getInitialpasswordexpirystatus() {
         return this.initialpasswordexpirystatus;
     }
     
-    public void setInitialpasswordexpirystatus(Long initialpasswordexpirystatus) {
+    public void setInitialpasswordexpirystatus(String initialpasswordexpirystatus) {
         this.initialpasswordexpirystatus = initialpasswordexpirystatus;
     }
 

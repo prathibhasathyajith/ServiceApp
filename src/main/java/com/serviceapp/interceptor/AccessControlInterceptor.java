@@ -7,6 +7,7 @@ package com.serviceapp.interceptor;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.interceptor.Interceptor;
+import com.serviceapp.mapping.Systemuser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,7 @@ public class AccessControlInterceptor implements Interceptor {
     public String intercept(ActionInvocation ai) throws Exception {
         String result = "";
         String INTERCEPT_LOGOUT = "acccontroler";
+        Systemuser suser = new Systemuser();
         try {
             System.out.println("-------Access Control Interceptor : Started-------");
             String className = ai.getAction().getClass().getName();
@@ -50,7 +52,7 @@ public class AccessControlInterceptor implements Interceptor {
                     HttpServletRequest request = ServletActionContext.getRequest();
                     HttpSession session = request.getSession(false);
                     if (session != null) {
-                        String user = (String)session.getAttribute("SYSTEMUSER");
+                        Systemuser user = (Systemuser)session.getAttribute("SYSTEMUSER");
                         if (user!=null) {
                             result = ai.invoke();
                            

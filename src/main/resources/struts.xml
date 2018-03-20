@@ -6,7 +6,7 @@
     <package name="pglobal" namespace="/" extends="struts-default,json-default,jasperreports-default">
         
         <interceptors>
-            <interceptor name="ESAccesControl" class="com.election.interceptor.AccessControlInterceptor" />
+            <interceptor name="ESAccesControl" class="com.serviceapp.interceptor.AccessControlInterceptor" />
               
             <interceptor-stack name="ESDefaultStack">
                 <interceptor-ref name="fileUpload">

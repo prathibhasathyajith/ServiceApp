@@ -11,4 +11,5 @@ package com.serviceapp.varlist;
  */
 public class PageVarlist {
     public static final String LOGIN_PAGE = "Login Page";
+    public static final String PASSWORD_POLICY = "Password Policy";
 }

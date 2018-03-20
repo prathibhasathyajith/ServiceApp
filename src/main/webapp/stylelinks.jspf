@@ -1,5 +1,5 @@
 <!--theme-->
-<sj:head jqueryui="true" jquerytheme="mytheme2" customBasepath="resources/themes"/>  
+
 
 <!--css links-->
 <!--<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/newassets/assets/favicon/favicon.png"/>-->
@@ -8,7 +8,7 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/bootstrap.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/main.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/style.css" rel="stylesheet"/>
-
+<sj:head jqueryui="true" jquerytheme="mytheme2" customBasepath="resources/themes"/>  
 <!--javascript links-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/main.js" ></script>
 <!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/bootstrap.js"></script>-->

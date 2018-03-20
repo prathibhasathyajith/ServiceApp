@@ -11,4 +11,6 @@ package com.serviceapp.varlist;
  */
 public class SectionVarlist {
     public static final String DEFAULT_SECTION = "Default Section";
+    public static final String SYSTEMCONFIGMANAGEMENT = "System Config";
+    public static final String USERMANAGEMENT = "User Management";
 }

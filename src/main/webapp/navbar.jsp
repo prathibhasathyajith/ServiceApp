@@ -20,10 +20,10 @@
             </div>
 
             <div id="link_2" class="link-default">
-                <a href="#">Favorites</a>
+                <a href="#">System Configuration</a>
 
                 <ul class="sub-links">
-                    <li id="sublink_5"><a href="#">Link 1</a></li>
+                    <li id="sublink_5"><a href="${pageContext.request.contextPath}/viewPasswordPolicy.action">Password Policy</a></li>
                     <li id="sublink_6"><a href="#">Link 2</a></li>
                     <li id="sublink_7"><a href="#">Link 3</a></li>
                     <li id="sublink_8"><a href="#">Link 4</a></li>

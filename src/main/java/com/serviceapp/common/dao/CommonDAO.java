@@ -9,12 +9,14 @@ import com.serviceapp.listener.HibernateInit;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
+import com.serviceapp.varlist.SessionVarlist;
 import java.security.MessageDigest;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -114,6 +116,32 @@ public class CommonDAO {
 //        audit.setRemarks(remarks);
         audit.setLastupdateduser(user.getUsername());
         return audit;
+    }
+    
+    public static Systemaudit makeAudittrace(HttpServletRequest request, String task, String page, String section, String description, String remarks, String oldvalue, String newvalue) throws Exception {
+
+        HttpSession session = request.getSession(false);
+        Systemuser sysUser = (Systemuser) session.getAttribute(SessionVarlist.SYSTEMUSER);
+        Systemaudit audit = new Systemaudit();
+        audit.setDescription(description + " by " + sysUser.getUsername());
+        audit.setOldvalue(oldvalue);
+        audit.setNewvalue(newvalue);
+
+        CommonDAO dao = new CommonDAO();
+
+        audit.setSection(section);
+
+//        audit.setStatus(CommonVarList.STATUS_ACTIVE);
+        audit.setPage(page);
+
+        audit.setTask(task);
+
+//        Systemuser us = new Systemuser();
+//        us.setUsername(sysUser.getUsername());
+//        audit.setRemarks(/remarks);
+        audit.setLastupdateduser(sysUser.getUsername());
+        return audit;
+
     }
     
     public List<Status> getDefultStatusList(String statusCode)
