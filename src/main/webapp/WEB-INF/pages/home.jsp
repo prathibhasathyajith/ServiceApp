@@ -21,7 +21,7 @@
         <!--nav bar-->
         <jsp:include page="/navbar.jsp"/>
         <!--body content-->
-        <div class="cont-body"></div>
+        <div class="tb-body f-right tb-header-text"></div>
         <!--footer-->
         <jsp:include page="/footer.jsp"/>
     </body>

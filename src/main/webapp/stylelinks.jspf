@@ -1,22 +1,19 @@
-
+<!--theme-->
 <sj:head jqueryui="true" jquerytheme="mytheme2" customBasepath="resources/themes"/>  
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.png"/>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootwatch/bootstrap.css"/>
+
+<!--css links-->
+<!--<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/newassets/assets/favicon/favicon.png"/>-->
+<!--<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootwatch/bootstrap.css"/>-->
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/fontawesome/css/font-awesome.css"/>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/bootstrap.css" rel="stylesheet"/>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/main.css" rel="stylesheet"/>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/style.css" rel="stylesheet"/>
 
-<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/resources/css/nav.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet"/>
-
-<!--nav bar-->
-<link href="${pageContext.request.contextPath}/resources/navbar/css/style.css" rel="stylesheet"/>
-<script src="${pageContext.request.contextPath}/resources/navbar/js/main.js" ></script>
-
-
-<!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.blockUI.js"></script>
-<!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/JqureyUI.js"></script>-->
+<!--javascript links-->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/main.js" ></script>
+<!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/bootstrap.js"></script>-->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/jquery.blockUI.js"></script>
+<!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/JqureyUI.js"></script>-->
 <script>
     Array.prototype.remove = function () {
         var what, a = arguments, L = a.length, ax;

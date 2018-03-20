@@ -19,14 +19,67 @@
         <!--nav bar-->
         <jsp:include page="/navbar.jsp"/>
         <!--body content-->
-        <div class="cont-body">
-            <div class="cont-breadCrumb">User Management > System User</div>
-            <div class="cont-msg">
-                <s:div id="divmsg">
-                    <s:actionerror theme="jquery"/>
-                    <s:actionmessage theme="jquery"/>
-                </s:div>
+        <div class="tb-body f-right tb-header-text">
+            <div class="tb-breadcrumb">User Management > System User</div>
+            <div class="tb-form">
+                <div class="containe-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="lable">Test</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="lable">Test</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="lable">Test</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="lable">Test</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="lable">Test</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="lable">Test</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="lable">Test</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="lable">Test</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
+            <div class="tb-table">Table</div>
+            <div class="tb-other">Other</div>  
         </div>
     </body>
 </html>

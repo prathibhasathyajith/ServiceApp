@@ -24,7 +24,7 @@
 
     </script>
 </head>
-<header>
+<!--<header>
     <div class="cont"><i class="fa fa-cube" aria-hidden="true"></i> Project</div><span id="sysType">Logged as ${SYSTEMUSER}</span>
     <div class="coner">
         <div class="box"></div>
@@ -34,5 +34,19 @@
 </header>
 <div class="dropdown">
         <a style="float:left" class="logoutBut headerBut" href="logoutLogin.action">Logout</a>
-</div>
+</div>-->
 
+<div class="tb-header tb-fixed-header">
+    <div class="tb-header-logo">
+        <!--            <img src="assets/image/logo2.png" width="40" height="auto" />-->
+    </div>
+    <div class="change1 tb-header-margin color1 tb-header-text f-left">
+        <span>Service<span>App</span></span>
+    </div>
+    <div class="tb-header-divider tb-header-margin tb-header-text f-left">|</div>
+    <div class="change2 tb-header-margin color2 tb-header-text f-left">
+        <span>Admin<span>Portal</span></span>
+    </div>
+    <div class="tb-header-logout tb-header-margin tb-header-text f-right">|&nbsp;&nbsp;&nbsp; Logout &nbsp;&nbsp;&nbsp;|</div>
+    <div class="tb-header-passchange tb-header-margin tb-header-text f-right">|&nbsp;&nbsp;&nbsp; Password Change&nbsp;&nbsp;&nbsp;</div>
+</div>
