@@ -294,7 +294,7 @@
                         <s:url var="addurl" action="viewpopupSystemuser"/>
                         <s:url var="updateurl" action="UpdateSystemuser"/>
 
-                        <div class="row row_1"> 
+                        <div class="row"> 
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Username</label>
@@ -321,7 +321,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row row_1"> 
+                        <div class="row"> 
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Email</label>
@@ -334,28 +334,15 @@
                                     <s:textfield name="contactno" id="contactno"  maxLength="11" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))" onmouseout="$(this).val($(this).val().replace(/[^0-9]/g,''))" onkeypress="return isNumberserch(event)"/>
                                 </div>
                             </div>
-                            <!--                            <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                <label >User Role</label>
-                            <%--<s:select  id="userrole" list="%{userroleList}"  name="userrole" headerKey="" headerValue="--Select User Role--" listKey="userrolecode" listValue="description" cssClass="form-control"/>--%>
-                        </div>
-                    </div>-->
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Status</label>
                                     <s:select  id="status" list="%{statusList}"  name="status" headerKey=""  headerValue="--Select Status--" listKey="statuscode" listValue="description" value="%{status}" disabled="false" cssClass="form-control"/>
                                 </div>
                             </div>
-
-                            <!--                                        <div class="col-sm-2">
-                                                                        <div class="form-group form-inline">
-                                                                            <label >Expiry Date</label>
-                                                                            <!s:textfield name="expirydate" id="expirydate" cssClass="form-control"/>
-                                                                        </div>
-                                                                    </div>    -->
                         </div> 
 
-                        <div class="row row_1 form-inline">
+                        <div class="row form-inline">
                             <div class="col-sm-4">
                                 <div class="form-group">                                                   
                                     <sj:submit 
@@ -365,9 +352,7 @@
                                         onClickTopics="onclicksearch"  
                                         targets="message"
                                         id="searchbut"
-                                        disabled="#vsearch"
-                                        cssClass="form-control btn_normal"
-                                        cssStyle="border-radius: 12px;background-color:#969595;color:white;"
+                                        cssClass="uinew-button-submit"
                                         />
                                 </div>
                                 <div class="form-group">                               
@@ -376,12 +361,10 @@
                                         value="Reset" 
                                         name="reset" 
                                         onClick="resetAllData()"
-                                        cssClass="form-control btn_normal"
-                                        cssStyle="border-radius: 12px;"
+                                        cssClass="uinew-button-reset"
                                         /> 
                                 </div>
                             </div>
-
                             <div class="col-sm-5"></div>
                             <div class="col-sm-3 text-right">
                                 <div class="form-group">
@@ -389,19 +372,15 @@
                                         openDialog="remotedialog"
                                         button="true"
                                         href="%{addurl}"
-                                        disabled="#vadd"
                                         value="Add System User"
                                         id="addButton_new"
                                         targets="remotedialog"   
-                                        cssClass="form-control btn_normal"
-                                        cssStyle="border-radius: 12px;background-color:#969595;color:white;"
+                                        cssClass="uinew-button-submit"
                                         />
                                 </div>
                             </div>
-
                         </div> 
                     </s:form> 
-
                 </div>
                 <!--end newly changed-->             
                 <sj:dialog 
@@ -459,7 +438,7 @@
                     loadingText="Loading .."                            
                     position="center"                            
                     width="900"
-                    height="500"
+                    height="600"
                     dialogClass= "dialogclass"
                     />
             </div>
@@ -489,12 +468,9 @@
                     <sjg:gridColumn name="username" index="username" title="Username"  sortable="true" frozen="true"/>
                     <sjg:gridColumn name="fullname" index="fullname" title="Full Name"  sortable="true"/>
                     <sjg:gridColumn name="nic" index="nic" title="NIC"  sortable="true"/>
-                    <sjg:gridColumn name="userrole" index="userrole.description" title="User Role"  sortable="true"/>
-
                     <sjg:gridColumn name="contactNo" index="mobile" title="Contact No"  sortable="true"/>
                     <sjg:gridColumn name="email" index="email" title="Email"  sortable="true"/>
                     <sjg:gridColumn name="serviceId" index="empid" title="Service ID"  sortable="true"/>
-
                     <sjg:gridColumn name="status" index="status.description" title="Status"  sortable="true"/>
                     <sjg:gridColumn name="createtime" index="u.createtime" title="Created Time"  sortable="true" />
 

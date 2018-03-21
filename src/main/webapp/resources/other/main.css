@@ -9,14 +9,14 @@
 /* ---------------------------------------------------------------------- */
 @import "fonts.css";
 body {
-    color: #000000;
+/*    color: #000000;
     direction: ltr;
     font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
-    /*font-family: 'Open+Sans', sans-serif;*/
+    font-family: 'Open+Sans', sans-serif;
     font-size: 12px;
     padding: 0px !important;
     margin: 0px !important;
-    background: #ffffff;
+    background: #ffffff;*/
 }
 body.bg_style_1 {
     background: url("../images/bg.png") rgba(0, 0, 0, 0) !important;

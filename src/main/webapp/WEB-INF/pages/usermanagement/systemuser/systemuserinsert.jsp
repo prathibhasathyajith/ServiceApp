@@ -91,7 +91,7 @@
                 <div class="containe-fluid">
                     <s:form id="systemuserinsert" method="post" action="Systemuser" theme="simple" cssClass="form">   
 
-                        <div class="row row_popup"> 
+                        <div class="row"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Username</label>
@@ -112,7 +112,7 @@
                             </div>
                         </div>
 
-                        <div class="row row_popup">
+                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">                   
                                     <span style="color: red">*</span><label >Password</label> 
@@ -129,13 +129,7 @@
                             </div>
                         </div> 
 
-                        <div class="row row_popup">
-<!--                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <span style="color: red">*</span><label >User Role</label>
-                                    <%--<s:select  id="iuserrole" list="%{userroleList}"  name="userrole" headerKey="" headerValue="--Select User Role--" listKey="userrolecode" listValue="description" cssClass="form-control"/>--%>
-                                </div>
-                            </div>-->
+                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Status</label>
@@ -150,7 +144,7 @@
                             </div>
                         </div>
 
-                        <div class="row row_popup"> 
+                        <div class="row"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Email</label>
@@ -171,7 +165,7 @@
                             </div>
                         </div>
 
-                        <div class="row row_popup">
+                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Service ID</label>
@@ -193,26 +187,26 @@
                                 </div>
                             </div>
                         </div>  
-                        <div class="row row_popup">
+                        <div class="row">
                             <div class="horizontal_line_popup"></div>
                         </div>
-                        <div class="row row_popup form-inline">
-                            <div class="col-sm-9">
+                        <div class="row form-inline">
+                            <div class="col-sm-8">
                                 <div class="form-group">
                                     <span class="mandatoryfield">Mandatory fields are marked with *</span>
                                 </div>
                             </div>
-                            <div class="col-sm-3 text-right">
-                                <div class="form-group" style=" margin-left: 0px;margin-right: 10px;">
+                            <div class="col-sm-4">
+                                <div class="form-group">
                                     <sj:submit 
                                         button="true" 
                                         value="Reset" 
                                         name="reset" 
-                                        cssClass="btn btn-default btn-sm"
+                                        cssClass="uinew-button-reset"
                                         onClickTopics="resetAddButton"
                                         />                        
                                 </div>
-                                <div class="form-group" style=" margin-left: 0px;margin-right: 10px;">
+                                <div class="form-group">
                                     <s:url action="addSystemuser" var="inserturl"/>
                                     <sj:submit
                                         button="true"
@@ -221,8 +215,7 @@
                                         onClickTopics=""
                                         targets="divmsginsert"
                                         id="addbtn"
-                                        cssClass="btn btn-sm active" 
-                                        cssStyle="background-color: #ada9a9"
+                                        cssClass="uinew-button-submit" 
                                         />                        
                                 </div>
                             </div>

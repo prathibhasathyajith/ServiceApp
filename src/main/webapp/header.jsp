@@ -10,10 +10,10 @@
                 $.blockUI({css: {
                         border: 'transparent',
                         backgroundColor: 'transparent',
-                        zIndex: '100000000'
+                        zIndex: '9000000000'
                     },
                     message: '<img height="136" width="136" src="${pageContext.request.contextPath}/resources/newassets/assets/loader/bar.svg" />',
-                    baseZ: 20000
+                    baseZ: 9000000000
                 });
             });
             $(document).ajaxStop(function () {

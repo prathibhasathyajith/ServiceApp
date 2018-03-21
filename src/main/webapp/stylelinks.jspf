@@ -1,5 +1,5 @@
 <!--theme-->
-
+<sj:head jqueryui="true" jquerytheme="themeNew" customBasepath="resources/themes"/>  
 
 <!--css links-->
 <!--<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/newassets/assets/favicon/favicon.png"/>-->
@@ -9,7 +9,6 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/main.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/style.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/other/main.css" rel="stylesheet"/>
-<sj:head jqueryui="true" jquerytheme="mytheme2" customBasepath="resources/themes"/>  
 <!--javascript links-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/main.js" ></script>
 <!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/bootstrap.js"></script>-->
@@ -40,6 +39,7 @@
         height: 30px !important;
         margin-top: 15px !important;
         outline: none;
+        font-size: 13px;
         /*transition: 0.3s !important;*/
         background: linear-gradient(45deg, #0083db 0%,#0f98f3 100%) !important;
     }
@@ -54,6 +54,7 @@
         height: 30px !important;
         margin-top: 15px !important;
         outline: none;
+        font-size: 13px;
         /*transition: 0.3s !important;*/
         background: linear-gradient(135deg, #ffffff -50%,#c4c4c4 86%) !important;
     }

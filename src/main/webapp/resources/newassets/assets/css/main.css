@@ -6,7 +6,7 @@ body {
     overflow: auto;
 }
 body {
-    /*background-image: url(../image/ori2.jpg);*/
+    /*background-image: url(../image/8648.jpg);*/
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -20,14 +20,14 @@ body::-webkit-scrollbar-thumb {
     background-color: #2c3e50;
 }
 .tb-background {
-    /*background-image: url(../image/new13.jpg);*/
+    /*background-image: url(../image/8648.jpg);*/
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
 }
 .tb-header {
     width: 100%;
-    height: 30px;
+    height: 45px;
     background-color: #ffffff;
     box-shadow: 0 1px 10px rgba(187, 187, 187, 0.53);
     transition: 0.3s;
@@ -39,7 +39,7 @@ body::-webkit-scrollbar-thumb {
 }
 .tb-header-text {
     font-family: raleway;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
 }
 .tb-header-text-small {
@@ -67,7 +67,7 @@ body::-webkit-scrollbar-thumb {
 /*navbar*/
 
 .tb-navbar {
-    width: 17%;
+    width: 20;
     position: fixed;
     word-break: break-all;
     top: 30px;
@@ -98,7 +98,7 @@ body::-webkit-scrollbar-thumb {
     height: 1000px;
     padding: 25px;
     padding-left: 30px;
-    margin-left: 230px;
+    margin-left: 250px;
 }
 .tb-body > .tb-form,
 .tb-body > .tb-table,
@@ -131,7 +131,7 @@ body::-webkit-scrollbar-thumb {
 }
 .tb-modal{
     padding: 10px;
-    border: 1px solid rgba(63, 81, 181, 0.52);
+    /*border: 1px solid rgba(63, 81, 181, 0.52);*/
 }
 
 
