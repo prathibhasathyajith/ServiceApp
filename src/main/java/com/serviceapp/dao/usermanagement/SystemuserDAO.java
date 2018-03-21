@@ -140,7 +140,7 @@ public class SystemuserDAO {
                   
                     try {
                         if (user.getCreatetime().toString() != null && !user.getCreatetime().toString().isEmpty()) {
-                            systemUser.setCreatetime(user.getCreatetime().toString().substring(0, 19));
+                            systemUser.setCreatetime(user.getCreatetime().toString());
                         } else {
                             systemUser.setCreatetime("--");
                         }
@@ -262,9 +262,13 @@ public class SystemuserDAO {
                 String sql = "select passwordexpiryperiod from Passwordpolicy";
                 Query query = session.createQuery(sql);
                 Iterator itCount = query.iterate();
-                int expiryperiod = (Integer) itCount.next();
+                
+                long expiryperiod = (Long) itCount.next();
+                
+                int expiryperiod2 = (int) expiryperiod;
+                
                 cal.setTime(sysDate);
-                cal.add(Calendar.DAY_OF_MONTH, expiryperiod);
+                cal.add(Calendar.DAY_OF_MONTH, expiryperiod2);
                 user.setExpirydate(cal.getTime());
 
 
@@ -296,7 +300,7 @@ public class SystemuserDAO {
                         + user.getEmail() + "|"
                         + user.getAddress() + "|"
                         + user.getCity() + "|"
-                        + inputBean.getExpirydate().substring(0, 19) + "|"
+                        + inputBean.getExpirydate() + "|"
                         + date_of_birth;
 
                 audit.setCreatetime(sysDate);
@@ -592,7 +596,7 @@ public class SystemuserDAO {
             if (user.getDateofbirth() == null) {
                 date_of_birth = "";
             } else {
-                date_of_birth = user.getDateofbirth().toString().substring(0, 19);
+                date_of_birth = user.getDateofbirth().toString();
 
             }
 
@@ -604,7 +608,7 @@ public class SystemuserDAO {
                     + user.getEmail() + "|"
                     + user.getAddress() + "|"
                     + user.getCity() + "|"
-                    + user.getExpirydate().toString().substring(0, 19) + "|"
+                    + user.getExpirydate().toString() + "|"
                     + date_of_birth;
 
 //            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -655,7 +659,7 @@ public class SystemuserDAO {
                     + user.getEmail() + "|"
                     + user.getAddress() + "|"
                     + user.getCity() + "|"
-                    + user.getExpirydate().toString().substring(0, 19) + "|"
+                    + user.getExpirydate().toString() + "|"
                     + date_of_birth;
 
             audit.setNewvalue(newValue);

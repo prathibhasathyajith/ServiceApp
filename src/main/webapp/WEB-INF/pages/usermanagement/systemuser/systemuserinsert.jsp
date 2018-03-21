@@ -86,8 +86,8 @@
             <s:actionerror theme="jquery"/>
             <s:actionmessage theme="jquery"/>
         </s:div>
-        <div class="tb-body tb-header-text">
-            <div class="tb-form">
+        <div class="tb-modal-body tb-header-text">
+            <div class="tb-modal">
                 <div class="containe-fluid">
                     <s:form id="systemuserinsert" method="post" action="Systemuser" theme="simple" cssClass="form">   
 

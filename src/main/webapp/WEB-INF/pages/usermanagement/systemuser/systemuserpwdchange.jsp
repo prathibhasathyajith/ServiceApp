@@ -75,8 +75,8 @@
             <s:actionerror theme="jquery"/>
             <s:actionmessage theme="jquery"/>
         </s:div>
-        <div class="tb-body tb-header-text">
-            <div class="tb-form">
+        <div class="tb-modal-body tb-header-text">
+            <div class="tb-modal">
                 <div class="containe-fluid">
                     <s:form action="PasswordReset" theme="simple" method="post" id="pwdResetform" cssClass="form">
                         <div class="row row_popup">          
