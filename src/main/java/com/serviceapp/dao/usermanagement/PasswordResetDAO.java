@@ -46,7 +46,9 @@ public class PasswordResetDAO {
             String sql3 = "select passwordexpiryperiod from Passwordpolicy";
             Query query3 = session.createQuery(sql3);
             Iterator itCount = query3.iterate();
-            int expiryperiod = (Integer) itCount.next();
+            
+            long expiryperiod = (Long) itCount.next();
+            int expiryperiod2 = (int) expiryperiod;
 
             if (u != null && !inputBean.getCurrpwd().equals(inputBean.getRenewpwd())) {
                 u.setPassword(inputBean.getRenewpwd());
@@ -59,7 +61,7 @@ public class PasswordResetDAO {
 
                 // update password expiry period (inserted)
                 cal.setTime(sysDate);
-                cal.add(Calendar.DAY_OF_MONTH, expiryperiod);
+                cal.add(Calendar.DAY_OF_MONTH, expiryperiod2);
                 u.setExpirydate(cal.getTime());
 
                 session.save(audit);

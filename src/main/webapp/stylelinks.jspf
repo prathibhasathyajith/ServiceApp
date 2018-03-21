@@ -8,6 +8,7 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/bootstrap.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/main.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/style.css" rel="stylesheet"/>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/other/main.css" rel="stylesheet"/>
 <sj:head jqueryui="true" jquerytheme="mytheme2" customBasepath="resources/themes"/>  
 <!--javascript links-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/main.js" ></script>
@@ -26,4 +27,63 @@
         return this;
     };
 </script>
+
+<style>
+    .uinew-button-submit{
+        box-shadow: 0px 3px 6px #d6dbe1;
+        border-radius: 20px !important;
+        color: white !important;
+        font-weight: 500;
+        font-family: Raleway !important;
+        border: 0px solid #ffffff !important;
+        padding: 0 20px 0 20px !important;
+        height: 30px !important;
+        margin-top: 15px !important;
+        outline: none;
+        /*transition: 0.3s !important;*/
+        background: linear-gradient(45deg, #0083db 0%,#0f98f3 100%) !important;
+    }
+    .uinew-button-reset{
+        box-shadow: 0px 3px 6px #d6dbe1;
+        border-radius: 20px !important;
+        color: black !important;
+        font-weight: 500;
+        font-family: Raleway !important;
+        border: 0px solid #ffffff !important;
+        padding: 0 20px 0 20px !important;
+        height: 30px !important;
+        margin-top: 15px !important;
+        outline: none;
+        /*transition: 0.3s !important;*/
+        background: linear-gradient(135deg, #ffffff -50%,#c4c4c4 86%) !important;
+    }
+
+    .uinew-button-submit:hover,
+    .uinew-button-reset:hover{
+        background: linear-gradient(135deg, #4d596a 0%,#768aa7 100%) !important;
+        color: white !important;
+        /*background: gray !important;*/
+    }
+    input.ui-button {
+        padding: 0 20px 0 20px ;
+    }
+
+    /*some modal buttons*/
+    .button-ui{
+        box-shadow: 0px 3px 6px #d6dbe1;
+        border-radius: 20px !important;
+        color: white !important;
+        font-weight: 500;
+        font-family: Raleway !important;
+        border: 0px solid #ffffff !important;
+        padding: 0 20px 0 20px !important;
+        height: 30px !important;
+        outline: none;
+        background: linear-gradient(45deg, #0083db 0%,#0f98f3 100%) !important;
+    }
+    .button-ui:hover{
+        background: linear-gradient(135deg, #4d596a 0%,#768aa7 100%) !important;
+        color: white !important;
+    }
+</style>
 

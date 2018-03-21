@@ -12,7 +12,7 @@
                         backgroundColor: 'transparent',
                         zIndex: '100000000'
                     },
-                    message: '<img height="136" width="136" src="${pageContext.request.contextPath}/resources/images/Ellipsis.svg" />',
+                    message: '<img height="136" width="136" src="${pageContext.request.contextPath}/resources/newassets/assets/loader/bar.svg" />',
                     baseZ: 20000
                 });
             });

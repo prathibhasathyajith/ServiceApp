@@ -12,6 +12,7 @@ import com.serviceapp.common.dao.CommonDAO;
 import com.serviceapp.dao.systemconfig.PasswordPolicyDAO;
 import com.serviceapp.mapping.Passwordpolicy;
 import com.serviceapp.mapping.Systemaudit;
+import com.serviceapp.varlist.CommonVarlist;
 import com.serviceapp.varlist.MessageVarlist;
 import com.serviceapp.varlist.PageVarlist;
 import com.serviceapp.varlist.SectionVarlist;
@@ -47,7 +48,7 @@ public class PasswordPolicyAction extends ActionSupport implements ModelDriven<O
         try {
 
             CommonDAO dao = new CommonDAO();
-//                inputBean.setStatusList(dao.getDefultStatusList(CommonVarList.STATUS_CATEGORY_GENERAL));
+//                inputBean.setStatusList(dao.getDefultStatusList(CommonVarlist.STATUS_CATEGORY_GENERAL));
 
             this.loaddetails();
             HttpSession session = ServletActionContext.getRequest().getSession(false);

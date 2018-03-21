@@ -33,14 +33,6 @@
             <!--<result name="changepassword" >/WEB-INF/pages/controlpanel/usermanagement/systemuseredit.jsp</result>--> 
             <result name="activate" type="json"></result>
         </action>
-        
-        <action name="*ChangePassword" method="{1}" class="com.serviceapp.action.usermanagement.PasswordResetAction">
-            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
-            <result name="resetpassword">/defaultaccesscontroler.jsp</result>
-            <result name="logoutuser" type="json"></result>
-            <result name="view">/WEB-INF/pages/usermanagement/passwordreset.jsp</result>
-            <result name="success"></result>
-        </action>
         <action name="*paschanged" method="{1}" class="com.serviceapp.action.usermanagement.PasswordResetAction">
             <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
             <result name="resetpassword">/defaultaccesscontroler.jsp</result>
@@ -48,6 +40,14 @@
             <result name="view">/WEB-INF/pages/usermanagement/paschanged.jsp</result>
             <result name="success"></result>
         </action>
+        <action name="*ChangePassword" method="{1}" class="com.serviceapp.action.usermanagement.PasswordResetAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="resetpassword">/defaultaccesscontroler.jsp</result>
+            <result name="logoutuser" type="json"></result>
+            <result name="view">/WEB-INF/pages/usermanagement/passwordreset.jsp</result>
+            <result name="success"></result>
+        </action>
+        
         
         
     </package>

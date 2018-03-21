@@ -241,10 +241,7 @@
                                              />                                              
                             </div>
                         </div>       
-
                     </div>
-
-
                     <div class="row row_1">
                         <div class="col-sm-3">
                             <div class="form-group form-inline">
@@ -292,9 +289,6 @@
                                              onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
                                              />                                         </div>
                         </div>
-
-
-
                     </div>
 
                     <div class="row row_1">
@@ -328,17 +322,9 @@
                                            cssClass="form-control btn_normal"
                                            cssStyle="border-radius: 12px;background-color:#969595;color:white;"
                                            />
-
                             </div>
-
-
-
                         </div>
-
                     </div>
-
-
-
                 </s:form>
 
             </div>
@@ -372,7 +358,7 @@
                 autoOpen="false" 
                 modal="true" 
                 title="Delete error."
-                />Ï
+                />
         </div>
 
     </body>

@@ -92,11 +92,13 @@ body::-webkit-scrollbar-thumb {
 /*body*/
 
 .tb-body {
-    width: 84%;
+    width: 79%;
     margin-top: 30px;
     background-color: white;
     height: 1000px;
     padding: 25px;
+    padding-left: 30px;
+    margin-left: 230px;
 }
 .tb-body > .tb-form,
 .tb-body > .tb-table,
@@ -119,6 +121,19 @@ body::-webkit-scrollbar-thumb {
     border-bottom-left-radius: 0;
     box-shadow: -5px 0px 0px 0px #3F51B5;
 }
+
+/*modal*/
+.tb-modal-body{
+    width: 100%;
+    background-color: white;
+    height: auto;
+    padding: 10px;
+}
+.tb-modal{
+    padding: 10px;
+    border: 1px solid rgba(63, 81, 181, 0.52);
+}
+
 
 /*colors*/
 

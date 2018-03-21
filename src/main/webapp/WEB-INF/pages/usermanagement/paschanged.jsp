@@ -45,15 +45,15 @@
                 });
             }
 
-            $(document).ready(function () {
-                $.each($('.tooltip'), function (index, element) {
-                    $(this).remove();
-                });
-                $('[data-toggle="tooltip"]').tooltip({
-                    'placement': 'right',
-                    'container': 'body'
-                });
-            });
+//            $(document).ready(function () {
+//                $.each($('.tooltip'), function (index, element) {
+//                    $(this).remove();
+//                });
+//                $('[data-toggle="tooltip"]').tooltip({
+//                    'placement': 'right',
+//                    'container': 'body'
+//                });
+//            });
         </script>
         <style>
             .tooltip {
@@ -78,7 +78,7 @@
         <!--nav bar-->
         <jsp:include page="/navbar.jsp"/>
         <!--body content-->
-        <div class="tb-body f-right tb-header-text">
+        <div class="tb-body tb-header-text">
             <s:div id="divmsg">
                 <s:actionerror theme="jquery"/>
                 <s:actionmessage theme="jquery"/>

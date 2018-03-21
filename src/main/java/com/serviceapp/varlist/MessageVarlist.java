@@ -97,6 +97,8 @@ public class MessageVarlist {
     public static final String PASSPOLICY_NO_OF_INVALID_LOGIN_ATTEMPTS_EMPTY = "No. of invalid login attempts cannot be empty";
     public static final String PASSPOLICY_NO_OF_HISTORY_PASSWORD_INVALID = "No. of history passwords should be 1 or above";
     
+    
+    
     public static final String SYSUSER_PASSWORD_TOO_SHORT = "Password is shorter than the expected minimum length ";
     public static final String SYSUSER_PASSWORD_TOO_LARGE = "Password is longer than the expected maximum length ";
     public static final String SYSUSER_PASSWORD_LESS_LOWER_CASE_CHARACTERS = "Lower case characters are less than required ";
@@ -110,4 +112,27 @@ public class MessageVarlist {
     public static final String RESET_PASS_NEW_EXIST = "New password already exists in history ";
     public static final String RESET_PASS_CURRENT_EXIST = "Current password already exists in history ";
     public static final String RESET_PASS_SAME_NEW_CURRENT = "New password and current password cannot be the same ";
+    
+    public static final String SYSUSER_MGT_EMPTY_USERNAME = "Username cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_PASSWORD = "Password cannot be empty";
+    public static final String SYSUSER_MGT_PASSWORD_MISSMATCH = "Confirm password mismatch with the password";
+    public static final String SYSUSER_MGT_EMPTY_USERROLE = "User role cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_DUALAUTHUSER = "Dual auth user cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_STATUS = "Status cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_SERVICEID = "Service ID cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_EXPIRYDATE = "Password expiry date cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_DATEOFBIRTH = "Date of birth cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_FULLNAME = "Full name cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_ADDRESS1 = "Address cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_ADDRESS2 = "Address2 cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_CITY = "City cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_COANTACTNO = "Contact number cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_FAX = "Fax cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_EMAIL = "Email cannot be empty";
+    public static final String SYSUSER_MGT_EMPTY_NIC = "NIC cannot be empty";
+    public static final String SYSUSER_MGT_INVALID_EMAIL = "Invalid email";
+    public static final String SYSUSER_MGT_INVALID_NIC = "Invalid NIC";
+    public static final String SYSUSER_MGT_INVALID_NIC_DOB = "Date of birth does not match with NIC";
+    public static final String SYSUSER_MGT_INVALID_CONTACT_NO = "Invalid contact number ";
+    
 }

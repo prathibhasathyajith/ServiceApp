@@ -35,7 +35,7 @@ html {
     background: -moz-radial-gradient(center, ellipse cover, #6b6868 1%, #383838 100%);
     background: -webkit-radial-gradient(center, ellipse cover, #6b6868 1%, #383838 100%);
     background: radial-gradient(ellipse at center, #6b6868 1%, #383838 100%);
-    background: url(../Images/a6.jpg) 60% 20%;
+    /*background: url(../Images/a6.jpg) 60% 20%;*/
 }
 input:-webkit-autofill {
      -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset;

@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -42,6 +43,37 @@ public class CommonDAO {
         } finally {
         }
         return sysDateTime;
+    }
+    public static String replaceEmptyorNullStringToNA(String string) {
+        String value = "--";
+        if (string != null && !string.trim().isEmpty()) {
+            value = string;
+        }
+        return value;
+    }
+
+    public static String replaceEmptyorNullStringToALL(String string) {
+        String value = "-ALL-";
+        if (string != null && !string.trim().isEmpty()) {
+            value = string;
+        }
+        return value;
+    }
+
+    public static String checkEmptyorNullString(String str) {
+        if (str == null || str.isEmpty()) {
+            str = "--";
+        }
+        return str;
+    }
+
+    public static String checkEmptyorNullString(String feildName, String str) {
+        if (str == null || str.isEmpty()) {
+            str = "";
+        } else {
+            str = feildName + " - " + str + ",";
+        }
+        return str;
     }
     
     public static String makeHash(String text) throws Exception {
@@ -144,6 +176,63 @@ public class CommonDAO {
 
     }
     
+    public static Systemaudit makeAudittrace(HttpServletRequest request, String task, String page, String section, String description, String remarks) throws Exception {
+
+        HttpSession session = request.getSession(false);
+        Systemuser sysUser = (Systemuser) session.getAttribute(SessionVarlist.SYSTEMUSER);
+        Systemaudit audit = new Systemaudit();
+        audit.setDescription(description + " by " + sysUser.getUsername());
+
+        CommonDAO dao = new CommonDAO();
+
+        audit.setSection(section);
+
+//        audit.setStatus(CommonVarList.STATUS_ACTIVE);
+        audit.setPage(page);
+
+        audit.setTask(task);
+
+//        Systemuser us = new Systemuser();
+//        us.setUsername(sysUser.getUsername());
+//        audit.setRemarks(remarks);
+        audit.setLastupdateduser(sysUser.getUsername());
+        return audit;
+
+    }
+    
+    public String saveAudit(Systemaudit audit) throws Exception {
+
+        Session session = null;
+        Transaction txn = null;
+        String message = "";
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            Date sysDate = CommonDAO.getSystemDate(session);
+
+            txn = session.beginTransaction();
+            audit.setCreatetime(sysDate);
+            audit.setLastupdatedtime(sysDate);
+            audit.setLastupdateduser(audit.getLastupdateduser());
+
+            session.save(audit);
+
+            txn.commit();
+
+        } catch (Exception e) {
+            if (txn != null) {
+                txn.rollback();
+            }
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return message;
+    }
     public List<Status> getDefultStatusList(String statusCode)
             throws Exception {
 
@@ -167,5 +256,14 @@ public class CommonDAO {
         }
         return statusList;
     }
-    
+    public static String mpiMd5(String value) throws Exception {
+        MessageDigest m = MessageDigest.getInstance("MD5");
+        m.update(value.getBytes("UTF8"));
+        byte s[] = m.digest();
+        String result = "";
+        for (int i = 0; i < s.length; i++) {
+            result += Integer.toHexString((0x000000ff & s[i]) | 0xffffff00).substring(6);
+        }
+        return result;
+    }
 }
