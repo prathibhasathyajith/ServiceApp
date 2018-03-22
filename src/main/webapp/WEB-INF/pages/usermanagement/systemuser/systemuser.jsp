@@ -279,12 +279,13 @@
         <jsp:include page="/header.jsp"/>
         <!--nav bar-->
         <jsp:include page="/navbar.jsp"/>
-        <s:div id="divmsg">
-            <s:actionerror theme="jquery"/>
-            <s:actionmessage theme="jquery"/>
-        </s:div>
+
         <!--body content-->
-        <div class="tb-body tb-header-text">
+        <div class="tb-body">
+            <s:div id="divmsg">
+                <s:actionerror theme="jquery"/>
+                <s:actionmessage theme="jquery"/>
+            </s:div>
             <div class="tb-breadcrumb">User Management > System User</div>
             <div class="tb-form">
                 <div class="containe-fluid">
@@ -462,10 +463,10 @@
                     onErrorTopics="anyerrors"
                     shrinkToFit="false"
                     >
-                    <sjg:gridColumn name="username" index="username" title="Edit" width="35" align="center" formatter="editformatter" hidden="#vupdatelink" frozen="true"/>
-                    <sjg:gridColumn name="username" index="username" title="Delete" width="60" align="center" formatter="deleteformatter" hidden="#vdelete" frozen="true"/>
-                    <sjg:gridColumn name="username" index="username" title="Change Password"  align="center" formatter="changepasswordformatter" hidden="#vpasswordreset" frozen="true"/>
-                    <sjg:gridColumn name="username" index="username" title="Username"  sortable="true" frozen="true"/>
+                    <sjg:gridColumn name="username" index="username" title="Edit" width="35" align="center" formatter="editformatter"  frozen="false"/>
+                    <sjg:gridColumn name="username" index="username" title="Delete" width="60" align="center" formatter="deleteformatter"  frozen="false"/>
+                    <sjg:gridColumn name="username" index="username" title="Change Password"  align="center" formatter="changepasswordformatter"  frozen="false"/>
+                    <sjg:gridColumn name="username" index="username" title="Username"  sortable="true" frozen="false"/>
                     <sjg:gridColumn name="fullname" index="fullname" title="Full Name"  sortable="true"/>
                     <sjg:gridColumn name="nic" index="nic" title="NIC"  sortable="true"/>
                     <sjg:gridColumn name="contactNo" index="mobile" title="Contact No"  sortable="true"/>
@@ -476,7 +477,7 @@
 
                 </sjg:grid> 
             </div>
-            <div class="tb-other">Other</div>  
+            <!--<div class="tb-other">Other</div>-->  
         </div>
     </body>
 </html>

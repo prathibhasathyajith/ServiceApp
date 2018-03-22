@@ -76,28 +76,29 @@
     <body style="">
         <jsp:include page="/header.jsp"/>
         <!--nav bar-->
-        <jsp:include page="/navbar.jsp"/>
+        <jsp:include page="/navbarpassreset.jsp"/>
         <!--body content-->
         <div class="tb-body tb-header-text">
             <s:div id="divmsg">
                 <s:actionerror theme="jquery"/>
                 <s:actionmessage theme="jquery"/>
             </s:div>
-            <div id="formstyle">
-                <s:form action="PasswordReset" theme="simple" method="post" id="pwdResetform" cssClass="form-inline">
+            <div class="tb-breadcrumb">First time password</div>
+            <div class="tb-form">
+                <div class="containe-fluid">
+                <s:form action="PasswordReset" theme="simple" method="post" id="pwdResetform" cssClass="form">
                     <s:hidden name="husername" id="husername" />
-                    <div class="row row_1">
+                    <div class="row">
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label>Username </label>
                                 <s:textfield cssClass="form-control" name="username" id="username" disabled="true"/>
                             </div>
                         </div>
-
                     </div>
-                    <div class="row row_1"></div>
+                    <div class="row"></div>
 
-                    <div class="row row_1">
+                    <div class="row">
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label>Current Password </label>
@@ -118,17 +119,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row row_1">
+                    <div class="row form-inline">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <s:url var="sss" action="Updatepaschanged"/>  
+                                <s:url var="paschng" action="Updatepaschanged"/>  
                                 <sj:submit 
                                     button="true"
-                                    href="%{sss}"
+                                    href="%{paschng}"
                                     value="Accept"
                                     targets="divmsg"
-                                    cssClass="form-control btn_normal"
-                                    cssStyle="border-radius: 12px;background-color:#969595;color:white;"                                                 
+                                    cssClass="uinew-button-submit"
                                     />
                             </div> 
                             <div class="form-group">
@@ -136,8 +136,7 @@
                                     button="true" 
                                     value="Reset" 
                                     onClick="resetAllData()"                                                   
-                                    cssClass="form-control btn_normal"
-                                    cssStyle="border-radius: 12px;"
+                                    cssClass="uinew-button-reset"
                                     />
                             </div>
                         </div>
@@ -147,7 +146,7 @@
         </div>
 
 
-        <jsp:include page="/footer.jsp"/>
+        <%--<jsp:include page="/footer.jsp"/>--%>
 
     </body>
 </html>

@@ -43,7 +43,7 @@
     <body style="">
         <jsp:include page="/header.jsp"/>
         <!--nav bar-->
-        <jsp:include page="/navbar.jsp"/>
+        <jsp:include page="/navbarpassreset.jsp"/>
         <!--body content-->
         <div class="tb-body tb-header-text">
             <s:div id="divmsg">
@@ -52,13 +52,13 @@
             </s:div>
             <div class="tb-breadcrumb">Change Password</div>
             <div class="tb-form">
-                <s:form  action="PasswordReset" theme="simple" method="post" id="pwdResetform" cssClass="form-inline">
+                <div class="containe-fluid">
+                <s:form  action="PasswordReset" theme="simple" method="post" id="pwdResetform" cssClass="form">
                     <s:hidden name="husername" id="husername" />
-                    <div class="containe-fluid">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label >Username </label>
+                                    <label >Username</label>
                                     <s:textfield cssClass="form-control" name="username" id="username" disabled="true"/>
                                 </div>
                             </div>
@@ -92,16 +92,16 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row form-inline">
                             <div class="col-sm-4">
-                                <div class="form-group">
+                                <div class="form-group ">
                                     <s:url var="updateurl" action="Updatepaschanged"/>
                                     <sj:submit 
                                         button="true"
                                         href="%{updateurl}"
                                         value="Accept"
                                         targets="divmsg"
-                                        id="sdsd"
+                                        id="acc"
                                         cssClass="uinew-button-submit"                                                
                                         />
                                 </div> 
@@ -116,7 +116,6 @@
                             </div>
                         </div>
                     </s:form>
-
                 </div>
             </div>
         </div>

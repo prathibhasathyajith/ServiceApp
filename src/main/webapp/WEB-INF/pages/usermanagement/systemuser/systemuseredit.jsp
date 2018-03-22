@@ -102,8 +102,7 @@
             <div class="tb-modal">
                 <div class="containe-fluid">
                     <s:form id="systemuseredit" method="post" action="Systemuser"  theme="simple" cssClass="form">   
-
-                        <div class="row row_popup"> 
+                        <div class="row"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Username</label>
@@ -122,16 +121,8 @@
                                     <s:textfield name="nic" id="e_nic" cssClass="form-control" maxLength="12"  onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))" onkeypress="return alpha(event)"/>
                                 </div>
                             </div>
-
                         </div>
-
-                        <div class="row row_popup">   
-                            <!--                        <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <span style="color: red">*</span> <label >User Role</label>
-                            <%--<s:select  id="e_userrole" list="%{userroleList}"  name="userrole" headerKey="" headerValue="--Select User Role--" listKey="userrolecode" listValue="description" cssClass="form-control"/>--%>
-                        </div>
-                    </div>-->
+                        <div class="row ">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span> <label >Status</label>
@@ -144,15 +135,14 @@
                                     <s:textfield name="contactno" id="e_contactno" cssClass="form-control"  maxLength="11" onkeyup="$(this).val($(this).val().replace(/[^0-9]/g, ''))" onmouseout="$(this).val($(this).val().replace(/[^0-9]/g, ''))"   onkeypress="return isNumber(event)" />
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="row row_popup"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Email</label>
                                     <s:textfield name="email" id="e_email" cssClass="form-control" maxLength="128"/>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Address</label>
@@ -165,51 +155,48 @@
                                     <s:textfield name="city" maxLength="30" id="e_city" cssClass="form-control" onkeypress="return alpha(event)"/>
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="row row_popup"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Service ID</label>
                                     <s:textfield name="serviceid" id="e_serviceid" maxLength="15" cssClass="form-control" onkeypress="return alpha(event)"/>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row ">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Expiry Date</label>
                                     <s:textfield name="expirydate" id="e_expirydate" cssClass="form-control" readonly="true" cssStyle="color: #858585"/>
                                 </div>
                             </div>
-
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Date of Birth</label>
                                     <sj:datepicker value="%{dateofbirth}" cssClass="form-control" id="e_dateofbirth" name="dateofbirth" readonly="true"  maxDate="d" 
-                                                   changeYear="true" buttonImageOnly="true" displayFormat="yy-mm-dd" yearRange="1950:2200" timepicker="false" 
-                                                   />
+                                                   changeYear="true" buttonImageOnly="true" displayFormat="yy-mm-dd" yearRange="1950:2200" timepicker="false" />
                                 </div>
                             </div>
                         </div> 
-                        <div class="row row_popup">
+                        <div class="row">
                             <div class="horizontal_line_popup"></div>
                         </div>
-                        <div class="row row_popup form-inline">
-                            <div class="col-sm-9">
+                        <div class="row form-inline">
+                            <div class="col-sm-8">
                                 <div class="form-group">
                                     <span class="mandatoryfield">Mandatory fields are marked with *</span>
                                 </div>
                             </div>
-                            <div class="col-sm-3 text-right">
-                                <div class="form-group" style=" margin-left: 10px;margin-right: 0px;">
+                            <div class="col-sm-4">
+                                <div class="form-group">
                                     <sj:submit 
                                         button="true" 
                                         value="Reset" 
                                         name="reset" 
-                                        cssClass="btn btn-default btn-sm"
+                                        cssClass="uinew-button-reset"
                                         onClick="cancelData()"
                                         />                        
                                 </div>
-                                <div class="form-group" style=" margin-left: 0px;margin-right: 10px;">
+                                <div class="form-group">
                                     <s:url action="updateSystemuser" var="updateturl"/>
                                     <sj:submit
                                         button="true"
@@ -217,8 +204,7 @@
                                         href="%{updateturl}"
                                         targets="divmsgupdate"
                                         id="updatebtn"
-                                        cssClass="btn btn-sm active" 
-                                        cssStyle="background-color: #ada9a9" 
+                                        cssClass="uinew-button-submit" 
                                         />                        
                                 </div>
                             </div>

@@ -157,7 +157,7 @@
         <!--nav bar-->
         <jsp:include page="/navbar.jsp"/>
         <!--body content-->
-        <div class="tb-body f-right tb-header-text">
+        <div class="tb-body">
             <s:div id="divmsg">
                 <s:actionerror theme="jquery"/>
                 <s:actionmessage theme="jquery"/>
@@ -166,199 +166,159 @@
             <s:hidden id="oldvalue" name="oldvalue" ></s:hidden>
             <s:url var="addurl" action="addPasswordPolicy"/>
             <s:url var="updateurl" action="updatePasswordPolicy"/>
-
-            <div id="formid">
-                <s:form id="customercategoryadd" method="post" action="PasswordPolicy" theme="simple">
-
-                    <div class="row row_1">
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Password Policy ID</label>
-                                <s:textfield cssClass="form-control" name="passwordpolicyid" id="passwordpolicyid"                                                        
-                                             maxLength="5" 
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))" 
-                                             readonly="#policyid"/>                                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Minimum Length</label>
-                                <s:textfield cssClass="form-control" name="minimumlength" id="minimumlength"
-                                             maxLength="2"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Maximum Length</label>
-                                <s:textfield cssClass="form-control" name="maximumlength" id="maximumlength"
-                                             maxLength="2"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                        </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Minimum Special Characters</label>
-                                <s:textfield cssClass="form-control" name="minimumspecialcharacters" id="minimumspecialcharacters"
-                                             maxLength="2"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                                
+            <div class="tb-breadcrumb">System Config > Password Policy</div>
+            <div class="tb-form">
+                <div class="containe-fluid">
+                    <s:form id="customercategoryadd" method="post" action="PasswordPolicy" theme="simple" cssClass="form">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <span style="color: red">*</span><label>Password Policy ID</label>
+                                    <s:textfield cssClass="form-control" name="passwordpolicyid" id="passwordpolicyid"                                                        
+                                                 maxLength="5" 
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))" 
+                                                 readonly="#policyid"/>                                            </div>
                             </div>
-                        </div>       
-
-                    </div>
-
-                    <div class="row row_1">
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Minimum Upper Case Characters</label>
-                                <s:textfield cssClass="form-control" name="minimumuppercasecharacters" id="minimumuppercasecharacters"
-                                             maxLength="2"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                          </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Minimum Lower Case Characters</label>
-                                <s:textfield cssClass="form-control" name="minimumlowercasecharacters" id="minimumlowercasecharacters"
-                                             maxLength="2"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Minimum Numerical Characters</label>
-                                <s:textfield cssClass="form-control" name="minimumnumericalcharacters" id="minimumnumericalcharacters"
-                                             maxLength="2"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                       </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Allowed Repeat Characters</label>
-                                <s:textfield cssClass="form-control" name="repeatcharactersallow" id="repeatcharactersallow"
-                                             maxLength="2"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                              
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Minimum Length</label>
+                                    <s:textfield cssClass="form-control" name="minimumlength" id="minimumlength"
+                                                 maxLength="2"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                            </div>
                             </div>
-                        </div>       
-                    </div>
-                    <div class="row row_1">
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Password Expiry Period</label>
-                                <s:textfield cssClass="form-control" name="passwordexpiryperiod" id="passwordexpiryperiod"
-                                             maxLength="5"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             /> (days)                                         
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Maximum Length</label>
+                                    <s:textfield cssClass="form-control" name="maximumlength" id="maximumlength"
+                                                 maxLength="2"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                        </div>
                             </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Minimum Special Characters</label>
+                                    <s:textfield cssClass="form-control" name="minimumspecialcharacters" id="minimumspecialcharacters"
+                                                 maxLength="2"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                                
+                                </div>
+                            </div>       
                         </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Password Expiry Notification Period</label>
-                                <s:textfield cssClass="form-control" name="minimumpasswordchangeperiod" id="minimumpasswordchangeperiod"
-                                             maxLength="5"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />  (days)                                          </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>No. of History Passwords</label>
-                                <s:textfield cssClass="form-control" name="noofhistorypassword" id="noofhistorypassword"
-                                             maxLength="5"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                       </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>Idle Account Expiry Period</label>
-                                <s:textfield cssClass="form-control" name="idleaccountexpiryperiod" id="idleaccountexpiryperiod"
-                                             maxLength="5"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             /> (days)                                            
+                        <div class="row ">
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Minimum Upper Case Characters</label>
+                                    <s:textfield cssClass="form-control" name="minimumuppercasecharacters" id="minimumuppercasecharacters"
+                                                 maxLength="2"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                          </div>
                             </div>
-                        </div>       
-
-                    </div>
-
-                    <div class="row row_1">
-                        <div class="col-sm-3">
-                            <div class="form-group form-inline">
-                                <span style="color: red">*</span><label>No. of Invalid Login Attempts</label>
-                                <s:textfield cssClass="form-control" name="noofinvalidloginattempt" id="noofinvalidloginattempt"
-                                             maxLength="5"
-                                             onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
-                                             />                                         </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Minimum Lower Case Characters</label>
+                                    <s:textfield cssClass="form-control" name="minimumlowercasecharacters" id="minimumlowercasecharacters"
+                                                 maxLength="2"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                            </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Minimum Numerical Characters</label>
+                                    <s:textfield cssClass="form-control" name="minimumnumericalcharacters" id="minimumnumericalcharacters"
+                                                 maxLength="2"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                       </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Allowed Repeat Characters</label>
+                                    <s:textfield cssClass="form-control" name="repeatcharactersallow" id="repeatcharactersallow"
+                                                 maxLength="2"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                              
+                                </div>
+                            </div>       
                         </div>
-                    </div>
-
-                    <div class="row row_1">
-                        <div class="col-sm-4">
-                            <div class="form-group form-inline">
-                                <span class="mandatoryfield">Mandatory fields are marked with *</span>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Password Expiry Period</label>
+                                    <s:textfield cssClass="form-control" name="passwordexpiryperiod" id="passwordexpiryperiod"
+                                                 maxLength="5"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 /> (days)                                         
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Password Expiry Notification Period</label>
+                                    <s:textfield cssClass="form-control" name="minimumpasswordchangeperiod" id="minimumpasswordchangeperiod"
+                                                 maxLength="5"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />  (days)                                          </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>No. of History Passwords</label>
+                                    <s:textfield cssClass="form-control" name="noofhistorypassword" id="noofhistorypassword"
+                                                 maxLength="5"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                       </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>Idle Account Expiry Period</label>
+                                    <s:textfield cssClass="form-control" name="idleaccountexpiryperiod" id="idleaccountexpiryperiod"
+                                                 maxLength="5"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 /> (days)                                            
+                                </div>
+                            </div>       
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group  ">
+                                    <span style="color: red">*</span><label>No. of Invalid Login Attempts</label>
+                                    <s:textfield cssClass="form-control" name="noofinvalidloginattempt" id="noofinvalidloginattempt"
+                                                 maxLength="5"
+                                                 onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))"
+                                                 />                                         </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row row_1"></div>
-                    <div class="row row_1 form-inline">
-                        <!--<div class="col-sm-2"></div>-->
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <sj:submit button="true" 
-                                           value="Reset" 
-                                           name="reset" 
-                                           onClick="resetAllData()"
-                                           cssClass="form-control btn_normal"
-                                           cssStyle="border-radius: 12px;" />
-
-                            </div>
-                            <div class="form-group">
-                                <sj:submit button="true" 
-                                           href="%{updateurl}" 
-                                           value="Update" 
-                                           disabled="#vupdatebutt"
-                                           targets="divmsg"   
-                                           id="updateButton"
-                                           cssClass="form-control btn_normal"
-                                           cssStyle="border-radius: 12px;background-color:#969595;color:white;"
-                                           />
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group  ">
+                                    <span class="mandatoryfield">Mandatory fields are marked with *</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </s:form>
-
+                        <div class="row"></div>
+                        <div class="row form-inline">
+                            <!--<div class="col-sm-2"></div>-->
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <sj:submit button="true" 
+                                               value="Reset" 
+                                               name="reset" 
+                                               onClick="resetAllData()"
+                                               cssClass="uinew-button-reset"
+                                               />
+                                </div>
+                                <div class="form-group">
+                                    <sj:submit button="true" 
+                                               href="%{updateurl}" 
+                                               value="Update" 
+                                               targets="divmsg"   
+                                               id="updateButton"
+                                               cssClass="uinew-button-submit"
+                                               />
+                                </div>
+                            </div>
+                        </div>
+                    </s:form>
+                </div>                
             </div>
-            <!-- Start delete confirm dialog box -->
-            <sj:dialog 
-                id="deletedialog" 
-                buttons="{ 
-                'OK':function() { deletePage($(this).data('keyval'));$( this ).dialog( 'close' ); },
-                'Cancel':function() { $( this ).dialog( 'close' );} 
-                }" 
-                autoOpen="false" 
-                modal="true" 
-                title="Delete Page"                            
-                />
-            <!-- Start delete process dialog box -->
-            <sj:dialog 
-                id="deletesuccdialog" 
-                buttons="{
-                'OK':function() { $( this ).dialog( 'close' );}
-                }"  
-                autoOpen="false" 
-                modal="true" 
-                title="Deleting Process." 
-                />
-            <!-- Start delete error dialog box -->
-            <sj:dialog 
-                id="deleteerrordialog" 
-                buttons="{
-                'OK':function() { $( this ).dialog( 'close' );}                                    
-                }" 
-                autoOpen="false" 
-                modal="true" 
-                title="Delete error."
-                />
         </div>
 
     </body>

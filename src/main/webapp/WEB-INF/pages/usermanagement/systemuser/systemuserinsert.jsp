@@ -119,7 +119,6 @@
                                     <s:password name="password" id="ipassword" maxLength="64" data-toggle="tooltip" data-html="true" title="%{pwtooltip}"  cssClass="form-control" />
                                     <!--<label style="font-size: 11px"></label>-->
                                 </div>
-
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
@@ -127,24 +126,21 @@
                                     <s:password name="confirmpassword" id="iconfirmpassword" maxLength="64"  cssClass="form-control"/>
                                 </div>
                             </div>
-                        </div> 
-
-                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Status</label>
                                     <s:select  id="istatus" list="%{statusList}"  name="status" headerKey=""  headerValue="--Select Status--" listKey="statuscode" listValue="description" value="%{status}" disabled="false" cssClass="form-control"/>
                                 </div>
                             </div>
+                        </div> 
+
+                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Contact Number</label>
                                     <s:textfield  name="contactno" id="icontactno" cssClass="form-control"  maxLength="11" onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))" onmouseout="$(this).val($(this).val().replace(/[^0-9]/g,''))" onkeypress="return isNumberinsert(event)"/>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Email</label>
@@ -157,15 +153,15 @@
                                     <s:textfield name="address1" id="iaddress1" maxLength="255" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9,./' ]/g, ''))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9,./' ]/g, ''))" />
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >City</label>
                                     <s:textfield name="city" id="icity" cssClass="form-control" maxLength="30" onkeypress="return alpha(event)"/>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Service ID</label>
@@ -178,6 +174,9 @@
                                     <s:textfield name="expirydate" id="iexpirydate" cssClass="form-control" readonly="true"/>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Date of Birth</label>

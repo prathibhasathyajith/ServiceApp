@@ -79,7 +79,7 @@
             <div class="tb-modal">
                 <div class="containe-fluid">
                     <s:form action="PasswordReset" theme="simple" method="post" id="pwdResetform" cssClass="form">
-                        <div class="row row_popup">          
+                        <div class="row">          
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Username</label>
@@ -87,17 +87,11 @@
                                     <s:hidden name="husername" id="chusername" />
                                 </div>
                             </div>
-<!--                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label >User Role</label>
-                                    <%--<s:textfield value="%{userrole}" name="cuserrole" id="cuserrole" cssClass="form-control" disabled="true"/>--%>
-                                </div>
-                            </div>-->
                         </div>
-                        <div class="row row_popup">
+                        <div class="row">
                             <div class="horizontal_line_popup"></div>
                         </div>
-                        <div class="row row_popup">                 
+                        <div class="row">                 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >New Password</label>
@@ -113,26 +107,26 @@
                                 </div>
                             </div>
                         </div> 
-                        <div class="row row_popup">
+                        <div class="row">
                             <div class="horizontal_line_popup"></div>
                         </div>
-                        <div class="row row_popup form-inline">
-                            <div class="col-sm-9">
+                        <div class="row form-inline">
+                            <div class="col-sm-8">
                                 <div class="form-group">
                                     <span class="mandatoryfield">Mandatory fields are marked with *</span>
                                 </div>
                             </div>
-                            <div class="col-sm-3 text-right">
-                                <div class="form-group" style=" margin-left: 10px;margin-right: 0px;">
+                            <div class="col-sm-4">
+                                <div class="form-group" >
                                     <sj:submit 
                                         button="true" 
                                         value="Reset" 
                                         name="reset" 
                                         onClick="resetAllData()"
-                                        cssClass="btn btn-default btn-sm"
+                                        cssClass="uinew-button-reset"
                                         />                           
                                 </div>
-                                <div class="form-group" style=" margin-left: 0px;margin-right: 10px;">
+                                <div class="form-group">
                                     <s:url var="pwreseturl" action="updatechangepasswordSystemuser"/>   
                                     <s:hidden id="newpwd" name="newpwd"></s:hidden>
                                     <s:hidden id="renewpwd" name="renewpwd"></s:hidden>
@@ -141,8 +135,7 @@
                                         href="%{pwreseturl}"
                                         value="Accept"
                                         targets="changepassdivmsg"
-                                        cssClass="btn btn-sm active" 
-                                        cssStyle="background-color: #ada9a9" 
+                                        cssClass="uinew-button-submit" 
                                         />                         
                                 </div>
                             </div>
