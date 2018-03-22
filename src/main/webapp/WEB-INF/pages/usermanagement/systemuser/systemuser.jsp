@@ -325,7 +325,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Email</label>
-                                    <s:textfield name="email" id="email" cssClass="form-control" maxLength="128"  onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, '' .))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''.))"/> 
+                                    <s:textfield name="email" id="email" cssClass="form-control" maxLength="128"  onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, '' .))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))"/> 
                                 </div>
                             </div>
                             <div class="col-sm-3">

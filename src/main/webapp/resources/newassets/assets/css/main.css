@@ -28,8 +28,8 @@ body::-webkit-scrollbar-thumb {
 .tb-header {
     width: 100%;
     height: 45px;
-    background-color: #ffffff;
-    box-shadow: 0 1px 10px rgba(187, 187, 187, 0.53);
+    background-color: #444;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.2), 0 1px 8px 0 rgba(0,0,0,.12);
     transition: 0.3s;
     z-index: 10;
 }
@@ -55,29 +55,50 @@ body::-webkit-scrollbar-thumb {
 }
 .tb-header-logo {}
 .tb-header-margin {
-    /* margin: 6px 1px; */
+    margin: 4px 1px; 
     padding: 4px 3px;
 }
 .tb-header > .tb-header-divider {
     float: left;
-    color: black;
+    color: #E91E63;
     font-weight: bold;
+}
+.tb-header-logout ,
+.tb-header-passchange{
+    background: #444;
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    padding: 5px;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+.tb-header-logout:hover ,
+.tb-header-passchange:hover{
+    background: #818181;
+}
+
+.tb-header-logout > a ,
+.tb-header-passchange >a {
+    color: white;
+    text-decoration: none;
 }
 
 /*navbar*/
 
 .tb-navbar {
-    width: 20;
     position: fixed;
     word-break: break-all;
     top: 30px;
     height: auto;
     background-color: white;
+    z-index: 9;
 }
 .tb-navbar-menu {
     transform: rotate(270deg);
     position: fixed;
-    left: 213px;
+    left: 300px;
     top: 86px;
     font-size: 12px;
     background: #8BC34A;
@@ -95,13 +116,18 @@ body::-webkit-scrollbar-thumb {
     width: 79%;
     margin-top: 30px;
     background-color: white;
-    height: 1000px;
+    height: auto;
     padding: 25px;
     padding-left: 30px;
     margin-left: 250px;
 }
+.tb-table{
+    /*background-color: #eeeeee;*/
+    padding: 1px;
+    margin-top: 20px;
+}
+
 .tb-body > .tb-form,
-.tb-body > .tb-table,
 .tb-body > .tb-other {
     padding: 10px;
     border: 1px solid rgba(63, 81, 181, 0.52);
@@ -109,17 +135,18 @@ body::-webkit-scrollbar-thumb {
 }
 .tb-breadcrumb {
     position: fixed;
-    left: 235px;
-    top: 33px;
+    /* right: 0; */
+    left: 280px;
+    top: 22px;
     font-size: 12px;
-    background: #2196F3;
+    background: #5d5d5d;
     padding: 3px 15px;
     color: #ffffff;
     z-index: 10;
-    border-radius: 20px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    box-shadow: -5px 0px 0px 0px #3F51B5;
+    /* border-radius: 20px; */
+    /* border-top-left-radius: 0; */
+    /* border-bottom-left-radius: 0; */
+    /* box-shadow: -5px 0px 0px 0px #3F51B5; */
 }
 
 /*modal*/
@@ -138,7 +165,7 @@ body::-webkit-scrollbar-thumb {
 /*colors*/
 
 .color1 > span {
-    color: orange;
+    color: white;
     transition: 0.5s;
 }
 .color1 > span > span {
@@ -146,7 +173,7 @@ body::-webkit-scrollbar-thumb {
     transition: 0.5s;
 }
 .color2 > span {
-    color: #3F51B5;
+    color: #03A9F4;
     transition: 0.5s;
 }
 .color2 > span > span {

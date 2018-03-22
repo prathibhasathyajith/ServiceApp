@@ -9,6 +9,7 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/main.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/style.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/other/main.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <!--javascript links-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/main.js" ></script>
 <!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/newassets/assets/js/bootstrap.js"></script>-->
@@ -28,9 +29,24 @@
 </script>
 
 <style>
+    /*jquery UI*/
+    .ui-jqgrid .ui-jqgrid-titlebar {
+        padding: .3em .2em .2em 2.3em;
+        position: relative;
+        border-left: 0 none;
+        border-right: 0 none;
+        border-top: 0 none;
+    }
+    .ui-jqgrid .ui-jqgrid-title{
+        float: left;
+        margin: 0.1em 25px 0.2em !important; 
+        font-size: 12px;
+    }
+
+
     .uinew-button-submit{
         box-shadow: 0px 3px 6px #d6dbe1;
-        border-radius: 20px !important;
+        border-radius: 3px !important;
         color: white !important;
         font-weight: 500;
         font-family: Raleway !important;
@@ -45,7 +61,7 @@
     }
     .uinew-button-reset{
         box-shadow: 0px 3px 6px #d6dbe1;
-        border-radius: 20px !important;
+        border-radius: 3px !important;
         color: black !important;
         font-weight: 500;
         font-family: Raleway !important;
@@ -86,5 +102,8 @@
         background: linear-gradient(135deg, #4d596a 0%,#768aa7 100%) !important;
         color: white !important;
     }
+
+
+
 </style>
 

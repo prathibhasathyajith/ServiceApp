@@ -841,7 +841,7 @@ body .ui-tooltip {
     font-family: Raleway;
 }
 .ui-widget .ui-widget {
-    font-size: 1em;
+    font-size: 13px;;
 }
 .ui-widget input,
 .ui-widget select,
@@ -859,12 +859,12 @@ body .ui-tooltip {
     color: #333333;
 }
 .ui-widget-header {
-    border-left: 13px solid #e91e63; 
-    background: #05576d;
+    border-left: 13px solid #e91e63;
+    background: #444444;
     color: #ffffff;
     /* font-weight: bold; */
     font-family: Raleway;
-    box-shadow: inset 7px 0px 0px 0px #29a0ff;
+    box-shadow: inset 25px 0px 0px 0px #9E9E9E;
 }
 .ui-widget-header a {
     color: #fdc60d;

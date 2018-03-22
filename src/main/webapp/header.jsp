@@ -35,6 +35,6 @@
     <div class="change2 tb-header-margin color2 tb-header-text f-left">
         <span>Admin<span>Portal</span></span>
     </div>
-    <div class="tb-header-logout tb-header-margin tb-header-text f-right">|&nbsp;&nbsp;&nbsp; <a style="float:left" class="logoutBut headerBut" href="LogoutUserLogin.action?message=error3">Logout</a> &nbsp;&nbsp;&nbsp;|</div>
-    <div class="tb-header-passchange tb-header-margin tb-header-text f-right">|&nbsp;&nbsp;&nbsp; <a class="btn btn-sm" href="ViewChangePassword.action?message=error3">Change Password</a> &nbsp;&nbsp;&nbsp;</div>
+    <div class="tb-header-logout tb-header-margin tb-header-text f-right" title="Logout"><a href="LogoutUserLogin.action?message=error3"><i class="material-icons">lock</i></a></div>
+    <div class="tb-header-passchange tb-header-margin tb-header-text f-right" title="Change Password"><a href="ViewChangePassword.action?message=error3"><i class="material-icons">vpn_key</i></a></div>
 </div>

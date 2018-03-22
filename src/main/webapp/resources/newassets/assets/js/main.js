@@ -1,8 +1,8 @@
 //===================== navbar js =============================
 
 $(document).ready(function () {
-    var link = localStorage.getItem('link');
-    var sublink = localStorage.getItem('sublink');
+    var link = window.localStorage.getItem('link');
+    var sublink = window.localStorage.getItem('sublink');
     $('#' + sublink).addClass('active');
     $('#' + link).addClass('selected');
 });
@@ -16,8 +16,8 @@ $(function () {
         if ($(this).parent().hasClass('selected')) {
             if ($(this).next().children().hasClass('active')) {
                 $(this).css({
-                    'background-color': '#262626',
-                    'color': 'green'
+                    'background-color': 'rgb(38, 38, 38)',
+                    'color': '#2196F3'
                 });
 
                 links_1.parents().removeClass('selected');
@@ -40,7 +40,6 @@ $(function () {
             }
             $(this).parent().addClass('selected');
             console.log($(this).parent()[0].id);
-            localStorage.setItem('link', $(this).parent()[0].id);
         }
     });
 
@@ -55,7 +54,8 @@ $(function () {
         $(this).parent().parent().addClass('selected');
         $(this).addClass('active');
         console.log($(this)[0].id);
-        localStorage.setItem('sublink', $(this)[0].id);
+        window.localStorage.setItem('link', $(this).parent().parent()[0].id);
+        window.localStorage.setItem('sublink', $(this)[0].id);
         $(this).parent().prev().css('background-color', '#262626');
     });
 

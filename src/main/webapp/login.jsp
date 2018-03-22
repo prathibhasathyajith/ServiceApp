@@ -16,6 +16,10 @@
         <title>Local Government Election Campaign Review Login</title>
         <link href="${pageContext.request.contextPath}/resources/assets/Css/login.css" rel="stylesheet" />
         <script>
+
+            window.localStorage.removeItem('link');
+            window.localStorage.removeItem('sublink');
+            
             function formSubmit() {
                 window.localStorage.removeItem("item");
                 $("#formES").submit();
