@@ -27,16 +27,16 @@
                     <li id="sublink_5"><a href="${pageContext.request.contextPath}/viewPasswordPolicy.action">Password Policy</a></li>
                 </ul>
             </div>
-            <div id="link_2" class="link-default">
+            <div id="link_3" class="link-default">
                 <a href="#">REPORT GEN</a>
                 <ul class="sub-links">
 
                 </ul>
             </div>
-            <div id="link_2" class="link-default">
+            <div id="link_4" class="link-default">
                 <a href="#">SYSTEM AUDIT</a>
                 <ul class="sub-links">
-
+                    <li id="sublink_3"><a href="${pageContext.request.contextPath}/viewSystemAudit.action">System Audit</a></li>
                 </ul>
             </div>
         </div>

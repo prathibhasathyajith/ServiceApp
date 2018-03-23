@@ -9,12 +9,21 @@ import com.serviceapp.listener.HibernateInit;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
+import com.serviceapp.object.Page;
+import com.serviceapp.object.Section;
+import com.serviceapp.object.Task;
 import com.serviceapp.varlist.SessionVarlist;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.security.MessageDigest;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Query;
@@ -26,11 +35,11 @@ import org.hibernate.Transaction;
  * @author prathibha
  */
 public class CommonDAO {
-    
+
     public static Date getSystemDate(Session session) throws Exception {
         Date sysDateTime = null;
         try {
-            
+
             String sql = "SELECT NOW()";
             Query query = session.createSQLQuery(sql);
             List l = query.list();
@@ -44,6 +53,56 @@ public class CommonDAO {
         }
         return sysDateTime;
     }
+    
+    public static Date specialStringtoDate(String date) {
+        Date fdate = null;
+        try {
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+            fdate = dateFormat.parse(date);
+        } catch (Exception e) {
+            System.out.println("Date Conversion Error");
+        }
+        return fdate;
+    }
+
+    public static ByteArrayOutputStream zipFiles(File[] listFiles) throws Exception {
+        byte[] buffer;
+        ByteArrayOutputStream outputStream = null;
+        ZipOutputStream zipOutputStream = null;
+        FileInputStream fileInputStream = null;
+        try {
+            outputStream = new ByteArrayOutputStream();
+            zipOutputStream = new ZipOutputStream(outputStream);
+            for (File file : listFiles) {
+                buffer = new byte[(int) file.length()];
+                fileInputStream = new FileInputStream(file);
+                fileInputStream.read(buffer, 0, (int) file.length());
+                ZipEntry ze = new ZipEntry(file.getName());
+
+                zipOutputStream.putNextEntry(ze);
+                zipOutputStream.write(buffer);
+                zipOutputStream.closeEntry();
+                fileInputStream.close();
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (fileInputStream != null) {
+                fileInputStream.close();
+            }
+            if (zipOutputStream != null) {
+                zipOutputStream.finish();
+                zipOutputStream.close();
+            }
+            if (outputStream != null) {
+                outputStream.flush();
+                outputStream.close();
+            }
+        }
+        return outputStream;
+    }
+    
     public static String replaceEmptyorNullStringToNA(String string) {
         String value = "--";
         if (string != null && !string.trim().isEmpty()) {
@@ -75,7 +134,7 @@ public class CommonDAO {
         }
         return str;
     }
-    
+
     public static String makeHash(String text) throws Exception {
         MessageDigest md;
         md = MessageDigest.getInstance("MD5");
@@ -84,7 +143,7 @@ public class CommonDAO {
         md5hash = md.digest();
         return convertToHex(md5hash);
     }
-    
+
     private static String convertToHex(byte[] data) {
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < data.length; i++) {
@@ -101,7 +160,7 @@ public class CommonDAO {
         }
         return buf.toString();
     }
-    
+
     public static String getFormattedDateForLogin(Date date) {
         String fDate = "";
         String pattern = "dd MMMM yyyy hh:mm a";
@@ -109,7 +168,7 @@ public class CommonDAO {
         fDate = dateFormat.format(date);
         return fDate;
     }
-    
+
     public static Date getSystemDateLogin() throws Exception {
         Date sysDateTime = null;
         Session session = null;
@@ -135,6 +194,7 @@ public class CommonDAO {
         }
         return sysDateTime;
     }
+
     public static Systemaudit makeAudittrace(HttpServletRequest request, Systemuser user, String task, String page, String section, String description, String remarks) {
 
         Systemaudit audit = new Systemaudit();
@@ -149,7 +209,7 @@ public class CommonDAO {
         audit.setLastupdateduser(user.getUsername());
         return audit;
     }
-    
+
     public static Systemaudit makeAudittrace(HttpServletRequest request, String task, String page, String section, String description, String remarks, String oldvalue, String newvalue) throws Exception {
 
         HttpSession session = request.getSession(false);
@@ -175,7 +235,7 @@ public class CommonDAO {
         return audit;
 
     }
-    
+
     public static Systemaudit makeAudittrace(HttpServletRequest request, String task, String page, String section, String description, String remarks) throws Exception {
 
         HttpSession session = request.getSession(false);
@@ -199,8 +259,8 @@ public class CommonDAO {
         return audit;
 
     }
-    
-    public String saveAudit(Systemaudit audit) throws Exception {
+
+    public static String saveAudit(Systemaudit audit) throws Exception {
 
         Session session = null;
         Transaction txn = null;
@@ -233,6 +293,9 @@ public class CommonDAO {
         }
         return message;
     }
+    
+    
+
     public List<Status> getDefultStatusList(String statusCode)
             throws Exception {
 
@@ -256,6 +319,7 @@ public class CommonDAO {
         }
         return statusList;
     }
+
     public static String mpiMd5(String value) throws Exception {
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.update(value.getBytes("UTF8"));
@@ -266,4 +330,135 @@ public class CommonDAO {
         }
         return result;
     }
+
+    public List<Systemuser> getUserList() throws Exception {
+        // TODO Auto-generated method stub
+
+        List<Systemuser> userList = new ArrayList<Systemuser>();
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from Systemuser u order by Upper(u.username) asc";
+            Query query = session.createQuery(sql);
+            userList = query.list();
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return userList;
+    }
+
+    public List<Section> getSectionList() throws Exception {
+
+        List<Section> section = new ArrayList<Section>();
+        Section sec = new Section();
+        try {
+            sec.setSectioncode("DEFAULT_SECTION");
+            sec.setDescription("Default Section");
+            section.add(sec);
+
+            sec = new Section();
+            sec.setSectioncode("SYSTEMCONFIGMANAGEMENT");
+            sec.setDescription("System Config");
+            section.add(sec);
+
+            sec = new Section();
+            sec.setSectioncode("USERMANAGEMENT");
+            sec.setDescription("User Management");
+            section.add(sec);
+
+            sec = new Section();
+            sec.setSectioncode("SYSTEM_AUDIT");
+            sec.setDescription("System Audit");
+            section.add(sec);
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return section;
+    }
+
+    public List<Page> getPageList() throws Exception {
+
+        List<Page> page = new ArrayList<Page>();
+        Page pge = new Page();
+        try {
+            pge.setPagecode("LOGIN_PAGE");
+            pge.setDescription("Login Page");
+            page.add(pge);
+
+            pge = new Page();
+            pge.setPagecode("PASSWORD_POLICY");
+            pge.setDescription("Password Policy");
+            page.add(pge);
+
+            pge = new Page();
+            pge.setPagecode("SYSTEM_USER");
+            pge.setDescription("System User");
+            page.add(pge);
+
+            pge = new Page();
+            pge.setPagecode("SYSTEM_AUDIT_PAGE");
+            pge.setDescription("System Audit");
+            page.add(pge);
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return page;
+    }
+
+    public List<Task> getTaskList() throws Exception {
+
+        List<Task> task = new ArrayList<Task>();
+        Task tsk = new Task();
+        try {
+
+            tsk.setTaskcode("LOGIN_TASK");
+            tsk.setDescription("Login");
+            task.add(tsk);
+
+            tsk = new Task();
+            tsk.setTaskcode("LOGOUT_TASK");
+            tsk.setDescription("Logout");
+            task.add(tsk);
+
+            tsk = new Task();
+            tsk.setTaskcode("ADD_TASK");
+            tsk.setDescription("Add");
+            task.add(tsk);
+
+            tsk = new Task();
+            tsk.setTaskcode("SEARCH_TASK");
+            tsk.setDescription("Search");
+            task.add(tsk);
+
+            tsk = new Task();
+            tsk.setTaskcode("UPDATE_TASK");
+            tsk.setDescription("Update");
+            task.add(tsk);
+
+            tsk = new Task();
+            tsk.setTaskcode("DELETE_TASK");
+            tsk.setDescription("Delete");
+            task.add(tsk);
+
+            tsk = new Task();
+            tsk.setTaskcode("VIEW_TASK");
+            tsk.setDescription("View");
+            task.add(tsk);
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return task;
+    }
+
 }

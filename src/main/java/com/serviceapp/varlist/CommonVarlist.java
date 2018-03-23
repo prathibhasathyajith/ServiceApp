@@ -16,4 +16,11 @@ public class CommonVarlist {
     public static final String STATUS_CATEGORY_GENERAL = "default";
     
     public static final String STATUS_DELETE = "DEL";
+    
+    
+    
+    public static final String REPORT_PBANK_ADD_HEADER = "Sri Lanka";
+    public static final String REPORT_PBANK_ADD = "Colombo";
+    public static final String REPORT_PBANK_TEL = "Tel Number";
+    public static final String REPORT_PBANK_MAIL = "info@epiclanka.net";
 }

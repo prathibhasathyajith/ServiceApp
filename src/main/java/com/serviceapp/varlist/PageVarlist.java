@@ -13,4 +13,5 @@ public class PageVarlist {
     public static final String LOGIN_PAGE = "Login Page";
     public static final String PASSWORD_POLICY = "Password Policy";
     public static final String SYSTEM_USER = "System User";
+    public static final String SYSTEM_AUDIT_PAGE = "System Audit";
 }

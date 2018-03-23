@@ -4,6 +4,28 @@
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
     </filter>
+    <context-param>
+        <param-name>version</param-name>
+        <param-value>V1.00</param-value>
+    </context-param>
+    <context-param>
+        <param-name>genpass</param-name>
+        <param-value>password</param-value>
+    </context-param>
+    <context-param>
+        <param-name>tmpreportpath</param-name>
+        <param-value>Report</param-value>
+    </context-param>
+    <context-param>
+        <description>Number Of Rows Per Excel Report</description>
+        <param-name>numberofrowsperexcel</param-name>
+        <param-value>12000</param-value>
+    </context-param>
+    <context-param>
+        <description>Number Of Rows Per one Select Statement in Reports</description>
+        <param-name>numberofselectrows</param-name>
+        <param-value>1000</param-value>
+    </context-param>
     <listener>
         <description>HibernateListener</description>
         <listener-class>com.serviceapp.listener.HibrenateListener</listener-class>

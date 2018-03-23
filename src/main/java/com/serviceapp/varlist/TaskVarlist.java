@@ -17,6 +17,7 @@ public class TaskVarlist {
     public static final String UPDATE_TASK = "Update";
     public static final String DELETE_TASK = "Delete";
     public static final String VIEW_TASK = "View";
+    
     public static final String ASSIGN_TASK = "Assign";
     public static final String GENERATE_TASK = "GEN";
     public static final String CONFIRM_TASK = "CONF";
