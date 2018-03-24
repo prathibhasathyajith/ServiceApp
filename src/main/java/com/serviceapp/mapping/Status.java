@@ -43,7 +43,7 @@ public class Status  implements java.io.Serializable {
      @Id 
 
     
-    @Column(name="STATUSCODE", unique=true, nullable=false, length=10)
+    @Column(name="status_code", unique=true, nullable=false, length=10)
     public String getStatuscode() {
         return this.statuscode;
     }
@@ -53,7 +53,7 @@ public class Status  implements java.io.Serializable {
     }
 
     
-    @Column(name="CATEGORY", length=45)
+    @Column(name="category", length=45)
     public String getCategory() {
         return this.category;
     }
@@ -63,7 +63,7 @@ public class Status  implements java.io.Serializable {
     }
 
     
-    @Column(name="DESCRIPTION")
+    @Column(name="description")
     public String getDescription() {
         return this.description;
     }
