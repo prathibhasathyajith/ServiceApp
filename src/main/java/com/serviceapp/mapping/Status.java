@@ -25,6 +25,7 @@ public class Status  implements java.io.Serializable {
      private String category;
      private String description;
      private Set<Systemuser> systemusers = new HashSet(0);
+     private Set<MobFaq> mobFaqs = new HashSet(0);
 
     public Status() {
     }
@@ -33,11 +34,12 @@ public class Status  implements java.io.Serializable {
     public Status(String statuscode) {
         this.statuscode = statuscode;
     }
-    public Status(String statuscode, String category, String description, Set<Systemuser> systemusers) {
+    public Status(String statuscode, String category, String description, Set<Systemuser> systemusers,Set<MobFaq> mobFaqs) {
        this.statuscode = statuscode;
        this.category = category;
        this.description = description;
        this.systemusers = systemusers;
+       this.mobFaqs = mobFaqs;
     }
    
      @Id 
@@ -81,7 +83,14 @@ public class Status  implements java.io.Serializable {
         this.systemusers = systemusers;
     }
 
-
+@OneToMany(fetch=FetchType.LAZY, mappedBy="status")
+    public Set<MobFaq> getMobFaqs() {
+        return this.mobFaqs;
+    }
+    
+    public void setMobFaqs(Set<MobFaq> mobFaqs) {
+        this.mobFaqs = mobFaqs;
+    }
 
 
 }

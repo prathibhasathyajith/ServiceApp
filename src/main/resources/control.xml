@@ -60,6 +60,16 @@
             <result name="reset" type="json"></result>
             <result name="view">/WEB-INF/pages/systemconfig/passwordpolicy.jsp</result>
         </action>
+        
+        <action name="*FAQ" method="{1}" class="com.serviceapp.action.systemconfig.FaqAction">          
+            <result name="message">/WEB-INF/pages/msgSpe.jsp</result>
+            <result name="view">/WEB-INF/pages/systemconfig/faq/faq.jsp</result> 
+            <result name="viewpopup">/WEB-INF/pages/systemconfig/faq/faqinsert.jsp</result>
+            <result name="detail">/WEB-INF/pages/systemconfig/faq/faqedit.jsp</result>
+            <result name="find" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="delete" type="json"></result>
+        </action>
     </package>
     
     <package name="systemaudit" extends="pglobal" namespace="/"> 

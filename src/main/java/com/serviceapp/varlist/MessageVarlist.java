@@ -135,4 +135,13 @@ public class MessageVarlist {
     public static final String SYSUSER_MGT_INVALID_NIC_DOB = "Date of birth does not match with NIC";
     public static final String SYSUSER_MGT_INVALID_CONTACT_NO = "Invalid contact number ";
     
+    
+    public static final String FAQ_MGT_EMPTY_ID = "ID cannot be empty";
+    public static final String FAQ_MGT_EMPTY_TYPE = "Type cannot be empty";
+    public static final String FAQ_MGT_EMPTY_SECTION = "Section cannot be empty";
+    public static final String FAQ_MGT_EMPTY_STATUS = "Status cannot be empty";
+    public static final String FAQ_MGT_EMPTY_QUESTION = "Question cannot be empty";
+    public static final String FAQ_MGT_EMPTY_ANSWER = "Answer cannot be empty";
+    public static final String FAQ_DEL = " Successfully Deleted ";
+    
 }

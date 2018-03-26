@@ -6,6 +6,7 @@
 package com.serviceapp.common.dao;
 
 import com.serviceapp.listener.HibernateInit;
+import com.serviceapp.mapping.MobFaqType;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
@@ -53,7 +54,7 @@ public class CommonDAO {
         }
         return sysDateTime;
     }
-    
+
     public static Date specialStringtoDate(String date) {
         Date fdate = null;
         try {
@@ -102,7 +103,7 @@ public class CommonDAO {
         }
         return outputStream;
     }
-    
+
     public static String replaceEmptyorNullStringToNA(String string) {
         String value = "--";
         if (string != null && !string.trim().isEmpty()) {
@@ -293,8 +294,6 @@ public class CommonDAO {
         }
         return message;
     }
-    
-    
 
     public List<Status> getDefultStatusList(String statusCode)
             throws Exception {
@@ -461,4 +460,25 @@ public class CommonDAO {
         return task;
     }
 
+    public List<MobFaqType> getDefultTypeList() throws Exception {
+
+        List<MobFaqType> typeList = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from MobFaqType as t";
+            Query query = session.createQuery(sql);
+            typeList = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return typeList;
+    }
 }

@@ -41,5 +41,7 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="service_app"/>
-  <table-filter match-name="systemaudit"/>
+  <table-filter match-name="mob_faq_type"/>
+  <table-filter match-name="mob_faq"/>
+  <table-filter match-name="status"/>
 </hibernate-reverse-engineering>
