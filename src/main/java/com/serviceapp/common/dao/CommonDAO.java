@@ -10,6 +10,7 @@ import com.serviceapp.mapping.MobFaqType;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
+import com.serviceapp.mapping.TransactionType;
 import com.serviceapp.object.Page;
 import com.serviceapp.object.Section;
 import com.serviceapp.object.Task;
@@ -480,5 +481,29 @@ public class CommonDAO {
             }
         }
         return typeList;
+    }
+    
+    public List<TransactionType> getTxnTypeList()
+            throws Exception {
+
+        List<TransactionType> txnTypeList = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from TransactionType as u order by Upper(u.description) asc";
+
+            Query query = session.createQuery(sql);
+            txnTypeList = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return txnTypeList;
     }
 }

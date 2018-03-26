@@ -144,4 +144,29 @@ public class MessageVarlist {
     public static final String FAQ_MGT_EMPTY_ANSWER = "Answer cannot be empty";
     public static final String FAQ_DEL = " Successfully Deleted ";
     
+    
+    //--------------------------------Email Template-------------------------------//
+    public static final String EMAIL_TEMPLATE_MESSAGEID = "Message Id cannot be empty";
+    public static final String EMAIL_TEMPLATE_TYPECODE = "Type code cannot be empty";
+    public static final String EMAIL_TEMPLATE_SUBJECT = "Subject cannot be empty";
+    public static final String EMAIL_TEMPLATE_MESSAGE = "Message cannot be empty";
+    public static final String EMAIL_TEMPLATE_ERROR = "Record does not found";
+
+    //--------------------------------SMS Template-------------------------------//
+    public static final String SMS_TEMPLATE_MESSAGE = "Message cannot be empty";
+    public static final String SMS_TEMPLATE_ERROR = "Record does not found";
+    
+    // --------------------Transaction Type Management---------------//
+    public static final String TXN_TYPE_MGT_EMPTY_TT_CODE = "Transaction type code cannot be empty";
+    public static final String TXN_TYPE_MGT_EMPTY_DESCRIPTION = "Description cannot be empty";
+    public static final String TXN_TYPE_MGT_EMPTY_SORTKEY = "Sort key cannot be empty";
+    public static final String TXN_TYPE_MGT_EMPTY_STATUS = "Status cannot be empty";
+    public static final String TXN_TYPE_MGT_EMPTY_OTPREQSTATUS = "OTP required status cannot be empty";
+    public static final String TXN_TYPE_MGT_EMPTY_RISKREQSTATUS = "Risk required status cannot be empty";
+    public static final String TXN_TYPE_MGT_EMPTY_MCTTRANXTYPE = "Merchant Transaction Type cannot be empty";
+    public static final String TXN_TYPE_MGT_EMPTY_DESCRIPTION_RECIEVE = "Description receiver cannot be empty";
+    public static final String TXN_TYPE_MGT_EMPTY_HISTORY_VISIBILITY = "History visibility cannot be empty";
+    public static final String TXN_TYPE_MGT_ERROR_SORTKEY_INVALID = "Sort key invalid";
+    public static final String TXN_TYPE_MGT_ERROR_DESC_INVALID = "Description invalid";
+    public static final String TXN_TYPE_MGT_ERROR_TT_CODE_INVALID = "Transaction type code invalid";
 }

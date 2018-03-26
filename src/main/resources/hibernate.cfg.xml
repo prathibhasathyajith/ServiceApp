@@ -20,11 +20,16 @@
     <property name="show_sql">false</property>
     <!-- auto create tables -->
     <property name="hbm2ddl.auto">none</property>
+    
     <mapping class="com.serviceapp.mapping.Status"/>
     <mapping class="com.serviceapp.mapping.Systemuser"/>
     <mapping class="com.serviceapp.mapping.Systemaudit"/>
     <mapping class="com.serviceapp.mapping.Passwordpolicy"/>
     <mapping class="com.serviceapp.mapping.MobFaqType"/>
     <mapping class="com.serviceapp.mapping.MobFaq"/>
+    <mapping class="com.serviceapp.mapping.WebEmailTemplate"/>
+    <mapping class="com.serviceapp.mapping.WebSmsTemplate"/>
+    <mapping class="com.serviceapp.mapping.TransactionType"/>
+    
   </session-factory>
 </hibernate-configuration>

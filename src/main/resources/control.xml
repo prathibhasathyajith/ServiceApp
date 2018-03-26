@@ -70,6 +70,40 @@
             <result name="list" type="json"></result>
             <result name="delete" type="json"></result>
         </action>
+        
+        <action name="*EmailTemplate" method="{1}" class="com.serviceapp.action.systemconfig.EmailTemplateAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="update">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/systemconfig/emailtemplate/emailtemplate.jsp</result>
+            <result name="detail">/WEB-INF/pages/systemconfig/emailtemplate/emailtemplateedit.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action>
+        
+         <action name="*SMSTemplate" method="{1}" class="com.serviceapp.action.systemconfig.SMSTemplateAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/systemconfig/smstemplate/smstemplate.jsp</result>
+            <result name="detail">/WEB-INF/pages/systemconfig/smstemplate/smstemplateedit.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action> 
+        
+        <action name="*TransactionType" method="{1}" class="com.serviceapp.action.systemconfig.TransactionTypeAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/systemconfig/transactiontype/transactiontype.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="success"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="delete" type="json"></result>
+            <result name="viewpopup">/WEB-INF/pages/systemconfig/transactiontype/transactiontypeinsert.jsp</result>
+            <result name="detail">/WEB-INF/pages/systemconfig/transactiontype/transactiontypeedit.jsp</result>
+        </action>
+
     </package>
     
     <package name="systemaudit" extends="pglobal" namespace="/"> 
