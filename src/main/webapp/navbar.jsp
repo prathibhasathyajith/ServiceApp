@@ -20,6 +20,9 @@
                 <ul class="sub-links">
                     <li id="sublink_5"><a href="${pageContext.request.contextPath}/viewPasswordPolicy.action">Password Policy</a></li>
                     <li id="sublink_6"><a href="${pageContext.request.contextPath}/viewFAQ.action">FAQ</a></li>
+                    <li id="sublink_7"><a href="${pageContext.request.contextPath}/viewEmailTemplate.action">Email Template</a></li>
+                    <li id="sublink_8"><a href="${pageContext.request.contextPath}/viewSMSTemplate.action">SMS Template</a></li>
+                    <li id="sublink_9"><a href="${pageContext.request.contextPath}/viewTransactionType.action">Transaction Type</a></li>
                 </ul>
             </div>
             <div id="link_3" class="link-default">
@@ -31,7 +34,7 @@
             <div id="link_4" class="link-default">
                 <a href="#">SYSTEM AUDIT</a>
                 <ul class="sub-links">
-                    <li id="sublink_3"><a href="${pageContext.request.contextPath}/viewSystemAudit.action">System Audit</a></li>
+                    <li id="sublink_12"><a href="${pageContext.request.contextPath}/viewSystemAudit.action">System Audit</a></li>
                 </ul>
             </div>
         </div>
