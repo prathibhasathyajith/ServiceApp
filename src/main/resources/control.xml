@@ -148,6 +148,43 @@
             </result> 
             
         </action>
+        <action name="*LoginHistory" method="{1}" class="com.serviceapp.action.systemaudit.LoginHistoryAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="success"></result>            
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="delete" type="json"></result>
+            <result name="logoutuser" type="json"></result>            
+            <result name="view">/WEB-INF/pages/systemaudit/mobileloginhistory/loginhistory.jsp</result>
+            
+            <result name="download" type="stream">
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename=mobile_login_history_report.pdf</param>
+                <param name="bufferSize">1024</param>
+            </result>  
+
+            <result name="report" type="jasper">
+                <param name="location">/WEB-INF/pages/systemaudit/report/mobileloginhistory/view_mobile_login_history_report.jasper</param>
+                <param name="dataSource">audata</param>               
+                <param name="format">PDF</param>     
+                <param name="contentDisposition">attachment;filename=mobile_login_history_report.pdf</param>
+                <param name="reportParameters">parameterMap</param>
+            </result>
+            
+            <result name="excelreport" type="stream">
+                <param name="contentType">"application/vnd.ms-excel"</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename="mobileloginhistory_report.xlsx"</param>
+                <param name="bufferSize">61440</param>
+            </result>
+            <result name="zip" type="stream">
+                <param name="contentDisposition">attachment;filename="mobileloginhistory_report.zip"</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">zipStream</param>
+                <param name="bufferSize">61440</param>
+            </result>  
+        </action> 
     </package>
 </struts>
 

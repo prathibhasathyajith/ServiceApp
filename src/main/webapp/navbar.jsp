@@ -35,6 +35,7 @@
                 <a href="#">SYSTEM AUDIT</a>
                 <ul class="sub-links">
                     <li id="sublink_12"><a href="${pageContext.request.contextPath}/viewSystemAudit.action">System Audit</a></li>
+                    <li id="sublink_13"><a href="${pageContext.request.contextPath}/viewLoginHistory.action">Mobile Login History</a></li>
                 </ul>
             </div>
         </div>

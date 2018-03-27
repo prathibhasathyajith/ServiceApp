@@ -18,5 +18,7 @@ public class PageVarlist {
     public static final String EMAIL_TEMPLATE = "Email Template Management";
     public static final String SMS_MGT_PAGE = "SMS Template Management";
     public static final String TXN_TYPE_MGT_PAGE = "Transaction Type";
+    public static final String MOB_LOGIN_HISTORY = "Mobile Login History";
+    
     
 }

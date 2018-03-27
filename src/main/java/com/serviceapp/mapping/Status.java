@@ -27,6 +27,7 @@ public class Status  implements java.io.Serializable {
      private Set<Systemuser> systemusers = new HashSet(0);
      private Set<MobFaq> mobFaqs = new HashSet(0);
      private Set<TransactionType> transactionTypes = new HashSet(0);
+     private Set<WebTerms> webTermses = new HashSet(0);
 
     public Status() {
     }
@@ -35,13 +36,14 @@ public class Status  implements java.io.Serializable {
     public Status(String statuscode) {
         this.statuscode = statuscode;
     }
-    public Status(String statuscode, String category, String description, Set<Systemuser> systemusers,Set<MobFaq> mobFaqs,Set<TransactionType> transactionTypes) {
+    public Status(String statuscode, String category, String description, Set<Systemuser> systemusers,Set<MobFaq> mobFaqs,Set<TransactionType> transactionTypes,Set<WebTerms> webTermses) {
        this.statuscode = statuscode;
        this.category = category;
        this.description = description;
        this.systemusers = systemusers;
        this.mobFaqs = mobFaqs;
        this.transactionTypes = transactionTypes;
+       this.webTermses = webTermses;
     }
    
      @Id 
@@ -101,7 +103,14 @@ public class Status  implements java.io.Serializable {
     public void setTransactionTypes(Set<TransactionType> transactionTypes) {
         this.transactionTypes = transactionTypes;
     }
-
+@OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+    public Set getWebTermses() {
+        return this.webTermses;
+    }
+    
+    public void setWebTermses(Set webTermses) {
+        this.webTermses = webTermses;
+    }
 
 
 }

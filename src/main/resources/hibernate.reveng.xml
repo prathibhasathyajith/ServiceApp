@@ -41,10 +41,7 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="service_app"/>
-  <table-filter match-name="mob_faq_type"/>
-  <table-filter match-name="transaction_type"/>
-  <table-filter match-name="web_email_template"/>
-  <table-filter match-name="mob_faq"/>
+  <table-filter match-name="mob_audittrace"/>
   <table-filter match-name="status"/>
-  <table-filter match-name="web_sms_template"/>
+  <table-filter match-name="web_terms"/>
 </hibernate-reverse-engineering>
