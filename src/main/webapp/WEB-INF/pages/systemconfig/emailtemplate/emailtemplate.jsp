@@ -138,30 +138,30 @@
                         </div>
 
                     </s:form>
-
-                    <div class="row form-inline">
-                        <div class="col-sm-4">
-                            <div class="form-group">                                                   
-                                <sj:submit 
-                                    button="true"
-                                    value="Search" 
-                                    onclick="searchCategory()"  
-                                    id="searchbut"
-                                    cssClass="uinew-button-submit"
-                                    />
-                            </div>
-                            <div class="form-group">                               
-                                <sj:submit 
-                                    button="true" 
-                                    value="Reset" 
-                                    name="reset" 
-                                    onClick="resetAllData()"
-                                    cssClass="uinew-button-reset"
-                                    /> 
-                            </div>
-                        </div>
-                    </div> 
                 </div>
+
+                <div class="row form-inline">
+                    <div class="col-sm-4">
+                        <div class="form-group">                                                   
+                            <sj:submit 
+                                button="true"
+                                value="Search" 
+                                onclick="searchCategory()"  
+                                id="searchbut"
+                                cssClass="uinew-button-submit"
+                                />
+                        </div>
+                        <div class="form-group">                               
+                            <sj:submit 
+                                button="true" 
+                                value="Reset" 
+                                name="reset" 
+                                onClick="resetAllData()"
+                                cssClass="uinew-button-reset"
+                                /> 
+                        </div>
+                    </div>
+                </div> 
                 <sj:dialog                                     
                     id="updatedialog"                                 
                     autoOpen="false" 
