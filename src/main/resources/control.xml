@@ -103,6 +103,18 @@
             <result name="viewpopup">/WEB-INF/pages/systemconfig/transactiontype/transactiontypeinsert.jsp</result>
             <result name="detail">/WEB-INF/pages/systemconfig/transactiontype/transactiontypeedit.jsp</result>
         </action>
+        
+        <action name="*Terms" method="{1}" class="com.serviceapp.action.systemconfig.TermsAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/systemconfig/terms/terms.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="success"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="delete" type="json"></result>
+            <result name="viewpopup">/WEB-INF/pages/systemconfig/terms/termsinsert.jsp</result>
+            <result name="detail">/WEB-INF/pages/systemconfig/terms/termsedit.jsp</result>
+        </action>
 
     </package>
     

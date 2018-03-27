@@ -23,6 +23,7 @@
                     <li id="sublink_7"><a href="${pageContext.request.contextPath}/viewEmailTemplate.action">Email Template</a></li>
                     <li id="sublink_8"><a href="${pageContext.request.contextPath}/viewSMSTemplate.action">SMS Template</a></li>
                     <li id="sublink_9"><a href="${pageContext.request.contextPath}/viewTransactionType.action">Transaction Type</a></li>
+                    <li id="sublink_10"><a href="${pageContext.request.contextPath}/viewTerms.action">Terms</a></li>
                 </ul>
             </div>
             <div id="link_3" class="link-default">
