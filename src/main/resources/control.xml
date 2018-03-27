@@ -148,7 +148,7 @@
             </result> 
             
         </action>
-        <action name="*LoginHistory" method="{1}" class="com.serviceapp.action.systemaudit.LoginHistoryAction">
+        <action name="*LoginHistory" method="{1}" class="com.serviceapp.action.systemaudit.MobLoginHistoryAction">
             <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
             <result name="success"></result>            
             <result name="list" type="json"></result>

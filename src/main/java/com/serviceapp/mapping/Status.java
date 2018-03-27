@@ -104,11 +104,11 @@ public class Status  implements java.io.Serializable {
         this.transactionTypes = transactionTypes;
     }
 @OneToMany(fetch=FetchType.EAGER, mappedBy="status")
-    public Set getWebTermses() {
+    public Set<WebTerms> getWebTermses() {
         return this.webTermses;
     }
     
-    public void setWebTermses(Set webTermses) {
+    public void setWebTermses(Set<WebTerms> webTermses) {
         this.webTermses = webTermses;
     }
 
