@@ -112,12 +112,15 @@ public class TermsAction extends ActionSupport implements ModelDriven<Object> {
                 message = dao.updateTerms(inputBean, audit);
 
                 if (message.isEmpty()) {
-                    addActionMessage(MessageVarlist.RESET_PASSWORD_SUCCESS);
+                    inputBean.setMessage(message);
+//                    addActionMessage(MessageVarlist.RESET_PASSWORD_SUCCESS);
                 } else {
-                    addActionError(message);
+                    inputBean.setMessage(message);
+//                    addActionError(message);
                 }
             } else {
-                addActionError(message);
+                inputBean.setMessage(message);
+//                addActionError(message);
             }
         } catch (Exception ex) {
             addActionError("Terms update " + MessageVarlist.COMMON_ERROR_PROCESS);
