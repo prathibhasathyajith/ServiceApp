@@ -48,7 +48,7 @@
                         success: function (data) {
                             
                             console.log(data.message);
-                            if (data.message != null) {
+                            if (data.message != "") {
                                 var msgError = '<div class="ui-widget actionError">\n\
                                 <div class="ui-state-error ui-corner-all" style="padding: 0.3em 0.7em; margin-top: 20px;"> \n\
                                 <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>\n\
