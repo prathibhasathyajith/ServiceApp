@@ -15,47 +15,98 @@
     <head>
         <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
-
             <%@include file="/stylelinks.jspf" %>
-
-
-            <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700,700italic&subset=latin,vietnamese,latin-ext,cyrillic,cyrillic-ext,greek-ext,greek' rel='stylesheet' type='text/css'/>
-            <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
-            <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'/>
-            <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'/>
-
-
-            <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"/>-->
-            <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/froala/css/froala_editor.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/froala_style.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/code_view.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/colors.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/emoticons.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/image_manager.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/image.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/line_breaker.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/table.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/char_counter.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/video.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/fullscreen.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/quick_insert.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/plugins/file.css"/>
-            <link rel="stylesheet" href=" ${pageContext.request.contextPath}/resources/froala/css/themes/dark.css"/>
-
-
             <style>
                 body {
                     text-align: center;
                 }
 
                 section {
-                    width: 81%;
+                    width: 100%;
                     margin: auto;
                     text-align: left;
                 }
 
             </style>
+            <script>
 
+
+                function updateTerm(keyval) {
+                    $("#divmsg").empty();
+
+                    var versionno = $("#versionno").val();
+                    var status = $("#status").val();
+                    var description = $('#edit').froalaEditor('html.get', true);
+                    var isEmpty = $('#edit').froalaEditor('core.isEmpty');
+
+
+                    $.ajax({
+                        url: '${pageContext.request.contextPath}/updateTerms.action',
+                        data: {versionno: versionno, description: description, status: status, empty: isEmpty},
+                        dataType: "json",
+                        type: "POST",
+                        success: function (data) {
+                            
+                            console.log(data.message);
+                            if (data.message != null) {
+                                var msgError = '<div class="ui-widget actionError">\n\
+                                <div class="ui-state-error ui-corner-all" style="padding: 0.3em 0.7em; margin-top: 20px;"> \n\
+                                <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>\n\
+                                <span>Terms cannot be empty</span></p>\n\
+                                </div></div>';
+                                $("#divmsg").append(msgError);
+                            } else {
+                                var msgSuccess = '<div id="successMsg" class="ui-widget actionMessage">\n\
+                                <div class="ui-state-highlight ui-corner-all" style="padding: 0.3em 0.7em; margin-top: 20px;"> \n\
+                                <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"></span>\n\
+                                <span>Password policy updated successfully</span>\n\
+                                </p></div></div>';
+
+                                $("#divmsg").append(msgSuccess);
+                            }
+                        },
+                        error: function (data) {
+                            window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
+                        }
+                    });
+                }
+
+
+                function onchangeVersion(keyval) {
+                    if (keyval == '') {
+                        keyval = null;
+                    }
+                    $.ajax({
+                        url: '${pageContext.request.contextPath}/findTerms.action',
+                        data: {versionno: keyval},
+                        dataType: "json",
+                        type: "POST",
+                        success: function (data) {
+
+                            $("#status").val(data.status);
+                            $("#status").attr("disabled", true);
+
+                            if (data.status == "ACT") {
+                                $('#edit').froalaEditor('edit.off');
+                            } else {
+                                $('#edit').froalaEditor('edit.on');
+                                $("#status").attr("disabled", false);
+                            }
+
+                            $('#edit').froalaEditor('html.set', data.description);
+
+//                            var qlist = data.questionList;
+//                            $("#questionSearch option").remove();
+//                            $('#questionSearch').append('<option value="">--Select Question--</option>');
+//                            $.each(qlist, function (index, item) {
+//                                $('#questionSearch').append("<option value='" + item.QCode + "'>" + item.question + "</option>");
+//                            });
+                        },
+                        error: function (data) {
+                            window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
+                        }
+                    });
+                }
             </script>
 
             <title></title>
@@ -76,14 +127,43 @@
             <div class="tb-form">
                 <div class="containe-fluid">
 
+                    <s:form action="Terms" id="termform" method="post" theme="simple" cssClass="form">
+                        <div class="row ">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Version</label>
+                                    <s:select cssClass="form-control" id="versionno" list="%{versionList}" name="versionno"
+                                              headerKey="" headerValue="--Select Version--"
+                                              listKey="key" listValue="value" onchange="onchangeVersion(this.value)" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label >Status</label>
+                                    <s:select  id="status" list="%{statusList}"  name="status" headerKey=""  headerValue="--Select Status--" listKey="statuscode" listValue="description" value="%{status}" disabled="false" cssClass="form-control" disabled="true"/>
+                                </div>
+                            </div>
+                        </div> 
+                    </s:form>
+
                     <section id="editor" style="font-family: Roboto">
                         <div id='edit' style="margin-top: 30px;">
-                            <h1>Dark Theme</h1>
+
                         </div>
                     </section>
 
                     <div>
                         <br>
+                            <s:url action="updateTerms" var="updateturl"/>
+                            <sj:submit
+                                button="true"
+                                value="Update"
+                                href="%{updateturl}"
+                                targets="divmsg"
+                                id="updatebtn"
+                                cssClass="uinew-button-submit" 
+                                />                        
+                            <input type="button" value="Save" onclick="updateTerm()" />
                             <input type="button" value="Get" onclick="get()" />
                             <input type="button" value="Set" onclick="set()" />
                             <input type="button" value="Isempty" onclick="Isempty()" />
@@ -98,90 +178,60 @@
         </div>
 
 
-
-        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/froala_editor.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/align.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/code_beautifier.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/code_view.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/colors.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/draggable.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/emoticons.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/font_size.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/font_family.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/image.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/file.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/image_manager.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/line_breaker.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/link.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/lists.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/paragraph_format.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/paragraph_style.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/video.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/table.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/url.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/entities.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/char_counter.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/inline_style.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/save.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/fullscreen.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/quick_insert.min.js"></script>
-        <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/quote.min.js"></script>
-
         <script>
-                                    function get() {
-                                        alert($('#edit').froalaEditor('html.get', true));
-                                    }
+            function get() {
+                alert($('#edit').froalaEditor('html.get', true));
+            }
 
-                                    function set() {
-                                        $('#edit').froalaEditor('html.set', '<p>My custom paragraph.</p>');
-                                    }
+            function set() {
+                $('#edit').froalaEditor('html.set', '<p>My custom paragraph.</p>');
+            }
 
-                                    function Isempty() {
-                                        alert($('#edit').froalaEditor('core.isEmpty'));
-                                    }
+            function Isempty() {
+                alert($('#edit').froalaEditor('core.isEmpty'));
+            }
 
-                                    function editon() {
-                                        $('#edit').froalaEditor('edit.on');
-                                    }
+            function editon() {
+                $('#edit').froalaEditor('edit.on');
+            }
 
-                                    function editoff() {
-                                        $('#edit').froalaEditor('edit.off');
-                                    }
+            function editoff() {
+                $('#edit').froalaEditor('edit.off');
+            }
 
-                                    function clears() {
-                                        $('#edit').froalaEditor('html.set', '');
-                                    }
+            function clears() {
+                $('#edit').froalaEditor('html.set', '');
+            }
 
 
-                                    $(function () {
-                                        $.FroalaEditor.DefineIcon('clear', {
-                                            NAME: 'remove'
-                                        });
-                                        $.FroalaEditor.RegisterCommand('clear', {
-                                            title: 'Clear HTML',
-                                            focus: false,
-                                            undo: true,
-                                            refreshAfterCallback: true,
-                                            callback: function () {
-                                                this.html.set('');
-                                                this.events.focus();
-                                            }
-                                        });
+            $(function () {
+                $.FroalaEditor.DefineIcon('clear', {
+                    NAME: 'remove'
+                });
+                $.FroalaEditor.RegisterCommand('clear', {
+                    title: 'Clear HTML',
+                    focus: false,
+                    undo: true,
+                    refreshAfterCallback: true,
+                    callback: function () {
+                        this.html.set('');
+                        this.events.focus();
+                    }
+                });
 
-                                        $('#edit').froalaEditor({
-                                            theme: 'dark',
-                                            height: 300,
-                                            toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '|', 'color', 'emoticons', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'quote', 'insertHR', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html', '-', 'clear'],
-                                            fontFamily: {
-                                                "Roboto,sans-serif": 'Roboto',
-                                                "Oswald,sans-serif": 'Oswald',
-                                                "Montserrat,sans-serif": 'Montserrat',
-                                                "'Open Sans Condensed',sans-serif": 'Open Sans Condensed'
-                                            },
-                                        });
+                $('#edit').froalaEditor({
+                    theme: 'dark',
+                    height: 250,
+                    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '|', 'color', 'emoticons', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'quote', 'insertHR', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html', '-', 'clear'],
+                    fontFamily: {
+                        "Roboto,sans-serif": 'Roboto',
+                        "Oswald,sans-serif": 'Oswald',
+                        "Montserrat,sans-serif": 'Montserrat',
+                        "'Open Sans Condensed',sans-serif": 'Open Sans Condensed'
+                    }
+                });
 
-                                    });
+            });
 
         </script>
     </body>

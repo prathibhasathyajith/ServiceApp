@@ -169,4 +169,11 @@ public class MessageVarlist {
     public static final String TXN_TYPE_MGT_ERROR_SORTKEY_INVALID = "Sort key invalid";
     public static final String TXN_TYPE_MGT_ERROR_DESC_INVALID = "Description invalid";
     public static final String TXN_TYPE_MGT_ERROR_TT_CODE_INVALID = "Transaction type code invalid";
+    
+    // ------------------------ terms ---------------------------------
+    
+    public static final String TERMS_EMPTY_STATUS = "Terms status cannot be empty";
+    public static final String TERMS_EMPTY_DESCRIPTION = "Description cannot be empty";
+    public static final String TERMS_EMPTY_VERSION = "Version no cannot be empty";
+    public static final String TERMS_UPDATE_SUCCESS = "Terms update successful ";
 }

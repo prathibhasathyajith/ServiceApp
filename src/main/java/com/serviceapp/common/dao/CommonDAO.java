@@ -5,12 +5,15 @@
  */
 package com.serviceapp.common.dao;
 
+import com.serviceapp.bean.systemconfig.TermsInputBean;
+import com.serviceapp.bean.systemconfig.TermsVersionBean;
 import com.serviceapp.listener.HibernateInit;
 import com.serviceapp.mapping.MobFaqType;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
 import com.serviceapp.mapping.TransactionType;
+import com.serviceapp.mapping.WebTerms;
 import com.serviceapp.object.Page;
 import com.serviceapp.object.Section;
 import com.serviceapp.object.Task;
@@ -23,6 +26,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -482,7 +486,7 @@ public class CommonDAO {
         }
         return typeList;
     }
-    
+
     public List<TransactionType> getTxnTypeList()
             throws Exception {
 
@@ -505,5 +509,47 @@ public class CommonDAO {
             }
         }
         return txnTypeList;
+    }
+
+    public List<WebTerms> getVersionList(String versionNo) throws Exception {
+        List<WebTerms> webterms = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from WebTerms as wt where wt.versionNo=:versionNo order by Upper(wt.versionNo) asc";
+            Query query = session.createQuery(sql).setString("versionNo", versionNo);
+            webterms = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return webterms;
+    }
+
+    public List<WebTerms> getAllVersionList() throws Exception {
+        List<WebTerms> webterms = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from WebTerms as wt order by Upper(wt.versionNo) asc";
+            Query query = session.createQuery(sql);
+            webterms = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return webterms;
     }
 }
