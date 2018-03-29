@@ -17,21 +17,69 @@
             <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
             <%@include file="/stylelinks.jspf" %>
             <style>
-                body {
-                    text-align: center;
-                }
-
                 section {
                     width: 100%;
                     margin: auto;
                     text-align: left;
                 }
+                #version-add{
+                    display: none;
+                }
+                #version-select{
+                    display: none;
+                }
+                #showdiv{
+                    display: none;
+                }
 
             </style>
             <script>
+                $(document).ready(function () {
+
+                });
+
+                function addTerm() {
+                    $("#divmsg").empty();
+                    var versionInsert = $("#versionInsert").val();
+                    var status = $("#status").val();
+                    var description = $('#edit').froalaEditor('html.get', true);
+                    var isEmpty = $('#edit').froalaEditor('core.isEmpty');
+
+                    $.ajax({
+                        url: '${pageContext.request.contextPath}/addTerms.action',
+                        data: {versionno: versionInsert, description: description, status: status, empty: isEmpty},
+                        dataType: "json",
+                        type: "POST",
+                        success: function (data) {
+                            if (data.message != "") {
+                                var msgError = '<div class="ui-widget actionError">\n\
+                                <div class="ui-state-error ui-corner-all" style="padding: 0.3em 0.7em; margin-top: 20px;"> \n\
+                                <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>\n\
+                                <span>' + data.message + '</span></p>\n\
+                                </div></div>';
+                                $("#divmsg").append(msgError);
+                            } else {
+                                var msgSuccess = '<div id="successMsg" class="ui-widget actionMessage">\n\
+                                <div class="ui-state-highlight ui-corner-all" style="padding: 0.3em 0.7em; margin-top: 20px;"> \n\
+                                <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"></span>\n\
+                                <span>Terms added successfully</span>\n\
+                                </p></div></div>';
+
+                                $("#divmsg").append(msgSuccess);
+
+                                resetfields();
+                            }
+                            
+                            $("html, body").animate({scrollTop: 0}, "fast");
+                        },
+                        error: function (data) {
+                            window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
+                        }
+                    });
+                }
 
 
-                function updateTerm(keyval) {
+                function updateTerm() {
                     $("#divmsg").empty();
 
                     var versionno = $("#versionno").val();
@@ -46,24 +94,28 @@
                         dataType: "json",
                         type: "POST",
                         success: function (data) {
-                            
+
                             console.log(data.message);
                             if (data.message != "") {
                                 var msgError = '<div class="ui-widget actionError">\n\
                                 <div class="ui-state-error ui-corner-all" style="padding: 0.3em 0.7em; margin-top: 20px;"> \n\
                                 <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>\n\
-                                <span>Terms cannot be empty</span></p>\n\
+                                <span>' + data.message + '</span></p>\n\
                                 </div></div>';
                                 $("#divmsg").append(msgError);
                             } else {
                                 var msgSuccess = '<div id="successMsg" class="ui-widget actionMessage">\n\
                                 <div class="ui-state-highlight ui-corner-all" style="padding: 0.3em 0.7em; margin-top: 20px;"> \n\
                                 <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"></span>\n\
-                                <span>Password policy updated successfully</span>\n\
+                                <span>Terms updated successfully</span>\n\
                                 </p></div></div>';
 
                                 $("#divmsg").append(msgSuccess);
+
+                                resetfields();
                             }
+                            
+                            $("html, body").animate({scrollTop: 0}, "fast");
                         },
                         error: function (data) {
                             window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
@@ -94,22 +146,55 @@
                             }
 
                             $('#edit').froalaEditor('html.set', data.description);
-
-//                            var qlist = data.questionList;
-//                            $("#questionSearch option").remove();
-//                            $('#questionSearch').append('<option value="">--Select Question--</option>');
-//                            $.each(qlist, function (index, item) {
-//                                $('#questionSearch').append("<option value='" + item.QCode + "'>" + item.question + "</option>");
-//                            });
                         },
                         error: function (data) {
                             window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
                         }
                     });
                 }
-            </script>
 
-            <title></title>
+                function show(val) {
+                    if (val) {
+                        $("#divmsg").empty();
+                        $('#edit').froalaEditor('edit.on');
+
+                        resetfields();
+
+                        $("#status").attr("disabled", true);
+                        $("#version-add").fadeOut(1);
+                        $("#version-add").fadeOut(1);
+                        $("#version-select").fadeIn(1);
+                        $("#version-select").fadeIn(1);
+                        $("#showdiv").fadeIn(1);
+
+                        $("#updatebtn").button("enable");
+                        $("#addbtn").button("disable");
+
+                    } else {
+                        $("#divmsg").empty();
+                        $('#edit').froalaEditor('edit.on');
+
+                        resetfields();
+
+                        $("#status").attr("disabled", false);
+                        $("#version-select").fadeOut(1);
+                        $("#version-select").fadeOut(1);
+                        $("#version-add").fadeIn(1);
+                        $("#version-add").fadeIn(1);
+                        $("#showdiv").fadeIn(1);
+                        $("#addbtn").button("enable");
+                        $("#updatebtn").button("disable");
+                    }
+                }
+
+                function resetfields() {
+                    $("#versionno").val('');
+                    $("#versionInsert").val('');
+                    $("#status").val('');
+                    $("#versionInsert").val('');
+                    $('#edit').froalaEditor('html.set', '');
+                }
+            </script>
     </head>
     <body>
         <!--header-->
@@ -126,15 +211,27 @@
             <div class="tb-breadcrumb">User Management > System User</div>
             <div class="tb-form">
                 <div class="containe-fluid">
-
                     <s:form action="Terms" id="termform" method="post" theme="simple" cssClass="form">
-                        <div class="row ">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input id="addbtnshow" type="button" class="uinew-button-other" value="To add terms" onclick="show(false)" />
+                                <input id="updatebtnshow" type="button" class="uinew-button-other" value="To update Terms" onclick="show(true)" />
+                            </div>
+                        </div>
+                        <div class="row " id="showdiv">
                             <div class="col-sm-3">
-                                <div class="form-group">
+                                <div class="form-group" id="version-select">
                                     <label>Version</label>
                                     <s:select cssClass="form-control" id="versionno" list="%{versionList}" name="versionno"
                                               headerKey="" headerValue="--Select Version--"
                                               listKey="key" listValue="value" onchange="onchangeVersion(this.value)" />
+                                </div>
+                                <div class="form-group" id="version-add">
+                                    <label>Version No</label>
+                                    <s:textfield  name="versionInsert" id="versionInsert" 
+                                                  maxLength="20" cssClass="form-control"
+                                                  onkeyup="$(this).val($(this).val().replace(/[^0-9.]/g,''))" 
+                                                  onmouseout="$(this).val($(this).val().replace(/[^0-9.]/g,''))"/>
                                 </div>
                             </div>
                             <div class="col-sm-3">
@@ -146,93 +243,73 @@
                         </div> 
                     </s:form>
 
+                    <!--text editor-->
                     <section id="editor" style="font-family: Roboto">
-                        <div id='edit' style="margin-top: 30px;">
+                        <div id='edit' style="margin-top: 20px;">
 
                         </div>
                     </section>
 
-                    <div>
-                        <br>
-                            <s:url action="updateTerms" var="updateturl"/>
-                            <sj:submit
-                                button="true"
-                                value="Update"
-                                href="%{updateturl}"
-                                targets="divmsg"
-                                id="updatebtn"
-                                cssClass="uinew-button-submit" 
-                                />                        
-                            <input type="button" value="Save" onclick="updateTerm()" />
-                            <input type="button" value="Get" onclick="get()" />
-                            <input type="button" value="Set" onclick="set()" />
-                            <input type="button" value="Isempty" onclick="Isempty()" />
-                            <input type="button" value="editon" onclick="editon()" />
-                            <input type="button" value="editoff" onclick="editoff()" />
-                            <input type="button" value="clear" onclick="clears()" />
+                    <div class="row "></div>
+                    <div class="row form-inline">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <sj:submit button="true" 
+                                           id="addbtn" 
+                                           disabled="true" 
+                                           cssClass="uinew-button-submit" 
+                                           value="Add"
+                                           onclick="addTerm()"
+                                           />
+                            </div>
+                            <div class="form-group">  
+                                <sj:submit button="true" 
+                                           id="updatebtn" 
+                                           value="Update" 
+                                           disabled="true" 
+                                           onclick="updateTerm()"
+                                           cssClass="uinew-button-submit" 
+                                           />
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
+
+
+                <script>
+                    $(function () {
+                        $.FroalaEditor.DefineIcon('clear', {
+                            NAME: 'remove'
+                        });
+                        $.FroalaEditor.RegisterCommand('clear', {
+                            title: 'Clear HTML',
+                            focus: false,
+                            undo: true,
+                            refreshAfterCallback: true,
+                            callback: function () {
+                                this.html.set('');
+                                this.events.focus();
+                            }
+                        });
+
+                        $('#edit').froalaEditor({
+                            theme: 'dark',
+                            height: 250,
+                            toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '|', 'color', 'emoticons', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'quote', 'insertHR', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html', '-', 'clear'],
+                            fontFamily: {
+                                "Roboto,sans-serif": 'Roboto',
+                                "Oswald,sans-serif": 'Oswald',
+                                "Montserrat,sans-serif": 'Montserrat',
+                                "'Open Sans Condensed',sans-serif": 'Open Sans Condensed'
+                            }
+                        });
+
+                        $('#edit').froalaEditor('edit.off');
+
+                    });
+
+                </script>
             </div>
         </div>
-
-
-        <script>
-            function get() {
-                alert($('#edit').froalaEditor('html.get', true));
-            }
-
-            function set() {
-                $('#edit').froalaEditor('html.set', '<p>My custom paragraph.</p>');
-            }
-
-            function Isempty() {
-                alert($('#edit').froalaEditor('core.isEmpty'));
-            }
-
-            function editon() {
-                $('#edit').froalaEditor('edit.on');
-            }
-
-            function editoff() {
-                $('#edit').froalaEditor('edit.off');
-            }
-
-            function clears() {
-                $('#edit').froalaEditor('html.set', '');
-            }
-
-
-            $(function () {
-                $.FroalaEditor.DefineIcon('clear', {
-                    NAME: 'remove'
-                });
-                $.FroalaEditor.RegisterCommand('clear', {
-                    title: 'Clear HTML',
-                    focus: false,
-                    undo: true,
-                    refreshAfterCallback: true,
-                    callback: function () {
-                        this.html.set('');
-                        this.events.focus();
-                    }
-                });
-
-                $('#edit').froalaEditor({
-                    theme: 'dark',
-                    height: 250,
-                    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '|', 'color', 'emoticons', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'quote', 'insertHR', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html', '-', 'clear'],
-                    fontFamily: {
-                        "Roboto,sans-serif": 'Roboto',
-                        "Oswald,sans-serif": 'Oswald',
-                        "Montserrat,sans-serif": 'Montserrat',
-                        "'Open Sans Condensed',sans-serif": 'Open Sans Condensed'
-                    }
-                });
-
-            });
-
-        </script>
     </body>
 </html>

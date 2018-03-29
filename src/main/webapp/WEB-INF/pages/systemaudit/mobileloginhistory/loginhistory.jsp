@@ -234,7 +234,7 @@
                                     /> 
                             </div>
                             <div class="form-group">
-                                <sj:submit 
+                                <!sj:submit 
                                     cssClass="uinew-button-submit"
                                     button="true" 
                                     value="View PDF" 
@@ -245,7 +245,7 @@
                             </div>
 
                             <div class="form-group">
-                                <sj:submit 
+                                <!sj:submit 
                                     cssClass="uinew-button-submit"
                                     button="true" 
                                     value="View Excel" 
@@ -332,8 +332,8 @@
                     viewrecords="true"
                     onErrorTopics="anyerrors"
                     >
-                    <sjg:gridColumn name="id" index="u.id" title="ID"  sortable="true" frozen="true" hidden="true"/>
-                    <sjg:gridColumn name="userid" index="u.userid" title="User ID"  sortable="true" frozen="true" />
+                    <sjg:gridColumn name="id" index="u.id" title="ID"  sortable="true" frozen="false" hidden="true"/>
+                    <sjg:gridColumn name="userid" index="u.userid" title="User ID"  sortable="true" frozen="false" />
                     <sjg:gridColumn name="username" index="u.username" title="Username"  sortable="true"/>
                     <sjg:gridColumn name="operation" index="u.operation" title="Operation" sortable="true" /> 
                     <sjg:gridColumn name="description" index="u.description" title="Description"  sortable="true"/>

@@ -118,4 +118,66 @@ public class TermsDAO {
         }
         return message;
     }
+
+    public String addTerms(TermsInputBean inputBean, Systemaudit audit) throws Exception {
+        Session session = null;
+        Transaction txn = null;
+        String message = "";
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            txn = session.beginTransaction();
+            Date sysDate = CommonDAO.getSystemDate(session);
+            List<WebTerms> statusACT = new ArrayList<WebTerms>();
+
+            WebTerms ub = (WebTerms) session.get(WebTerms.class, inputBean.getVersionno().trim());
+            WebTerms u = new WebTerms();
+            
+
+            if (ub == null) {
+
+                if (!inputBean.getStatus().equals(CommonVarlist.STATUS_DEACTIVE)) {
+
+                    String sql = "from WebTerms as wt where wt.status.statuscode=:statuscode ";
+                    Query query = session.createQuery(sql).setString("statuscode", inputBean.getStatus());
+                    statusACT = query.list();
+                   
+                    WebTerms u2 = (WebTerms) session.get(WebTerms.class, statusACT.get(0).getVersionNo());
+                    
+                    Status st2 = (Status) session.get(Status.class, CommonVarlist.STATUS_DEACTIVE);
+                    u2.setStatus(st2);
+                    session.update(u2);
+                }
+                
+                u.setVersionNo(inputBean.getVersionno().trim());
+
+                Status st = (Status) session.get(Status.class, inputBean.getStatus().trim());
+                u.setStatus(st);
+
+                u.setTerms(inputBean.getDescription());
+
+                audit.setCreatetime(sysDate);
+                audit.setLastupdatedtime(sysDate);
+
+                session.save(audit);
+                session.save(u);
+
+                txn.commit();
+            } else {
+                message = MessageVarlist.COMMON_ALREADY_EXISTS;
+            }
+        } catch (Exception e) {
+            if (txn != null) {
+                txn.rollback();
+            }
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return message;
+    }
 }

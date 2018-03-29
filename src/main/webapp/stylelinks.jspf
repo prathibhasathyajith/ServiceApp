@@ -59,6 +59,21 @@
         /*transition: 0.3s !important;*/
         background: linear-gradient(45deg, #0083db 0%,#0f98f3 100%) !important;
     }
+    .uinew-button-other{
+        box-shadow: 0px 3px 6px #d6dbe1;
+        border-radius: 3px !important;
+        color: white !important;
+        font-weight: 500;
+        font-family: Raleway !important;
+        border: 0px solid #ffffff !important;
+        padding: 0 20px 0 20px !important;
+        height: 30px !important;
+        margin-top: 15px !important;
+        outline: none;
+        font-size: 13px;
+        /*transition: 0.3s !important;*/
+        background: linear-gradient(45deg, #ff4f4f 0%,#ff0f0f 100%) !important;
+    }
     .uinew-button-reset{
         box-shadow: 0px 3px 6px #d6dbe1;
         border-radius: 3px !important;

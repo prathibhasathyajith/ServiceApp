@@ -263,7 +263,7 @@
                                     /> 
                             </div>
                             <div class="form-group">
-                                <sj:submit 
+                                <!sj:submit 
                                     cssClass="uinew-button-submit"
                                     button="true" 
                                     value="View PDF" 
@@ -275,7 +275,7 @@
                             </div>
 
                             <div class="form-group">
-                                <sj:submit 
+                                <!sj:submit 
                                     cssClass="uinew-button-submit"
                                     button="true" 
                                     value="View Excel" 

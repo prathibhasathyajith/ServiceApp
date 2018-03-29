@@ -80,12 +80,16 @@ public class TermsAction extends ActionSupport implements ModelDriven<Object> {
         System.out.println("called TermsAction : find");
         try {
 
-            CommonDAO dao = new CommonDAO();
-            List<WebTerms> webterm = new ArrayList<WebTerms>();
-            webterm = dao.getVersionList(inputBean.getVersionno());
+            if (inputBean.getVersionno()!= null || !inputBean.getVersionno().trim().isEmpty()) {
+                CommonDAO dao = new CommonDAO();
+                List<WebTerms> webterm = new ArrayList<WebTerms>();
+                webterm = dao.getVersionList(inputBean.getVersionno());
 
-            inputBean.setStatus(webterm.get(0).getStatus().getStatuscode());
-            inputBean.setDescription(webterm.get(0).getTerms());
+                inputBean.setStatus(webterm.get(0).getStatus().getStatuscode());
+                inputBean.setDescription(webterm.get(0).getTerms());
+            }else{
+                
+            }
 
         } catch (Exception ex) {
             addActionError("Terms find " + MessageVarlist.COMMON_ERROR_PROCESS);
@@ -124,6 +128,41 @@ public class TermsAction extends ActionSupport implements ModelDriven<Object> {
             }
         } catch (Exception ex) {
             addActionError("Terms update " + MessageVarlist.COMMON_ERROR_PROCESS);
+            Logger.getLogger(TermsAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+
+    public String add() throws Exception {
+        String result = "list";
+        System.out.println("called TermsAction : add");
+
+        System.out.println("status " + inputBean.getStatus());
+        System.out.println("des " + inputBean.getDescription());
+        System.out.println("version " + inputBean.getVersionno());
+        try {
+
+            HttpServletRequest request = ServletActionContext.getRequest();
+            String message = this.validateInputs();
+
+            if (message.isEmpty()) {
+                TermsDAO dao = new TermsDAO();
+                Systemaudit audit = CommonDAO.makeAudittrace(request, TaskVarlist.ADD_TASK, PageVarlist.TERMS_AND_CONDITION, SectionVarlist.USERMANAGEMENT, "Terms added successfully", null);
+                message = dao.addTerms(inputBean, audit);
+
+                if (message.isEmpty()) {
+                    inputBean.setMessage(message);
+//                    addActionMessage(MessageVarlist.RESET_PASSWORD_SUCCESS);
+                } else {
+                    inputBean.setMessage(message);
+//                    addActionError(message);
+                }
+            } else {
+                inputBean.setMessage(message);
+//                addActionError(message);
+            }
+        } catch (Exception ex) {
+            addActionError("Terms add " + MessageVarlist.COMMON_ERROR_PROCESS);
             Logger.getLogger(TermsAction.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;

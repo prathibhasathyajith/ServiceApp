@@ -109,7 +109,7 @@
                             <div class="col-sm-3">
 
                                 <div class="form-group" style=" margin-left: 0px;margin-right: 10px;">
-                                    <sj:submit
+                                    <!sj:submit
                                         button="true"
                                         value="View PDF"
                                         id="viewindi" 
