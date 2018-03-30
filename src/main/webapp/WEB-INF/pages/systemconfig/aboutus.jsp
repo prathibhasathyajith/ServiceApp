@@ -24,9 +24,6 @@
                 }
             </style>
             <script>
-                $(document).ready(function () {
-
-                });
                 function updateinfo() {
                     $("#divmsg").empty();
                     var code = $("#type").val();
@@ -52,7 +49,7 @@
                                 var msgSuccess = '<div id="successMsg" class="ui-widget actionMessage">\n\
                                 <div class="ui-state-highlight ui-corner-all" style="padding: 0.3em 0.7em; margin-top: 20px;"> \n\
                                 <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"></span>\n\
-                                <span>' + mess +'</span>\n\
+                                <span>' + mess + '</span>\n\
                                 </p></div></div>';
                                 $("#divmsg").append(msgSuccess);
                                 resetfields();
@@ -90,7 +87,7 @@
                         }
                     });
                 }
-                
+
                 function resetfields() {
                     $("#type").val('');
                     $('#edit2').froalaEditor('html.set', '');
@@ -154,9 +151,6 @@
 
                 <script>
                     $(function () {
-                        $.FroalaEditor.DefineIcon('clear', {
-                            NAME: 'remove'
-                        });
                         $('#edit2').froalaEditor({
                             theme: 'dark',
                             height: 250,
@@ -169,8 +163,33 @@
                             }
                         });
                         $('#edit2').froalaEditor('edit.off');
+
+
+
+
+//                        $("section#editor2").children(0)[0].children[2].children[0].remove();
+
+
+                        setInterval(function () {
+                            var sd = '<a href="https://www.froala.com/wysiwyg-editor?k=u" style="padding: 5px 10px;color: #FFF;text-decoration: none;background: #EF5350;display: block;font-size: 15px;" target="_blank">Unlicensed copy of the Froala Editor. Use it legally by purchasing a license.</a>';
+                            var sd2 = $("section#editor2").children(0)[0].children[2].children[0];
+                            if (sd2.innerHTML.toString().trim() == sd.toString().trim()) {
+                                $("section#editor2").children(0)[0].children[2].children[0].remove();
+                            }
+                        }, 1);
+
+//                        console.log($("section#editor2").children(0)[0].children[2].children[0].remove());
+
+
+//                        setInterval(function () {
+//                            var sd = '<div style="z-index: 9999;width: 100%; position: relative"><a href="https://www.froala.com/wysiwyg-editor?k=u" style="padding: 5px 10px;color: #FFF;text-decoration: none;background: #EF5350;display: block;font-size: 15px;" target="_blank">Unlicensed copy of the Froala Editor. Use it legally by purchasing a license.</a></div>'
+//                            if ($("section#editor2").children(0)[0].children[2].children[0] == sd) {
+//                                alert();
+//                            }
+//                            console.log($("section#editor2").children(0)[0].children[2].children[0].remove());
+//                        }, 5000);
+
                     });
-//                    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '|', 'color', 'emoticons', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'quote', 'insertHR', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html', '-', 'clear'],
 
                 </script>
             </div>
