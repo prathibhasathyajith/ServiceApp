@@ -80,7 +80,7 @@ public class TermsAction extends ActionSupport implements ModelDriven<Object> {
         System.out.println("called TermsAction : find");
         try {
 
-            if (inputBean.getVersionno()!= null || !inputBean.getVersionno().trim().isEmpty()) {
+            if (inputBean.getVersionno()!= null && !inputBean.getVersionno().trim().isEmpty()) {
                 CommonDAO dao = new CommonDAO();
                 List<WebTerms> webterm = new ArrayList<WebTerms>();
                 webterm = dao.getVersionList(inputBean.getVersionno());

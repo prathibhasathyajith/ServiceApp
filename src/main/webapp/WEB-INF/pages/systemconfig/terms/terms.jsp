@@ -155,6 +155,12 @@
 
                 function show(val) {
                     if (val) {
+                        $("#updatebtnshow").removeClass("uinew-button-reset");
+                        $("#updatebtnshow").addClass("uinew-button-other");
+                        
+                        $("#addbtnshow").removeClass("uinew-button-other");
+                        $("#addbtnshow").addClass("uinew-button-reset");
+                        
                         $("#divmsg").empty();
                         $('#edit').froalaEditor('edit.on');
 
@@ -171,6 +177,12 @@
                         $("#addbtn").button("disable");
 
                     } else {
+                        $("#addbtnshow").removeClass("uinew-button-reset");
+                        $("#addbtnshow").addClass("uinew-button-other");
+                        
+                        $("#updatebtnshow").removeClass("uinew-button-other");
+                        $("#updatebtnshow").addClass("uinew-button-reset");
+                        
                         $("#divmsg").empty();
                         $('#edit').froalaEditor('edit.on');
 
@@ -237,7 +249,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Status</label>
-                                    <s:select  id="status" list="%{statusList}"  name="status" headerKey=""  headerValue="--Select Status--" listKey="statuscode" listValue="description" value="%{status}" disabled="false" cssClass="form-control" disabled="true"/>
+                                    <s:select  id="status" list="%{statusList}"  name="status" headerKey=""  headerValue="--Select Status--" listKey="statuscode" listValue="description" value="%{status}" cssClass="form-control" disabled="true"/>
                                 </div>
                             </div>
                         </div> 
@@ -295,7 +307,7 @@
                         $('#edit').froalaEditor({
                             theme: 'dark',
                             height: 250,
-                            toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '|', 'color', 'emoticons', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'quote', 'insertHR', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html', '-', 'clear'],
+                            toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'fontFamily', 'fontSize', '|', 'color', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '-', 'insertLink', 'insertImage', 'insertTable', '|', 'quote', 'insertHR', 'undo', 'redo', 'clearFormatting', 'selectAll'],
                             fontFamily: {
                                 "Roboto,sans-serif": 'Roboto',
                                 "Oswald,sans-serif": 'Oswald',

@@ -24,6 +24,7 @@
                     <li id="sublink_8"><a href="${pageContext.request.contextPath}/viewSMSTemplate.action">SMS Template</a></li>
                     <li id="sublink_9"><a href="${pageContext.request.contextPath}/viewTransactionType.action">Transaction Type</a></li>
                     <li id="sublink_10"><a href="${pageContext.request.contextPath}/viewTerms.action">Terms</a></li>
+                    <li id="sublink_11"><a href="${pageContext.request.contextPath}/viewAppInfo.action">About us & Support</a></li>
                 </ul>
             </div>
             <div id="link_3" class="link-default">
@@ -35,8 +36,8 @@
             <div id="link_4" class="link-default">
                 <a href="#">SYSTEM AUDIT</a>
                 <ul class="sub-links">
-                    <li id="sublink_12"><a href="${pageContext.request.contextPath}/viewSystemAudit.action">System Audit</a></li>
-                    <li id="sublink_13"><a href="${pageContext.request.contextPath}/viewLoginHistory.action">Mobile Login History</a></li>
+                    <li id="sublink_15"><a href="${pageContext.request.contextPath}/viewSystemAudit.action">System Audit</a></li>
+                    <li id="sublink_16"><a href="${pageContext.request.contextPath}/viewLoginHistory.action">Mobile Login History</a></li>
                 </ul>
             </div>
         </div>

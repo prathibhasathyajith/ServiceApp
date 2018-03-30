@@ -13,6 +13,7 @@ import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
 import com.serviceapp.mapping.TransactionType;
+import com.serviceapp.mapping.WebInfo;
 import com.serviceapp.mapping.WebTerms;
 import com.serviceapp.object.Page;
 import com.serviceapp.object.Section;
@@ -539,6 +540,28 @@ public class CommonDAO {
             session = HibernateInit.sessionFactory.openSession();
             String sql = "from WebTerms as wt order by Upper(wt.versionNo) asc";
             Query query = session.createQuery(sql);
+            webterms = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return webterms;
+    }
+    
+    // about us & support
+    public List<WebInfo> getInfoList(String code) throws Exception {
+        List<WebInfo> webterms = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from WebInfo as wi where wi.code=:code order by Upper(wi.description) asc";
+            Query query = session.createQuery(sql).setString("code", code);
             webterms = query.list();
         } catch (Exception e) {
             throw e;

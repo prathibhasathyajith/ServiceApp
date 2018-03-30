@@ -176,4 +176,9 @@ public class MessageVarlist {
     public static final String TERMS_EMPTY_DESCRIPTION = "Description cannot be empty";
     public static final String TERMS_EMPTY_VERSION = "Version no cannot be empty";
     public static final String TERMS_UPDATE_SUCCESS = "Terms update successful ";
+    
+    //================== about us ===========================
+    public static final String APPINFO_EMPTY_DESCRIPTION = "Description cannot be empty";
+    public static final String APPINFO_EMPTY_CODE = "Code cannot be empty";
+    
 }

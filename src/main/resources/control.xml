@@ -115,6 +115,16 @@
             <result name="viewpopup">/WEB-INF/pages/systemconfig/terms/termsinsert.jsp</result>
             <result name="detail">/WEB-INF/pages/systemconfig/terms/termsedit.jsp</result>
         </action>
+        
+        <action name="*AppInfo" method="{1}" class="com.serviceapp.action.systemconfig.AppInfoAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/systemconfig/aboutus.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action> 
+        
 
     </package>
     

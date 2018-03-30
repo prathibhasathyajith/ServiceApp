@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <!--<property name="hibernate.connection.url">jdbc:mysql://35.200.134.107:3306/service_app?autoReconnect=true&amp;useSSL=false</property>-->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/service_app?autoReconnect=true&amp;useSSL=false</property>
-        <property name="hibernate.connection.username">TESTUSER</property>
-        <property name="hibernate.connection.password">Password@123</property>
-        <!--<property name="hibernate.connection.isolation">1</property>-->
-        <!--<property name="hibernate.connection.datasource">ElectSvy</property>-->
-        <!--<property name="hibernate.connection.verifyServerCertificate">false</property>-->
-        <!--<property name="hibernate.connection.requireSSL">false</property>-->
-        <property name="hibernate.connection.autocommit">true</property>
-        <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-        <!-- Enable Hibernate's automatic session context management, in this case the session will be close after each 
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <!--<property name="hibernate.connection.url">jdbc:mysql://35.200.134.107:3306/service_app?autoReconnect=true&amp;useSSL=false</property>-->
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/service_app?autoReconnect=true&amp;useSSL=false</property>
+    <property name="hibernate.connection.username">TESTUSER</property>
+    <property name="hibernate.connection.password">Password@123</property>
+    <!--<property name="hibernate.connection.isolation">1</property>-->
+    <!--<property name="hibernate.connection.datasource">ElectSvy</property>-->
+    <!--<property name="hibernate.connection.verifyServerCertificate">false</property>-->
+    <!--<property name="hibernate.connection.requireSSL">false</property>-->
+    <property name="hibernate.connection.autocommit">true</property>
+    <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <!-- Enable Hibernate's automatic session context management, in this case the session will be close after each 
         transaction! -->
-        <property name="current_session_context_class">thread</property>
-        <property name="show_sql">false</property>
-        <!-- auto create tables -->
-        <property name="hbm2ddl.auto">none</property>
-        <mapping class="com.serviceapp.mapping.Status"/>
-        <mapping class="com.serviceapp.mapping.Systemuser"/>
-        <mapping class="com.serviceapp.mapping.Systemaudit"/>
-        <mapping class="com.serviceapp.mapping.Passwordpolicy"/>
-        <mapping class="com.serviceapp.mapping.MobFaqType"/>
-        <mapping class="com.serviceapp.mapping.MobFaq"/>
-        <mapping class="com.serviceapp.mapping.WebEmailTemplate"/>
-        <mapping class="com.serviceapp.mapping.WebSmsTemplate"/>
-        <mapping class="com.serviceapp.mapping.TransactionType"/>
-        <mapping class="com.serviceapp.mapping.MobAudittrace"/>
-        <mapping class="com.serviceapp.mapping.WebTerms"/>
-    </session-factory>
+    <property name="current_session_context_class">thread</property>
+    <property name="show_sql">false</property>
+    <!-- auto create tables -->
+    <property name="hbm2ddl.auto">none</property>
+    <mapping class="com.serviceapp.mapping.Status"/>
+    <mapping class="com.serviceapp.mapping.Systemuser"/>
+    <mapping class="com.serviceapp.mapping.Systemaudit"/>
+    <mapping class="com.serviceapp.mapping.Passwordpolicy"/>
+    <mapping class="com.serviceapp.mapping.MobFaqType"/>
+    <mapping class="com.serviceapp.mapping.MobFaq"/>
+    <mapping class="com.serviceapp.mapping.WebEmailTemplate"/>
+    <mapping class="com.serviceapp.mapping.WebSmsTemplate"/>
+    <mapping class="com.serviceapp.mapping.TransactionType"/>
+    <mapping class="com.serviceapp.mapping.MobAudittrace"/>
+    <mapping class="com.serviceapp.mapping.WebTerms"/>
+    <mapping class="com.serviceapp.mapping.MobConfiguration"/>
+    <mapping class="com.serviceapp.mapping.WebInfo"/>
+  </session-factory>
 </hibernate-configuration>
