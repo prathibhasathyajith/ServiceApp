@@ -5,6 +5,14 @@ $(document).ready(function () {
     var sublink = window.localStorage.getItem('sublink');
     $('#' + sublink).addClass('active');
     $('#' + link).addClass('selected');
+    
+    
+    $('#logout_lock').mouseover(function (){
+        $(this).text("lock");
+    });
+    $('#logout_lock').mouseleave(function (){
+        $(this).text("lock_open");
+    });
 });
 
 $(function () {

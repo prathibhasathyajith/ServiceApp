@@ -37,6 +37,7 @@
         <!--<span>Admin<span>Portal</span></span>-->
         <span><span></span></span>
     </div>
-    <div class="tb-header-logout tb-header-margin tb-header-text f-right" title="Logout"><a href="LogoutUserLogin.action?message=error3"><i class="material-icons">lock</i></a></div>
-    <div class="tb-header-passchange tb-header-margin tb-header-text f-right" title="Change Password"><a href="ViewChangePassword.action?message=error3"><i class="material-icons">vpn_key</i></a></div>
+    <div class="tb-header-logout tb-header-margin tb-header-text f-right" title="Logout"><a href="LogoutUserLogin.action?message=error3"><i class="material-icons" id="logout_lock">lock_open</i></a></div>
+    <div class="tb-header-passchange tb-header-margin tb-header-text f-right" title="Change Password"><a href="ViewChangePassword.action?message=error3"><i class="material-icons">fingerprint</i></a></div>
 </div>
+<!--<i class="material-icons">rotate_left</i>-->

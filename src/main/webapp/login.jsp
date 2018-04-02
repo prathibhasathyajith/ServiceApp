@@ -4,22 +4,42 @@
     Author     : prathibha_s
 --%>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
-        <title>Local Government Election Campaign Review Login</title>
-        <link href="${pageContext.request.contextPath}/resources/assets/Css/login.css" rel="stylesheet" />
+        <title>Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->	
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/bootstrap/css/bootstrap.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/fonts/iconic/css/material-design-iconic-font.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/animate/animate.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/css-hamburgers/hamburgers.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/animsition/css/animsition.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/select2/select2.min.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/daterangepicker/daterangepicker.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/css/util.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/css/main.css">
+        <!--===============================================================================================-->
+
         <script>
 
             window.localStorage.removeItem('link');
             window.localStorage.removeItem('sublink');
-            
+
             function formSubmit() {
                 window.localStorage.removeItem("item");
                 $("#formES").submit();
@@ -41,44 +61,81 @@
 
         </script>
     </head>
-
     <body>
-        <div class="es-mainContent">
-            <div class="es-mainbox">
-                <div class="es-textContent es-text">
-                    <span>Project</span>
-                    <span></span>
-                    <span>Login</span>
-                </div>
-                <form id="formES" novalidate="novalidate" action="CheckUserLogin" method="post" >
-                    <div class="es-fieldContent">
-                        <label class="es-label es-text2">Username(Admin/Party)</label>
-                        <input type="text" class="es-text es-field" name="username" >
-                        <label class="es-label es-text2">Password</label>
-                        <input type="password" class="es-text es-field"  name="password">
-                    </div>
-                </form>
-                <div class="es-buttonContent es-text" onclick="formSubmit()"></div>
-                <div class="es-messageContent es-text">
-                    <span>
-                        <s:if test="hasActionErrors()">
-                            <div class="error-dis">
-                                <i class="fa fa-remove-sign" style="color: #ff2222;">
-                                    <s:actionerror cssStyle="list-style:none;"/></i> 
+
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form" id="formES" novalidate="novalidate" action="CheckUserLogin" method="post">
+                        <span class="login100-form-title p-b-26">
+                            Project
+                        </span>
+                        <span class="login100-form-title p-b-48">
+                            <i class="zmdi zmdi-font"></i>
+                        </span>
+
+                        <div class="wrap-input100 validate-input" data-validate = "Enter Username">
+                            <input class="input100" type="text" name="username">
+                            <span class="focus-input100" data-placeholder="Username"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter password">
+                            <span class="btn-show-pass">
+                                <i class="zmdi zmdi-eye"></i>
+                            </span>
+                            <input class="input100" type="password" name="password">
+                            <span class="focus-input100" data-placeholder="Password"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn">
+                                    Login
+                                </button>
                             </div>
-                        </s:if>
-                        <s:if test="hasActionMessages()">
-                            <div class="error-dis">
-                                <i class="fa fa-remove-sign" style="color: green;">
-                                    <s:actionmessage cssStyle="list-style:none"/></i>
-                            </div>  
-                        </s:if>
-                    </span>
+                        </div>
+
+                        <div class="text-center p-t-115">
+                            <span class="txt1">
+                                <s:if test="hasActionErrors()">
+                                    <div class="error-dis">
+                                        <i class="fa fa-remove-sign" style="color: #ff2222;">
+                                            <s:actionerror cssStyle="list-style:none;"/></i> 
+                                    </div>
+                                </s:if>
+                                <s:if test="hasActionMessages()">
+                                    <div class="error-dis">
+                                        <i class="fa fa-remove-sign" style="color: green;">
+                                            <s:actionmessage cssStyle="list-style:none"/></i>
+                                    </div>  
+                                </s:if>
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <script src="${pageContext.request.contextPath}/resources/assets/Js/jquery.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/assets/Js/main.js"></script>
-    </body>
 
+
+        <div id="dropDownSelect1"></div>
+
+        <!--===============================================================================================-->
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/animsition/js/animsition.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/bootstrap/js/popper.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/daterangepicker/moment.min.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/daterangepicker/daterangepicker.js"></script>
+        <!--===============================================================================================-->
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/vendor/countdowntime/countdowntime.js"></script>
+        <!--===============================================================================================-->
+        <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/js/main.js"></script>
+
+    </body>
 </html>
