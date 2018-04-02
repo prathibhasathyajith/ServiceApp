@@ -26,27 +26,31 @@ public class MobFaq  implements java.io.Serializable {
 
 
      private Integer id;
-     private MobFaqType mobFaqType;
+     private MobFaqSection mobFaqSection;
      private Status status;
      private String question;
      private String answer;
      private String lastupdateduser;
      private Date lastupdatedtime;
      private Date createdtime;
-     private String section;
+     private int sortOrder;
 
     public MobFaq() {
     }
 
-    public MobFaq(MobFaqType mobFaqType, Status status, String question, String answer, String lastupdateduser, Date lastupdatedtime, Date createdtime, String section) {
-       this.mobFaqType = mobFaqType;
+	
+    public MobFaq(int sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+    public MobFaq(MobFaqSection mobFaqSection,Status status, String question, String answer, String lastupdateduser, Date lastupdatedtime, Date createdtime, int sortOrder) {
+       this.mobFaqSection = mobFaqSection;
        this.status = status;
        this.question = question;
        this.answer = answer;
        this.lastupdateduser = lastupdateduser;
        this.lastupdatedtime = lastupdatedtime;
        this.createdtime = createdtime;
-       this.section = section;
+       this.sortOrder = sortOrder;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -62,13 +66,13 @@ public class MobFaq  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="TYPE")
-    public MobFaqType getMobFaqType() {
-        return this.mobFaqType;
+    @JoinColumn(name="SECTION")
+    public MobFaqSection getMobFaqSection() {
+        return this.mobFaqSection;
     }
     
-    public void setMobFaqType(MobFaqType mobFaqType) {
-        this.mobFaqType = mobFaqType;
+    public void setMobFaqSection(MobFaqSection mobFaqSection) {
+        this.mobFaqSection = mobFaqSection;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -132,15 +136,14 @@ public class MobFaq  implements java.io.Serializable {
     }
 
     
-    @Column(name="SECTION", length=50)
-    public String getSection() {
-        return this.section;
+    @Column(name="SORT_ORDER", nullable=false)
+    public int getSortOrder() {
+        return this.sortOrder;
     }
     
-    public void setSection(String section) {
-        this.section = section;
+    public void setSortOrder(int sortOrder) {
+        this.sortOrder = sortOrder;
     }
-
 
 
 

@@ -8,7 +8,7 @@ package com.serviceapp.common.dao;
 import com.serviceapp.bean.systemconfig.TermsInputBean;
 import com.serviceapp.bean.systemconfig.TermsVersionBean;
 import com.serviceapp.listener.HibernateInit;
-import com.serviceapp.mapping.MobFaqType;
+import com.serviceapp.mapping.MobFaqSection;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
@@ -466,13 +466,13 @@ public class CommonDAO {
         return task;
     }
 
-    public List<MobFaqType> getDefultTypeList() throws Exception {
+    public List<MobFaqSection> getDefultFaQTypeList() throws Exception {
 
-        List<MobFaqType> typeList = null;
+        List<MobFaqSection> typeList = null;
         Session session = null;
         try {
             session = HibernateInit.sessionFactory.openSession();
-            String sql = "from MobFaqType as t";
+            String sql = "from MobFaqSection as t";
             Query query = session.createQuery(sql);
             typeList = query.list();
         } catch (Exception e) {

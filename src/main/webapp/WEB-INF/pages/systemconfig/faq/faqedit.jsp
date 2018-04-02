@@ -28,7 +28,7 @@
                             $('#e_id').attr('readOnly', false);
                             $('#e_id').val("");
                             $("#e_id").css("color", "black");
-                            $('#e_type').val("");
+//                            $('#e_type').val("");
                             $('#e_section').val("");
                             $('#e_question').val("");
                             $('#e_answer').val("");
@@ -38,7 +38,7 @@
                         } else {
                             $('#e_id').val(data.id);
                             $('#e_id').attr('readOnly', true);
-                            $('#e_type').val(data.type);
+//                            $('#e_type').val(data.type);
                             $("#e_section").val(data.section);
                             $("#e_question").val(data.question);
                             $('#e_answer').val(data.answer);
@@ -92,27 +92,26 @@
                                     <s:textfield name="id" id="e_id"  maxLength="6" readonly="true" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9]/g, ''))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9]/g, ''))" onkeypress="return alpha(event)"/>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <span style="color: red">*</span><label >Type</label>
-                                    <s:select  id="e_type" list="%{typeList}"  name="type" headerKey=""  headerValue="--Select Type--" listKey="code" listValue="description"  value="%{type}" disabled="false" cssClass="form-control"/>
-                                </div>
-                            </div>
+                            <!--                            <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <span style="color: red">*</span><label >Type</label>
+                                                                <!s:select  id="e_type" list="%{typeList}"  name="type" headerKey=""  headerValue="--Select Type--" listKey="code" listValue="description"  value="%{type}" disabled="false" cssClass="form-control"/>
+                                                            </div>
+                                                        </div>-->
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Section</label>
-                                    <s:textfield name="section" id="e_section" cssClass="form-control" maxLength="20" rows="1" onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))" onkeypress="return alpha(event)"/>
+                                    <s:select  id="e_section" list="%{sectionFaqList}"  name="section" headerKey=""  headerValue="--Select Section--" listKey="sectionType" listValue="description"  value="%{section}" disabled="false" cssClass="form-control"/>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Status</label>
                                     <s:select  id="e_status" list="%{statusList}"  name="status" headerKey=""  headerValue="--Select Status--" listKey="statuscode" listValue="description"  value="%{status}" disabled="false" cssClass="form-control"/>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row"> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label >Question</label>

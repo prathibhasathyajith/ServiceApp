@@ -18,7 +18,7 @@
 
             $.subscribe('resetAddButton', function (event, data) {
                 $("#iid").val("");
-                $("#itype").val("");
+//                $("#itype").val("");
                 $("#isection").val("");
                 $("#iquestion").val("");
                 $("#ianswer").val("");
@@ -66,16 +66,16 @@
                     <s:form id="faqinsert" method="post" action="FAQ" theme="simple" cssClass="form">   
 
                         <div class="row">
+                            <!--                            <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <span style="color: red">*</span><label >Type</label>
+                                                                <!s:select name="type" id="itype" list="%{typeList}" headerKey=""  headerValue="--Select Type--" listKey="code" listValue="description"  disabled="false" cssClass="form-control"/>
+                                                            </div>
+                                                        </div>-->
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <span style="color: red">*</span><label >Type</label>
-                                    <s:select name="type" id="itype" list="%{typeList}" headerKey=""  headerValue="--Select Type--" listKey="code" listValue="description"  disabled="false" cssClass="form-control"/>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <span style="color: red">*</span><label>Section</label>
-                                    <s:textfield name="section" id="isection" cssClass="form-control"  maxlength="20" rows="1" onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))" onkeypress="return alpha(event)" />
+                                    <span style="color: red">*</span><label >Section</label>
+                                    <s:select  id="isection" list="%{sectionFaqList}"  name="section" headerKey=""  headerValue="--Select Section--" listKey="sectionType" listValue="description" disabled="false" cssClass="form-control"/>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -84,6 +84,7 @@
                                     <s:select  id="istatus" list="%{statusList}"  name="status" headerKey=""  headerValue="--Select Status--" listKey="statuscode" listValue="description"  disabled="false" cssClass="form-control"/>
                                 </div>
                             </div>
+
                         </div>
 
                         <div class="row">

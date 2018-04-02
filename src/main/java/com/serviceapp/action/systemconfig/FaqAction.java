@@ -55,7 +55,7 @@ public class FaqAction extends ActionSupport implements ModelDriven<Object>{
 
                 CommonDAO dao = new CommonDAO();
                 inputBean.setStatusList(dao.getDefultStatusList(CommonVarlist.STATUS_CATEGORY_GENERAL));
-                inputBean.setTypeList(dao.getDefultTypeList());
+                inputBean.setSectionFaqList(dao.getDefultFaQTypeList());
 
             
         } catch (Exception ex) {
@@ -193,7 +193,7 @@ public class FaqAction extends ActionSupport implements ModelDriven<Object>{
                 CommonDAO dao = new CommonDAO();
 
                 inputBean.setStatusList(dao.getDefultStatusList(CommonVarlist.STATUS_CATEGORY_GENERAL));
-                inputBean.setTypeList(dao.getDefultTypeList());
+                inputBean.setSectionFaqList(dao.getDefultFaQTypeList());
 
             HttpSession session = ServletActionContext.getRequest().getSession(false);
             if (session.getAttribute(SessionVarlist.MIN_PASSWORD_CHANGE_PERIOD) != null && session.getAttribute(SessionVarlist.ONLY_SHOW_ONTIME) != null) {
@@ -278,8 +278,6 @@ public class FaqAction extends ActionSupport implements ModelDriven<Object>{
         try {
             if (inputBean.getId() == null || inputBean.getId().trim().isEmpty()) {
                 message = MessageVarlist.FAQ_MGT_EMPTY_ID;
-            } else if (inputBean.getType() == null || inputBean.getType().trim().isEmpty()) {
-                message = MessageVarlist.FAQ_MGT_EMPTY_TYPE;
             } else if (inputBean.getSection() == null || inputBean.getSection().trim().isEmpty()) {
                 message = MessageVarlist.FAQ_MGT_EMPTY_SECTION;
             } else if (inputBean.getQuestion() == null || inputBean.getQuestion().trim().isEmpty()) {
@@ -307,7 +305,7 @@ public class FaqAction extends ActionSupport implements ModelDriven<Object>{
                 CommonDAO commonDAO = new CommonDAO();
 
                 inputBean.setStatusList(commonDAO.getDefultStatusList(CommonVarlist.STATUS_CATEGORY_GENERAL));
-                inputBean.setTypeList(commonDAO.getDefultTypeList());
+                inputBean.setSectionFaqList(commonDAO.getDefultFaQTypeList());
 
                 mobfaq = dao.getId(inputBean.getId());
 
@@ -317,14 +315,14 @@ public class FaqAction extends ActionSupport implements ModelDriven<Object>{
                     inputBean.setId("");
                 }
 
-                try {
-                    inputBean.setType(mobfaq.getMobFaqType().getCode());
-                } catch (NullPointerException e) {
-                    inputBean.setType("");
-                }
+//                try {
+//                    inputBean.setType(mobfaq.getMobFaqType().getCode());
+//                } catch (NullPointerException e) {
+//                    inputBean.setType("");
+//                }
 
                 try {
-                    inputBean.setSection(mobfaq.getSection());
+                    inputBean.setSection(mobfaq.getMobFaqSection().getSectionType());
                 } catch (NullPointerException e) {
                     inputBean.setSection("");
                 }
@@ -377,14 +375,14 @@ public class FaqAction extends ActionSupport implements ModelDriven<Object>{
                     inputBean.setId("");
                 }
 
-                try {
-                    inputBean.setType(mobfaq.getMobFaqType().getCode());
-                } catch (NullPointerException e) {
-                    inputBean.setType("");
-                }
+//                try {
+//                    inputBean.setType(mobfaq.getMobFaqType().getCode());
+//                } catch (NullPointerException e) {
+//                    inputBean.setType("");
+//                }
 
                 try {
-                    inputBean.setSection(mobfaq.getSection());
+                    inputBean.setSection(mobfaq.getMobFaqSection().getSectionType());
                 } catch (NullPointerException e) {
                     inputBean.setSection("");
                 }

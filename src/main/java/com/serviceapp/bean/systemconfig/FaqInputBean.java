@@ -5,6 +5,7 @@
  */
 package com.serviceapp.bean.systemconfig;
 
+import com.serviceapp.mapping.MobFaqSection;
 import com.serviceapp.mapping.MobFaqType;
 import com.serviceapp.mapping.Status;
 import java.util.Date;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author prathibha_s
  */
 public class FaqInputBean {
+
     /* ---------user inputs data-----  */
 
     private String id;
@@ -22,13 +24,13 @@ public class FaqInputBean {
     private String type;
     private String question;
     private String answer;
-     private String section;
+    private String section;
     private String lastupdateduser;
     private Date lastupdatedtime;
     private Date createdtime;
     /* ---------user inputs data-----  */
 
-    /*--------list data table  ----------*/
+ /*--------list data table  ----------*/
     private List<FaqBean> gridModel;
     private Integer rows = 0;
     private Integer page = 0;
@@ -44,14 +46,14 @@ public class FaqInputBean {
 
     private List<Status> statusList;
     private List<MobFaqType> typeList;
-    
+    private List<MobFaqSection> sectionFaqList;
+
     String pwtooltip = null;
     boolean search = false;
     long fullCount = 0;
     String expirydate = null;
     private String message;
     private String oldvalue;
-    
 
     public String getId() {
         return id;
@@ -276,7 +278,13 @@ public class FaqInputBean {
     public void setOldvalue(String oldvalue) {
         this.oldvalue = oldvalue;
     }
-    
-    
-    
+
+    public List<MobFaqSection> getSectionFaqList() {
+        return sectionFaqList;
+    }
+
+    public void setSectionFaqList(List<MobFaqSection> sectionFaqList) {
+        this.sectionFaqList = sectionFaqList;
+    }
+
 }

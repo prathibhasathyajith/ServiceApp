@@ -26,7 +26,7 @@
                 $('#id').attr('readOnly', false);
                 $('#id').val("");
                 $("#id").css("color", "black");
-                $('#type').val("");
+//                $('#type').val("");
                 $('#section').val("");
                 $('#status').val("");
                 $('#question').val("");
@@ -34,7 +34,7 @@
                 $("#gridtable").jqGrid('setGridParam', {
                     postData: {
                         id: "",
-                        type: "",
+//                        type: "",
                         section: "",
                         status: "",
                         question: "",
@@ -117,7 +117,7 @@
             function searchFAQ() {
                 $('#message').empty();
                 var id = $('#id').val();
-                var type = $('#type').val();
+//                var type = $('#type').val();
                 var section = $('#section').val();
                 var status = $('#status').val();
                 var question = $('#question').val();
@@ -125,7 +125,7 @@
                 $("#gridtable").jqGrid('setGridParam', {
                     postData: {
                         id: id,
-                        type: type,
+//                        type: type,
                         section: section,
                         status: status,
                         question: question,
@@ -171,16 +171,16 @@
                                         <s:textfield name="id" id="id" maxlength="6" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g, ''))" onkeypress="return alpha(event)"/> 
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <label >Type</label>
-                                        <s:select  id="type" list="%{typeList}"  name="type" headerKey=""  headerValue="--Select Type--" listKey="code" listValue="description"  disabled="false" cssClass="form-control" value="%{type}" />
-                                    </div>
-                                </div>
+                                <!--                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label >Type</label>
+                                                                        <!s:select  id="type" list="%{typeList}"  name="type" headerKey=""  headerValue="--Select Type--" listKey="code" listValue="description"  disabled="false" cssClass="form-control" value="%{type}" />
+                                                                    </div>
+                                                                </div>-->
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label >Section</label>
-                                        <s:textfield name="section" id="section" maxlength="20" cssClass="form-control" /> 
+                                        <s:select  id="section" list="%{sectionFaqList}"  name="section" headerKey=""  headerValue="--Select Section--" listKey="sectionType" listValue="description"  disabled="false" cssClass="form-control" value="%{section}" />
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
@@ -189,6 +189,7 @@
                                         <s:select  id="status" list="%{statusList}"  name="status" headerKey=""  headerValue="--Select Status--" listKey="statuscode" listValue="description"  disabled="false" cssClass="form-control" value="%{status}" />
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row"> 
                                 <div class="col-sm-3">
@@ -317,7 +318,7 @@
                         <sjg:gridColumn name="id" index="id" title="Edit" width="30" formatter="editformatter" hidden="#vupdatelink" frozen="false"/>
                         <sjg:gridColumn name="id" index="id" title="Delete" width="50" formatter="deleteformatter" hidden="#vdelete" frozen="false"/>
                         <sjg:gridColumn name="id" index="id" title="ID"  sortable="true" frozen="false"/>
-                        <sjg:gridColumn name="type" index="type" title="Type"  sortable="true"/>
+                        <%--<sjg:gridColumn name="type" index="type" title="Type"  sortable="true"/>--%>
                         <sjg:gridColumn name="section" index="section" title="Section"  sortable="true"/>
                         <sjg:gridColumn name="status" index="status" title="Status"  sortable="true"/>
                         <sjg:gridColumn name="question" index="question" title="Question"  sortable="true"/>

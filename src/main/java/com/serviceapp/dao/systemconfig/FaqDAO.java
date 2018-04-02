@@ -10,6 +10,7 @@ import com.serviceapp.bean.systemconfig.FaqInputBean;
 import com.serviceapp.common.dao.CommonDAO;
 import com.serviceapp.listener.HibernateInit;
 import com.serviceapp.mapping.MobFaq;
+import com.serviceapp.mapping.MobFaqSection;
 import com.serviceapp.mapping.MobFaqType;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
@@ -35,11 +36,11 @@ public class FaqDAO {
             where += "and f.id = '" + inputBean.getId().trim() + "'";
         }
         if (inputBean.getType() != null && !inputBean.getType().trim().isEmpty()) {
-            where += "and f.mobFaqType.code = '" + inputBean.getType().trim() + "'";
+            where += "and f.MobFaqSection.sectionType = '" + inputBean.getType().trim() + "'";
         }
-        if (inputBean.getSection() != null && !inputBean.getSection().trim().isEmpty()) {
-            where += "and lower(f.section) like lower('%" + inputBean.getSection().trim() + "%') ";
-        }
+//        if (inputBean.getSection() != null && !inputBean.getSection().trim().isEmpty()) {
+//            where += "and lower(f.section) like lower('%" + inputBean.getSection().trim() + "%') ";
+//        }
         if (inputBean.getStatus() != null && !inputBean.getStatus().trim().isEmpty()) {
             where += "and f.status.statuscode = '" + inputBean.getStatus().trim() + "'";
         }
@@ -88,14 +89,14 @@ public class FaqDAO {
                     } catch (NullPointerException e) {
                         mobFaqBean.setId("--");
                     }
-                    try {
-                        mobFaqBean.setType(mobFaq.getMobFaqType().getDescription());
-                    } catch (NullPointerException npe) {
-                        mobFaqBean.setType("--");
-                    }
+//                    try {
+//                        mobFaqBean.setType(mobFaq.getMobFaqSection().getDescription());
+//                    } catch (NullPointerException npe) {
+//                        mobFaqBean.setType("--");
+//                    }
 
                     try {
-                        mobFaqBean.setSection(mobFaq.getSection().toString());
+                        mobFaqBean.setSection(mobFaq.getMobFaqSection().getDescription());
                     } catch (NullPointerException e) {
                         mobFaqBean.setSection("--");
                     }
@@ -164,10 +165,10 @@ public class FaqDAO {
             Query query = session.createQuery(sql);
             Iterator itCount = query.iterate();
 
-            MobFaqType mt = (MobFaqType) session.get(MobFaqType.class, faqbean.getType().trim());
-            mobFaq.setMobFaqType(mt);
+            MobFaqSection mt = (MobFaqSection) session.get(MobFaqSection.class, faqbean.getSection().trim());
+            mobFaq.setMobFaqSection(mt);
 
-            mobFaq.setSection(faqbean.getSection());
+//            mobFaq.setSection(faqbean.getSection());
 
             Status st = (Status) session.get(Status.class, faqbean.getStatus().trim());
             mobFaq.setStatus(st);
@@ -182,8 +183,8 @@ public class FaqDAO {
             String sId = String.valueOf(id);
 
             String newValue = sId
-                    + "|" + mobFaq.getMobFaqType().getDescription()
-                    + "|" + mobFaq.getSection()
+                    + "|" + mobFaq.getMobFaqSection().getDescription()
+//                    + "|" + mobFaq.getSection()
                     + "|" + mobFaq.getStatus().getDescription()
                     + "|" + mobFaq.getQuestion()
                     + "|" + mobFaq.getAnswer();
@@ -326,8 +327,8 @@ public class FaqDAO {
             if (mobfaq != null) {
 
                 String oldValue = mobfaq.getId()
-                        + "|" + mobfaq.getMobFaqType().getDescription()
-                        + "|" + mobfaq.getSection()
+                        + "|" + mobfaq.getMobFaqSection().getDescription()
+//                        + "|" + mobfaq.getSection()
                         + "|" + mobfaq.getStatus().getDescription()
                         + "|" + mobfaq.getQuestion()
                         + "|" + mobfaq.getAnswer();
@@ -337,24 +338,25 @@ public class FaqDAO {
                 MobFaqType mobFaqType = new MobFaqType();
                 mobFaqType.setCode(inputBean.getType());
 
-                mobfaq.setSection(inputBean.getSection().trim());
+//                mobfaq.setMobFaqSection(inputBean.getSection().trim());
 
-                mobfaq.setMobFaqType(mobFaqType);
+//                mobfaq.setMobFaqType(mobFaqType);
+                
                 Status st = (Status) session.get(Status.class, inputBean.getStatus().trim());
                 mobfaq.setStatus(st);
 
                 mobfaq.setQuestion(inputBean.getQuestion().trim());
                 mobfaq.setAnswer(inputBean.getAnswer().trim());
 
-                MobFaqType mt = (MobFaqType) session.get(MobFaqType.class, inputBean.getType().trim());
-                mobfaq.setMobFaqType(mt);
+                MobFaqSection mt = (MobFaqSection) session.get(MobFaqSection.class, inputBean.getSection().trim());
+                mobfaq.setMobFaqSection(mt);
 
                 mobfaq.setLastupdateduser(audit.getLastupdateduser());
                 mobfaq.setLastupdatedtime(sysDate);
 
                 String newValue = mobfaq.getId()
-                        + "|" + mobfaq.getMobFaqType().getDescription()
-                        + "|" + mobfaq.getSection()
+                        + "|" + mobfaq.getMobFaqSection().getDescription()
+//                        + "|" + mobfaq.getSection()
                         + "|" + mobfaq.getStatus().getDescription()
                         + "|" + mobfaq.getQuestion()
                         + "|" + mobfaq.getAnswer();
