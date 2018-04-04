@@ -157,10 +157,6 @@
         <jsp:include page="/header.jsp"/>
         <!--nav bar-->
         <jsp:include page="/navbar.jsp"/>
-        <s:div id="divmsg">
-            <s:actionerror theme="jquery"/>
-            <s:actionmessage theme="jquery"/>
-        </s:div>
         <!--body content-->
         <div class="tb-body">
             <s:div id="divmsg">
@@ -314,7 +310,7 @@
             </div>
             <div class="tb-table">
                 <s:url var="listurl" action="listLoginHistory"/>
-                <s:set var="pcaption">${CURRENTPAGE}</s:set>
+                <s:set var="pcaption">Mobile Login History</s:set>
 
                 <sjg:grid
                     id="gridtable"

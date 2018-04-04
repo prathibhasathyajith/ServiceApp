@@ -27,5 +27,5 @@ public class SessionVarlist {
 
     // individual search audit
     public static final String IND_AUDIT_SEARCHBEAN = "INDAUDITSEARCHBEAN";
-
+   
 }

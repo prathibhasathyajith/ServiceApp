@@ -22,5 +22,7 @@ public class PageVarlist {
     public static final String TERMS_AND_CONDITION = "Terms & Conditions";
     public static final String APP_INFO_PAGE = "About Us & Support";
     
+    public static final String CUS_MGT_PAGE = "Customer Management";
+    
     
 }

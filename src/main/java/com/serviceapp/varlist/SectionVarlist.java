@@ -14,4 +14,5 @@ public class SectionVarlist {
     public static final String SYSTEMCONFIGMANAGEMENT = "System Config";
     public static final String USERMANAGEMENT = "User Management";
     public static final String SYSTEM_AUDIT = "System Audit";
+    public static final String CUSTOMERMANAGEMENT = "Customer Management";
 }
