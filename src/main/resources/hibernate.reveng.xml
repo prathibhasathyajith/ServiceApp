@@ -41,7 +41,9 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="service_app"/>
-  <table-filter match-name="mob_faq_section"/>
   <table-filter match-name="status"/>
-  <table-filter match-name="mob_faq"/>
+  <table-filter match-name="user_roles"/>
+  <table-filter match-name="mob_bass_data"/>
+  <table-filter match-name="mob_user"/>
+  <table-filter match-name="mob_suggested_user"/>
 </hibernate-reverse-engineering>

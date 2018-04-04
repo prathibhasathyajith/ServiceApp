@@ -4,8 +4,8 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://35.200.134.107:3306/service_app?autoReconnect=true&amp;useSSL=false</property>
-    <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/service_app?autoReconnect=true&amp;useSSL=false</property>-->
+    <!--<property name="hibernate.connection.url">jdbc:mysql://35.200.134.107:3306/service_app?autoReconnect=true&amp;useSSL=false</property>-->
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/service_app?autoReconnect=true&amp;useSSL=false</property>
     <property name="hibernate.connection.username">TESTUSER</property>
     <property name="hibernate.connection.password">Password@123</property>
     <!--<property name="hibernate.connection.isolation">1</property>-->
@@ -33,5 +33,9 @@
     <mapping class="com.serviceapp.mapping.MobConfiguration"/>
     <mapping class="com.serviceapp.mapping.WebInfo"/>
     <mapping class="com.serviceapp.mapping.MobFaqSection"/>
+    <mapping class="com.serviceapp.mapping.MobBassData"/>
+    <mapping class="com.serviceapp.mapping.MobSuggestedUser"/>
+    <mapping class="com.serviceapp.mapping.MobUser"/>
+    <mapping class="com.serviceapp.mapping.UserRoles"/>
   </session-factory>
 </hibernate-configuration>

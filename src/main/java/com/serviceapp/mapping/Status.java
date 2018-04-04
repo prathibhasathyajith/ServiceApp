@@ -28,6 +28,8 @@ public class Status  implements java.io.Serializable {
      private Set<MobFaq> mobFaqs = new HashSet(0);
      private Set<TransactionType> transactionTypes = new HashSet(0);
      private Set<WebTerms> webTermses = new HashSet(0);
+     private Set<MobSuggestedUser> mobSuggestedUsers = new HashSet(0);
+     private Set<MobUser> mobUsers = new HashSet(0);
 
     public Status() {
     }
@@ -36,7 +38,7 @@ public class Status  implements java.io.Serializable {
     public Status(String statuscode) {
         this.statuscode = statuscode;
     }
-    public Status(String statuscode, String category, String description, Set<Systemuser> systemusers,Set<MobFaq> mobFaqs,Set<TransactionType> transactionTypes,Set<WebTerms> webTermses) {
+    public Status(String statuscode, String category, String description, Set<Systemuser> systemusers,Set<MobFaq> mobFaqs,Set<TransactionType> transactionTypes,Set<WebTerms> webTermses,Set<MobSuggestedUser> mobSuggestedUsers,Set<MobUser> mobUsers) {
        this.statuscode = statuscode;
        this.category = category;
        this.description = description;
@@ -44,6 +46,8 @@ public class Status  implements java.io.Serializable {
        this.mobFaqs = mobFaqs;
        this.transactionTypes = transactionTypes;
        this.webTermses = webTermses;
+       this.mobSuggestedUsers = mobSuggestedUsers;
+       this.mobUsers = mobUsers;
     }
    
      @Id 
@@ -110,6 +114,23 @@ public class Status  implements java.io.Serializable {
     
     public void setWebTermses(Set<WebTerms> webTermses) {
         this.webTermses = webTermses;
+    }
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="status")
+    public Set<MobSuggestedUser> getMobSuggestedUsers() {
+        return this.mobSuggestedUsers;
+    }
+    
+    public void setMobSuggestedUsers(Set<MobSuggestedUser> mobSuggestedUsers) {
+        this.mobSuggestedUsers = mobSuggestedUsers;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="status")
+    public Set<MobUser> getMobUsers() {
+        return this.mobUsers;
+    }
+    
+    public void setMobUsers(Set<MobUser> mobUsers) {
+        this.mobUsers = mobUsers;
     }
 
 

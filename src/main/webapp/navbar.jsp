@@ -40,6 +40,12 @@
                     <li id="sublink_16"><a href="${pageContext.request.contextPath}/viewLoginHistory.action">Mobile Login History</a></li>
                 </ul>
             </div>
+            <div id="link_5" class="link-default">
+                <a href="#">CUSTOMER MGT</a>
+                <ul class="sub-links">
+                    <li id="sublink_25"><a href="${pageContext.request.contextPath}/viewCustomerMgt.action">Customer Management</a></li>
+                </ul>
+            </div>
         </div>
     </aside>
 </div>
