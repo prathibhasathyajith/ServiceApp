@@ -83,51 +83,21 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
         System.out.println("called CustomerMgtAction : update");
         String retType = "message";
 
-        BufferedImage readImage = null;
-        File destFile;
-        ServletContext context = ServletActionContext.getServletContext();
-        String destPath = context.getRealPath("/resouces/images");
+//        BufferedImage readImage = null;
+//        File destFile;
+//        ServletContext context = ServletActionContext.getServletContext();
+//        String destPath = context.getRealPath("/resouces/images");
 
         try {
-//            if (inputBean.getUserId() != null && !inputBean.getUserId().isEmpty()) {
+            if (inputBean.getUserId() != null && !inputBean.getUserId().isEmpty()) {
 
-            String message = "";
-
-//                if (message.isEmpty()) {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            CustomerMgtDAO dao = new CustomerMgtDAO();
-
-            Systemaudit audit = CommonDAO.makeAudittrace(request, TaskVarlist.UPDATE_TASK, PageVarlist.CUS_MGT_PAGE, SectionVarlist.CUSTOMERMANAGEMENT, "User id " + inputBean.getUserId() + " updated", null, null, null);
-
-            if (inputBean.getOwnImageFileName() != null) {
-
-                message = this.getImageLogo(this.inputBean.getOwnImageFileName()); // get file
+                String message = this.validateInputs();
 
                 if (message.isEmpty()) {
+                    HttpServletRequest request = ServletActionContext.getRequest();
+                    CustomerMgtDAO dao = new CustomerMgtDAO();
 
-                    destFile = new File(destPath, inputBean.getOwnImageFileName() + ".jpg");
-                    FileUtils.copyFile(inputBean.getOwnImage(), destFile);
-                    readImage = ImageIO.read(new File(destPath, inputBean.getOwnImageFileName() + ".jpg"));
-
-                    int height = readImage.getHeight();
-                    int width = readImage.getWidth();
-
-                    System.out.println("height --- " + height);
-                    System.out.println("width --- " + width);
-
-//                            System.err.println(height + " " + width);
-//                            if (height != 92) {
-//                                message = "Logo height should be 92 pixels";
-//                            }
-//                            if (width > 92) {
-//                                message = "Logo width should be less than 280 pixels";
-//                            }
-                }
-
-//                    } else if (dao.isexsitsImg(inputBean.getCode())) {
-////                        message = MessageVarlist.INSTITUTE_MGT_EMPTY_LOGO;
-//                    }
-                if (message.isEmpty()) {
+                    Systemaudit audit = CommonDAO.makeAudittrace(request, TaskVarlist.UPDATE_TASK, PageVarlist.CUS_MGT_PAGE, SectionVarlist.CUSTOMERMANAGEMENT, "User id " + inputBean.getUserId() + " updated", null, null, null);
 
                     message = dao.updateCustomer(inputBean, audit);
 
@@ -136,13 +106,29 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
                     } else {
                         addActionError(message);
                     }
+//
+//                    destFile = new File(destPath, inputBean.getOwnImageFileName() + ".jpg");
+//                    FileUtils.copyFile(inputBean.getOwnImage(), destFile);
+//                    readImage = ImageIO.read(new File(destPath, inputBean.getOwnImageFileName() + ".jpg"));
+//
+//                    int height = readImage.getHeight();
+//                    int width = readImage.getWidth();
+//
+//                    System.out.println("height --- " + height);
+//                    System.out.println("width --- " + width);
+//
+//                    System.err.println(height + " " + width);
+//                    if (height != 92) {
+//                        message = "Logo height should be 92 pixels";
+//                    }
+//                    if (width > 92) {
+//                        message = "Logo width should be less than 280 pixels";
+//                    }
                 } else {
                     addActionError(message);
                 }
-
-//                } else {
-//                    addActionError(message);
-//                }
+            } else {
+                addActionError(MessageVarlist.COMMON_NOT_EXISTS);
             }
         } catch (Exception ex) {
             Logger.getLogger(CustomerMgtAction.class.getName()).log(Level.SEVERE, null, ex);
@@ -211,7 +197,7 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
         try {
             CommonDAO dao = new CommonDAO();
             inputBean.setStatusList(dao.getStatusListCus());
-            
+
             HttpSession session = ServletActionContext.getRequest().getSession(false);
             if (session.getAttribute(SessionVarlist.MIN_PASSWORD_CHANGE_PERIOD) != null && session.getAttribute(SessionVarlist.ONLY_SHOW_ONTIME) != null) {
                 if ((Integer) session.getAttribute(SessionVarlist.ONLY_SHOW_ONTIME) == 0) {
@@ -264,29 +250,58 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
 
     private String validateInputs() {
         String message = "";
-        if (inputBean.getNic() == null || inputBean.getNic().trim().isEmpty()) {
-            message = MessageVarlist.TXN_TYPE_MGT_EMPTY_TT_CODE;
+        if (inputBean.getUserId() == null || inputBean.getUserId().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_USERID;
         }
-//        else if (inputBean.getDescription() == null || inputBean.getDescription().trim().isEmpty()) {
-//            message = MessageVarlist.TXN_TYPE_MGT_EMPTY_DESCRIPTION;
-//        } else if (inputBean.getStatus() != null && inputBean.getStatus().isEmpty()) {
-//            message = MessageVarlist.TXN_TYPE_MGT_EMPTY_STATUS;
-//        } else if (inputBean.getDescription_receiver() != null && inputBean.getDescription_receiver().isEmpty()) {
-//            message = MessageVarlist.TXN_TYPE_MGT_EMPTY_DESCRIPTION_RECIEVE;
-//        } else {
-//            if (!Validation.isSpecailCharacter(inputBean.getTransactiontypecode())) {
-//                message = MessageVarlist.TXN_TYPE_MGT_ERROR_TT_CODE_INVALID;
-//            } else if (!Validation.isSpecailCharacter(inputBean.getDescription())) {
-//                message = MessageVarlist.TXN_TYPE_MGT_ERROR_DESC_INVALID;
-//            }
-//        }
+        if (inputBean.getFirstName() == null || inputBean.getFirstName().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_FIRSTNAME;
+        }
+        if (inputBean.getLastName() == null || inputBean.getLastName().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_LASTNAME;
+        }
+        if (inputBean.getEmail() == null || inputBean.getEmail().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_EMAIL;
+        }
+        if (inputBean.getNic() == null || inputBean.getNic().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_NIC;
+        }
+        if (inputBean.getAddress() == null || inputBean.getAddress().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_ADDRESS;
+        }
+        if (inputBean.getArea() == null || inputBean.getArea().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_AREA;
+        }
+        if (inputBean.getStatus() == null || inputBean.getStatus().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_STATUS;
+        }
+
+        String messageImg = this.getImageLogo(this.inputBean.getOwnImageFileName());
+        if (!messageImg.isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_USERIMG;
+        }
+
+        messageImg = this.getImageLogo(this.inputBean.getPrImageFileName());
+        if (!messageImg.isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_POLICEREPORT;
+        }
+
+        messageImg = this.getImageLogo(this.inputBean.getBcImageFileName());
+        if (!messageImg.isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_BIRTHCERT;
+        }
+
+        messageImg = this.getImageLogo(this.inputBean.getqImageFileName());
+        if (!messageImg.isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_QUALIFAYNOTE;
+        }
+
         return message;
     }
 
     public String List() {
         System.out.println("called CustomerMgtAction: List");
         try {
-            
+
             int rows = inputBean.getRows();
             int page = inputBean.getPage();
             int to = (rows * page);

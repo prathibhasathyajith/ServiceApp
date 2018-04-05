@@ -34,15 +34,45 @@
 //                        readURL(this);
 //                    });
 
-                    $(".upload-button").on('click', function () {
-                        $(".file-upload").click();
+                    $("#own_img").on('click', function () {
+                        $("#ownImage").click();
+                    });
+                    $("#police_report").on('click', function () {
+                        $("#prImage").click();
+                    });
+                    $("#birth_cert").on('click', function () {
+                        $("#bcImage").click();
+                    });
+                    $("#qualifiy_img").on('click', function () {
+                        $("#qImage").click();
                     });
                 });
 
                 function changeOwnImageEdit() {
-                    $("#ownImageEdit").change(function (event) {
+                    $("#ownImage").change(function (event) {
                         var tmppath = URL.createObjectURL(event.target.files[0]);
                         $("#own_edit").attr("src", tmppath);
+                    });
+                }
+
+                function changePrImageEdit() {
+                    $("#prImage").change(function (event) {
+                        var tmppath = URL.createObjectURL(event.target.files[0]);
+                        $("#pr_edit").attr("src", tmppath);
+                    });
+                }
+
+                function changeBcImageEdit() {
+                    $("#bcImage").change(function (event) {
+                        var tmppath = URL.createObjectURL(event.target.files[0]);
+                        $("#bc_edit").attr("src", tmppath);
+                    });
+                }
+
+                function changeQImageEdit() {
+                    $("#qImage").change(function (event) {
+                        var tmppath = URL.createObjectURL(event.target.files[0]);
+                        $("#q_edit").attr("src", tmppath);
                     });
                 }
                 function editCusMgt() {
@@ -82,30 +112,18 @@
                 <div class="containe-fluid">
                     <s:form id="cusmgt" method="post" action="CustomerMgt" theme="simple" cssClass="form" enctype="multipart/form-data">
                         <div class="row" >
-                            <!--                            <div class="col-sm-8">
-                                                            <div class="form-group">
-                                                                <span style="color: red">*</span><label >User Image</label>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3">
-                                                                        <img class="image_card" src="data:image/jpeg;base64,<!s:property value="editOwnImg"/>" id="own_edit" name="editOwnImg">
-                                                                </div>                               
-                                                                <div class="col-sm-5" style="margin-top: 40px;">
-                                                                    <!s:file name="ownImage" id="ownImageEdit" onclick="changeOwnImageEdit()"/>                               
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>            -->
-
                             <div class="col-sm-offset-5 col-sm-2">
-                                <div class="circle upload-button">
-                                    
+                                <div class="circle upload-button" id="own_img">  
                                     <img class="profile-pic " src="data:image/jpeg;base64,<s:property value="editOwnImg"/>" id="own_edit" name="editOwnImg">
                                 </div>
                                 <div class="p-image">
-<!--                                    <label>selfie</label>-->
-                                    <s:file name="ownImage" id="ownImageEdit" onclick="changeOwnImageEdit()" cssClass="file-upload" accept="image/*" /> 
+                                    <span style="color: red">*</span><label>User Image</label>
+                                    <s:file name="ownImage" id="ownImage" onclick="changeOwnImageEdit()" cssClass="file-upload" accept="image/*" /> 
                                 </div>
                             </div>
+                        </div>
+                        <div class="row row_popup">
+                            <div class="horizontal_line_popup"></div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
@@ -167,6 +185,35 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-3">
+                                <div class="squar upload-button" id="police_report">  
+                                    <img class="profile-pic " src="data:image/jpeg;base64,<s:property value="editPrImg"/>" id="pr_edit" name="editPrImg">
+                                </div>
+                                <div class="p-image" style="text-align: left;margin: 0 15px;">
+                                    <span style="color: red">*</span><label>Police Report</label>
+                                    <s:file name="prImage" id="prImage" onclick="changePrImageEdit()" cssClass="file-upload" accept="image/*" /> 
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-1 col-sm-3">
+                                <div class="squar upload-button" id="birth_cert">  
+                                    <img class="profile-pic " src="data:image/jpeg;base64,<s:property value="editBcImg"/>" id="bc_edit" name="editBcImg">
+                                </div>
+                                <div class="p-image" style="text-align: left;margin: 0 15px;">
+                                    <span style="color: red">*</span><label>Birth Certificate</label>
+                                    <s:file name="bcImage" id="bcImage" onclick="changeBcImageEdit()" cssClass="file-upload" accept="image/*" /> 
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-1 col-sm-3">
+                                <div class="squar upload-button" id="qualifiy_img">  
+                                    <img class="profile-pic " src="data:image/jpeg;base64,<s:property value="editQImg"/>" id="q_edit" name="editQImg">
+                                </div>
+                                <div class="p-image" style="text-align: left;margin: 0 0px;">
+                                    <span style="color: red">*</span><label>Qualification Details</label>
+                                    <s:file name="qImage" id="qImage" onclick="changeQImageEdit()" cssClass="file-upload" accept="image/*" /> 
+                                </div>
+                            </div>
+                        </div>
                         <div class="row row_popup">
                             <div class="horizontal_line_popup"></div>
                         </div>
@@ -191,7 +238,7 @@
                                         button="true"
                                         value="Update"
                                         href="%{updateturl}"
-                                        targets="divmsg"
+                                        targets="divmsgupdate"
                                         id="updateButton"
                                         cssClass="uinew-button-submit" 
                                         />  

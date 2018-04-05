@@ -228,7 +228,7 @@
                     onOpenTopics="openviewtasktopage" 
                     loadingText="Loading .."
                     width="900"
-                    height="600"
+                    height="700"
                     dialogClass= "dialogclass"
                     />
                 <sj:dialog                                     

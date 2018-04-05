@@ -9,7 +9,9 @@ import com.serviceapp.bean.cusmanagement.CustomerMgtBean;
 import com.serviceapp.bean.cusmanagement.CustomerMgtInputBean;
 import com.serviceapp.common.dao.CommonDAO;
 import com.serviceapp.listener.HibernateInit;
+import com.serviceapp.mapping.MobBassData;
 import com.serviceapp.mapping.MobUser;
+import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.varlist.MessageVarlist;
 import java.io.File;
@@ -35,6 +37,8 @@ public class CustomerMgtDAO {
         String message = "";
         String imageName = "";
 
+        String oldValueBass = "";
+        String newValueBass = "";
         try {
 
             CommonDAO commonDAO = new CommonDAO();
@@ -42,20 +46,182 @@ public class CustomerMgtDAO {
             txn = session.beginTransaction();
             Date sysDate = commonDAO.getSystemDate(session);
 
-            MobUser u = (MobUser) session.get(MobUser.class, Integer.parseInt("32"));
+            MobUser u = (MobUser) session.get(MobUser.class, Integer.parseInt(inputBean.getUserId()));
+            MobBassData u2 = (MobBassData) session.get(MobBassData.class, Integer.parseInt(inputBean.getUserId()));
+            MobBassData bassData = new MobBassData();
+
+            // if true update bass table / false inset bass table
+            if (u2 != null) {
+
+                oldValueBass = "|" + u2.getAddress()
+                        + "|" + u2.getArea()
+                        + "|" + u2.getDistrict();
+
+                u2.setAddress(inputBean.getAddress());
+                u2.setArea(inputBean.getArea());
+                u2.setDistrict(inputBean.getDistrict());
+
+                try {
+                    if (inputBean.getPrImage().length() != 0) {
+
+                        imageName = inputBean.getPrImageFileName();
+
+                        File PrImage = inputBean.getPrImage();
+                        byte[] bLogoWebFile = new byte[(int) PrImage.length()];
+                        try {
+                            fileInputStream = new FileInputStream(PrImage);
+                            fileInputStream.read(bLogoWebFile);
+                            fileInputStream.close();
+                            u2.setPoliceReport(bLogoWebFile);
+                        } catch (Exception ex) {
+
+                        }
+                    }
+
+                    if (inputBean.getBcImage().length() != 0) {
+
+                        imageName = inputBean.getBcImageFileName();
+
+                        File BcImageFile = inputBean.getBcImage();
+                        byte[] bLogoWebFile = new byte[(int) BcImageFile.length()];
+                        try {
+                            fileInputStream = new FileInputStream(BcImageFile);
+                            fileInputStream.read(bLogoWebFile);
+                            fileInputStream.close();
+                            u2.setBirthCert(bLogoWebFile);
+                        } catch (Exception ex) {
+
+                        }
+                    }
+
+                    if (inputBean.getqImage().length() != 0) {
+
+                        imageName = inputBean.getqImageFileName();
+
+                        File QImage = inputBean.getqImage();
+                        byte[] bLogoWebFile = new byte[(int) QImage.length()];
+                        try {
+                            fileInputStream = new FileInputStream(QImage);
+                            fileInputStream.read(bLogoWebFile);
+                            fileInputStream.close();
+                            u2.setQualificationImg(bLogoWebFile);
+                        } catch (Exception ex) {
+
+                        }
+                    }
+                } catch (NullPointerException ex) {
+                } finally {
+                    try {
+                        if (fileInputStream != null) {
+                            fileInputStream.close();
+                        } else {
+                        }
+                    } catch (Exception e) {
+                        throw e;
+                    }
+                }
+                
+                newValueBass = "|" + u2.getAddress()
+                        + "|" + u2.getArea()
+                        + "|" + u2.getDistrict();
+                
+                session.update(u2);
+
+            } else {
+                oldValueBass = "";
+
+                bassData.setUserId(Integer.parseInt(inputBean.getUserId()));
+                bassData.setAddress(inputBean.getAddress());
+                bassData.setArea(inputBean.getArea());
+                bassData.setDistrict(inputBean.getDistrict());
+
+                try {
+                    if (inputBean.getPrImage().length() != 0) {
+
+                        imageName = inputBean.getPrImageFileName();
+
+                        File PrImage = inputBean.getPrImage();
+                        byte[] bLogoWebFile = new byte[(int) PrImage.length()];
+                        try {
+                            fileInputStream = new FileInputStream(PrImage);
+                            fileInputStream.read(bLogoWebFile);
+                            fileInputStream.close();
+                            bassData.setPoliceReport(bLogoWebFile);
+                        } catch (Exception ex) {
+
+                        }
+                    }
+
+                    if (inputBean.getBcImage().length() != 0) {
+
+                        imageName = inputBean.getBcImageFileName();
+
+                        File BcImageFile = inputBean.getBcImage();
+                        byte[] bLogoWebFile = new byte[(int) BcImageFile.length()];
+                        try {
+                            fileInputStream = new FileInputStream(BcImageFile);
+                            fileInputStream.read(bLogoWebFile);
+                            fileInputStream.close();
+                            bassData.setBirthCert(bLogoWebFile);
+                        } catch (Exception ex) {
+
+                        }
+                    }
+
+                    if (inputBean.getqImage().length() != 0) {
+
+                        imageName = inputBean.getqImageFileName();
+
+                        File QImage = inputBean.getqImage();
+                        byte[] bLogoWebFile = new byte[(int) QImage.length()];
+                        try {
+                            fileInputStream = new FileInputStream(QImage);
+                            fileInputStream.read(bLogoWebFile);
+                            fileInputStream.close();
+                            bassData.setQualificationImg(bLogoWebFile);
+                        } catch (Exception ex) {
+
+                        }
+                    }
+                } catch (NullPointerException ex) {
+                } finally {
+                    try {
+                        if (fileInputStream != null) {
+                            fileInputStream.close();
+                        } else {
+                        }
+                    } catch (Exception e) {
+                        throw e;
+                    }
+                }
+                
+                newValueBass = "|" + u2.getAddress()
+                        + "|" + u2.getArea()
+                        + "|" + u2.getDistrict();
+                
+                session.update(bassData);
+            }
 
             if (u != null) {
 
-//                String oldValue = u.getCode()
-//                        + "|" + u.getName()
-//                        + "|" + u.getStatus().getDescription()
-//                        + "|" + u.getColour();
-//
-//                u.setName(inputBean.getName().trim());
-//                u.setColour(inputBean.getColour().trim());
-                /**
-                 * insert web logo
-                 */
+                String oldValue = u.getId()
+                        + "|" + u.getFirstName()
+                        + "|" + u.getLastName()
+                        + "|" + u.getEmail()
+                        + "|" + u.getNic()
+                        + oldValueBass
+                        + "|" + u.getStatus().getDescription();
+
+                u.setFirstName(inputBean.getFirstName());
+                u.setLastName(inputBean.getLastName());
+                u.setFirstName(inputBean.getFirstName());
+                u.setEmail(inputBean.getEmail());
+                u.setNic(inputBean.getNic());
+
+                Status st = (Status) session.get(Status.class, inputBean.getStatus().trim());
+                u.setStatus(st);
+
+                // user image
                 try {
                     if (inputBean.getOwnImage().length() != 0) {
 
@@ -83,25 +249,25 @@ public class CustomerMgtDAO {
                         throw e;
                     }
                 }
+                
+                u.setCreatedTime(sysDate);
 
-//                Status st = (Status) session.get(Status.class, inputBean.getStatus().trim());
-//                u.setStatus(st);
-//
-//                u.setLastupdateduser(audit.getLastupdateduser());
-//                u.setLastupdatedtime(sysDate);
-//
-//                String newValue = imageName
-//                        + "|" + u.getCode()
-//                        + "|" + u.getName()
-//                        + "|" + u.getStatus().getDescription()
-//                        + "|" + u.getColour();
-//
-//                audit.setOldvalue(oldValue);
-//                audit.setNewvalue(newValue);
-//                audit.setCreatetime(sysDate);
-//                audit.setLastupdatedtime(sysDate);
-//
-//                session.save(audit);
+                String newValue = u.getId()
+                        + "|" + u.getFirstName()
+                        + "|" + u.getLastName()
+                        + "|" + u.getEmail()
+                        + "|" + u.getNic()
+                        + newValueBass
+                        + "|" + u.getStatus().getDescription();
+
+                audit.setOldvalue(oldValue);
+                audit.setNewvalue(newValue);
+                audit.setCreatetime(sysDate);
+                audit.setLastupdatedtime(sysDate);
+                
+                
+                session.save(audit);
+                
                 session.update(u);
 
                 txn.commit();
@@ -199,7 +365,7 @@ public class CustomerMgtDAO {
                     } catch (Exception e) {
                         bean.setMobile("--");
                     }
-                    
+
                     try {
                         bean.setEmail(cus.getEmail());
                     } catch (Exception e) {

@@ -181,4 +181,20 @@ public class MessageVarlist {
     public static final String APPINFO_EMPTY_DESCRIPTION = "Description cannot be empty";
     public static final String APPINFO_EMPTY_CODE = "Code cannot be empty";
     
+    //================== customer ========================
+    public static final String CUSTOMER_MGT_EMPTY_USERID = "User id cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_FIRSTNAME = "First name cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_LASTNAME = "Last name cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_NIC = "NIC cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_EMAIL = "Email cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_STATUS = "Status cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_AREA = "Area cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_DISTRICT = "District cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_ADDRESS = "Address cannot be empty";
+    
+    public static final String CUSTOMER_MGT_EMPTY_USERIMG = "User image cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_POLICEREPORT = "Police report image cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_BIRTHCERT = "Birth certificate image cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_QUALIFAYNOTE = "Qualification detail image cannot be empty";
+    
 }

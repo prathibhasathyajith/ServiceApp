@@ -206,6 +206,19 @@
     .circle:hover{
         box-shadow: 0 0 7px 4px #808080c2,inset 0 0 3px 0px #3e4448;
     }
+
+    .squar {
+        border-radius: 0px !important;
+        overflow: hidden;
+        width: 116px;
+        height: 116px;
+        border: 8px solid #ffffff;
+        cursor: pointer;
+        box-shadow: 0 0 7px 1px #808080c2, inset 0 0 3px 0px #3e4448;
+    }
+    .squar:hover{
+        box-shadow: 0 0 7px 4px #808080c2,inset 0 0 3px 0px #3e4448;
+    }
     img {
         max-width: 100%;
         height: auto;
@@ -226,5 +239,16 @@
         transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
         color: #999;
     }
+    .horizontal_line_popup{
+        height:0;
+        width:auto;
+        border:0;
+        border-bottom:2px;
+        border-style: solid;
+        border-color: #e6e5e5;
+        margin-top: 10px;
+        margin-bottom: 10px;  
+    }
+
 </style>
 
