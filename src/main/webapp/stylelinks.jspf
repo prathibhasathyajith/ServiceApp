@@ -174,3 +174,57 @@
 <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/fullscreen.min.js"></script>
 <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/quick_insert.min.js"></script>
 <script type="text/javascript" src=" ${pageContext.request.contextPath}/resources/froala/js/plugins/quote.min.js"></script>
+
+
+
+
+
+
+<style>
+    body {
+        background-color: #efefef;
+    }
+
+    .profile-pic {
+        max-width: 200px;
+        max-height: 200px;
+        display: block;
+    }
+
+    .file-upload {
+        display: none !important;
+    }
+    .circle {
+        border-radius: 1000px !important;
+        overflow: hidden;
+        width: 116px;
+        height: 116px;
+        border: 8px solid #ffffff;
+        cursor: pointer;
+        box-shadow: 0 0 7px 1px #808080c2, inset 0 0 3px 0px #3e4448;
+    }
+    .circle:hover{
+        box-shadow: 0 0 7px 4px #808080c2,inset 0 0 3px 0px #3e4448;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .p-image {
+        text-align: center;
+        font-weight: bold;
+        color: #666666;
+    }
+    .p-image:hover {
+        transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    }
+    .upload-button {
+        font-size: 1.2em;
+    }
+
+    .upload-button:hover {
+        transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+        color: #999;
+    }
+</style>
+

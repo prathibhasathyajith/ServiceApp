@@ -5,8 +5,6 @@
  */
 package com.serviceapp.common.dao;
 
-import com.serviceapp.bean.systemconfig.TermsInputBean;
-import com.serviceapp.bean.systemconfig.TermsVersionBean;
 import com.serviceapp.listener.HibernateInit;
 import com.serviceapp.mapping.MobFaqSection;
 import com.serviceapp.mapping.Status;
@@ -23,11 +21,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.security.MessageDigest;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -311,6 +307,28 @@ public class CommonDAO {
             String sql = "from Status as s where s.category=:statuscategorycode order by Upper(s.description) asc";
             Query query = session.createQuery(sql).setString(
                     "statuscategorycode", statusCode);
+            statusList = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return statusList;
+    }
+    
+    public List<Status> getStatusListCus()throws Exception {
+
+        List<Status> statusList = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from Status as s where s.statuscode in ('ACT','INIT','DEACT') order by Upper(s.description) asc";
+            Query query = session.createQuery(sql);
             statusList = query.list();
         } catch (Exception e) {
             throw e;

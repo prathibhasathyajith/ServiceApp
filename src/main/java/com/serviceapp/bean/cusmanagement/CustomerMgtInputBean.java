@@ -33,6 +33,8 @@ public class CustomerMgtInputBean {
     private String email;
     private String lastName;
 
+    private String message;
+
     private File ownImage; // selfie image
     private File prImage; // police report
     private File bcImage; // birth cert
@@ -82,6 +84,7 @@ public class CustomerMgtInputBean {
     private String lnameSearch;
     private String emailSearch;
     private String nicSearch;
+    private String statusSearch;
     private String fdate;
     private String tdade;
     private boolean search;
@@ -180,6 +183,14 @@ public class CustomerMgtInputBean {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public File getOwnImage() {
@@ -512,6 +523,14 @@ public class CustomerMgtInputBean {
 
     public void setNicSearch(String nicSearch) {
         this.nicSearch = nicSearch;
+    }
+
+    public String getStatusSearch() {
+        return statusSearch;
+    }
+
+    public void setStatusSearch(String statusSearch) {
+        this.statusSearch = statusSearch;
     }
 
     public String getFdate() {
