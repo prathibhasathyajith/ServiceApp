@@ -342,6 +342,28 @@ public class CommonDAO {
         }
         return statusList;
     }
+    
+    public List<Status> getStatusListCus2()throws Exception {
+
+        List<Status> statusList = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from Status as s where s.statuscode in ('ACT','INIT') order by Upper(s.description) asc";
+            Query query = session.createQuery(sql);
+            statusList = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return statusList;
+    }
 
     public static String mpiMd5(String value) throws Exception {
         MessageDigest m = MessageDigest.getInstance("MD5");

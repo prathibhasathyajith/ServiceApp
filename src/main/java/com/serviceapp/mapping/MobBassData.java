@@ -65,7 +65,7 @@ public class MobBassData  implements java.io.Serializable {
         this.userId = userId;
     }
 
-@OneToOne(fetch=FetchType.LAZY)@PrimaryKeyJoinColumn
+@OneToOne(fetch=FetchType.EAGER)@PrimaryKeyJoinColumn
     public MobUser getMobUser() {
         return this.mobUser;
     }

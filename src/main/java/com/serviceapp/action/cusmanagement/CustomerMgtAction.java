@@ -15,6 +15,7 @@ import static com.serviceapp.common.dao.CommonDAO.checkEmptyorNullString;
 import com.serviceapp.common.dao.Validation;
 import com.serviceapp.dao.cusmanagement.CustomerMgtDAO;
 import com.serviceapp.dao.systemaudit.SystemAuditDAO;
+import com.serviceapp.mapping.MobBassData;
 import com.serviceapp.mapping.MobUser;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.varlist.CommonVarlist;
@@ -87,7 +88,6 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
 //        File destFile;
 //        ServletContext context = ServletActionContext.getServletContext();
 //        String destPath = context.getRealPath("/resouces/images");
-
         try {
             if (inputBean.getUserId() != null && !inputBean.getUserId().isEmpty()) {
 
@@ -139,11 +139,42 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
 
     public String find() throws Exception {
         System.out.println("called CustomerMgtAction : find");
-        CustomerMgtDAO dao = new CustomerMgtDAO();
-        MobUser mu = dao.findMobUserById(32);
+        MobUser mb = null;
+        MobBassData mbb = null;
+        try {
+            if (inputBean.getUserId() != null && !inputBean.getUserId().isEmpty()) {
 
-        inputBean.setEditOwnImage(mu.getImage());
-        return "list";
+                CustomerMgtDAO dao = new CustomerMgtDAO();
+
+                mb = dao.findCustomerById(inputBean.getUserId());
+                mbb = dao.findCustomerBassById(inputBean.getUserId());
+
+                inputBean.setFirstName(mb.getFirstName());
+                inputBean.setLastName(mb.getLastName());
+                inputBean.setMobile(mb.getMobile());
+                inputBean.setEmail(mb.getEmail());
+                inputBean.setNic(mb.getNic());
+                inputBean.setStatus(mb.getStatus().getStatuscode());
+                inputBean.setEditOwnImage(mb.getImage());
+
+                if (mbb != null) {
+                    inputBean.setAddress(mbb.getAddress());
+                    inputBean.setArea(mbb.getArea());
+                    inputBean.setDistrict(mbb.getDistrict());
+                    inputBean.setEditPrImage(mbb.getPoliceReport());
+                    inputBean.setEditBcImage(mbb.getBirthCert());
+                    inputBean.setEditQlImage(mbb.getQualificationImg());
+                }
+
+            } else {
+                inputBean.setMessage("Empty Customer id.");
+            }
+        } catch (Exception ex) {
+            inputBean.setMessage("Customer id  " + MessageVarlist.COMMON_ERROR_PROCESS);
+            Logger.getLogger(CustomerMgtAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return "find";
     }
 
     public String getImageLogo(String file) {
@@ -157,94 +188,88 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
     }
 
     public String detail() {
-//        System.out.println("called CustomerMgtAction : detail");
-//        MobUser tt = null;
-//        try {
-//            if (inputBean.getUserId()!= null && !inputBean.getUserId().isEmpty()) {
-//
-//                CustomerMgtDAO dao = new CustomerMgtDAO();
-//                CommonDAO commonDAO = new CommonDAO();
-//                inputBean.setStatusList(commonDAO.getDefultStatusList(CommonVarlist.STATUS_CATEGORY_GENERAL));
-//
-//                tt = dao.findCustomerById(inputBean.getUserId());
-//
-//                inputBean.setTransactiontypecode(tt.getTypecode());
-//                inputBean.setDescription(tt.getDescription());
-//                inputBean.setStatus(tt.getStatus().getStatuscode());
-//
-//                try {
-//                    inputBean.setDescription_receiver(tt.getDescriptionReceiver());
-//                } catch (Exception e) {
-//                    inputBean.setDescription_receiver("");
-//                }
-//                inputBean.setOldvalue(inputBean.getTransactiontypecode() + "|" + inputBean.getDescription() + "|" + inputBean.getStatus());
-//
-//            } else {
-//                inputBean.setMessage("Empty TransactionType id.");
-//            }
-//        } catch (Exception ex) {
-//            inputBean.setMessage("TransactionType id  " + MessageVarlist.COMMON_ERROR_PROCESS);
-//            Logger.getLogger(TransactionTypeAction.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        System.out.println("called CustomerMgtAction : detail");
+        MobUser mb = null;
+        MobBassData mbb = null;
+        try {
+            if (inputBean.getUserId() != null && !inputBean.getUserId().isEmpty()) {
+
+                CustomerMgtDAO dao = new CustomerMgtDAO();
+                CommonDAO commonDAO = new CommonDAO();
+                inputBean.setStatusList(commonDAO.getStatusListCus());
+
+                mb = dao.findCustomerById(inputBean.getUserId());
+                mbb = dao.findCustomerBassById(inputBean.getUserId());
+
+                inputBean.setFirstName(mb.getFirstName());
+                inputBean.setLastName(mb.getLastName());
+                inputBean.setMobile(mb.getMobile());
+                inputBean.setEmail(mb.getEmail());
+                inputBean.setNic(mb.getNic());
+                inputBean.setStatus(mb.getStatus().getStatuscode());
+                inputBean.setEditOwnImage(mb.getImage());
+
+                if (mbb != null) {
+                    inputBean.setAddress(mbb.getAddress());
+                    inputBean.setArea(mbb.getArea());
+                    inputBean.setDistrict(mbb.getDistrict());
+                    inputBean.setEditPrImage(mbb.getPoliceReport());
+                    inputBean.setEditBcImage(mbb.getBirthCert());
+                    inputBean.setEditQlImage(mbb.getQualificationImg());
+                }
+
+            } else {
+                inputBean.setMessage("Empty Customer id.");
+            }
+        } catch (Exception ex) {
+            inputBean.setMessage("Customer id  " + MessageVarlist.COMMON_ERROR_PROCESS);
+            Logger.getLogger(CustomerMgtAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         return "detail";
 
     }
 
-    public String ViewPopup() {
-        String result = "viewpopup";
-        System.out.println("called CustomerMgtAction : ViewPopup");
+    public String viewDetail() {
+        String result = "viewdetail";
+        System.out.println("called CustomerMgtAction : viewDetail");
+        MobUser mb = null;
+        MobBassData mbb = null;
         try {
-            CommonDAO dao = new CommonDAO();
-            inputBean.setStatusList(dao.getStatusListCus());
+            if (inputBean.getUserId() != null && !inputBean.getUserId().isEmpty()) {
 
-            HttpSession session = ServletActionContext.getRequest().getSession(false);
-            if (session.getAttribute(SessionVarlist.MIN_PASSWORD_CHANGE_PERIOD) != null && session.getAttribute(SessionVarlist.ONLY_SHOW_ONTIME) != null) {
-                if ((Integer) session.getAttribute(SessionVarlist.ONLY_SHOW_ONTIME) == 0) {
-                    session.setAttribute(SessionVarlist.ONLY_SHOW_ONTIME, 1);
-                    addActionError((String) session.getAttribute(SessionVarlist.MIN_PASSWORD_CHANGE_PERIOD));
+                CustomerMgtDAO dao = new CustomerMgtDAO();
+                CommonDAO commonDAO = new CommonDAO();
+                inputBean.setStatusList(commonDAO.getStatusListCus());
+
+                mb = dao.findCustomerById(inputBean.getUserId());
+                mbb = dao.findCustomerBassById(inputBean.getUserId());
+
+                inputBean.setFirstName(mb.getFirstName());
+                inputBean.setLastName(mb.getLastName());
+                inputBean.setMobile(mb.getMobile());
+                inputBean.setEmail(mb.getEmail());
+                inputBean.setNic(mb.getNic());
+                inputBean.setStatus(mb.getStatus().getDescription());
+                inputBean.setEditOwnImage(mb.getImage());
+
+                if (mbb != null) {
+                    inputBean.setAddress(mbb.getAddress());
+                    inputBean.setArea(mbb.getArea());
+                    inputBean.setDistrict(mbb.getDistrict());
+                    inputBean.setEditPrImage(mbb.getPoliceReport());
+                    inputBean.setEditBcImage(mbb.getBirthCert());
+                    inputBean.setEditQlImage(mbb.getQualificationImg());
                 }
-            }
 
-            System.out.println("called CustomerMgtAction :viewpopup");
+            } else {
+                inputBean.setMessage("Empty Customer id.");
+            }
 
         } catch (Exception ex) {
             addActionError("CustomerMgtAction " + MessageVarlist.COMMON_ERROR_PROCESS);
             Logger.getLogger(CustomerMgtAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return result;
-    }
-
-    public String Add() {
-        System.out.println("called CustomerMgtAction : Add");
-        String result = "message";
-//        try {
-//            HttpServletRequest request = ServletActionContext.getRequest();
-//            TransactionTypeDAO dao = new TransactionTypeDAO();
-//            String message = this.validateInputs();
-//
-//            if (message.isEmpty()) {
-//
-//                String newV = inputBean.getTransactiontypecode() + "|"
-//                        + inputBean.getDescription() + "|"
-//                        + inputBean.getStatus() + "|";
-//
-//                Systemaudit audit = CommonDAO.makeAudittrace(request, TaskVarlist.ADD_TASK, PageVarlist.TXN_TYPE_MGT_PAGE, SectionVarlist.SYSTEMCONFIGMANAGEMENT, "Transaction type code " + inputBean.getTransactiontypecode() + " added", null, null, newV);
-//                message = dao.insertTransactionType(inputBean, audit);
-//
-//                if (message.isEmpty()) {
-//                    addActionMessage("Transaction type " + MessageVarlist.COMMON_SUCC_INSERT);
-//                } else {
-//                    addActionError(message);
-//                }
-//            } else {
-//                addActionError(message);
-//            }
-//
-//        } catch (Exception ex) {
-//            addActionError("Transaction type " + MessageVarlist.COMMON_ERROR_PROCESS);
-//            Logger.getLogger(TransactionTypeAction.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         return result;
     }
 
@@ -275,26 +300,25 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
             message = MessageVarlist.CUSTOMER_MGT_EMPTY_STATUS;
         }
 
-        String messageImg = this.getImageLogo(this.inputBean.getOwnImageFileName());
-        if (!messageImg.isEmpty()) {
-            message = MessageVarlist.CUSTOMER_MGT_EMPTY_USERIMG;
-        }
-
-        messageImg = this.getImageLogo(this.inputBean.getPrImageFileName());
-        if (!messageImg.isEmpty()) {
-            message = MessageVarlist.CUSTOMER_MGT_EMPTY_POLICEREPORT;
-        }
-
-        messageImg = this.getImageLogo(this.inputBean.getBcImageFileName());
-        if (!messageImg.isEmpty()) {
-            message = MessageVarlist.CUSTOMER_MGT_EMPTY_BIRTHCERT;
-        }
-
-        messageImg = this.getImageLogo(this.inputBean.getqImageFileName());
-        if (!messageImg.isEmpty()) {
-            message = MessageVarlist.CUSTOMER_MGT_EMPTY_QUALIFAYNOTE;
-        }
-
+//        String messageImg = this.getImageLogo(this.inputBean.getOwnImageFileName());
+//        if (!messageImg.isEmpty()) {
+//            message = MessageVarlist.CUSTOMER_MGT_EMPTY_USERIMG;
+//        }
+//
+//        messageImg = this.getImageLogo(this.inputBean.getPrImageFileName());
+//        if (!messageImg.isEmpty()) {
+//            message = MessageVarlist.CUSTOMER_MGT_EMPTY_POLICEREPORT;
+//        }
+//
+//        messageImg = this.getImageLogo(this.inputBean.getBcImageFileName());
+//        if (!messageImg.isEmpty()) {
+//            message = MessageVarlist.CUSTOMER_MGT_EMPTY_BIRTHCERT;
+//        }
+//
+//        messageImg = this.getImageLogo(this.inputBean.getQlImageFileName());
+//        if (!messageImg.isEmpty()) {
+//            message = MessageVarlist.CUSTOMER_MGT_EMPTY_QUALIFAYNOTE;
+//        }
         return message;
     }
 
@@ -351,43 +375,6 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
         return "list";
     }
 
-    public String Find() {
-        System.out.println("called CustomerMgtAction : Find");
-        CustomerMgtBean tt = null;
-//        try {
-//            if (inputBean.getUserId()!= null && !inputBean.getUserId().isEmpty()) {
-//
-//                CustomerMgtDAO dao = new CustomerMgtDAO();
-//
-//                tt = dao.findCustomerById(inputBean.getUserId());
-//
-//                inputBean.setTransactiontypecode(tt.getTypecode());
-//                inputBean.setDescription(tt.getDescription());
-//                inputBean.setStatus(tt.getStatus().getStatuscode());
-//
-//                try {
-//                    inputBean.setDescription_receiver(tt.getDescriptionReceiver());
-//                } catch (Exception e) {
-//                    inputBean.setDescription_receiver("");
-//                }
-//
-//                inputBean.setOldvalue(inputBean.getTransactiontypecode()
-//                        + "|" + inputBean.getDescription()
-//                        + "|" + inputBean.getStatus()
-//                );
-//
-//            } else {
-//                inputBean.setMessage("Empty userid.");
-//            }
-//        } catch (Exception ex) {
-//            inputBean.setMessage("CustomerMgtAction  " + MessageVarlist.COMMON_ERROR_PROCESS);
-//            Logger.getLogger(CustomerMgtDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-        return "find";
-
-    }
-
     public String Delete() {
         System.out.println("called CustomerMgtDAO : Delete");
         String message = null;
@@ -395,10 +382,10 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
         try {
             HttpServletRequest request = ServletActionContext.getRequest();
             CustomerMgtDAO dao = new CustomerMgtDAO();
-            Systemaudit audit = CommonDAO.makeAudittrace(request, TaskVarlist.DELETE_TASK, PageVarlist.CUS_MGT_PAGE, SectionVarlist.CUSTOMERMANAGEMENT, "Customer id " + inputBean.getUserId() + " deactivated", null);
+            Systemaudit audit = CommonDAO.makeAudittrace(request, TaskVarlist.DEACTIVATE_TASK, PageVarlist.CUS_MGT_PAGE, SectionVarlist.CUSTOMERMANAGEMENT, "Customer id " + inputBean.getUserId() + " deactivated", null);
             message = dao.deleteCustomer(inputBean, audit);
             if (message.isEmpty()) {
-                message = "Transaction type " + MessageVarlist.COMMON_SUCC_DELETE;
+                message = "Customer " + MessageVarlist.COMMON_SUCC_DELETE;
             }
             inputBean.setMessage(message);
         } catch (Exception e) {

@@ -73,7 +73,7 @@ public class MobSuggestedUser  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="referrer")
     public MobUser getMobUser() {
         return this.mobUser;

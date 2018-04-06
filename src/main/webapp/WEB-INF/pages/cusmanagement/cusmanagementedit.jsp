@@ -19,21 +19,6 @@
             <script type="text/javascript">
 
                 $(document).ready(function () {
-//                    var readURL = function (input) {
-//                        if (input.files && input.files[0]) {
-//                            var reader = new FileReader();
-//
-//                            reader.onload = function (e) {
-//                                $('.profile-pic').attr('src', e.target.result);
-//                            }
-//                            reader.readAsDataURL(input.files[0]);
-//                        }
-//                    }
-//
-//                    $(".file-upload").on('change', function () {
-//                        readURL(this);
-//                    });
-
                     $("#own_img").on('click', function () {
                         $("#ownImage").click();
                     });
@@ -44,7 +29,7 @@
                         $("#bcImage").click();
                     });
                     $("#qualifiy_img").on('click', function () {
-                        $("#qImage").click();
+                        $("#qlImage").click();
                     });
                 });
 
@@ -69,33 +54,40 @@
                     });
                 }
 
-                function changeQImageEdit() {
-                    $("#qImage").change(function (event) {
+                function changeQlImageEdit() {
+                    $("#qlImage").change(function (event) {
                         var tmppath = URL.createObjectURL(event.target.files[0]);
-                        $("#q_edit").attr("src", tmppath);
+                        $("#ql_edit").attr("src", tmppath);
                     });
                 }
-                function editCusMgt() {
-                    $.ajax({
-                        url: '${pageContext.request.contextPath}/findCustomerMgt.action',
-                        data: {userId: 32},
-                        dataType: "json",
-                        type: "POST",
-                        success: function (data) {
 
-                            if (data.editOwnImg != "") {
-                                $("#own_edit").attr("src", "data:image/jpeg;base64," + data.editOwnImg);
-                            } else {
-                                $("#own_edit").attr("src", "${pageContext.request.contextPath}/resources/images/noimage.png");
-                                $("#own_edit").attr({"width": "100", "height": "auto"});
-                            }
+                function imagePreview() {
+                    
+                    var ownImg = '<s:property value="editOwnImg"/>';
+                    var prImg = '<s:property value="editPrImg"/>';
+                    var bcImg = '<s:property value="editBcImg"/>';
+                    var qlImg = '<s:property value="editQlImg"/>';
 
-                        },
-                        error: function (data) {
-                            window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
-                        }
-                    });
+                    if (ownImg == '') {
+                        $("#own_edit").attr("src", "${pageContext.request.contextPath}/resources/images/male.png");
+                        $("#own_edit").attr({"width": "100", "height": "auto"});
+                    }
+                    if (prImg == '') {
+                        $("#pr_edit").attr("src", "${pageContext.request.contextPath}/resources/images/no-image.jpg");
+                        $("#pr_edit").attr({"width": "100", "height": "100"});
+                    }
+                    if (bcImg == '') {
+                        $("#bc_edit").attr("src", "${pageContext.request.contextPath}/resources/images/no-image.jpg");
+                        $("#bc_edit").attr({"width": "100", "height": "100"});
+                    }
+                    if (qlImg == '') {
+                        $("#ql_edit").attr("src", "${pageContext.request.contextPath}/resources/images/no-image.jpg");
+                        $("#ql_edit").attr({"width": "100", "height": "100"});
+                    }
                 }
+                
+                // image set
+                imagePreview();
 
                 function resetFieldData() {}
 
@@ -118,7 +110,7 @@
                                 </div>
                                 <div class="p-image">
                                     <span style="color: red">*</span><label>User Image</label>
-                                    <s:file name="ownImage" id="ownImage" onclick="changeOwnImageEdit()" cssClass="file-upload" accept="image/*" /> 
+                                    <s:file name="ownImage" id="ownImage" onclick="changeOwnImageEdit()" cssClass="file-upload"  /> 
                                 </div>
                             </div>
                         </div>
@@ -181,7 +173,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span style="color: red">*</span><label>Status</label>
-                                    <!s:select  id="status" list="%{statusList}"  headerValue="--Select Status--" headerKey="" name="status" listKey="statuscode" listValue="description" disabled="false"  cssClass="form-control"/>
+                                    <s:select  id="status" list="%{statusList}"  headerValue="--Select Status--" headerKey="" name="status" listKey="statuscode" listValue="description" disabled="false"  cssClass="form-control"/>
                                 </div>
                             </div>
                         </div>
@@ -206,11 +198,11 @@
                             </div>
                             <div class="col-sm-offset-1 col-sm-3">
                                 <div class="squar upload-button" id="qualifiy_img">  
-                                    <img class="profile-pic " src="data:image/jpeg;base64,<s:property value="editQImg"/>" id="q_edit" name="editQImg">
+                                    <img class="profile-pic " src="data:image/jpeg;base64,<s:property value="editQlImg"/>" id="ql_edit" name="editQlImg">
                                 </div>
                                 <div class="p-image" style="text-align: left;margin: 0 0px;">
                                     <span style="color: red">*</span><label>Qualification Details</label>
-                                    <s:file name="qImage" id="qImage" onclick="changeQImageEdit()" cssClass="file-upload" accept="image/*" /> 
+                                    <s:file name="qlImage" id="qlImage" onclick="changeQlImageEdit()" cssClass="file-upload" accept="image/*" /> 
                                 </div>
                             </div>
                         </div>

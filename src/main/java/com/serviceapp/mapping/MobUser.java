@@ -88,7 +88,7 @@ public class MobUser  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="status")
     public Status getStatus() {
         return this.status;
@@ -218,7 +218,7 @@ public class MobUser  implements java.io.Serializable {
         this.isBass = isBass;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="mobUser")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="mobUser")
     public Set<UserRoles> getUserRoleses() {
         return this.userRoleses;
     }
@@ -227,7 +227,7 @@ public class MobUser  implements java.io.Serializable {
         this.userRoleses = userRoleses;
     }
 
-@OneToOne(fetch=FetchType.LAZY, mappedBy="mobUser")
+@OneToOne(fetch=FetchType.EAGER, mappedBy="mobUser")
     public MobBassData getMobBassData() {
         return this.mobBassData;
     }
@@ -236,7 +236,7 @@ public class MobUser  implements java.io.Serializable {
         this.mobBassData = mobBassData;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="mobUser")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="mobUser")
     public Set<MobSuggestedUser> getMobSuggestedUsers() {
         return this.mobSuggestedUsers;
     }

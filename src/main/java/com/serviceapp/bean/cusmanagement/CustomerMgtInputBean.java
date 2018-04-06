@@ -38,27 +38,27 @@ public class CustomerMgtInputBean {
     private File ownImage; // selfie image
     private File prImage; // police report
     private File bcImage; // birth cert
-    private File qImage; // qulification img
+    private File qlImage; // qulification img
 
     private String ownImageContentType;
     private String prImageContentType;
     private String bcImageContentType;
-    private String qImageContentType;
+    private String qlImageContentType;
 
     private String ownImageFileName;
     private String prImageFileName;
     private String bcImageFileName;
-    private String qImageFileName;
+    private String qlImageFileName;
 
     private byte[] editOwnImage;
     private byte[] editPrImage;
     private byte[] editBcImage;
-    private byte[] editQImage;
+    private byte[] editQlImage;
 
     private String editOwnImg;
     private String editPrImg;
     private String editBcImg;
-    private String editQImg;
+    private String editQlImg;
 
     //////////////////////////////////////////////
     private List<Status> statusList;
@@ -217,14 +217,6 @@ public class CustomerMgtInputBean {
         this.bcImage = bcImage;
     }
 
-    public File getqImage() {
-        return qImage;
-    }
-
-    public void setqImage(File qImage) {
-        this.qImage = qImage;
-    }
-
     public String getOwnImageContentType() {
         return ownImageContentType;
     }
@@ -249,12 +241,12 @@ public class CustomerMgtInputBean {
         this.bcImageContentType = bcImageContentType;
     }
 
-    public String getqImageContentType() {
-        return qImageContentType;
+    public String getQlImageContentType() {
+        return qlImageContentType;
     }
 
-    public void setqImageContentType(String qImageContentType) {
-        this.qImageContentType = qImageContentType;
+    public void setQlImageContentType(String qlImageContentType) {
+        this.qlImageContentType = qlImageContentType;
     }
 
     public String getOwnImageFileName() {
@@ -281,12 +273,12 @@ public class CustomerMgtInputBean {
         this.bcImageFileName = bcImageFileName;
     }
 
-    public String getqImageFileName() {
-        return qImageFileName;
+    public String getQlImageFileName() {
+        return qlImageFileName;
     }
 
-    public void setqImageFileName(String qImageFileName) {
-        this.qImageFileName = qImageFileName;
+    public void setQlImageFileName(String qlImageFileName) {
+        this.qlImageFileName = qlImageFileName;
     }
 
     public byte[] getEditOwnImage() {
@@ -311,14 +303,6 @@ public class CustomerMgtInputBean {
 
     public void setEditBcImage(byte[] editBcImage) {
         this.editBcImage = editBcImage;
-    }
-
-    public byte[] getEditQImage() {
-        return editQImage;
-    }
-
-    public void setEditQImage(byte[] editQImage) {
-        this.editQImage = editQImage;
     }
 
     public String getEditOwnImg() {
@@ -366,19 +350,35 @@ public class CustomerMgtInputBean {
         this.editBcImg = editBcImg;
     }
 
-    public String getEditQImg() {
+    public String getEditQlImg() {
         try {
-            byte[] blobAsBytes = getEditQImage();
+            byte[] blobAsBytes = getEditQlImage();
             blobAsBytes = Base64.encodeBase64(blobAsBytes);
-            this.editQImg = new String(blobAsBytes);
+            this.editQlImg = new String(blobAsBytes);
         } catch (Exception e) {
-            this.editQImg = "";
+            this.editQlImg = "";
         }
-        return editQImg;
+        return editQlImg;
     }
 
-    public void setEditQImg(String editQImg) {
-        this.editQImg = editQImg;
+    public void setEditQlImg(String editQlImg) {
+        this.editQlImg = editQlImg;
+    }
+
+    public File getQlImage() {
+        return qlImage;
+    }
+
+    public void setQlImage(File qlImage) {
+        this.qlImage = qlImage;
+    }
+
+    public byte[] getEditQlImage() {
+        return editQlImage;
+    }
+
+    public void setEditQlImage(byte[] editQlImage) {
+        this.editQlImage = editQlImage;
     }
 
     public List<Status> getStatusList() {

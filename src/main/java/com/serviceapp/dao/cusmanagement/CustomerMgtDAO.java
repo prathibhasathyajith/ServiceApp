@@ -13,6 +13,7 @@ import com.serviceapp.mapping.MobBassData;
 import com.serviceapp.mapping.MobUser;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
+import com.serviceapp.varlist.CommonVarlist;
 import com.serviceapp.varlist.MessageVarlist;
 import java.io.File;
 import java.io.FileInputStream;
@@ -49,6 +50,9 @@ public class CustomerMgtDAO {
             MobUser u = (MobUser) session.get(MobUser.class, Integer.parseInt(inputBean.getUserId()));
             MobBassData u2 = (MobBassData) session.get(MobBassData.class, Integer.parseInt(inputBean.getUserId()));
             MobBassData bassData = new MobBassData();
+
+            //update user role 
+            this.UpdateUserRole(inputBean.getUserId(), inputBean.getStatus());
 
             // if true update bass table / false inset bass table
             if (u2 != null) {
@@ -94,11 +98,11 @@ public class CustomerMgtDAO {
                         }
                     }
 
-                    if (inputBean.getqImage().length() != 0) {
+                    if (inputBean.getQlImage().length() != 0) {
 
-                        imageName = inputBean.getqImageFileName();
+                        imageName = inputBean.getQlImageFileName();
 
-                        File QImage = inputBean.getqImage();
+                        File QImage = inputBean.getQlImage();
                         byte[] bLogoWebFile = new byte[(int) QImage.length()];
                         try {
                             fileInputStream = new FileInputStream(QImage);
@@ -120,17 +124,18 @@ public class CustomerMgtDAO {
                         throw e;
                     }
                 }
-                
+
                 newValueBass = "|" + u2.getAddress()
                         + "|" + u2.getArea()
                         + "|" + u2.getDistrict();
-                
+
                 session.update(u2);
 
             } else {
                 oldValueBass = "";
 
                 bassData.setUserId(Integer.parseInt(inputBean.getUserId()));
+                bassData.setMobUser(u);
                 bassData.setAddress(inputBean.getAddress());
                 bassData.setArea(inputBean.getArea());
                 bassData.setDistrict(inputBean.getDistrict());
@@ -168,11 +173,11 @@ public class CustomerMgtDAO {
                         }
                     }
 
-                    if (inputBean.getqImage().length() != 0) {
+                    if (inputBean.getQlImage().length() != 0) {
 
-                        imageName = inputBean.getqImageFileName();
+                        imageName = inputBean.getQlImageFileName();
 
-                        File QImage = inputBean.getqImage();
+                        File QImage = inputBean.getQlImage();
                         byte[] bLogoWebFile = new byte[(int) QImage.length()];
                         try {
                             fileInputStream = new FileInputStream(QImage);
@@ -194,12 +199,12 @@ public class CustomerMgtDAO {
                         throw e;
                     }
                 }
-                
-                newValueBass = "|" + u2.getAddress()
-                        + "|" + u2.getArea()
-                        + "|" + u2.getDistrict();
-                
-                session.update(bassData);
+
+                newValueBass = "|" + bassData.getAddress()
+                        + "|" + bassData.getArea()
+                        + "|" + bassData.getDistrict();
+
+                session.save(bassData);
             }
 
             if (u != null) {
@@ -220,6 +225,12 @@ public class CustomerMgtDAO {
 
                 Status st = (Status) session.get(Status.class, inputBean.getStatus().trim());
                 u.setStatus(st);
+
+                if (inputBean.getStatus().trim().endsWith(CommonVarlist.STATUS_ACTIVE)) {
+                    u.setIsBass(true);
+                } else {
+                    u.setIsBass(false);
+                }
 
                 // user image
                 try {
@@ -249,7 +260,7 @@ public class CustomerMgtDAO {
                         throw e;
                     }
                 }
-                
+
                 u.setCreatedTime(sysDate);
 
                 String newValue = u.getId()
@@ -264,10 +275,9 @@ public class CustomerMgtDAO {
                 audit.setNewvalue(newValue);
                 audit.setCreatetime(sysDate);
                 audit.setLastupdatedtime(sysDate);
-                
-                
+
                 session.save(audit);
-                
+
                 session.update(u);
 
                 txn.commit();
@@ -289,32 +299,6 @@ public class CustomerMgtDAO {
             }
         }
         return message;
-    }
-
-    public MobUser findMobUserById(int userid) throws Exception {
-
-        MobUser mobUser = null;
-        Session session = null;
-
-        try {
-            session = HibernateInit.sessionFactory.openSession();
-
-            String sql = "from MobUser as u where u.id=:id";
-            Query query = session.createQuery(sql).setInteger("id", userid);
-            mobUser = (MobUser) query.list().get(0);
-
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            try {
-                session.flush();
-                session.close();
-            } catch (Exception e) {
-                throw e;
-            }
-        }
-        return mobUser;
-
     }
 
     public List<CustomerMgtBean> getSearchList(CustomerMgtInputBean inputBean, int max, int first, String orderBy) throws Exception {
@@ -420,8 +404,50 @@ public class CustomerMgtDAO {
         return dataList;
     }
 
-    public String deleteCustomer(CustomerMgtInputBean inputBean, Systemaudit audit) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String deleteCustomer(CustomerMgtInputBean inputBean, Systemaudit audit) throws Exception {
+
+        Session session = null;
+        Transaction txn = null;
+        String message = "";
+        try {
+            CommonDAO commonDAO = new CommonDAO();
+            session = HibernateInit.sessionFactory.openSession();
+            txn = session.beginTransaction();
+            Date sysDate = commonDAO.getSystemDate(session);
+
+            if (inputBean.getUserId() != null) {
+                
+                //user role
+                this.UpdateUserRole(inputBean.getUserId(), inputBean.getStatus());
+                
+                //mob user
+                String sql = "update MobUser as u set u.status=:statuscode where u.id=:userId";
+                Query query = session.createQuery(sql).setInteger("userId", Integer.parseInt(inputBean.getUserId())).setString("statuscode", inputBean.getStatus());
+                query.executeUpdate();
+
+                audit.setCreatetime(sysDate);
+                audit.setLastupdatedtime(sysDate);
+
+                session.save(audit);
+                txn.commit();
+            } else {
+                message = MessageVarlist.COMMON_NOT_EXISTS;
+            }
+
+        } catch (Exception e) {
+            if (txn != null) {
+                txn.rollback();
+            }
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return message;
     }
 
     private String makeWhereClause(CustomerMgtInputBean inputBean) {
@@ -457,6 +483,80 @@ public class CustomerMgtDAO {
 
         }
         return where;
+    }
+
+    public MobUser findCustomerById(String userId) throws Exception {
+        MobUser mb = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+
+            String sql = "from MobUser as u where u.id=:id";
+            Query query = session.createQuery(sql).setInteger("id", Integer.parseInt(userId));
+
+            if (query.list().size() > 0) {
+                mb = (MobUser) query.list().get(0);
+            }
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return mb;
+    }
+
+    public MobBassData findCustomerBassById(String userId) throws Exception {
+        MobBassData mbb = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+
+            String sql = "from MobBassData as u where u.userId=:userId";
+            Query query = session.createQuery(sql).setInteger("userId", Integer.parseInt(userId));
+
+            if (query.list().size() > 0) {
+                mbb = (MobBassData) query.list().get(0);
+            }
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return mbb;
+    }
+
+    public void UpdateUserRole(String userId, String statuscode) throws Exception {
+        MobBassData mbb = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+
+            String sql = "update UserRoles as u set u.status=:statuscode where u.mobUser.id=:userId";
+            Query query = session.createQuery(sql).setInteger("userId", Integer.parseInt(userId)).setString("statuscode", statuscode);
+            query.executeUpdate();
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
     }
 
 }

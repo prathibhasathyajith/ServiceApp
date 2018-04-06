@@ -181,9 +181,6 @@
 
 
 <style>
-    body {
-        background-color: #efefef;
-    }
 
     .profile-pic {
         max-width: 200px;

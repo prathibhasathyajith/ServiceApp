@@ -16,6 +16,7 @@ public class TaskVarlist {
     public static final String SEARCH_TASK = "Search";
     public static final String UPDATE_TASK = "Update";
     public static final String DELETE_TASK = "Delete";
+    public static final String DEACTIVATE_TASK = "Deactivate";
     public static final String VIEW_TASK = "View";
     
     public static final String ASSIGN_TASK = "Assign";

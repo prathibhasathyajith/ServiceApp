@@ -18,6 +18,19 @@
             function editformatter(cellvalue, options, rowObject) {
                 return "<a href='#' title='Edit' onClick='javascript:editCustomerMgtInit(&#34;" + cellvalue + "&#34;)'><img class='ui-icon ui-icon-pencil' style='display: block;margin-left: auto;margin-right: auto;'/></a>";
             }
+            function viewformatter(cellvalue) {
+                return "<a href='#' title='View' onClick='javascript:viewCustomerMgtInit(&#34;" + cellvalue + "&#34;)' title='View Audit Record'><img class='ui-icon ui-icon-newwin' style='display: block;margin-left: auto;margin-right: auto;'/></a>";
+            }
+
+            function viewCustomerMgtInit(keyval) {
+                $("#viewdialog").data('userId', keyval).dialog('open');
+            }
+            
+            $.subscribe('openviewtasktopage2', function (event, data) {
+                var $led = $("#viewdialog");
+                $led.html("Loading..");
+                $led.load("viewDetailCustomerMgt.action?userId=" + $led.data('userId'));
+            });
 
             function deleteformatter(cellvalue, options, rowObject) {
                 return "<a href='#/' title='Delete' onClick='javascript:deleteCustomerMgtInit(&#34;" + cellvalue + "&#34;)'><img class='ui-icon ui-icon-trash' style='display: block;margin-left: auto;margin-right: auto;'/></a>";
@@ -220,6 +233,18 @@
             </div> -->
                 </div> 
                 <sj:dialog                                     
+                    id="viewdialog"                                 
+                    autoOpen="false" 
+                    modal="true" 
+                    position="center"
+                    title="View Customer"
+                    onOpenTopics="openviewtasktopage2" 
+                    loadingText="Loading .."
+                    width="900"
+                    height="590"
+                    dialogClass= "dialogclass"
+                    />
+                <sj:dialog                                     
                     id="updatedialog"                                 
                     autoOpen="false" 
                     modal="true" 
@@ -228,7 +253,7 @@
                     onOpenTopics="openviewtasktopage" 
                     loadingText="Loading .."
                     width="900"
-                    height="700"
+                    height="600"
                     dialogClass= "dialogclass"
                     />
                 <sj:dialog                                     
@@ -295,7 +320,8 @@
                     onErrorTopics="anyerrors"
                     >
                     <sjg:gridColumn name="id" index="u.id" title="Edit" width="40" align="center" sortable="false" formatter="editformatter"  frozen="false"/>
-                    <sjg:gridColumn name="id" index="u.id" title="Deactivate" width="50" align="center" sortable="false" formatter="deleteformatter"  frozen="false"/>  
+                    <sjg:gridColumn name="id" index="u.id" title="View" width="40" align="center" sortable="false" formatter="viewformatter"  frozen="false"/>
+                    <%--<sjg:gridColumn name="id" index="u.id" title="Deactivate" width="50" align="center" sortable="false" formatter="deleteformatter"  frozen="false"/>--%>  
                     <sjg:gridColumn name="id" index="u.id" title="User ID"  sortable="true" frozen="false"/>
                     <sjg:gridColumn name="mobile" index="u.mobile" title="Mobile No"  sortable="true"/>
                     <sjg:gridColumn name="email" index="u.email" title="Email"  sortable="true"/>
