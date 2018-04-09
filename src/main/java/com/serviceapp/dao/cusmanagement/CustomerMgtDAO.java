@@ -343,6 +343,12 @@ public class CustomerMgtDAO {
                     } catch (NullPointerException e) {
                         bean.setStatus("--");
                     }
+                    
+                    try {
+                        bean.setStatuscode(cus.getStatus().getStatuscode());
+                    } catch (NullPointerException e) {
+                        bean.setStatuscode("--");
+                    }
 
                     try {
                         bean.setMobile(cus.getMobile());

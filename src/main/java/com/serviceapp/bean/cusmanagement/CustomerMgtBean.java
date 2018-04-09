@@ -13,6 +13,7 @@ public class CustomerMgtBean {
 
     private String id;
     private String status;
+    private String statuscode;
     private String mobile;
     private String firstName;
     private String email;
@@ -39,6 +40,14 @@ public class CustomerMgtBean {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getStatuscode() {
+        return statuscode;
+    }
+
+    public void setStatuscode(String statuscode) {
+        this.statuscode = statuscode;
     }
 
     public String getMobile() {

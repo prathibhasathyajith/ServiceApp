@@ -118,10 +118,52 @@
         color: white !important;
     }
 
-    
-    
+
+
     .text-color-navbar{
         color: gray;
+    }
+
+
+    /*color indicators on search page*/
+
+    .initialStatus{
+        background: #FFC107;
+        color:black;
+    }
+    .pendStatus{
+        background: #949494;
+        color:white;
+    }
+    .activeStatus{
+        background: #4CAF50;
+        color:white;
+    }
+    .deactiveStatus{
+        background: #ff2727;
+        color:white;
+    }
+    .colorIndicators{
+        padding: 5px 10px;
+        border: 1px solid rgba(63, 81, 181, 0.52);
+        margin: 10px 0px 10px 0px;
+    }
+    .boxStatus{
+        width: 10px;
+        height: 10px;
+        float: left;
+        padding: 9px;
+    }
+    .tablen{
+        width: 10%;
+    }
+    .colorIndicatorstext{
+        letter-spacing: 2px;
+        background: linear-gradient(to right, #9e9e9e 4.5%, #444444 0%,#ffffff 100%);
+        color: white;
+        font-weight: bold;
+        margin: 0 0 10px 10px;
+        font-family: raleway;
     }
 
 

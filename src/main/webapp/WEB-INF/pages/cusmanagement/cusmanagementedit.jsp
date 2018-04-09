@@ -62,7 +62,7 @@
                 }
 
                 function imagePreview() {
-                    
+
                     var ownImg = '<s:property value="editOwnImg"/>';
                     var prImg = '<s:property value="editPrImg"/>';
                     var bcImg = '<s:property value="editBcImg"/>';
@@ -85,11 +85,14 @@
                         $("#ql_edit").attr({"width": "100", "height": "100"});
                     }
                 }
-                
+
                 // image set
                 imagePreview();
 
-                function resetFieldData() {}
+                function resetFieldData() {
+                    $("#gridtable").jqGrid('setGridParam', {page: 1});
+                    jQuery("#gridtable").trigger("reloadGrid");
+                }
 
             </script>
     </head>

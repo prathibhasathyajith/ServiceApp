@@ -14,6 +14,22 @@
     <head>
         <%@include file="/stylelinks.jspf" %>
         <script type="text/javascript">
+            
+            // table color effects
+            $.subscribe('gridComplete', function (event, data) {
+                $.each(jQuery(data).jqGrid('getRowData'), function (i, item) {
+                    if (item.statuscode == "ACT") { //deleted
+//                        $("#" + (i + 1), data).find("td").parent().addClass("activeStatus");// row color
+                        $("#" + (item.id), data).find("td").parent().children().eq(0).css("background", "#4CAF50");// col no color
+                    } else if (item.statuscode == "INIT") {
+//                        $("#" + (i + 1), data).find("td").parent().addClass("initialStatus");
+                        $("#" + (item.id), data).find("td").parent().children().eq(0).css("background", "#FFC107");
+                    } else if (item.statuscode == "DEACT") {
+//                        $("#" + (i + 1), data).find("td").parent().addClass("deactiveStatus");
+                        $("#" + (item.id), data).find("td").parent().children().eq(0).css("background", "#ff2727");
+                    } 
+                });
+            });
 
             function editformatter(cellvalue, options, rowObject) {
                 return "<a href='#' title='Edit' onClick='javascript:editCustomerMgtInit(&#34;" + cellvalue + "&#34;)'><img class='ui-icon ui-icon-pencil' style='display: block;margin-left: auto;margin-right: auto;'/></a>";
@@ -25,7 +41,7 @@
             function viewCustomerMgtInit(keyval) {
                 $("#viewdialog").data('userId', keyval).dialog('open');
             }
-            
+
             $.subscribe('openviewtasktopage2', function (event, data) {
                 var $led = $("#viewdialog");
                 $led.html("Loading..");
@@ -299,6 +315,29 @@
                     title="Delete error."
                     />                          
             </div>
+
+            <div class="colorIndicators">
+                <div class="row row_1">
+                    <div class="col-sm-3 colorIndicatorstext">
+                        Color indicators
+                    </div>
+                </div>
+                <div class="row row_1">
+                    <div class="col-sm-3">
+                        <div class="boxStatus initialStatus"></div>
+                        <label style="float: left">&nbsp;&nbsp; - Initial/Pending</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="boxStatus activeStatus"></div>
+                        <label style="float: left">&nbsp;&nbsp; - Active</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="boxStatus deactiveStatus"></div>
+                        <label style="float: left">&nbsp;&nbsp; - Deactivated</label>
+                    </div>
+                   
+                </div>
+            </div>
             <div class="tb-table">
                 <s:url var="listurl" action="ListCustomerMgt"/>
                 <s:set var="pcaption">Customer Management</s:set>
@@ -314,6 +353,7 @@
                     rowNum="10"
                     autowidth="true"
                     rownumbers="true"
+                    onGridCompleteTopics="gridComplete"
                     onCompleteTopics="completetopics"
                     rowTotal="false"
                     viewrecords="true"
@@ -329,6 +369,7 @@
                     <sjg:gridColumn name="lastName" index="u.lastName" title="Last Name"  sortable="true"/>
                     <sjg:gridColumn name="nic" index="u.nic" title="NIC"  sortable="true"/>
                     <sjg:gridColumn name="status" index="u.status" title="Status"  sortable="true"/>
+                    <sjg:gridColumn name="statuscode" index="u.statuscode" title="Status Code"  sortable="true" frozen="true" hidden="true"/>
                     <%--<sjg:gridColumn name="lastLoginTime" index="u.lastLoginTime" title="last Login Time"  sortable="true"/>--%>
                     <%--<sjg:gridColumn name="createdTime" index="u.createdTime" title="Created time"  sortable="true"/>--%>
 
