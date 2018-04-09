@@ -167,7 +167,7 @@ public class SMSTemplateDAO {
 
             Date sysDate = CommonDAO.getSystemDate(session);
 
-            WebSmsTemplate webSmsoutTemplate = (WebSmsTemplate) session.get(WebSmsTemplate.class, inputBean.getMessageId());
+            WebSmsTemplate webSmsoutTemplate = (WebSmsTemplate) session.get(WebSmsTemplate.class, Integer.parseInt(inputBean.getMessageId()));
 
             if (webSmsoutTemplate != null) {
                 String oldValue = webSmsoutTemplate.getMessageid()

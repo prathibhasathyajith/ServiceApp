@@ -68,74 +68,65 @@
                     <s:form id="smsedit" method="post" action="SMSTemplate"  theme="simple" cssClass="form"> 
                         <s:hidden name="oldvalue" id="oldvalue"/>
                         <div class="row">
-                            <div class="col-sm-12">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>Message ID <span style="color: red">*</span></td>
-                                            <td><s:textfield cssClass="form-control-disable" name="messageId" id="e_messageid" maxLength="20"  readonly="true" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><br></td><td></td><td></td>
-                                        </tr>
-                                        <tr>   
-                                            <td>Transaction Type <span style="color: red">*</span></td>
-
-                                            <td>   <s:select cssClass="form-control-disable" disabled="true" name="txnType" maxLength="3" id="e_transactiontype" headerValue="-- Select --" list="%{txnTypeList}"   headerKey="" listKey="typecode" listValue="description" value="%{txnType}" disabled="true"/>
-                                            </td> 
-                                        </tr> 
-                                        <tr>
-                                            <td><br></td><td></td><td></td>
-                                        </tr>
-                                        <tr><td><s:hidden name="txnType" id="e_transactiontype"/></td></tr>
-
-                                        <tr>
-                                            <td>Message <span style="color: red">*</span></td>
-                                            <td><s:textarea style="margin-bottom: 0px; padding-top: 7px; border-radius: 4px !important;" cssClass="form-control" id="e_message" name="description" rows="10" cols="115" maxlength="1024" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>            
-                        </div>
-                        <div class="row ">
-                            <div class="horizontal_line_popup"></div>
-                        </div>
-                        <div class="row form-inline">
-                            <div class="col-sm-8">
+                            <div class="col-sm-4">
                                 <div class="form-group">
-                                    <span class="mandatoryfield">Mandatory fields are marked with *</span>
+                                    <span style="color: red">*</span><label >Message ID</label>
+                                    <s:textfield cssClass="form-control" name="messageId" id="e_messageid" maxLength="20"  readonly="true" />
                                 </div>
                             </div>
-                            <div class="col-sm-12 text-right">
-                                <div class="form-group" >
-                                    <sj:submit 
-                                        button="true" 
-                                        value="Reset" 
-                                        name="reset" 
-                                        cssClass="uinew-button-reset"
-                                        onClick="cancelData()"
-                                        />                        
-                                </div>
-                                <div class="form-group" >
-
-                                    <s:url action="updateSMSTemplate" var="updateturl"/>
-                                    <sj:submit
-                                        button="true"
-                                        value="Update"
-                                        href="%{updateturl}"
-                                        targets="divmsgupdate"
-                                        id="updatebtn"
-                                        cssClass="uinew-button-submit" 
-                                        />                        
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <span style="color: red">*</span><label >Transaction Type</label>
+                                    <s:select cssClass="form-control" name="txnType" maxLength="3" id="e_transactiontype" headerValue="-- Select --" list="%{txnTypeList}"   headerKey="" listKey="typecode" listValue="description" value="%{txnType}" />
                                 </div>
                             </div>
-                        </div>  
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <span style="color: red">*</span><label >Message</label>
+                                    <s:textarea style="margin-bottom: 0px; padding-top: 7px; border-radius: 4px !important;font-size:12px" cssClass="form-control" id="e_message" name="description" rows="10" cols="115" maxlength="1024" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="horizontal_line_popup"></div>
+                    </div>
+                    <div class="row form-inline">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <span class="mandatoryfield">Mandatory fields are marked with *</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-right">
+                            <div class="form-group" >
+                                <sj:submit 
+                                    button="true" 
+                                    value="Reset" 
+                                    name="reset" 
+                                    cssClass="uinew-button-reset"
+                                    onClick="cancelData()"
+                                    />                        
+                            </div>
+                            <div class="form-group" >
 
-                    </s:form> 
-                </div>
+                                <s:url action="updateSMSTemplate" var="updateturl"/>
+                                <sj:submit
+                                    button="true"
+                                    value="Update"
+                                    href="%{updateturl}"
+                                    targets="divmsgupdate"
+                                    id="updatebtn"
+                                    cssClass="uinew-button-submit" 
+                                    />                        
+                            </div>
+                        </div>
+                    </div>  
+
+                </s:form> 
             </div>
-        </div>    
-    </body>
+        </div>
+    </div>    
+</body>
 </html>

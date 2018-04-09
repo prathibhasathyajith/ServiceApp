@@ -35,8 +35,8 @@ public class FaqDAO {
         if (inputBean.getId() != null && !inputBean.getId().trim().isEmpty()) {
             where += "and f.id = '" + inputBean.getId().trim() + "'";
         }
-        if (inputBean.getType() != null && !inputBean.getType().trim().isEmpty()) {
-            where += "and f.MobFaqSection.sectionType = '" + inputBean.getType().trim() + "'";
+        if (inputBean.getSection() != null && !inputBean.getSection().trim().isEmpty()) {
+            where += "and f.mobFaqSection.sectionType = '" + inputBean.getSection().trim() + "'";
         }
 //        if (inputBean.getSection() != null && !inputBean.getSection().trim().isEmpty()) {
 //            where += "and lower(f.section) like lower('%" + inputBean.getSection().trim() + "%') ";

@@ -115,21 +115,21 @@
                         <!--                                    not use-->
 
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Message ID</label>
                                     <s:textfield name="s_messageid" id="s_messageid" maxLength="20" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9]/g,''))" /> 
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Transaction Type</label>
                                     <s:select cssClass="form-control" name="transactiontype" maxLength="3" id="transactiontypesearch" headerValue="-- Select Transaction Type--" list="%{transactiontypeList}"   headerKey="" listKey="typecode" listValue="description" value="%{transactiontype}"/>
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Subject</label>
                                     <s:textfield name="s_subject" id="s_subject" maxLength="128" cssClass="form-control" /> 

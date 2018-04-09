@@ -112,19 +112,19 @@
                         <s:url var="updateurl" action="UpdateSMSTemplate"/>
 
                         <div class="row "> 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Message ID</label>
                                     <s:textfield name="messageIdSearch" id="messageIdSearch" maxlength="20" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^0-9]/g,''))" onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9]/g,''))"/> 
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Transaction Type</label>
                                     <s:select  id="txnTypeSearch" maxlength="3" list="%{txnTypeList}"  name="txnTypeSearch" headerKey=""  headerValue="--Select Type--" listKey="typecode" listValue="description"  disabled="false" cssClass="form-control" value="%{type}"/>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Message</label>
                                     <s:textfield name="descriptionSearch" id="descriptionSearch" maxlength="1024" cssClass="form-control"/> 

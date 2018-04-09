@@ -118,6 +118,11 @@
         color: white !important;
     }
 
+    
+    
+    .text-color-navbar{
+        color: gray;
+    }
 
 
 </style>

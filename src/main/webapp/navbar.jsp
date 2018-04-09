@@ -10,13 +10,13 @@
     <aside class="sidebar-left-collapse">
         <div class="sidebar-links">
             <div id="link_1" class="link-default">
-                <a href="#">USER MGT</a>
+                <a href="#">USER <span class="text-color-navbar">management</span></a>
                 <ul class="sub-links">
                     <li id="sublink_1"><a href="${pageContext.request.contextPath}/viewSystemuser.action">System User</a></li>
                 </ul>
             </div>
             <div id="link_2" class="link-default">
-                <a href="#">SYSTEM CONFIG</a>
+                <a href="#">SYSTEM <span class="text-color-navbar">configuration</span></a>
                 <ul class="sub-links">
                     <li id="sublink_5"><a href="${pageContext.request.contextPath}/viewPasswordPolicy.action">Password Policy</a></li>
                     <li id="sublink_6"><a href="${pageContext.request.contextPath}/viewFAQ.action">FAQ</a></li>
@@ -28,21 +28,21 @@
                     <li id="sublink_12"><a href="${pageContext.request.contextPath}/viewConfigData.action">Data</a></li>
                 </ul>
             </div>
-            <div id="link_3" class="link-default">
-                <a href="#">REPORT GEN</a>
-                <ul class="sub-links">
-
-                </ul>
-            </div>
+            <!--            <div id="link_3" class="link-default">
+                            <a href="#">REPORT GEN</a>
+                            <ul class="sub-links">
+            
+                            </ul>
+                        </div>-->
             <div id="link_4" class="link-default">
-                <a href="#">SYSTEM AUDIT</a>
+                <a href="#">SYSTEM <span class="text-color-navbar">audit</span></a>
                 <ul class="sub-links">
                     <li id="sublink_15"><a href="${pageContext.request.contextPath}/viewSystemAudit.action">System Audit</a></li>
                     <li id="sublink_16"><a href="${pageContext.request.contextPath}/viewLoginHistory.action">Mobile Login History</a></li>
                 </ul>
             </div>
             <div id="link_5" class="link-default">
-                <a href="#">CUSTOMER MGT</a>
+                <a href="#">CUSTOMER <span class="text-color-navbar">management</span></a>
                 <ul class="sub-links">
                     <li id="sublink_25"><a href="${pageContext.request.contextPath}/viewCustomerMgt.action">Customer Management</a></li>
                 </ul>
