@@ -197,4 +197,9 @@ public class MessageVarlist {
     public static final String CUSTOMER_MGT_EMPTY_BIRTHCERT = "Birth certificate image cannot be empty";
     public static final String CUSTOMER_MGT_EMPTY_QUALIFAYNOTE = "Qualification detail image cannot be empty";
     
+    // config data
+    public static final String CONFIGDATA_EMPTY_MSG = " cannot be empty";
+    public static final String CONFIGDATA_METHOD_NAME = "getKey";
+    public static final String CONFIGDATA_KEY_NAME = "key";
+    
 }

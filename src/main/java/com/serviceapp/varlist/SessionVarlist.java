@@ -27,5 +27,10 @@ public class SessionVarlist {
 
     // individual search audit
     public static final String IND_AUDIT_SEARCHBEAN = "INDAUDITSEARCHBEAN";
+    
+    // config data
+    public static final String COMF_DATA_COUNT = "COUNT";
+    public static final String COMF_DATA_NAMELIST1 = "NAMELIST1";
+    public static final String COMF_DATA_OLDVAL = "OLDVAL";
    
 }

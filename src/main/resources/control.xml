@@ -125,6 +125,15 @@
             <result name="success"></result>
         </action> 
         
+        <action name="*ConfigData" method="{1}" class="com.serviceapp.action.systemconfig.ConfigDataAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/systemconfig/data/data.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action>
+        
 
     </package>
     

@@ -25,6 +25,7 @@
                     <li id="sublink_9"><a href="${pageContext.request.contextPath}/viewTransactionType.action">Transaction Type</a></li>
                     <li id="sublink_10"><a href="${pageContext.request.contextPath}/viewTerms.action">Terms</a></li>
                     <li id="sublink_11"><a href="${pageContext.request.contextPath}/viewAppInfo.action">About us & Support</a></li>
+                    <li id="sublink_12"><a href="${pageContext.request.contextPath}/viewConfigData.action">Data</a></li>
                 </ul>
             </div>
             <div id="link_3" class="link-default">

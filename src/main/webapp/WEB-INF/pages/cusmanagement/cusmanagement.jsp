@@ -319,8 +319,8 @@
                     viewrecords="true"
                     onErrorTopics="anyerrors"
                     >
-                    <sjg:gridColumn name="id" index="u.id" title="Edit" width="40" align="center" sortable="false" formatter="editformatter"  frozen="false"/>
                     <sjg:gridColumn name="id" index="u.id" title="View" width="40" align="center" sortable="false" formatter="viewformatter"  frozen="false"/>
+                    <sjg:gridColumn name="id" index="u.id" title="Edit" width="40" align="center" sortable="false" formatter="editformatter"  frozen="false"/>
                     <%--<sjg:gridColumn name="id" index="u.id" title="Deactivate" width="50" align="center" sortable="false" formatter="deleteformatter"  frozen="false"/>--%>  
                     <sjg:gridColumn name="id" index="u.id" title="User ID"  sortable="true" frozen="false"/>
                     <sjg:gridColumn name="mobile" index="u.mobile" title="Mobile No"  sortable="true"/>
