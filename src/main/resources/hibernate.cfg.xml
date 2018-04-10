@@ -37,5 +37,6 @@
     <mapping class="com.serviceapp.mapping.MobSuggestedUser"/>
     <mapping class="com.serviceapp.mapping.MobUser"/>
     <mapping class="com.serviceapp.mapping.UserRoles"/>
+    <mapping class="com.serviceapp.mapping.Roles"/>
   </session-factory>
 </hibernate-configuration>

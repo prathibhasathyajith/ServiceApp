@@ -1,5 +1,6 @@
 package com.serviceapp.mapping;
-// Generated Apr 4, 2018 10:44:22 AM by Hibernate Tools 4.3.1
+// Generated Apr 10, 2018 2:35:51 PM by Hibernate Tools 4.3.1
+
 
 
 import java.util.Date;
@@ -29,12 +30,12 @@ public class MobSuggestedUser  implements java.io.Serializable {
 
      private Long id;
      private MobUser mobUser;
+     private Roles roles;
      private Status status;
      private String firstName;
      private String lastName;
      private String email;
      private String area;
-     private String serviceRole;
      private String mobile;
      private Date createdTime;
 
@@ -49,14 +50,14 @@ public class MobSuggestedUser  implements java.io.Serializable {
         this.mobile = mobile;
         this.createdTime = createdTime;
     }
-    public MobSuggestedUser(MobUser mobUser, Status status, String firstName, String lastName, String email, String area, String serviceRole, String mobile, Date createdTime) {
+    public MobSuggestedUser(MobUser mobUser, Roles roles, Status status, String firstName, String lastName, String email, String area, String mobile, Date createdTime) {
        this.mobUser = mobUser;
+       this.roles = roles;
        this.status = status;
        this.firstName = firstName;
        this.lastName = lastName;
        this.email = email;
        this.area = area;
-       this.serviceRole = serviceRole;
        this.mobile = mobile;
        this.createdTime = createdTime;
     }
@@ -73,7 +74,7 @@ public class MobSuggestedUser  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="referrer")
     public MobUser getMobUser() {
         return this.mobUser;
@@ -81,6 +82,16 @@ public class MobSuggestedUser  implements java.io.Serializable {
     
     public void setMobUser(MobUser mobUser) {
         this.mobUser = mobUser;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="service_role")
+    public Roles getRoles() {
+        return this.roles;
+    }
+    
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -131,16 +142,6 @@ public class MobSuggestedUser  implements java.io.Serializable {
     
     public void setArea(String area) {
         this.area = area;
-    }
-
-    
-    @Column(name="service_role", length=64)
-    public String getServiceRole() {
-        return this.serviceRole;
-    }
-    
-    public void setServiceRole(String serviceRole) {
-        this.serviceRole = serviceRole;
     }
 
     

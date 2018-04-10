@@ -232,6 +232,16 @@
             <result name="detail">/WEB-INF/pages/cusmanagement/cusmanagementedit.jsp</result>
             <result name="delete" type="json"></result>
         </action>
+        
+        <action name="*SuggestUser" method="{1}" class="com.serviceapp.action.cusmanagement.SuggestedUserAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/cusmanagement/suggestuser/suggestuser.jsp</result>
+            <result name="viewdetail">/WEB-INF/pages/cusmanagement/suggestuser/suggestuser.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action> 
     </package>
 </struts>
 

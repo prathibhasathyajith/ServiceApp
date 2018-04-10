@@ -45,6 +45,7 @@
                 <a href="#">CUSTOMER <span class="text-color-navbar">management</span></a>
                 <ul class="sub-links">
                     <li id="sublink_25"><a href="${pageContext.request.contextPath}/viewCustomerMgt.action">Customer Management</a></li>
+                    <li id="sublink_26"><a href="${pageContext.request.contextPath}/viewSuggestUser.action">Suggested User</a></li>
                 </ul>
             </div>
         </div>
