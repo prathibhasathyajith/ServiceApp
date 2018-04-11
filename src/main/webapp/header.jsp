@@ -26,15 +26,15 @@
 </head>
 <div class="tb-header tb-fixed-header">
     <div class="tb-header-logo">
-        <!--            <img src="assets/image/logo2.png" width="40" height="auto" />-->
+        <!--<img src="assets/image/logo2.png" width="40" height="auto" />-->
     </div>
     <div class="change1 tb-header-margin color1 tb-header-text f-left">
-        <!--<span>Service<span>App</span></span>-->
+        <span>Service<span>App</span></span>
         <span><span></span></span>
     </div>
     <div class="tb-header-divider tb-header-margin tb-header-text f-left">|</div>
     <div class="change2 tb-header-margin color2 tb-header-text f-left">
-        <!--<span>Admin<span>Portal</span></span>-->
+        <span>Admin<span>Portal</span></span>
         <span><span></span></span>
     </div>
     <div class="tb-header-logout tb-header-margin tb-header-text f-right" title="Logout"><a href="LogoutUserLogin.action?message=error3"><i class="material-icons" id="logout_lock">lock_open</i></a></div>

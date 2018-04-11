@@ -121,7 +121,7 @@
 
 
     .text-color-navbar{
-        color: gray;
+        color: #c3c3c3;
     }
 
 

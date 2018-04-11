@@ -171,7 +171,6 @@
                                 button="true"
                                 value="Search" 
                                 onClick="searchTransactionType()"  
-                                disabled="#vsearch"
                                 id="searchbut"
                                 cssClass="uinew-button-submit"
                                 />
