@@ -8,6 +8,7 @@ package com.serviceapp.bean.cusmanagement;
 import com.serviceapp.mapping.Roles;
 import com.serviceapp.mapping.Status;
 import java.util.List;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  *
@@ -41,6 +42,10 @@ public class SuggestedUserInputBean {
     private String search_name_user;
     private String search_mobile_user;
     private String search_email_user;
+    
+    //referrer pic
+    private byte[] prifIamge;
+    private String prifImg;
     
     //suggest user search
     private String search_firstname;
@@ -247,6 +252,30 @@ public class SuggestedUserInputBean {
     public void setSearch_email_user(String search_email_user) {
         this.search_email_user = search_email_user;
     }
+
+    public byte[] getPrifIamge() {
+        return prifIamge;
+    }
+
+    public void setPrifIamge(byte[] prifIamge) {
+        this.prifIamge = prifIamge;
+    }
+
+    public String getPrifImg() {
+        try {
+            byte[] blobAsBytes = getPrifIamge();
+            blobAsBytes = Base64.encodeBase64(blobAsBytes);
+            this.prifImg = new String(blobAsBytes);
+        } catch (Exception e) {
+            this.prifImg = "";
+        }
+        return prifImg;
+    }
+
+    public void setPrifImg(String prifImg) {
+        this.prifImg = prifImg;
+    }
+    
 
     public String getSearch_firstname() {
         return search_firstname;

@@ -60,12 +60,16 @@ public class ConfigDataDAO {
             session = HibernateInit.sessionFactory.openSession();
             txn = session.beginTransaction();
             Date sysDate = CommonDAO.getSystemDate(session);
+            
+            List<MobConfiguration> conf = this.getConfigData();
+            String pk = "";
 
             String oldV = "";
             String newV = "";
 
             for (int i = 1; i < count+1; i++) {
-                MobConfiguration u = (MobConfiguration) session.get(MobConfiguration.class, i);
+                pk = conf.get(i-1).getCode();
+                MobConfiguration u = (MobConfiguration) session.get(MobConfiguration.class, pk);
 
                 if (u != null) {
                     oldV += u.getValue() + "|";

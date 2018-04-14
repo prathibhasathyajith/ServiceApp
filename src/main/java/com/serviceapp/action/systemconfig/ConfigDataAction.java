@@ -72,14 +72,16 @@ public class ConfigDataAction extends ActionSupport implements ModelDriven<Objec
 
             String oldval = "";
             int count = 0;
+            int key = 1;
 
             if (mc != null) {
                 for (MobConfiguration mobConfiguration : mc) {
-                    nameList.put("key" + mobConfiguration.getCode(), mobConfiguration.getDescription());
-                    nameList_Val.put("key" + mobConfiguration.getCode(), mobConfiguration.getValue());
+                    nameList.put("key"+key, mobConfiguration.getDescription());
+                    nameList_Val.put("key"+key, mobConfiguration.getValue());
 
                     oldval += mobConfiguration.getValue() + "|";
                     count++;
+                    key++;
                 }
             }
 

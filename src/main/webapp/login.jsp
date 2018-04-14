@@ -58,6 +58,8 @@
 
                 }
             }
+            
+            
 
         </script>
     </head>
@@ -137,5 +139,13 @@
         <!--===============================================================================================-->
         <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/js/main.js"></script>
 
+        <script>
+            $(document).ready(function (){
+                setTimeout(function (){
+                    $("input[name=password]").addClass('has-val'); 
+                    $("input[name=username]").addClass('has-val'); 
+                },100);
+            });
+        </script>
     </body>
 </html>

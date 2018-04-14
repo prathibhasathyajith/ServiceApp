@@ -74,7 +74,7 @@ public class SuggestedUserAction extends ActionSupport implements ModelDriven<Ob
     }
 
     public String viewDetail() {
-        System.out.println("called SuggestedUserAction : detail");
+         System.out.println("called SuggestedUserAction : detail");
         MobSuggestedUser msu = null;
         try {
             if (inputBean.getId()!= null && !inputBean.getId().isEmpty()) {
@@ -87,6 +87,22 @@ public class SuggestedUserAction extends ActionSupport implements ModelDriven<Ob
                 msu = dao.findSuggestUserById(inputBean.getId());
                 
                 inputBean.setFirstName(msu.getFirstName());
+                inputBean.setLastName(msu.getLastName());
+                inputBean.setId(msu.getId().toString());
+                inputBean.setMobile(msu.getMobile());
+                inputBean.setArea(msu.getArea());
+                inputBean.setEmail(msu.getEmail());
+                inputBean.setStatus(msu.getStatus().getDescription());
+                inputBean.setServiceRole(msu.getRoles().getDescription());
+                
+                inputBean.setFirstName_user(msu.getMobUser().getFirstName());
+                inputBean.setLastName_user(msu.getMobUser().getLastName());
+                inputBean.setMobile_user(msu.getMobUser().getMobile());
+                inputBean.setEmail_user(msu.getMobUser().getEmail());
+                inputBean.setNic_user(msu.getMobUser().getNic());
+                inputBean.setId_user(msu.getMobUser().getId().toString());
+                
+                inputBean.setPrifIamge(msu.getMobUser().getImage());
 
                 
 

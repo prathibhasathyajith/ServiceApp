@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class MobConfiguration  implements java.io.Serializable {
 
 
-     private int code;
+     private String code;
      private String description;
      private String value;
 
@@ -25,10 +25,10 @@ public class MobConfiguration  implements java.io.Serializable {
     }
 
 	
-    public MobConfiguration(int code) {
+    public MobConfiguration(String code) {
         this.code = code;
     }
-    public MobConfiguration(int code, String description, String value) {
+    public MobConfiguration(String code, String description, String value) {
        this.code = code;
        this.description = description;
        this.value = value;
@@ -37,12 +37,12 @@ public class MobConfiguration  implements java.io.Serializable {
      @Id 
 
     
-    @Column(name="CODE", unique=true, nullable=false)
-    public int getCode() {
+    @Column(name="CODE", unique=true, nullable=false, length=30)
+    public String getCode() {
         return this.code;
     }
     
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -57,7 +57,7 @@ public class MobConfiguration  implements java.io.Serializable {
     }
 
     
-    @Column(name="VALUE")
+    @Column(name="VALUE", length=65535)
     public String getValue() {
         return this.value;
     }
@@ -70,5 +70,4 @@ public class MobConfiguration  implements java.io.Serializable {
 
 
 }
-
 

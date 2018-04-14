@@ -5,10 +5,7 @@
  */
 package com.serviceapp.bean.systemconfig;
 
-import com.serviceapp.bean.systemaudit.MobKeyVal;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -282,8 +279,6 @@ public class ConfigDataInputBean {
     public void setCount(int count) {
         this.count = count;
     }
-
-    
 
     public Map<String, String> getNameList() {
         return nameList;
