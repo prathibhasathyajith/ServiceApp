@@ -165,9 +165,7 @@ public class FaqAction extends ActionSupport implements ModelDriven<Object>{
 
         String message = "";
         try {
-            if (inputBean.getType() == null || inputBean.getType().trim().isEmpty()) {
-                message = MessageVarlist.FAQ_MGT_EMPTY_TYPE;
-            } else if (inputBean.getSection() == null || inputBean.getSection().trim().isEmpty()) {
+            if (inputBean.getSection() == null || inputBean.getSection().trim().isEmpty()) {
                 message = MessageVarlist.FAQ_MGT_EMPTY_SECTION;
             } else if (inputBean.getStatus() == null || inputBean.getStatus().trim().isEmpty()) {
                 message = MessageVarlist.FAQ_MGT_EMPTY_STATUS;

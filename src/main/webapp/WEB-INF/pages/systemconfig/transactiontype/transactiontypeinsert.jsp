@@ -19,7 +19,7 @@
                 $('#transactiontypecode').val("");
                 $('#transactiontypecode').attr('readOnly', false);
                 $('#description').val("");
-                $('#amessage').text("");
+                $('#divmsginsert').empty();
                 $('#OTPReqStatus').val("");
                 $('#status').val("");
             }
@@ -28,7 +28,7 @@
 
     </head>
     <body>
-        <s:div id="divmsgupdate">
+        <s:div id="divmsginsert">
             <s:actionerror theme="jquery"/>
             <s:actionmessage theme="jquery"/>
         </s:div>
@@ -93,7 +93,7 @@
                                         button="true"
                                         value="Add"
                                         href="%{inserturl}"
-                                        targets="amessage"
+                                        targets="divmsginsert"
                                         id="addbtn"
                                         cssClass="uinew-button-submit" 
                                         />                        

@@ -33,6 +33,8 @@
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/css/util.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/css/main.css">
+
+
         <!--===============================================================================================-->
 
         <script>
@@ -57,6 +59,10 @@
                     //                    alert(CryptoJS.MD5(ps));
 
                 }
+            }
+            
+            function sss(obj){
+                $(obj).html("AUTHENTICATING <i style='margin-left:5px;' class='zmdi zmdi zmdi-chart-donut zmdi-hc-1x zmdi-hc-spin'></i>");
             }
             
             
@@ -88,27 +94,28 @@
                             <input class="input100" type="password" name="password">
                             <span class="focus-input100" data-placeholder="Password"></span>
                         </div>
-
+                        
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
-                                <button class="login100-form-btn">
+                                <button class="login100-form-btn" onclick="sss(this)">
                                     Login
+                                    
                                 </button>
                             </div>
                         </div>
 
                         <div class="text-center p-t-115">
-                            <span class="txt1">
+                            <span class="txt1" style="color: #f32020">
                                 <s:if test="hasActionErrors()">
                                     <div class="error-dis">
-                                        <i class="fa fa-remove-sign" style="color: #ff2222;">
+                                        <i class="zmdi zmdi-alert-triangle mdc-text-red"></i>
                                             <s:actionerror cssStyle="list-style:none;"/></i> 
                                     </div>
                                 </s:if>
                                 <s:if test="hasActionMessages()">
                                     <div class="error-dis">
-                                        <i class="fa fa-remove-sign" style="color: green;">
+                                        <i class="zmdi zmdi-alert-triangle mdc-text-red"></i>
                                             <s:actionmessage cssStyle="list-style:none"/></i>
                                     </div>  
                                 </s:if>
@@ -139,13 +146,6 @@
         <!--===============================================================================================-->
         <script src="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/js/main.js"></script>
 
-        <script>
-            $(document).ready(function (){
-                setTimeout(function (){
-                    $("input[name=password]").addClass('has-val'); 
-                    $("input[name=username]").addClass('has-val'); 
-                },100);
-            });
-        </script>
+        
     </body>
 </html>

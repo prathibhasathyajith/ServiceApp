@@ -36,7 +36,7 @@
                             $('#history_visibilityedit').val("");
                             $('#OTPReqStatusedit').val("");
 
-                            $('#amessageedit').text("");
+                            $('#divmsgupdate').text("");
                             $('#updateButtonedit').button("disable");
                         } else {
                             $('#oldvalue').val(data.oldvalue);
@@ -49,7 +49,7 @@
                             $('#statusedit').val(data.status);
                             $('#OTPReqStatusedit').val(data.OTPReqStatus);
                             $('#history_visibilityedit').val(data.history_visibility);
-                            $('#amessageedit').text("");
+                            $('#divmsgupdate').text("");
                         }
                     },
                     error: function (data) {
@@ -131,7 +131,7 @@
                                         button="true"
                                         value="Update"
                                         href="%{updateturl}"
-                                        targets="amessageedit"
+                                        targets="divmsgupdate"
                                         id="updateButtonedit"
                                         cssClass="uinew-button-submit" 
                                         />     

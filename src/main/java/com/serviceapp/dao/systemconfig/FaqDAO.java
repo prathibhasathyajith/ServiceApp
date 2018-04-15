@@ -121,7 +121,7 @@ public class FaqDAO {
 
                     try {
                         if (mobFaq.getCreatedtime().toString() != null && !mobFaq.getCreatedtime().toString().isEmpty()) {
-                            mobFaqBean.setCreatedtime(mobFaq.getCreatedtime().toString().substring(0, 19));
+                            mobFaqBean.setCreatedtime(mobFaq.getCreatedtime().toString());
                         } else {
                             mobFaqBean.setCreatedtime("--");
                         }
@@ -227,7 +227,7 @@ public class FaqDAO {
 
             Date sysDate = CommonDAO.getSystemDate(session);
 
-            MobFaq mobfaq = (MobFaq) session.get(MobFaq.class, new BigDecimal(inputBean.getId().trim()));
+            MobFaq mobfaq = (MobFaq) session.get(MobFaq.class, Integer.parseInt(inputBean.getId().trim()));
 
             audit.setCreatetime(sysDate);
             audit.setLastupdatedtime(sysDate);
@@ -322,7 +322,7 @@ public class FaqDAO {
             txn = session.beginTransaction();
             Date sysDate = commonDAO.getSystemDate(session);
 
-            MobFaq mobfaq = (MobFaq) session.get(MobFaq.class, new BigDecimal(inputBean.getId().trim()));
+            MobFaq mobfaq = (MobFaq) session.get(MobFaq.class, Integer.parseInt(inputBean.getId().trim()));
 
             if (mobfaq != null) {
 
