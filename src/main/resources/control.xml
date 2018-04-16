@@ -242,6 +242,17 @@
             <result name="find" type="json"></result>
             <result name="success"></result>
         </action> 
+        
+        <action name="*RatingMgt" method="{1}" class="com.serviceapp.action.cusmanagement.RatingMgtAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/cusmanagement/rating/ratingmgt.jsp</result>
+            <result name="viewdetail">/WEB-INF/pages/cusmanagement/rating/ratingmgtview.jsp</result>
+            <result name="detail">/WEB-INF/pages/cusmanagement/rating/ratingmgtedit.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action> 
     </package>
 </struts>
 

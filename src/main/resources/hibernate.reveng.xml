@@ -41,9 +41,10 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="service_app"/>
-  <table-filter match-name="mob_user"/>
-  <table-filter match-name="mob_suggested_user"/>
+  <table-filter match-name="mob_bass_ratings"/>
+  <table-filter match-name="mob_service_request"/>
   <table-filter match-name="status"/>
-  <table-filter match-name="roles"/>
-  <table-filter match-name="mob_configuration"/>
+  <table-filter match-name="mob_bass_level_config"/>
+  <table-filter match-name="mob_user"/>
+  <table-filter match-name="mob_bass_data"/>
 </hibernate-reverse-engineering>

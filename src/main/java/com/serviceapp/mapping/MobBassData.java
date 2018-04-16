@@ -2,11 +2,16 @@ package com.serviceapp.mapping;
 // Generated Apr 4, 2018 10:44:22 AM by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -24,6 +29,7 @@ public class MobBassData  implements java.io.Serializable {
 
 
      private int userId;
+     private MobBassLevelConfig mobBassLevelConfig;
      private MobUser mobUser;
      private String address;
      private String area;
@@ -31,19 +37,24 @@ public class MobBassData  implements java.io.Serializable {
      private byte[] birthCert;
      private byte[] qualificationImg;
      private String district;
+     private Boolean isOnline;
+     private Set<MobServiceRequest> mobServiceRequests = new HashSet(0);
+     private Set<MobBassRatings> mobBassRatingses = new HashSet(0);
 
     public MobBassData() {
     }
 
 	
-    public MobBassData(MobUser mobUser, String address, byte[] policeReport, byte[] birthCert, String district) {
+    public MobBassData(MobBassLevelConfig mobBassLevelConfig, MobUser mobUser, String address, byte[] policeReport, byte[] birthCert, String district) {
+        this.mobBassLevelConfig = mobBassLevelConfig;
         this.mobUser = mobUser;
         this.address = address;
         this.policeReport = policeReport;
         this.birthCert = birthCert;
         this.district = district;
     }
-    public MobBassData(MobUser mobUser, String address, String area, byte[] policeReport, byte[] birthCert, byte[] qualificationImg, String district) {
+    public MobBassData(MobBassLevelConfig mobBassLevelConfig, MobUser mobUser, String address, String area, byte[] policeReport, byte[] birthCert, byte[] qualificationImg, String district, Boolean isOnline, Set<MobServiceRequest> mobServiceRequests, Set<MobBassRatings> mobBassRatingses) {
+       this.mobBassLevelConfig = mobBassLevelConfig;
        this.mobUser = mobUser;
        this.address = address;
        this.area = area;
@@ -51,6 +62,9 @@ public class MobBassData  implements java.io.Serializable {
        this.birthCert = birthCert;
        this.qualificationImg = qualificationImg;
        this.district = district;
+       this.isOnline = isOnline;
+       this.mobServiceRequests = mobServiceRequests;
+       this.mobBassRatingses = mobBassRatingses;
     }
    
      @GenericGenerator(name="generator", strategy="foreign", parameters=@Parameter(name="property", value="mobUser"))@Id @GeneratedValue(generator="generator")
@@ -63,6 +77,16 @@ public class MobBassData  implements java.io.Serializable {
     
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="level", nullable=false)
+    public MobBassLevelConfig getMobBassLevelConfig() {
+        return this.mobBassLevelConfig;
+    }
+    
+    public void setMobBassLevelConfig(MobBassLevelConfig mobBassLevelConfig) {
+        this.mobBassLevelConfig = mobBassLevelConfig;
     }
 
 @OneToOne(fetch=FetchType.EAGER)@PrimaryKeyJoinColumn
@@ -134,9 +158,36 @@ public class MobBassData  implements java.io.Serializable {
         this.district = district;
     }
 
+    
+    @Column(name="is_online")
+    public Boolean getIsOnline() {
+        return this.isOnline;
+    }
+    
+    public void setIsOnline(Boolean isOnline) {
+        this.isOnline = isOnline;
+    }
+
+@OneToMany(fetch=FetchType.EAGER, mappedBy="mobBassData")
+    public Set<MobServiceRequest> getMobServiceRequests() {
+        return this.mobServiceRequests;
+    }
+    
+    public void setMobServiceRequests(Set<MobServiceRequest> mobServiceRequests) {
+        this.mobServiceRequests = mobServiceRequests;
+    }
+
+@OneToMany(fetch=FetchType.EAGER, mappedBy="mobBassData")
+    public Set<MobBassRatings> getMobBassRatingses() {
+        return this.mobBassRatingses;
+    }
+    
+    public void setMobBassRatingses(Set<MobBassRatings> mobBassRatingses) {
+        this.mobBassRatingses = mobBassRatingses;
+    }
+
 
 
 
 }
-
 

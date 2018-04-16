@@ -48,6 +48,7 @@ public class MobUser  implements java.io.Serializable {
      private Set<UserRoles> userRoleses = new HashSet(0);
      private MobBassData mobBassData;
      private Set<MobSuggestedUser> mobSuggestedUsers = new HashSet(0);
+     private Set<MobBassRatings> mobBassRatingses = new HashSet(0);
 
     public MobUser() {
     }
@@ -57,7 +58,7 @@ public class MobUser  implements java.io.Serializable {
         this.mobile = mobile;
         this.isBass = isBass;
     }
-    public MobUser(Status status, String mobile, String firstName, String email, String lastName, String pin, Boolean isMale, String nic, String salt, Date lastLoginTime, Date createdTime, byte[] image, boolean isBass, Set<UserRoles> userRoleses, MobBassData mobBassData, Set<MobSuggestedUser> mobSuggestedUsers) {
+    public MobUser(Status status, String mobile, String firstName, String email, String lastName, String pin, Boolean isMale, String nic, String salt, Date lastLoginTime, Date createdTime, byte[] image, boolean isBass, Set<UserRoles> userRoleses, MobBassData mobBassData, Set<MobSuggestedUser> mobSuggestedUsers,Set<MobBassRatings> mobBassRatingses) {
        this.status = status;
        this.mobile = mobile;
        this.firstName = firstName;
@@ -74,6 +75,7 @@ public class MobUser  implements java.io.Serializable {
        this.userRoleses = userRoleses;
        this.mobBassData = mobBassData;
        this.mobSuggestedUsers = mobSuggestedUsers;
+       this.mobBassRatingses = mobBassRatingses;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -244,7 +246,14 @@ public class MobUser  implements java.io.Serializable {
     public void setMobSuggestedUsers(Set<MobSuggestedUser> mobSuggestedUsers) {
         this.mobSuggestedUsers = mobSuggestedUsers;
     }
-
+@OneToMany(fetch=FetchType.EAGER, mappedBy="mobUser")
+    public Set<MobBassRatings> getMobBassRatingses() {
+        return this.mobBassRatingses;
+    }
+    
+    public void setMobBassRatingses(Set<MobBassRatings> mobBassRatingses) {
+        this.mobBassRatingses = mobBassRatingses;
+    }
 
 
 

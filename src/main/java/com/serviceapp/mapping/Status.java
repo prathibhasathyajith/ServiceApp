@@ -31,6 +31,7 @@ public class Status  implements java.io.Serializable {
      private Set<MobSuggestedUser> mobSuggestedUsers = new HashSet(0);
      private Set<MobUser> mobUsers = new HashSet(0);
      private Set<Roles> roleses = new HashSet(0);
+     private Set<MobServiceRequest> mobServiceRequests = new HashSet(0);
 
     public Status() {
     }
@@ -39,7 +40,7 @@ public class Status  implements java.io.Serializable {
     public Status(String statuscode) {
         this.statuscode = statuscode;
     }
-    public Status(String statuscode, String category, String description, Set<Systemuser> systemusers,Set<MobFaq> mobFaqs,Set<TransactionType> transactionTypes,Set<WebTerms> webTermses,Set<MobSuggestedUser> mobSuggestedUsers,Set<MobUser> mobUsers,Set<Roles> roleses) {
+    public Status(String statuscode, String category, String description, Set<Systemuser> systemusers,Set<MobFaq> mobFaqs,Set<TransactionType> transactionTypes,Set<WebTerms> webTermses,Set<MobSuggestedUser> mobSuggestedUsers,Set<MobUser> mobUsers,Set<Roles> roleses,Set<MobServiceRequest> mobServiceRequests) {
        this.statuscode = statuscode;
        this.category = category;
        this.description = description;
@@ -50,6 +51,7 @@ public class Status  implements java.io.Serializable {
        this.mobSuggestedUsers = mobSuggestedUsers;
        this.mobUsers = mobUsers;
        this.roleses = roleses;
+       this.mobServiceRequests = mobServiceRequests;
     }
    
      @Id 
@@ -142,6 +144,14 @@ public class Status  implements java.io.Serializable {
     
     public void setRoleses(Set<Roles> roleses) {
         this.roleses = roleses;
+    }
+@OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+    public Set<MobServiceRequest> getMobServiceRequests() {
+        return this.mobServiceRequests;
+    }
+    
+    public void setMobServiceRequests(Set<MobServiceRequest> mobServiceRequests) {
+        this.mobServiceRequests = mobServiceRequests;
     }
 
 }
