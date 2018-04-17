@@ -586,25 +586,13 @@ public class CustomerMgtDAO {
         Session session = null;
         try {
             session = HibernateInit.sessionFactory.openSession();
-//            session.doReturningWork(new Work() {
-//                public void execute(Connection connection) throws SQLException {
-//                    CallableStatement call = connection.prepareCall("{ ? = call service_app.getBassLevel(?) }");
-//                    call.registerOutParameter(1, Types.VARCHAR); // or whatever it is
-//                    call.setLong(2, Integer.parseInt(userId));
-//                    call.execute();
-//                    String result = call.getString(1);
-//                    // propagate this back to enclosing class
-//                }
-//
-//            });
-
             level = session.doReturningWork(new ReturningWork<String>() {
                 public String execute(Connection connection) throws SQLException {
                     CallableStatement call = connection.prepareCall("{ ? = call service_app.getBassLevel(?) }");
-                    call.registerOutParameter(1, Types.VARCHAR); // or whatever it is
+                    call.registerOutParameter(1, Types.VARCHAR); 
                     call.setInt(2, Integer.parseInt(userId));
                     call.execute();
-                    String result = call.getString(1); // propagate this back to enclosing class
+                    String result = call.getString(1); 
                     return result;
                 }
             });

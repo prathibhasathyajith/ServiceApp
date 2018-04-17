@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss-web>
-  <context-root>/Service_App_V1.00</context-root>
+  <context-root>/Service_App_V1.01</context-root>
   <!--    <jboss-deployment-structure>  
         <deployment>  
             <resources>  
