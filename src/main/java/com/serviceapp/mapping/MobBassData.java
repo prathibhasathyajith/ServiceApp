@@ -30,6 +30,7 @@ public class MobBassData  implements java.io.Serializable {
 
      private int userId;
      private MobBassLevelConfig mobBassLevelConfig;
+     private WebBassQualification webBassQualification;
      private MobUser mobUser;
      private String address;
      private String area;
@@ -53,7 +54,7 @@ public class MobBassData  implements java.io.Serializable {
         this.birthCert = birthCert;
         this.district = district;
     }
-    public MobBassData(MobBassLevelConfig mobBassLevelConfig, MobUser mobUser, String address, String area, byte[] policeReport, byte[] birthCert, byte[] qualificationImg, String district, Boolean isOnline, Set<MobServiceRequest> mobServiceRequests, Set<MobBassRatings> mobBassRatingses) {
+    public MobBassData(MobBassLevelConfig mobBassLevelConfig, MobUser mobUser,WebBassQualification webBassQualification, String address, String area, byte[] policeReport, byte[] birthCert, byte[] qualificationImg, String district, Boolean isOnline, Set<MobServiceRequest> mobServiceRequests, Set<MobBassRatings> mobBassRatingses) {
        this.mobBassLevelConfig = mobBassLevelConfig;
        this.mobUser = mobUser;
        this.address = address;
@@ -65,6 +66,7 @@ public class MobBassData  implements java.io.Serializable {
        this.isOnline = isOnline;
        this.mobServiceRequests = mobServiceRequests;
        this.mobBassRatingses = mobBassRatingses;
+       this.webBassQualification = webBassQualification;
     }
    
      @GenericGenerator(name="generator", strategy="foreign", parameters=@Parameter(name="property", value="mobUser"))@Id @GeneratedValue(generator="generator")
@@ -97,7 +99,15 @@ public class MobBassData  implements java.io.Serializable {
     public void setMobUser(MobUser mobUser) {
         this.mobUser = mobUser;
     }
-
+@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="qualification_type")
+    public WebBassQualification getWebBassQualification() {
+        return this.webBassQualification;
+    }
+    
+    public void setWebBassQualification(WebBassQualification webBassQualification) {
+        this.webBassQualification = webBassQualification;
+    }
     
     @Column(name="address", nullable=false, length=1024)
     public String getAddress() {

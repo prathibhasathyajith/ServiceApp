@@ -188,6 +188,7 @@ public class MessageVarlist {
     public static final String CUSTOMER_MGT_EMPTY_NIC = "NIC cannot be empty";
     public static final String CUSTOMER_MGT_EMPTY_EMAIL = "Email cannot be empty";
     public static final String CUSTOMER_MGT_EMPTY_STATUS = "Status cannot be empty";
+    public static final String CUSTOMER_MGT_EMPTY_QUALIFY = "Qulification cannot be empty";
     public static final String CUSTOMER_MGT_EMPTY_AREA = "Area cannot be empty";
     public static final String CUSTOMER_MGT_EMPTY_DISTRICT = "District cannot be empty";
     public static final String CUSTOMER_MGT_EMPTY_ADDRESS = "Address cannot be empty";

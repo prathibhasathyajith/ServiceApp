@@ -112,10 +112,10 @@
                 }
 
                 function resetFieldData() {}
-                
-                function sdd(){
+
+                function sdd() {
                     var name = $("#firstName").val();
-                    $("#usn").attr('download',name+'.jpg');
+                    $("#usn").attr('download', name + '.jpg');
                 }
 
             </script>
@@ -188,21 +188,35 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <div class="form-group">
+                                <div class="">
                                     <label>Area</label>
                                     <s:textfield  name="area" id="area" maxLength="64" cssClass="form-control" readonly="true"/>
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <div class="form-group">
+                                <div class="">
                                     <label>District</label>
                                     <s:textfield  name="district" id="district" maxLength="256"  cssClass="form-control" readonly="true"/>
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <div class="form-group">
+                                <div class="">
                                     <label>Status</label>
                                     <s:textfield  name="status" id="status" maxLength="256"  cssClass="form-control" readonly="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Qualification</label>
+                                    <s:textfield  name="qualify" id="qualify" maxLength="64" cssClass="form-control" readonly="true" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Level</label>
+                                    <s:textfield  name="level" id="level" maxLength="64" cssClass="form-control" readonly="true" cssStyle="color:blue;font-weight:bold"/>
                                 </div>
                             </div>
                         </div>

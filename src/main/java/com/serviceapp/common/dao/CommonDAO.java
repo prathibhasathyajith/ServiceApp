@@ -11,6 +11,7 @@ import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
 import com.serviceapp.mapping.Systemuser;
 import com.serviceapp.mapping.TransactionType;
+import com.serviceapp.mapping.WebBassQualification;
 import com.serviceapp.mapping.WebInfo;
 import com.serviceapp.mapping.WebTerms;
 import com.serviceapp.object.Page;
@@ -341,6 +342,28 @@ public class CommonDAO {
             }
         }
         return statusList;
+    }
+    
+    public List<WebBassQualification> getQualifyList()throws Exception {
+
+        List<WebBassQualification> qualifyList = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            String sql = "from WebBassQualification as s order by Upper(s.description) asc";
+            Query query = session.createQuery(sql);
+            qualifyList = query.list();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return qualifyList;
     }
     
     public List<Status> getStatusListCus2()throws Exception {

@@ -7,6 +7,7 @@ package com.serviceapp.bean.cusmanagement;
 
 import com.serviceapp.bean.systemaudit.MobKeyVal;
 import com.serviceapp.mapping.Status;
+import com.serviceapp.mapping.WebBassQualification;
 import java.io.File;
 import java.util.List;
 import org.apache.commons.codec.binary.Base64;
@@ -24,6 +25,9 @@ public class CustomerMgtInputBean {
     private String area;
     private String district;
     private String status;
+
+    private String level;
+    private String qualify;
 
     // from user table
     private String nic;
@@ -63,6 +67,7 @@ public class CustomerMgtInputBean {
     //////////////////////////////////////////////
     private List<Status> statusList;
     private List<MobKeyVal> genderList;
+    private List<WebBassQualification> qualifyList;
 
 
     /*------------------------list data table  ------------------------------*/
@@ -135,6 +140,22 @@ public class CustomerMgtInputBean {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getQualify() {
+        return qualify;
+    }
+
+    public void setQualify(String qualify) {
+        this.qualify = qualify;
     }
 
     public String getNic() {
@@ -395,6 +416,14 @@ public class CustomerMgtInputBean {
 
     public void setGenderList(List<MobKeyVal> genderList) {
         this.genderList = genderList;
+    }
+
+    public List<WebBassQualification> getQualifyList() {
+        return qualifyList;
+    }
+
+    public void setQualifyList(List<WebBassQualification> qualifyList) {
+        this.qualifyList = qualifyList;
     }
 
     public List<CustomerMgtBean> getGridModel() {

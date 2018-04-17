@@ -181,6 +181,14 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <span style="color: red">*</span><label>Qualification</label>
+                                    <s:select  id="qualify" list="%{qualifyList}"  headerValue="--Select Qualification--" headerKey="" name="qualify" listKey="id" listValue="description" disabled="false"  cssClass="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-sm-offset-1 col-sm-3">
                                 <div class="squar upload-button" id="police_report">  
                                     <img class="profile-pic " src="data:image/jpeg;base64,<s:property value="editPrImg"/>" id="pr_edit" name="editPrImg">

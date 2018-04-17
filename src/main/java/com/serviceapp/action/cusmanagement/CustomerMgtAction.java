@@ -164,6 +164,7 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
                     inputBean.setEditPrImage(mbb.getPoliceReport());
                     inputBean.setEditBcImage(mbb.getBirthCert());
                     inputBean.setEditQlImage(mbb.getQualificationImg());
+                    inputBean.setQualify(mbb.getWebBassQualification().getId().toString());
                 }
 
             } else {
@@ -197,6 +198,7 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
                 CustomerMgtDAO dao = new CustomerMgtDAO();
                 CommonDAO commonDAO = new CommonDAO();
                 inputBean.setStatusList(commonDAO.getStatusListCus());
+                inputBean.setQualifyList(commonDAO.getQualifyList());
 
                 mb = dao.findCustomerById(inputBean.getUserId());
                 mbb = dao.findCustomerBassById(inputBean.getUserId());
@@ -216,6 +218,7 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
                     inputBean.setEditPrImage(mbb.getPoliceReport());
                     inputBean.setEditBcImage(mbb.getBirthCert());
                     inputBean.setEditQlImage(mbb.getQualificationImg());
+                    inputBean.setQualify(mbb.getWebBassQualification().getId().toString());
                 }
 
             } else {
@@ -235,15 +238,18 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
         System.out.println("called CustomerMgtAction : viewDetail");
         MobUser mb = null;
         MobBassData mbb = null;
+        String level = null;
         try {
             if (inputBean.getUserId() != null && !inputBean.getUserId().isEmpty()) {
 
                 CustomerMgtDAO dao = new CustomerMgtDAO();
                 CommonDAO commonDAO = new CommonDAO();
                 inputBean.setStatusList(commonDAO.getStatusListCus());
+                inputBean.setQualifyList(commonDAO.getQualifyList());
 
                 mb = dao.findCustomerById(inputBean.getUserId());
                 mbb = dao.findCustomerBassById(inputBean.getUserId());
+                level = dao.findCustomerBassRate(inputBean.getUserId());
 
                 inputBean.setFirstName(mb.getFirstName());
                 inputBean.setLastName(mb.getLastName());
@@ -252,6 +258,12 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
                 inputBean.setNic(mb.getNic());
                 inputBean.setStatus(mb.getStatus().getDescription());
                 inputBean.setEditOwnImage(mb.getImage());
+                if(level!=null){
+                    inputBean.setLevel(level);
+                }else{
+                    inputBean.setLevel("Not Assigned");
+                }
+                
 
                 if (mbb != null) {
                     inputBean.setAddress(mbb.getAddress());
@@ -260,6 +272,7 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
                     inputBean.setEditPrImage(mbb.getPoliceReport());
                     inputBean.setEditBcImage(mbb.getBirthCert());
                     inputBean.setEditQlImage(mbb.getQualificationImg());
+                    inputBean.setQualify(mbb.getWebBassQualification().getDescription());
                 }
 
             } else {
@@ -298,6 +311,9 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
         }
         if (inputBean.getStatus() == null || inputBean.getStatus().trim().isEmpty()) {
             message = MessageVarlist.CUSTOMER_MGT_EMPTY_STATUS;
+        }
+        if (inputBean.getQualify()== null || inputBean.getQualify().trim().isEmpty()) {
+            message = MessageVarlist.CUSTOMER_MGT_EMPTY_QUALIFY;
         }
 
 //        String messageImg = this.getImageLogo(this.inputBean.getOwnImageFileName());

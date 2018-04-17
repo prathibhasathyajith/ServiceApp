@@ -13,10 +13,15 @@ import com.serviceapp.mapping.MobBassData;
 import com.serviceapp.mapping.MobUser;
 import com.serviceapp.mapping.Status;
 import com.serviceapp.mapping.Systemaudit;
+import com.serviceapp.mapping.WebBassQualification;
 import com.serviceapp.varlist.CommonVarlist;
 import com.serviceapp.varlist.MessageVarlist;
 import java.io.File;
 import java.io.FileInputStream;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -24,6 +29,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.jdbc.ReturningWork;
+import org.hibernate.jdbc.Work;
 
 /**
  *
@@ -59,11 +66,15 @@ public class CustomerMgtDAO {
 
                 oldValueBass = "|" + u2.getAddress()
                         + "|" + u2.getArea()
-                        + "|" + u2.getDistrict();
+                        + "|" + u2.getDistrict()
+                        + "|" + u2.getWebBassQualification().getDescription();
 
                 u2.setAddress(inputBean.getAddress());
                 u2.setArea(inputBean.getArea());
                 u2.setDistrict(inputBean.getDistrict());
+
+                WebBassQualification qf = (WebBassQualification) session.get(Status.class, Integer.parseInt(inputBean.getQualify()));
+                u2.setWebBassQualification(qf);
 
                 try {
                     if (inputBean.getPrImage().length() != 0) {
@@ -127,7 +138,8 @@ public class CustomerMgtDAO {
 
                 newValueBass = "|" + u2.getAddress()
                         + "|" + u2.getArea()
-                        + "|" + u2.getDistrict();
+                        + "|" + u2.getDistrict()
+                        + "|" + u2.getWebBassQualification().getDescription();
 
                 session.update(u2);
 
@@ -139,6 +151,9 @@ public class CustomerMgtDAO {
                 bassData.setAddress(inputBean.getAddress());
                 bassData.setArea(inputBean.getArea());
                 bassData.setDistrict(inputBean.getDistrict());
+
+                WebBassQualification qf = (WebBassQualification) session.get(Status.class, Integer.parseInt(inputBean.getQualify()));
+                bassData.setWebBassQualification(qf);
 
                 try {
                     if (inputBean.getPrImage().length() != 0) {
@@ -202,7 +217,8 @@ public class CustomerMgtDAO {
 
                 newValueBass = "|" + bassData.getAddress()
                         + "|" + bassData.getArea()
-                        + "|" + bassData.getDistrict();
+                        + "|" + bassData.getDistrict()
+                        + "|" + bassData.getWebBassQualification().getDescription();
 
                 session.save(bassData);
             }
@@ -343,7 +359,7 @@ public class CustomerMgtDAO {
                     } catch (NullPointerException e) {
                         bean.setStatus("--");
                     }
-                    
+
                     try {
                         bean.setStatuscode(cus.getStatus().getStatuscode());
                     } catch (NullPointerException e) {
@@ -422,10 +438,10 @@ public class CustomerMgtDAO {
             Date sysDate = commonDAO.getSystemDate(session);
 
             if (inputBean.getUserId() != null) {
-                
+
                 //user role
                 this.UpdateUserRole(inputBean.getUserId(), inputBean.getStatus());
-                
+
                 //mob user
                 String sql = "update MobUser as u set u.status=:statuscode where u.id=:userId";
                 Query query = session.createQuery(sql).setInteger("userId", Integer.parseInt(inputBean.getUserId())).setString("statuscode", inputBean.getStatus());
@@ -563,6 +579,47 @@ public class CustomerMgtDAO {
                 throw e;
             }
         }
+    }
+
+    public String findCustomerBassRate(final String userId) throws Exception {
+        String level = null;
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+//            session.doReturningWork(new Work() {
+//                public void execute(Connection connection) throws SQLException {
+//                    CallableStatement call = connection.prepareCall("{ ? = call service_app.getBassLevel(?) }");
+//                    call.registerOutParameter(1, Types.VARCHAR); // or whatever it is
+//                    call.setLong(2, Integer.parseInt(userId));
+//                    call.execute();
+//                    String result = call.getString(1);
+//                    // propagate this back to enclosing class
+//                }
+//
+//            });
+
+            level = session.doReturningWork(new ReturningWork<String>() {
+                public String execute(Connection connection) throws SQLException {
+                    CallableStatement call = connection.prepareCall("{ ? = call service_app.getBassLevel(?) }");
+                    call.registerOutParameter(1, Types.VARCHAR); // or whatever it is
+                    call.setInt(2, Integer.parseInt(userId));
+                    call.execute();
+                    String result = call.getString(1); // propagate this back to enclosing class
+                    return result;
+                }
+            });
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return level;
     }
 
 }
