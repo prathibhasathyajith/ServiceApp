@@ -46,7 +46,7 @@
                 <ul class="sub-links">
                     <li id="sublink_25"><a href="${pageContext.request.contextPath}/viewCustomerMgt.action">Customer Management</a></li>
                     <li id="sublink_26"><a href="${pageContext.request.contextPath}/viewSuggestUser.action">Suggested User</a></li>
-                    <li id="sublink_27"><a href="${pageContext.request.contextPath}/viewRatingMgt.action">Rating Management</a></li>
+                    <!--<li id="sublink_27"><a href="${pageContext.request.contextPath}/viewRatingMgt.action">Rating Management</a></li>-->
                 </ul>
             </div>
         </div>

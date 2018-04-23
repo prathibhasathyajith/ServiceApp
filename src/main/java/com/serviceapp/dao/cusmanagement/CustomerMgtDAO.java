@@ -73,7 +73,7 @@ public class CustomerMgtDAO {
                 u2.setArea(inputBean.getArea());
                 u2.setDistrict(inputBean.getDistrict());
 
-                WebBassQualification qf = (WebBassQualification) session.get(Status.class, Integer.parseInt(inputBean.getQualify()));
+                WebBassQualification qf = (WebBassQualification) session.get(WebBassQualification.class, Integer.parseInt(inputBean.getQualify()));
                 u2.setWebBassQualification(qf);
 
                 try {
@@ -152,7 +152,7 @@ public class CustomerMgtDAO {
                 bassData.setArea(inputBean.getArea());
                 bassData.setDistrict(inputBean.getDistrict());
 
-                WebBassQualification qf = (WebBassQualification) session.get(Status.class, Integer.parseInt(inputBean.getQualify()));
+                WebBassQualification qf = (WebBassQualification) session.get(WebBassQualification.class, Integer.parseInt(inputBean.getQualify()));
                 bassData.setWebBassQualification(qf);
 
                 try {

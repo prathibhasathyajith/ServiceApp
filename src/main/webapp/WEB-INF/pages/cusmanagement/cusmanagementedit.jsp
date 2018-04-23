@@ -90,6 +90,7 @@
                 imagePreview();
 
                 function resetFieldData() {
+                    $('#updatedialog').animate({ scrollTop: 0 }, 'fast');
                     $("#gridtable").jqGrid('setGridParam', {page: 1});
                     jQuery("#gridtable").trigger("reloadGrid");
                 }

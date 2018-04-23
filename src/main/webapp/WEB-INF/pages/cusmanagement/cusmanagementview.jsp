@@ -122,7 +122,7 @@
     </head>
 
     <body>
-        <s:div id="divmsgupdate">
+        <s:div id="divmsgview">
             <s:actionerror theme="jquery"/>
             <s:actionmessage theme="jquery"/>
         </s:div>
