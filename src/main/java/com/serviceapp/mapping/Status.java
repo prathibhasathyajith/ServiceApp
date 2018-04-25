@@ -86,7 +86,7 @@ public class Status  implements java.io.Serializable {
         this.description = description;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="status")
     public Set<Systemuser> getSystemusers() {
         return this.systemusers;
     }
@@ -95,7 +95,7 @@ public class Status  implements java.io.Serializable {
         this.systemusers = systemusers;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="status")
     public Set<MobFaq> getMobFaqs() {
         return this.mobFaqs;
     }
@@ -103,7 +103,7 @@ public class Status  implements java.io.Serializable {
     public void setMobFaqs(Set<MobFaq> mobFaqs) {
         this.mobFaqs = mobFaqs;
     }
-    @OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="status")
     public Set<TransactionType> getTransactionTypes() {
         return this.transactionTypes;
     }
@@ -111,7 +111,7 @@ public class Status  implements java.io.Serializable {
     public void setTransactionTypes(Set<TransactionType> transactionTypes) {
         this.transactionTypes = transactionTypes;
     }
-@OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="status")
     public Set<WebTerms> getWebTermses() {
         return this.webTermses;
     }
@@ -119,7 +119,7 @@ public class Status  implements java.io.Serializable {
     public void setWebTermses(Set<WebTerms> webTermses) {
         this.webTermses = webTermses;
     }
-    @OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="status")
     public Set<MobSuggestedUser> getMobSuggestedUsers() {
         return this.mobSuggestedUsers;
     }
@@ -128,7 +128,7 @@ public class Status  implements java.io.Serializable {
         this.mobSuggestedUsers = mobSuggestedUsers;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="status")
     public Set<MobUser> getMobUsers() {
         return this.mobUsers;
     }
@@ -137,7 +137,7 @@ public class Status  implements java.io.Serializable {
         this.mobUsers = mobUsers;
     }
     
-@OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="status")
     public Set<Roles> getRoleses() {
         return this.roleses;
     }
@@ -145,7 +145,7 @@ public class Status  implements java.io.Serializable {
     public void setRoleses(Set<Roles> roleses) {
         this.roleses = roleses;
     }
-@OneToMany(fetch=FetchType.EAGER, mappedBy="status")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="status")
     public Set<MobServiceRequest> getMobServiceRequests() {
         return this.mobServiceRequests;
     }

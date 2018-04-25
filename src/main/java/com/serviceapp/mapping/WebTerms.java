@@ -49,7 +49,7 @@ public class WebTerms  implements java.io.Serializable {
         this.versionNo = versionNo;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="STATUS")
     public Status getStatus() {
         return this.status;

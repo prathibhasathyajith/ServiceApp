@@ -88,7 +88,7 @@ public class TransactionType  implements java.io.Serializable {
         this.description = description;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="transactionType")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="transactionType")
     public Set<WebSmsTemplate> getWebSmsTemplates() {
         return this.webSmsTemplates;
     }
@@ -97,7 +97,7 @@ public class TransactionType  implements java.io.Serializable {
         this.webSmsTemplates = webSmsTemplates;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="transactionType")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="transactionType")
     public Set<WebEmailTemplate> getWebEmailTemplates() {
         return this.webEmailTemplates;
     }

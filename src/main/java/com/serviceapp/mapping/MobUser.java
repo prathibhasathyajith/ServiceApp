@@ -220,7 +220,7 @@ public class MobUser  implements java.io.Serializable {
         this.isBass = isBass;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="mobUser")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobUser")
     public Set<UserRoles> getUserRoleses() {
         return this.userRoleses;
     }
@@ -229,7 +229,7 @@ public class MobUser  implements java.io.Serializable {
         this.userRoleses = userRoleses;
     }
 
-@OneToOne(fetch=FetchType.EAGER, mappedBy="mobUser")
+@OneToOne(fetch=FetchType.LAZY, mappedBy="mobUser")
     public MobBassData getMobBassData() {
         return this.mobBassData;
     }
@@ -238,7 +238,7 @@ public class MobUser  implements java.io.Serializable {
         this.mobBassData = mobBassData;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="mobUser")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobUser")
     public Set<MobSuggestedUser> getMobSuggestedUsers() {
         return this.mobSuggestedUsers;
     }
@@ -246,7 +246,7 @@ public class MobUser  implements java.io.Serializable {
     public void setMobSuggestedUsers(Set<MobSuggestedUser> mobSuggestedUsers) {
         this.mobSuggestedUsers = mobSuggestedUsers;
     }
-@OneToMany(fetch=FetchType.EAGER, mappedBy="mobUser")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobUser")
     public Set<MobBassRatings> getMobBassRatingses() {
         return this.mobBassRatingses;
     }

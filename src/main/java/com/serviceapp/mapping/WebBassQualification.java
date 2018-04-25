@@ -57,7 +57,7 @@ public class WebBassQualification  implements java.io.Serializable {
         this.description = description;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="webBassQualification")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="webBassQualification")
     public Set<MobBassData> getMobBassDatas() {
         return this.mobBassDatas;
     }

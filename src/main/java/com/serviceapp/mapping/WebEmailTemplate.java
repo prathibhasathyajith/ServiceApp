@@ -59,7 +59,7 @@ public class WebEmailTemplate  implements java.io.Serializable {
         this.messageid = messageid;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="TRANSACTIONTYPE")
     public TransactionType getTransactionType() {
         return this.transactionType;

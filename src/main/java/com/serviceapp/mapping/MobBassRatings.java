@@ -55,7 +55,7 @@ public class MobBassRatings  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="bass_id", nullable=false)
     public MobBassData getMobBassData() {
         return this.mobBassData;
@@ -65,7 +65,7 @@ public class MobBassRatings  implements java.io.Serializable {
         this.mobBassData = mobBassData;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="service_id", nullable=false)
     public MobServiceRequest getMobServiceRequest() {
         return this.mobServiceRequest;
@@ -75,7 +75,7 @@ public class MobBassRatings  implements java.io.Serializable {
         this.mobServiceRequest = mobServiceRequest;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cust_id", nullable=false)
     public MobUser getMobUser() {
         return this.mobUser;

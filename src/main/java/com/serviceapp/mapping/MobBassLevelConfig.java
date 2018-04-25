@@ -89,7 +89,7 @@ public class MobBassLevelConfig  implements java.io.Serializable {
         this.requiredServiceCount = requiredServiceCount;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="mobBassLevelConfig")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobBassLevelConfig")
     public Set<MobBassData> getMobBassDatas() {
         return this.mobBassDatas;
     }

@@ -74,7 +74,7 @@ public class MobSuggestedUser  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="referrer")
     public MobUser getMobUser() {
         return this.mobUser;
@@ -84,7 +84,7 @@ public class MobSuggestedUser  implements java.io.Serializable {
         this.mobUser = mobUser;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="service_role")
     public Roles getRoles() {
         return this.roles;
@@ -94,7 +94,7 @@ public class MobSuggestedUser  implements java.io.Serializable {
         this.roles = roles;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="status", nullable=false)
     public Status getStatus() {
         return this.status;

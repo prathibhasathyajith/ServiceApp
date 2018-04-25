@@ -50,7 +50,7 @@ public class UserRoles  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id", nullable=false)
     public MobUser getMobUser() {
         return this.mobUser;

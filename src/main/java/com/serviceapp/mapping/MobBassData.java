@@ -81,7 +81,7 @@ public class MobBassData  implements java.io.Serializable {
         this.userId = userId;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="level", nullable=false)
     public MobBassLevelConfig getMobBassLevelConfig() {
         return this.mobBassLevelConfig;
@@ -91,7 +91,7 @@ public class MobBassData  implements java.io.Serializable {
         this.mobBassLevelConfig = mobBassLevelConfig;
     }
 
-@OneToOne(fetch=FetchType.EAGER)@PrimaryKeyJoinColumn
+@OneToOne(fetch=FetchType.LAZY)@PrimaryKeyJoinColumn
     public MobUser getMobUser() {
         return this.mobUser;
     }
@@ -178,7 +178,7 @@ public class MobBassData  implements java.io.Serializable {
         this.isOnline = isOnline;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="mobBassData")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobBassData")
     public Set<MobServiceRequest> getMobServiceRequests() {
         return this.mobServiceRequests;
     }
@@ -187,7 +187,7 @@ public class MobBassData  implements java.io.Serializable {
         this.mobServiceRequests = mobServiceRequests;
     }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="mobBassData")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobBassData")
     public Set<MobBassRatings> getMobBassRatingses() {
         return this.mobBassRatingses;
     }
