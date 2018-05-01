@@ -72,7 +72,7 @@ public class CustomerMgtDAO {
                 u2.setAddress(inputBean.getAddress());
                 u2.setArea(inputBean.getArea());
                 u2.setDistrict(inputBean.getDistrict());
-
+                
                 WebBassQualification qf = (WebBassQualification) session.get(WebBassQualification.class, Integer.parseInt(inputBean.getQualify()));
                 u2.setWebBassQualification(qf);
 

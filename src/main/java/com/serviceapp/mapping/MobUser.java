@@ -229,7 +229,7 @@ public class MobUser  implements java.io.Serializable {
         this.userRoleses = userRoleses;
     }
 
-@OneToOne(fetch=FetchType.LAZY, mappedBy="mobUser")
+@OneToOne(fetch=FetchType.EAGER, mappedBy="mobUser")
     public MobBassData getMobBassData() {
         return this.mobBassData;
     }

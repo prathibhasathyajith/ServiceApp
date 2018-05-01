@@ -254,5 +254,29 @@
             <result name="success"></result>
         </action> 
     </package>
+    <package name="service" extends="pglobal" namespace="/">
+        <action name="*ServiceCategory" method="{1}" class="com.serviceapp.action.service.ServiceCategoryAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/service/servicecategory/servicecategory.jsp</result>
+            <result name="viewpopup">/WEB-INF/pages/service/servicecategory/servicecategoryinsert.jsp</result>
+            <result name="viewdetail">/WEB-INF/pages/service/servicecategory/servicecategoryview.jsp</result>
+            <result name="detail">/WEB-INF/pages/service/servicecategory/servicecategoryedit.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action> 
+        <action name="*ServiceReco" method="{1}" class="com.serviceapp.action.service.ServiceRecoAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/service/servicereco/servicereco.jsp</result>
+            <result name="viewpopup">/WEB-INF/pages/service/servicereco/servicerecoinsert.jsp</result>
+            <result name="viewdetail">/WEB-INF/pages/service/servicereco/rating/servicerecoview.jsp</result>
+            <result name="detail">/WEB-INF/pages/service/servicereco/servicerecoedit.jsp</result>
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action> 
+    </package>
 </struts>
 
