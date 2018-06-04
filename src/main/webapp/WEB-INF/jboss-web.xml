@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss-web xmlns="http://www.jboss.com/xml/ns/javaee">
-  <context-root>/Service_App_V1.01</context-root>
+  <context-root>/Service_App_V1.02</context-root>
   <!--    <jboss-deployment-structure>  
         <deployment>  
             <resources>  
