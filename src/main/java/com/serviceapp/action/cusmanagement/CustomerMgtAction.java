@@ -258,11 +258,11 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
                 inputBean.setNic(mb.getNic());
                 inputBean.setStatus(mb.getStatus().getDescription());
                 inputBean.setEditOwnImage(mb.getImage());
-                if(level!=null){
-                    inputBean.setLevel(level);
-                }else{
-                    inputBean.setLevel("Not Assigned");
-                }
+//                if(level!=null){
+//                    inputBean.setLevel(level);
+//                }else{
+//                    inputBean.setLevel("Not Assigned");
+//                }
                 
 
                 if (mbb != null) {
@@ -273,6 +273,7 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
                     inputBean.setEditBcImage(mbb.getBirthCert());
                     inputBean.setEditQlImage(mbb.getQualificationImg());
                     inputBean.setQualify(mbb.getWebBassQualification().getDescription());
+                    inputBean.setLevel(mbb.getMobBassLevelConfig().getLevel());
                 }
 
             } else {
