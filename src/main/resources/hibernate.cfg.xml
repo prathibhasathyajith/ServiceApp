@@ -12,7 +12,7 @@
     <!--<property name="hibernate.connection.datasource">java:/service_app</property>-->
     <!--<property name="hibernate.connection.verifyServerCertificate">false</property>-->
     <!--<property name="hibernate.connection.requireSSL">false</property>-->
-    <property name="hibernate.connection.autocommit">true</property>
+    <property name="hibernate.connection.autocommit">false</property>
     <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
     <!-- Enable Hibernate's automatic session context management, in this case the session will be close after each 
         transaction! -->

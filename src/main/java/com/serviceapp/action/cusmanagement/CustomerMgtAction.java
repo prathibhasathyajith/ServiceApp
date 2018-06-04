@@ -249,7 +249,7 @@ public class CustomerMgtAction extends ActionSupport implements ModelDriven<Obje
 
                 mb = dao.findCustomerById(inputBean.getUserId());
                 mbb = dao.findCustomerBassById(inputBean.getUserId());
-                level = dao.findCustomerBassRate(inputBean.getUserId());
+//                level = dao.findCustomerBassRate(inputBean.getUserId());
 
                 inputBean.setFirstName(mb.getFirstName());
                 inputBean.setLastName(mb.getLastName());

@@ -203,4 +203,7 @@ public class MessageVarlist {
     public static final String CONFIGDATA_METHOD_NAME = "getKey";
     public static final String CONFIGDATA_KEY_NAME = "key";
     
+    //level config
+    public static final String INPUT_FIELDS_EMPTY_MSG = "All fields are mandatory.Cannot be empty";
+    
 }
