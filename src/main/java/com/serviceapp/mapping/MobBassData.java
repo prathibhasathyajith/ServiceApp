@@ -38,7 +38,7 @@ public class MobBassData implements java.io.Serializable {
     private byte[] qualificationImg;
     private String district;
     private Boolean isOnline;
-    private Integer qualificationType;
+//    private Integer qualificationType;
     private BigDecimal rating;
     private Set<MobServiceRequest> mobServiceRequests = new HashSet(0);
     private Set<MobBassRatings> mobBassRatingses = new HashSet(0);
@@ -55,7 +55,7 @@ public class MobBassData implements java.io.Serializable {
         this.district = district;
     }
 
-    public MobBassData(MobBassLevelConfig mobBassLevelConfig, MobUser mobUser, WebBassQualification webBassQualification, String address, String area, byte[] policeReport, byte[] birthCert, byte[] qualificationImg, String district, Boolean isOnline, Integer qualificationType, BigDecimal rating, Set<MobServiceRequest> mobServiceRequests, Set<MobBassRatings> mobBassRatingses) {
+    public MobBassData(MobBassLevelConfig mobBassLevelConfig, MobUser mobUser, WebBassQualification webBassQualification, String address, String area, byte[] policeReport, byte[] birthCert, byte[] qualificationImg, String district, Boolean isOnline,  BigDecimal rating, Set<MobServiceRequest> mobServiceRequests, Set<MobBassRatings> mobBassRatingses) {
         this.mobBassLevelConfig = mobBassLevelConfig;
         this.mobUser = mobUser;
         this.address = address;
@@ -65,7 +65,7 @@ public class MobBassData implements java.io.Serializable {
         this.qualificationImg = qualificationImg;
         this.district = district;
         this.isOnline = isOnline;
-        this.qualificationType = qualificationType;
+//        this.qualificationType = qualificationType;
         this.rating = rating;
         this.mobServiceRequests = mobServiceRequests;
         this.mobBassRatingses = mobBassRatingses;
@@ -174,14 +174,14 @@ public class MobBassData implements java.io.Serializable {
         return this.isOnline;
     }
     
-    @Column(name="qualification_type")
-    public Integer getQualificationType() {
-        return this.qualificationType;
-    }
-    
-    public void setQualificationType(Integer qualificationType) {
-        this.qualificationType = qualificationType;
-    }
+//    @Column(name="qualification_type")
+//    public Integer getQualificationType() {
+//        return this.qualificationType;
+//    }
+//    
+//    public void setQualificationType(Integer qualificationType) {
+//        this.qualificationType = qualificationType;
+//    }
 
     
     @Column(name="rating", precision=2, scale=1)
