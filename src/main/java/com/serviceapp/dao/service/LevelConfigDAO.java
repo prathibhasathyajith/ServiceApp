@@ -7,14 +7,10 @@ package com.serviceapp.dao.service;
 
 import com.serviceapp.bean.service.LevelConfigBean;
 import com.serviceapp.bean.service.LevelConfigInputBean;
-import com.serviceapp.bean.usermanagement.SystemuserBean;
-import com.serviceapp.bean.usermanagement.SystemuserInputBean;
 import com.serviceapp.common.dao.CommonDAO;
 import com.serviceapp.listener.HibernateInit;
 import com.serviceapp.mapping.MobBassLevelConfig;
-import com.serviceapp.mapping.Passwordpolicy;
 import com.serviceapp.mapping.Systemaudit;
-import com.serviceapp.mapping.Systemuser;
 import com.serviceapp.varlist.MessageVarlist;
 import java.util.ArrayList;
 import java.util.Date;
