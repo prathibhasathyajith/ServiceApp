@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,6 +33,11 @@ public class MobServiceRequest  implements java.io.Serializable {
      private Status status;
      private Date createdTime;
      private Date updatedTime;
+     private double custLat;
+     private double custLong;
+     private String custAddress;
+     private MobServiceCharge mobServiceCharge;
+     private MobServiceCancelReasons mobServiceCancelReasons;
      private Set<MobBassRatings> mobBassRatingses = new HashSet(0);
 
     public MobServiceRequest() {
@@ -45,14 +51,19 @@ public class MobServiceRequest  implements java.io.Serializable {
         this.createdTime = createdTime;
         this.updatedTime = updatedTime;
     }
-    public MobServiceRequest(long serviceId, MobBassData mobBassData, MobUser mobUser, Status status, Date createdTime, Date updatedTime, Set<MobBassRatings> mobBassRatingses) {
+    public MobServiceRequest(long serviceId, MobBassData mobBassData, MobUser mobUser, Status status, Date createdTime, Date updatedTime,double custLat, double custLong, String custAddress, Set<MobBassRatings> mobBassRatingses,MobServiceCharge mobServiceCharge, MobServiceCancelReasons mobServiceCancelReasons) {
        this.serviceId = serviceId;
        this.mobBassData = mobBassData;
        this.mobUser = mobUser;
        this.status = status;
        this.createdTime = createdTime;
        this.updatedTime = updatedTime;
+       this.custLat = custLat;
+       this.custLong = custLong;
+       this.custAddress = custAddress;
        this.mobBassRatingses = mobBassRatingses;
+       this.mobServiceCharge = mobServiceCharge;
+       this.mobServiceCancelReasons = mobServiceCancelReasons;
     }
    
      @Id 
@@ -116,6 +127,31 @@ public class MobServiceRequest  implements java.io.Serializable {
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
     }
+    
+    @Column(name="cust_lat", nullable=false, precision=22, scale=0)
+    public double getCustLat() {
+        return this.custLat;
+    }
+    
+    public void setCustLat(double custLat) {
+        this.custLat = custLat;
+    }
+
+    
+    @Column(name="cust_long", nullable=false, precision=22, scale=0)
+    public double getCustLong() {
+        return this.custLong;
+    }
+    
+    public void setCustLong(double custLong) {
+        this.custLong = custLong;
+    }
+
+    
+    @Column(name="cust_address", length=65535)
+    public String getCustAddress() {
+        return this.custAddress;
+    }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="mobServiceRequest")
     public Set<MobBassRatings> getMobBassRatingses() {
@@ -126,7 +162,23 @@ public class MobServiceRequest  implements java.io.Serializable {
         this.mobBassRatingses = mobBassRatingses;
     }
 
+@OneToOne(fetch=FetchType.LAZY, mappedBy="mobServiceRequest")
+    public MobServiceCharge getMobServiceCharge() {
+        return this.mobServiceCharge;
+    }
+    
+    public void setMobServiceCharge(MobServiceCharge mobServiceCharge) {
+        this.mobServiceCharge = mobServiceCharge;
+    }
 
+@OneToOne(fetch=FetchType.LAZY, mappedBy="mobServiceRequest")
+    public MobServiceCancelReasons getMobServiceCancelReasons() {
+        return this.mobServiceCancelReasons;
+    }
+    
+    public void setMobServiceCancelReasons(MobServiceCancelReasons mobServiceCancelReasons) {
+        this.mobServiceCancelReasons = mobServiceCancelReasons;
+    }
 
 
 }

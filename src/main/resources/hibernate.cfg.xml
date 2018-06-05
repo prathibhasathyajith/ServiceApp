@@ -42,5 +42,9 @@
     <mapping class="com.serviceapp.mapping.MobServiceRequest"/>
     <mapping class="com.serviceapp.mapping.MobBassLevelConfig"/>
     <mapping class="com.serviceapp.mapping.WebBassQualification"/>
+    <mapping class="com.serviceapp.mapping.MobScheduledServiceRequest"/>
+    <mapping class="com.serviceapp.mapping.MobServiceCharge"/>
+    <mapping class="com.serviceapp.mapping.MobServiceCancelReasons"/>
+
   </session-factory>
 </hibernate-configuration>

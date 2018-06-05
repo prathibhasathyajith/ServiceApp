@@ -49,6 +49,10 @@ public class MobUser  implements java.io.Serializable {
      private MobBassData mobBassData;
      private Set<MobSuggestedUser> mobSuggestedUsers = new HashSet(0);
      private Set<MobBassRatings> mobBassRatingses = new HashSet(0);
+     
+     private Set<MobServiceRequest> mobServiceRequests = new HashSet(0);
+     private Set<MobServiceCancelReasons> mobServiceCancelReasonses = new HashSet(0);
+     private Set<MobScheduledServiceRequest> mobScheduledServiceRequests = new HashSet(0);
 
     public MobUser() {
     }
@@ -58,7 +62,7 @@ public class MobUser  implements java.io.Serializable {
         this.mobile = mobile;
         this.isBass = isBass;
     }
-    public MobUser(Status status, String mobile, String firstName, String email, String lastName, String pin, Boolean isMale, String nic, String salt, Date lastLoginTime, Date createdTime, byte[] image, boolean isBass, Set<UserRoles> userRoleses, MobBassData mobBassData, Set<MobSuggestedUser> mobSuggestedUsers,Set<MobBassRatings> mobBassRatingses) {
+    public MobUser(Status status, String mobile, String firstName, String email, String lastName, String pin, Boolean isMale, String nic, String salt, Date lastLoginTime, Date createdTime, byte[] image, boolean isBass, Set<UserRoles> userRoleses, MobBassData mobBassData, Set<MobSuggestedUser> mobSuggestedUsers,Set<MobBassRatings> mobBassRatingses,Set<MobServiceRequest> mobServiceRequests,Set<MobServiceCancelReasons> mobServiceCancelReasonses,Set<MobScheduledServiceRequest> mobScheduledServiceRequests) {
        this.status = status;
        this.mobile = mobile;
        this.firstName = firstName;
@@ -76,6 +80,9 @@ public class MobUser  implements java.io.Serializable {
        this.mobBassData = mobBassData;
        this.mobSuggestedUsers = mobSuggestedUsers;
        this.mobBassRatingses = mobBassRatingses;
+       this.mobServiceRequests = mobServiceRequests;
+       this.mobServiceCancelReasonses = mobServiceCancelReasonses;
+       this.mobScheduledServiceRequests = mobScheduledServiceRequests;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -254,8 +261,33 @@ public class MobUser  implements java.io.Serializable {
     public void setMobBassRatingses(Set<MobBassRatings> mobBassRatingses) {
         this.mobBassRatingses = mobBassRatingses;
     }
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobUser")
+    public Set<MobServiceRequest> getMobServiceRequests() {
+        return this.mobServiceRequests;
+    }
+    
+    public void setMobServiceRequests(Set<MobServiceRequest> mobServiceRequests) {
+        this.mobServiceRequests = mobServiceRequests;
+    }
 
 
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobUser")
+    public Set<MobServiceCancelReasons> getMobServiceCancelReasonses() {
+        return this.mobServiceCancelReasonses;
+    }
+    
+    public void setMobServiceCancelReasonses(Set<MobServiceCancelReasons> mobServiceCancelReasonses) {
+        this.mobServiceCancelReasonses = mobServiceCancelReasonses;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mobUser")
+    public Set<MobScheduledServiceRequest> getMobScheduledServiceRequests() {
+        return this.mobScheduledServiceRequests;
+    }
+    
+    public void setMobScheduledServiceRequests(Set<MobScheduledServiceRequest> mobScheduledServiceRequests) {
+        this.mobScheduledServiceRequests = mobScheduledServiceRequests;
+    }
 
 }
 

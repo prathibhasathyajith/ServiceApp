@@ -27,6 +27,7 @@ public class Roles  implements java.io.Serializable {
      private Status status;
      private String description;
      private Set<MobSuggestedUser> mobSuggestedUsers = new HashSet(0);
+     private Set<MobScheduledServiceRequest> mobScheduledServiceRequests = new HashSet(0);
 
     public Roles() {
     }
@@ -35,11 +36,12 @@ public class Roles  implements java.io.Serializable {
     public Roles(String roleType) {
         this.roleType = roleType;
     }
-    public Roles(String roleType, Status status, String description, Set<MobSuggestedUser> mobSuggestedUsers) {
+    public Roles(String roleType, Status status, String description, Set<MobSuggestedUser> mobSuggestedUsers,Set<MobScheduledServiceRequest> mobScheduledServiceRequests) {
        this.roleType = roleType;
        this.status = status;
        this.description = description;
        this.mobSuggestedUsers = mobSuggestedUsers;
+       this.mobScheduledServiceRequests = mobScheduledServiceRequests;
     }
    
      @Id 
@@ -83,7 +85,14 @@ public class Roles  implements java.io.Serializable {
         this.mobSuggestedUsers = mobSuggestedUsers;
     }
 
-
+@OneToMany(fetch=FetchType.LAZY, mappedBy="roles")
+    public Set<MobScheduledServiceRequest> getMobScheduledServiceRequests() {
+        return this.mobScheduledServiceRequests;
+    }
+    
+    public void setMobScheduledServiceRequests(Set<MobScheduledServiceRequest> mobScheduledServiceRequests) {
+        this.mobScheduledServiceRequests = mobScheduledServiceRequests;
+    }
 
 
 }

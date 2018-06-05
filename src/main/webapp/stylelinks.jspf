@@ -263,7 +263,7 @@
     .squar:hover{
         box-shadow: 0 0 7px 4px #808080c2,inset 0 0 3px 0px #3e4448;
     }
-    
+
     .squar2 {
         border-radius: 0px !important;
         overflow: hidden;
@@ -302,6 +302,16 @@
         border-color: #e6e5e5;
         margin-top: 10px;
         margin-bottom: 10px;  
+    }
+    table#levelConf > thead > tr > th{
+        padding: 3px;
+        font-family: raleway;
+        font-weight: 600;
+        font-size: 13px;
+        border: 1px solid #2258a0;
+        background-color: #2258a0;
+        color: white;
+        text-align: center;
     }
 
 </style>

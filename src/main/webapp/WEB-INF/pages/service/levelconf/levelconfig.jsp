@@ -29,27 +29,27 @@
                             $('#basicDes').val(data.basicDes);
                             $('#basicPrice').val(data.basicPrice);
                             $('#basicSerCont').val(data.basicSerCont);
-                            
+
                             $('#gold').val(data.gold);
                             $('#goldDes').val(data.goldDes);
                             $('#goldPrice').val(data.goldPrice);
                             $('#goldSerCont').val(data.goldSerCont);
-                            
+
                             $('#silver').val(data.silver);
                             $('#silverDes').val(data.silverDes);
                             $('#silverPrice').val(data.silverPrice);
                             $('#silverSerCont').val(data.silverSerCont);
-                            
+
                             $('#platinum').val(data.platinum);
                             $('#platinumDes').val(data.platinumDes);
                             $('#platinumPrice').val(data.platinumPrice);
                             $('#platinumSerCont').val(data.platinumSerCont);
-                            
+
                             $('#bronze').val(data.bronze);
                             $('#bronzeDes').val(data.bronzeDes);
                             $('#bronzePrice').val(data.bronzePrice);
                             $('#bronzeSerCont').val(data.bronzeSerCont);
-                            
+
                         }
                     },
                     error: function (data) {
@@ -63,7 +63,7 @@
 
                 var s = $("#resetButton").is(':disabled')
                 if (s == true) {
-                    
+
                     $('#divmsg').text("");
                 } else {
                     editLevelConfig();
@@ -92,7 +92,7 @@
             <div class="tb-form">
                 <div class="containe-fluid">
                     <s:form id="levelConfig" method="post" action="LevelConfig" theme="simple" cssClass="form" >
-                        <table>
+                        <table id="levelConf">
                             <thead>
                                 <th>Level</th>
                                 <th>Description</th>
@@ -136,7 +136,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group  ">
-                                    <span class="mandatoryfield">Mandatory fields are marked with *</span>
+                                    <span class="mandatoryfield">All fields are mandatory</span>
                                 </div>
                             </div>
                         </div>
