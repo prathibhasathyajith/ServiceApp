@@ -8,8 +8,10 @@ package com.serviceapp.action.service;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.serviceapp.action.systemaudit.SystemAuditAction;
 import com.serviceapp.bean.service.ServiceCancelReasonBean;
 import com.serviceapp.bean.service.ServiceCancelReasonInputBean;
+import com.serviceapp.bean.systemaudit.SystemAuditBean;
 import com.serviceapp.common.dao.CommonDAO;
 import static com.serviceapp.common.dao.CommonDAO.checkEmptyorNullString;
 import com.serviceapp.dao.cusmanagement.SuggestedUserDAO;
@@ -122,5 +124,20 @@ public class ServiceCancelReasonAction extends ActionSupport implements ModelDri
         }
         return "list";
     }
+    
+    public String viewDetail() {
+        System.out.println("called ServiceCancelReasonAction :viewDetail");
+        try {
+            ServiceCancelReasonDAO dao = new ServiceCancelReasonDAO();
+            ServiceCancelReasonInputBean dataBean = dao.findResonDataById(inputBean.getServiceId());
+            inputBean.setScrDataBean(dataBean);
+
+        } catch (Exception ex) {
+            addActionError("ServiceCancelReasonAction " + MessageVarlist.COMMON_ERROR_PROCESS);
+            Logger.getLogger(ServiceCancelReasonAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "viewdetail";
+    }
+    
 
 }

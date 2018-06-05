@@ -7,13 +7,11 @@ package com.serviceapp.dao.service;
 
 import com.serviceapp.bean.service.ServiceCancelReasonBean;
 import com.serviceapp.bean.service.ServiceCancelReasonInputBean;
-import com.serviceapp.common.dao.CommonDAO;
 import com.serviceapp.listener.HibernateInit;
 import com.serviceapp.mapping.MobServiceCancelReasons;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -102,17 +100,16 @@ public class ServiceCancelReasonDAO {
 
         System.out.println("fdate - " + inputBean.getFdate());
         System.out.println("tdate - " + inputBean.getTdate());
-        
+
         DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
-        
-        
-        if((inputBean.getFdate() == null || inputBean.getFdate().isEmpty()) && (inputBean.getTdate() == null || inputBean.getTdate().isEmpty())){
+
+        if ((inputBean.getFdate() == null || inputBean.getFdate().isEmpty()) && (inputBean.getTdate() == null || inputBean.getTdate().isEmpty())) {
             System.out.println("-----------");
             inputBean.setFdate(dateformat.format(date));
             inputBean.setTdate(dateformat.format(date));
         }
-        
+
         System.out.println("fdate - " + inputBean.getFdate());
         System.out.println("tdate - " + inputBean.getTdate());
 
@@ -133,42 +130,50 @@ public class ServiceCancelReasonDAO {
             if (inputBean.getReason() != null && !inputBean.getReason().isEmpty()) {
                 where += " and lower(u.reason) like lower('%" + inputBean.getReason() + "%')";
             }
-            if (inputBean.getFdate()!= null && !inputBean.getFdate().isEmpty()) {
+            if (inputBean.getFdate() != null && !inputBean.getFdate().isEmpty()) {
                 where += " and u.createdTime >= '" + inputBean.getFdate() + "' ";
             }
-            if (inputBean.getTdate()!= null && !inputBean.getTdate().isEmpty()) {
+            if (inputBean.getTdate() != null && !inputBean.getTdate().isEmpty()) {
                 where += " and u.createdTime < '" + inputBean.getTdate() + "' ";
             }
 
-//            try {
-//                String date1 = inputBean.getTdate();                                   // Start date
-//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//                Calendar c = Calendar.getInstance();
-//                c.setTime(sdf.parse(date1));
-//                c.add(Calendar.DATE, 1);                                                // number of days to add
-//                sdf.applyPattern("dd-MMM-yy");
-//                date1 = sdf.format(c.getTime());                                        // dt is now the new date
-//
-//                String datef = inputBean.getFdate();                                 // Start date
-//                SimpleDateFormat sdff = new SimpleDateFormat("yyyy-MM-dd");
-//                Calendar cf = Calendar.getInstance();
-//                cf.setTime(sdff.parse(datef));
-//                cf.add(Calendar.DATE, 0);
-//                sdff.applyPattern("dd-MMM-yy");
-//                datef = sdff.format(cf.getTime());
-//
-//                if (inputBean.getFdate() != null && !inputBean.getFdate().isEmpty()) {
-//                    where += " and u.createdTime >='" + datef + "'";
-//                }
-//                if (date1 != null && !date1.isEmpty()) {
-//                    where += " and u.createdTime <'" + date1 + "'";
-//                }
-//            } catch (Exception ee) {
-//
-//            }
-
         }
         return where;
+    }
+
+    public ServiceCancelReasonInputBean findResonDataById(String serviceId) throws Exception {
+
+        ServiceCancelReasonInputBean databean = new ServiceCancelReasonInputBean();
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+            MobServiceCancelReasons bean = (MobServiceCancelReasons) session.get(MobServiceCancelReasons.class, new Long(serviceId));
+
+            if (bean != null) {
+                
+                System.out.println("fname " + bean.getMobUser().getFirstName());
+                
+                databean.setFname(bean.getMobUser().getFirstName());
+                databean.setLname(bean.getMobUser().getLastName());
+                databean.setEmail(bean.getMobUser().getEmail());
+                databean.setMobile(bean.getMobUser().getMobile());
+                databean.setNic(bean.getMobUser().getNic());
+                databean.setReason(bean.getReason());
+                databean.setCreatedTime(bean.getCreatedTime().toString());
+                databean.setServiceId(Long.toString(bean.getServiceId()));
+            }
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return databean;
     }
 
 }

@@ -27,6 +27,8 @@ public class ServiceCancelReasonInputBean {
     private String mobile;
     private String email;
     private String nic;
+    
+    private ServiceCancelReasonInputBean scrDataBean;
 
     //table
     private List<ServiceCancelReasonBean> gridModel;
@@ -232,6 +234,14 @@ public class ServiceCancelReasonInputBean {
 
     public void setSearch(boolean search) {
         this.search = search;
+    }
+
+    public ServiceCancelReasonInputBean getScrDataBean() {
+        return scrDataBean;
+    }
+
+    public void setScrDataBean(ServiceCancelReasonInputBean scrDataBean) {
+        this.scrDataBean = scrDataBean;
     }
     
     
