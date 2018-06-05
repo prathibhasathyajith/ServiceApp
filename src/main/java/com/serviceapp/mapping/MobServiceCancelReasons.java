@@ -65,7 +65,7 @@ public class MobServiceCancelReasons  implements java.io.Serializable {
         this.mobServiceRequest = mobServiceRequest;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="initiated_user", nullable=false)
     public MobUser getMobUser() {
         return this.mobUser;

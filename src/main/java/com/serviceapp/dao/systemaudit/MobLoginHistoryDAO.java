@@ -629,7 +629,7 @@ public class MobLoginHistoryDAO {
             sdff.applyPattern("dd-MMM-yy");
             datef = sdff.format(cf.getTime());
 
-            if (inputBean.getTodate() != null && !inputBean.getFromdate().isEmpty()) {
+            if (inputBean.getFromdate() != null && !inputBean.getFromdate().isEmpty()) {
                 where += " and u.createdtime >='" + datef + "'";
             }
             if (date1 != null && !date1.isEmpty()) {
