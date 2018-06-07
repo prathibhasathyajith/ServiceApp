@@ -27,6 +27,7 @@ public class PageVarlist {
     public static final String SUGGEST_USER_PAGE = "Suggested User";
     public static final String LEVEL_CONFIG_PAGE = "Level Configuration";
     public static final String SERVICE_CANCEL_REASON_PAGE = "Service Cancel Reason";
+    public static final String SCHEDULED_REQUEST_PAGE = "Scheduled Service Request";
     
     
 }

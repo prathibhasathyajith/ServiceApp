@@ -299,6 +299,17 @@
             <result name="find" type="json"></result>
             <result name="success"></result>
         </action> 
+        <action name="*ScheduledReq" method="{1}" class="com.serviceapp.action.service.ScheduledRequestAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/service/scheduledrequest/scheduledrequest.jsp</result>
+            <!--<result name="viewpopup">/WEB-INF/pages/service/servicecancelreason/servicerecoinsert.jsp</result>-->
+            <result name="viewdetail">/WEB-INF/pages/service/scheduledrequest/scheduledrequestview.jsp</result>
+            <!--<result name="detail">/WEB-INF/pages/service/servicecancelreason/servicerecoedit.jsp</result>-->
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action> 
     </package>
 </struts>
 
