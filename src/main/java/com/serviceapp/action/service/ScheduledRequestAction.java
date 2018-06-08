@@ -125,7 +125,9 @@ public class ScheduledRequestAction extends ActionSupport implements ModelDriven
         System.out.println("called ScheduledRequestAction :viewDetail");
         try {
             ScheduledRequestDAO dao = new ScheduledRequestDAO();
+            System.out.println("id --- " + inputBean.getId());
             ScheduledRequestInputBean dataBean = dao.findScheduledReqById(inputBean.getId());
+            System.out.println("bean --- " + dataBean.getFname());
             inputBean.setSreqBean(dataBean);
 
         } catch (Exception ex) {

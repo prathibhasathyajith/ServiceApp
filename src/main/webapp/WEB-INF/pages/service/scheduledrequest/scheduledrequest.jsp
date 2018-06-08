@@ -162,7 +162,7 @@
                                 <div class="form-group">
                                     <label >Latitude</label>
                                     <s:textfield  name="latitude" id="latitude" maxLength="15" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^0-9.]/g,''))" 
-                                                  onmouseout="$(this).val($(this).val().replace(/[^0-9]/g,''))"/>
+                                                  onmouseout="$(this).val($(this).val().replace(/[^0-9.]/g,''))"/>
 
                                 </div>
                             </div>
@@ -170,22 +170,20 @@
                                 <div class="form-group">
                                     <label >Longitude</label>
                                     <s:textfield  name="longitude" id="longitude" maxLength="15" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^0-9.]/g,''))" 
-                                                  onmouseout="$(this).val($(this).val().replace(/[^0-9]/g,''))"/>
+                                                  onmouseout="$(this).val($(this).val().replace(/[^0-9.]/g,''))"/>
 
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Description</label>
-                                    <s:textfield  name="description" id="description" maxLength="128" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g,''))" 
-                                                  onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g,''))"/>
+                                    <s:textfield  name="description" id="description" maxLength="128" cssClass="form-control" />
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Address</label>
-                                    <s:textfield  name="address" id="address" maxLength="128" cssClass="form-control" onkeyup="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g,''))" 
-                                                  onmouseout="$(this).val($(this).val().replace(/[^a-zA-Z0-9 ]/g,''))"/>
+                                    <s:textfield  name="address" id="address" maxLength="128" cssClass="form-control" />
                                 </div>
                             </div>
                         </div>
