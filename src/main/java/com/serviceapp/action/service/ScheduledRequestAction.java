@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.serviceapp.bean.service.ScheduledRequestBean;
 import com.serviceapp.bean.service.ScheduledRequestInputBean;
 import com.serviceapp.common.dao.CommonDAO;
+import static com.serviceapp.common.dao.CommonDAO.checkEmptyorNullString;
 import com.serviceapp.dao.service.ScheduledRequestDAO;
 import com.serviceapp.dao.systemaudit.SystemAuditDAO;
 import com.serviceapp.mapping.Systemaudit;
@@ -92,11 +93,14 @@ public class ScheduledRequestAction extends ActionSupport implements ModelDriven
                 HttpServletRequest request = ServletActionContext.getRequest();
 
                 String searchParameters = "["
-//                        + checkEmptyorNullString("From date", inputBean.getFdate())
-//                        + checkEmptyorNullString("To date", inputBean.getTdate())
-//                        + checkEmptyorNullString("Service ID", inputBean.getServiceId())
-//                        + checkEmptyorNullString("Initiated User", inputBean.getInitUser())
-//                        + checkEmptyorNullString("Reason", inputBean.getReason())
+                        + checkEmptyorNullString("From date", inputBean.getFdate())
+                        + checkEmptyorNullString("To date", inputBean.getTdate())
+                        + checkEmptyorNullString("Customer ID", inputBean.getCusId())
+                        + checkEmptyorNullString("Bas Type", inputBean.getBassType())
+                        + checkEmptyorNullString("Latitude", inputBean.getLatitude())
+                        + checkEmptyorNullString("Longitude", inputBean.getLongitude())
+                        + checkEmptyorNullString("Description", inputBean.getDescription())
+                        + checkEmptyorNullString("Address", inputBean.getAddress())
                         + "]";
 
                 Systemaudit audit = CommonDAO.makeAudittrace(request, TaskVarlist.SEARCH_TASK, PageVarlist.SCHEDULED_REQUEST_PAGE, SectionVarlist.SERVICE_MGT, "Scheduled requests search using " + searchParameters + " parameters ", null);

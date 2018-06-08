@@ -49,33 +49,33 @@ import org.hibernate.criterion.Restrictions;
  */
 public class SystemAuditDAO {
 
-    private final int columnCount = 7;
-    private final int headerRowCount = 11;
+    private final int columnCount = 9;
+    private final int headerRowCount = 13;
 
     private String TXN_COUNT_SQL = "select "
             + "count(g.SYSTEMAUDITID) " //0            
-            + "from systemaudit g "
+            + "from web_systemaudit g "
             + "where ";
 
     private String TXN_ORDER_BY_SQL = " order by g.LASTUPDATEDTIME DESC ";
 
     private String TXN_SQL = "select "
             + "g.SYSTEMAUDITID, " //0            
-//            + "ur.DESCRIPTION ud, " 
+//            + "g.DESCRIPTION ud, "
             + "g.DESCRIPTION us, " //1            
             + "g.SECTION aa, " //2
             + "g.PAGE bb, " //3
             + "g.TASK cc, " //4
-//            + "g.IP ip, " 
+            //            + "g.IP ip, " 
             + "g.LASTUPDATEDUSER, " //5
             + "g.LASTUPDATEDTIME, " //6
             + "g.CREATETIME " //7
 
-            + "from systemaudit g "
-//            + "left outer join web_section sc on sc.SECTIONCODE = g.SECTIONCODE "
-//            + "left outer join web_page pg on pg.PAGECODE = g.PAGECODE "
-//            + "left outer join web_task ts on ts.TASKCODE = g.TASKCODE "
-//            + "left outer join web_userrole ur on ur.USERROLECODE = g.USERROLECODE "
+            + "from web_systemaudit g "
+            //            + "left outer join web_section sc on sc.SECTIONCODE = g.SECTIONCODE "
+            //            + "left outer join web_page pg on pg.PAGECODE = g.PAGECODE "
+            //            + "left outer join web_task ts on ts.TASKCODE = g.TASKCODE "
+            //            + "left outer join web_userrole ur on ur.USERROLECODE = g.USERROLECODE "
             + "where ";
 
     public PartialList<SystemAuditBean> getSearchList(SystemAuditInputBean auditSearchDTO, int rows, int from, String sortIndex, String sortOrder) throws Exception {
@@ -191,7 +191,6 @@ public class SystemAuditDAO {
 //            String sql3 = "from Task as u where u.taskcode=:taskcode";
 //            Query query3 = session.createQuery(sql3).setString("taskcode", auditBean.getTask());
 //            tk = (Task) query3.list().get(0);
-
             auditDatabean = new SystemAuditBean(auditBean);
             auditDatabean.setSection(auditBean.getSection());
             auditDatabean.setPage(auditBean.getPage());
@@ -219,7 +218,7 @@ public class SystemAuditDAO {
         try {
             session = HibernateInit.sessionFactory.openSession();
             auditDatabean = new SystemAuditBean();
-            
+
             auditDatabean.setSection(section);
             auditDatabean.setPage(page);
             auditDatabean.setTask(task);
@@ -458,8 +457,19 @@ public class SystemAuditDAO {
                             //null has to be checked for every foreign keys
                             try {
                                 // dataBean.setTransactionID(txnBean.getTransactionid().toString());
-                                dataBean.setSection(objArr[2].toString());
+                                dataBean.setDescription(objArr[1].toString());
                                 if (objArr[1].equals("")) {
+
+                                    dataBean.setDescription("--");
+                                }
+                            } catch (NullPointerException npe) {
+                                dataBean.setDescription("--");
+                            }
+
+                            try {
+
+                                dataBean.setSection(objArr[2].toString());
+                                if (objArr[2].equals("")) {
 
                                     dataBean.setSection("--");
                                 }
@@ -468,27 +478,26 @@ public class SystemAuditDAO {
                             }
 
                             try {
-
+                                // dataBean.setTransactionID(txnBean.getTransactionid().toString());
                                 dataBean.setSdblpage(objArr[3].toString());
-                                if (objArr[2].equals("")) {
-
+                                if (objArr[3].equals("")) {
                                     dataBean.setSdblpage("--");
+
                                 }
                             } catch (NullPointerException npe) {
                                 dataBean.setSdblpage("--");
                             }
-
                             try {
                                 // dataBean.setTransactionID(txnBean.getTransactionid().toString());
                                 dataBean.setTask(objArr[4].toString());
-                                if (objArr[3].equals("")) {
+                                if (objArr[4].equals("")) {
                                     dataBean.setTask("--");
 
                                 }
                             } catch (NullPointerException npe) {
                                 dataBean.setTask("--");
                             }
-                           
+
                             try {
                                 dataBean.setUser(objArr[5].toString());
                                 if (objArr[5].equals("")) {
@@ -506,6 +515,16 @@ public class SystemAuditDAO {
                                 }
                             } catch (NullPointerException npe) {
                                 dataBean.setLastUpdatedDate("--");
+                            }
+                            
+                            try {
+                                // dataBean.setTransactionID(txnBean.getTransactionid().toString());
+                                dataBean.setCreatetime(objArr[7].toString());
+                                if (objArr[7].equals("")) {
+                                    dataBean.setCreatetime("--");
+                                }
+                            } catch (NullPointerException npe) {
+                                dataBean.setCreatetime("--");
                             }
 
                             dataBean.setFullCount(count);
@@ -543,8 +562,8 @@ public class SystemAuditDAO {
                 } else {
                     for (int i = 0; i < columnCount; i++) {
                         //to auto size all column in the sheet
-//                         sheet.a
-//                        sheet.autoSizeColumn(i);
+                        System.out.println(i+" - count");
+                        sheet.autoSizeColumn(i);
                     }
 
                     returnObject = workbook;
@@ -609,13 +628,13 @@ public class SystemAuditDAO {
     private SXSSFWorkbook createExcelTopSection(SystemAuditInputBean inputBean) throws Exception {
 
         SXSSFWorkbook workbook = new SXSSFWorkbook(-1);
-        Sheet sheet = workbook.createSheet("LoginHistory_Report");
+        Sheet sheet = workbook.createSheet("System_Audit_Report");
 
         CellStyle fontBoldedUnderlinedCell = ExcelCommon.getFontBoldedUnderlinedCell(workbook);
 
         Row row = sheet.createRow(0);
         Cell cell = row.createCell(0);
-        cell.setCellValue("Priority Banking Mobile Solution");
+        cell.setCellValue("Service App/Admin Portal");
         cell.setCellStyle(fontBoldedUnderlinedCell);
 
         row = sheet.createRow(2);
@@ -639,7 +658,6 @@ public class SystemAuditDAO {
 
         row = sheet.createRow(6);
         cell = row.createCell(0);
-
         cell.setCellValue("Section");
         cell = row.createCell(1);
         if (inputBean.getSection() != null && !inputBean.getSection().isEmpty()) {
@@ -704,35 +722,31 @@ public class SystemAuditDAO {
         cell.setCellStyle(columnHeaderCell);
 
         cell = row.createCell(2);
-        cell.setCellValue("Username");
-        cell.setCellStyle(columnHeaderCell);
-
-        cell = row.createCell(3);
         cell.setCellValue("Description");
         cell.setCellStyle(columnHeaderCell);
 
-        cell = row.createCell(4);
+        cell = row.createCell(3);
         cell.setCellValue("Section");
         cell.setCellStyle(columnHeaderCell);
 
-        cell = row.createCell(5);
+        cell = row.createCell(4);
         cell.setCellValue("Page");
         cell.setCellStyle(columnHeaderCell);
 
-        cell = row.createCell(6);
+        cell = row.createCell(5);
         cell.setCellValue("Task");
         cell.setCellStyle(columnHeaderCell);
 
-//        cell = row.createCell(7);
-//        cell.setCellValue("IP");
-//        cell.setCellStyle(columnHeaderCell);
-//
-//        cell = row.createCell(8);
-//        cell.setCellValue("User Role");
-//        cell.setCellStyle(columnHeaderCell);
+        cell = row.createCell(6);
+        cell.setCellValue("Username");
+        cell.setCellStyle(columnHeaderCell);
 
         cell = row.createCell(7);
         cell.setCellValue("Last Updated Time");
+        cell.setCellStyle(columnHeaderCell);
+
+        cell = row.createCell(8);
+        cell.setCellValue("Created Time");
         cell.setCellStyle(columnHeaderCell);
 
         return currrow;
@@ -784,35 +798,31 @@ public class SystemAuditDAO {
         cell.setCellStyle(rowColumnCell);
 
         cell = row.createCell(2);
-        cell.setCellValue(dataBean.getUser());
-        cell.setCellStyle(rowColumnCell);
-
-        cell = row.createCell(3);
         cell.setCellValue(dataBean.getDescription());
         cell.setCellStyle(rowColumnCell);
 
-        cell = row.createCell(4);
+        cell = row.createCell(3);
         cell.setCellValue(dataBean.getSection());
         cell.setCellStyle(rowColumnCell);
 
-        cell = row.createCell(5);
+        cell = row.createCell(4);
         cell.setCellValue(dataBean.getSdblpage());
         cell.setCellStyle(rowColumnCell);
 
-        cell = row.createCell(6);
+        cell = row.createCell(5);
         cell.setCellValue(dataBean.getTask());
         cell.setCellStyle(rowColumnCell);
 
-//        cell = row.createCell(7);
-//        cell.setCellValue(dataBean.getIp());
-//        cell.setCellStyle(rowColumnCell);
-//
-//        cell = row.createCell(8);
-//        cell.setCellValue(dataBean.getUserrole());
-//        cell.setCellStyle(rowColumnCell);
+        cell = row.createCell(6);
+        cell.setCellValue(dataBean.getUser());
+        cell.setCellStyle(rowColumnCell);
 
         cell = row.createCell(7);
         cell.setCellValue(dataBean.getLastUpdatedDate());
+        cell.setCellStyle(rowColumnCell);
+
+        cell = row.createCell(8);
+        cell.setCellValue(dataBean.getCreatetime());
         cell.setCellStyle(rowColumnCell);
 
         return currrow;

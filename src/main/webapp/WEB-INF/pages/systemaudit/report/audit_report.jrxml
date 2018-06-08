@@ -74,13 +74,13 @@
 		<defaultValueExpression><![CDATA[$P{userrole} == "--" ? "1=1" : "TR.LASTUPDATEDUSER LIKE '%" + $P{userrole} + "%'"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="sql_taskdes" class="java.lang.String">
-		<defaultValueExpression><![CDATA[$P{task} == "--" ? "1=1" : "TR.TASKCODE LIKE '%" + $P{task} + "%'"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[$P{task} == "--" ? "1=1" : "TR.TASK LIKE '%" + $P{task} + "%'"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="sql_secdes" class="java.lang.String">
-		<defaultValueExpression><![CDATA[$P{section} == "--" ? "1=1" : "TR.SECTIONCODE LIKE '%" + $P{section} + "%'"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[$P{section} == "--" ? "1=1" : "TR.SECTION LIKE '%" + $P{section} + "%'"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="sql_pagedes" class="java.lang.String">
-		<defaultValueExpression><![CDATA[$P{page} == "--" ? "1=1" : "TR.PAGECODE LIKE '%" + $P{page} + "%'"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[$P{page} == "--" ? "1=1" : "TR.PAGE LIKE '%" + $P{page} + "%'"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="sql_cif" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -95,20 +95,16 @@
 	<queryString>
 		<![CDATA[SELECT    TR.SYSTEMAUDITID id,
           TR.DESCRIPTION des,
-          S.DESCRIPTION sec,
-          P.DESCRIPTION page,
-          T.DESCRIPTION task,
-	U.DESCRIPTION userro,
+          TR.SECTION sec,
+          TR.PAGE page,
+          TR.TASK task,
+
 	TR.LASTUPDATEDUSER LASTUSER,
-	TR.IP IP,
+
     TO_CHAR (TR.CREATETIME, 'YYYY-MM-DD HH24:MI:SS') time
 FROM
     WEB_SYSTEMAUDIT TR
 
-LEFT OUTER JOIN WEB_SECTION  S ON TR.SECTIONCODE = S.SECTIONCODE
-LEFT OUTER JOIN WEB_PAGE P ON TR.PAGECODE = P.PAGECODE
-LEFT OUTER JOIN WEB_TASK T ON TR.TASKCODE = T.TASKCODE
-LEFT OUTER JOIN WEB_USERROLE U ON TR.USERROLECODE = U.USERROLECODE
 WHERE
 
 TR.CREATETIME >= TO_DATE($P{fdate},'YYYY-MM-DD HH24:MI:SS') and
