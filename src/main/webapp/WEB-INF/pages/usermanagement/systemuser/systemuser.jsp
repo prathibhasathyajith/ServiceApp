@@ -427,7 +427,7 @@
                     loadingText="Loading .."
                     position="center"                            
                     width="900"
-                    height="450"
+                    height="600"
                     dialogClass= "dialogclass"
                     /> 
 

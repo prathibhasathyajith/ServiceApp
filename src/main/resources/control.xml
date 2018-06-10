@@ -264,6 +264,7 @@
             <result name="reset" type="json"></result>
             <result name="list" type="json"></result>
             <result name="find" type="json"></result>
+            <result name="delete" type="json"></result>
             <result name="success"></result>
         </action> 
         <action name="*ServiceReco" method="{1}" class="com.serviceapp.action.service.ServiceRecoAction">

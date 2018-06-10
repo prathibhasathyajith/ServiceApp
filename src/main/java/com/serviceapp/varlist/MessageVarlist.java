@@ -206,4 +206,9 @@ public class MessageVarlist {
     //level config
     public static final String INPUT_FIELDS_EMPTY_MSG = "All fields are mandatory.Cannot be empty";
     
+    //service category
+    public static final String SERVICE_CATEGORY_EMPTY_ROLE = "Service category code cannot be empty";
+    public static final String SERVICE_CATEGORY_EMPTY_DES = "Description cannot be empty";
+    public static final String SERVICE_CATEGORY_EMPTY_STATUS = "Status category code cannot be empty";
+    
 }
