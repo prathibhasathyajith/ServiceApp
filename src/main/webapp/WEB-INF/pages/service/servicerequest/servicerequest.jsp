@@ -13,6 +13,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <%@include file="/stylelinks.jspf" %>
+        <script src="${pageContext.request.contextPath}/resources/assets/Js/monthpicker.js" ></script>
         <script type="text/javascript">
             function viewformatter(cellvalue) {
                 return "<a href='#' title='View' onClick='javascript:viewServiceReqInit(&#34;" + cellvalue + "&#34;)' title='View Audit Record'><img class='ui-icon ui-icon-newwin' style='display: block;margin-left: auto;margin-right: auto;'/></a>";
@@ -69,6 +70,16 @@
                 window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
             });
 
+            $(function () {
+//                https://www.npmjs.com/package/jquery-ui-monthpicker
+                $('input.monthpicker').monthpicker({changeYear: true, minDate: "-3 M", maxDate: "+2 Y",dateFormat: 'yy-mm' });
+            });
+            
+            function summaryReport() {
+                $(".service-summary-table").show();
+                alert($(".monthpicker").val());
+            }
+
         </script>
         <title></title>
     </head>
@@ -87,7 +98,40 @@
             <div class="tb-breadcrumb">Service > Service Request</div>
             <div class="tb-form">
                 <div class="containe-fluid">
-                    summary
+                    <div class="row ">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label >Select Month</label>
+                                <input class="form-control monthpicker" id="month" name="month" />
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <sj:submit  
+                                    value="Get Summary"
+                                    button="true" 
+                                    id="summaryButton"
+                                    onclick="summaryReport()"
+                                    cssClass="uinew-button-submit2"
+                                    />
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="service-summary-table" style="display: none">
+                        <tbody>
+                            <tr>
+                                <td>Transaction Id</td>
+                                <td>:</td>
+                                <td>12231092381238401</td>
+                            </tr>
+                            <tr>
+                                <td>Transaction RefNo</td>
+                                <td>:</td>
+                                <td>122</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="tb-form">
