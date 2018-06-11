@@ -57,6 +57,7 @@
                     <li id="sublink_62"><a href="${pageContext.request.contextPath}/viewLevelConfig.action">Level Configurations</a></li>
                     <li id="sublink_63"><a href="${pageContext.request.contextPath}/viewServiceCancelReason.action">Service Cancel Reasons</a></li>
                     <li id="sublink_64"><a href="${pageContext.request.contextPath}/viewScheduledReq.action">Scheduled Service Requests</a></li>
+                    <li id="sublink_65"><a href="${pageContext.request.contextPath}/viewServiceRequest.action">Service Request</a></li>
                 </ul>
             </div>
         </div>

@@ -311,6 +311,17 @@
             <result name="find" type="json"></result>
             <result name="success"></result>
         </action> 
+        <action name="*ServiceRequest" method="{1}" class="com.serviceapp.action.service.ServiceRequestAction">
+            <result name="message">/WEB-INF/pages/msgFrag.jsp</result>
+            <result name="view">/WEB-INF/pages/service/servicerequest/servicerequest.jsp</result>
+            <!--<result name="viewpopup">/WEB-INF/pages/service/servicerequest/servicerecoinsert.jsp</result>-->
+            <result name="viewdetail">/WEB-INF/pages/service/servicerequest/servicerequestview.jsp</result>
+            <!--<result name="detail">/WEB-INF/pages/service/servicerequest/servicerecoedit.jsp</result>-->
+            <result name="reset" type="json"></result>
+            <result name="list" type="json"></result>
+            <result name="find" type="json"></result>
+            <result name="success"></result>
+        </action>
     </package>
 </struts>
 
