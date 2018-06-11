@@ -87,6 +87,11 @@
             <div class="tb-breadcrumb">Service > Service Request</div>
             <div class="tb-form">
                 <div class="containe-fluid">
+                    summary
+                </div>
+            </div>
+            <div class="tb-form">
+                <div class="containe-fluid">
                     <s:form id="serviceReco" method="post" action="ServiceRequest" theme="simple" cssClass="form" >
                         <div class="row ">
                             <div class="col-sm-3">
@@ -185,7 +190,6 @@
                     <sjg:gridColumn name="longitude" index="longitude" width="250" title="Longitude" sortable="true"/>
                     <sjg:gridColumn name="updatedTime" index="updatedTime" title="Updated Time"  sortable="true" />
                     <sjg:gridColumn name="createdTime" index="createdTime" title="Created Time"  sortable="true" />
-
 
                 </sjg:grid>
 
