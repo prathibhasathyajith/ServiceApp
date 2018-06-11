@@ -109,44 +109,6 @@
                 }
             }
             
-            
-//            =================================================
-
-//            $(function () {
-//                $('input.monthpicker').monthpicker({changeYear: true, minDate: "-3 M", maxDate: "+2 Y"});
-//                            <input class="monthpicker" type="text" />
-//            });
-
-//
-//SELECT
-//	ss.description,
-//	count( s.service_id ),
-//	( SELECT count( * ) FROM mob_service_request d WHERE d.updated_time < '2018-07' AND d.updated_time >= '2018-06' ) as tt,
-//	CONCAT((
-//	count( s.service_id ) / ( SELECT count( * ) FROM mob_service_request  dd WHERE dd.updated_time < '2018-07' AND dd.updated_time >= '2018-06' ) ) * 100,'%' ) AS percentage 
-//FROM
-//	mob_service_request s
-//	INNER JOIN `status` ss ON s.`status` = ss.status_code 
-//WHERE
-//	s.updated_time > '2018-06' 
-//	AND s.updated_time <= '2018-07' 
-//GROUP BY
-//	s.`status`;
-
-//https://kidsysco.github.io/jquery-ui-month-picker/
-
-
-
-//SELECT
-//	ss.description,
-//	Count( s.service_id ),
-//	sum( mob_service_charge.charge ) 
-//FROM
-//	mob_service_request AS s
-//	INNER JOIN `status` AS ss ON s.`status` = ss.status_code
-//	INNER JOIN mob_service_charge ON mob_service_charge.service_id = s.service_id 
-//GROUP BY
-//	s.`status`;
 
         </script>
         <title></title>

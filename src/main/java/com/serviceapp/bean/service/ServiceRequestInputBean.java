@@ -33,6 +33,8 @@ public class ServiceRequestInputBean {
     private ServiceRequestInputBean serReq;
 
     //summary details
+    private String month;
+    private String monthPlus;
     private String statusWise_req_count;
     private String req_charge;
     private String req_cancel_reason;
@@ -171,6 +173,24 @@ public class ServiceRequestInputBean {
     public void setOldValue(String oldValue) {
         this.oldValue = oldValue;
     }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public String getMonthPlus() {
+        return monthPlus;
+    }
+
+    public void setMonthPlus(String monthPlus) {
+        this.monthPlus = monthPlus;
+    }
+    
+    
 
     public String getStatusWise_req_count() {
         return statusWise_req_count;

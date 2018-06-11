@@ -71,14 +71,53 @@
             });
 
             $(function () {
-//                https://www.npmjs.com/package/jquery-ui-monthpicker
-                $('input.monthpicker').monthpicker({changeYear: true, minDate: "-3 M", maxDate: "+2 Y",dateFormat: 'yy-mm' });
-            });
-            
-            function summaryReport() {
-                $(".service-summary-table").show();
-                alert($(".monthpicker").val());
+                $('input.monthpicker').monthpicker({
+                    changeYear: true,
+                    minDate: "-5 Y",
+                    maxDate: "+0 Y",
+                    onSelect: function() {
+                        $("#summaryButton").button("enable");
+                    },
+                    dateFormat: 'yy-mm'
+                });
             }
+            );
+
+            function summaryReport() {
+
+                var month = $("#month").val();
+
+                var monthSplit = month.split("-");
+                var monthNum = Number(monthSplit[1]);
+                var monthPlus;
+
+                if (1 <= monthNum && monthNum < 12) {
+                    monthPlus = monthNum + 1;
+                    if (monthPlus < 10) {
+                        monthPlus = Number(monthSplit[0]) + "-0" + monthPlus;
+                    } else {
+                        monthPlus = Number(monthSplit[0]) + "-" + monthPlus;
+                    }
+                } else if (monthNum === 12) {
+                    monthPlus = Number(monthSplit[0]) + 1 + "-01";
+                }
+
+                $.ajax({
+                    url: '${pageContext.request.contextPath}/summaryServiceRequest',
+                    data: {month: month, monthPlus: monthPlus},
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+                        $(".service-summary-table").show();
+                        alert(data.statusWise_req_count);
+                    },
+                    error: function (data) {
+                        window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
+                    }
+                });
+            }
+
+
 
         </script>
         <title></title>
@@ -107,7 +146,7 @@
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <input type="button" value="Get Summary" id="summaryButton" onclick="summaryReport()" class="uinew-button-submit2" />
+                                <sj:submit button="true" disabled="true" value="Get Summary" id="summaryButton" onclick="summaryReport()" cssClass="uinew-button-submit2" />
                             </div>
                         </div>
                     </div>

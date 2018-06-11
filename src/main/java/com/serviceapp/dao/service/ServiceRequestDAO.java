@@ -7,6 +7,7 @@ package com.serviceapp.dao.service;
 
 import com.serviceapp.bean.service.ServiceRequestBean;
 import com.serviceapp.bean.service.ServiceRequestInputBean;
+import com.serviceapp.bean.service.SummaryBean;
 import com.serviceapp.listener.HibernateInit;
 import com.serviceapp.mapping.MobServiceRequest;
 import com.serviceapp.mapping.Status;
@@ -182,7 +183,7 @@ public class ServiceRequestDAO {
 
         return where;
     }
-    
+
     public List<Status> getStatusList(String statusCode) throws Exception {
 
         List<Status> statusList = null;
@@ -203,6 +204,106 @@ public class ServiceRequestDAO {
             }
         }
         return statusList;
+    }
+
+    public void getSummary(ServiceRequestInputBean inputBean) throws Exception {
+
+        List<SummaryBean> dataList = new ArrayList<SummaryBean>();
+        Session session = null;
+        try {
+            session = HibernateInit.sessionFactory.openSession();
+
+            String sqlSearch = "";
+            String sqlSearch_forCount = "";
+
+            String sdat = "2018-05";
+            String edat = "2018-06";
+
+            sqlSearch_forCount = "SELECT count(s.service_id) AS count  "
+                    + "FROM mob_service_request AS s "
+                    + "WHERE s.updated_time > '" + sdat + "' AND s.updated_time <= '" + edat + "' ";
+
+            Query querySearchCount = session.createSQLQuery(sqlSearch_forCount);
+
+            List ObjetctListCount = querySearchCount.list();
+            
+            System.out.println("cout " +ObjetctListCount.get(0).toString());
+
+            if (ObjetctListCount.size() > 0) {
+
+                sqlSearch = "SELECT "
+                        + "ss.description as des, "
+                        + "count( s.service_id ) as cnt, "
+                        + this.fullCountDate(sdat, edat) + ", "
+                        + "CONCAT((count( s.service_id ) /" + this.fullCountDate(sdat, edat) + ")*100,'%') AS percentage "
+                        + "FROM mob_service_request AS s "
+                        + "LEFT OUTER JOIN `status` AS ss ON s.`status` = ss.status_code "
+                        + "WHERE s.updated_time > '" + sdat + "' AND s.updated_time <= '" + edat + "' "
+                        + "GROUP BY s.`status` ";
+                
+                System.out.println("query ---- \n "+ sqlSearch);
+
+                Query querySearch = session.createSQLQuery(sqlSearch);
+                List<Object[]> ObjetctList = querySearch.list();
+
+                for (Object[] bean : ObjetctList) {
+                    SummaryBean map = new SummaryBean();
+                    
+                    System.out.println("bean -- " + bean[0].toString());
+
+                    if (bean[0] != null) {
+                        map.setStatusDes(bean[0].toString());
+                    } else {
+                        map.setStatusDes("--");
+                    }
+
+                    if (bean[1] != null) {
+                        map.setStatusCount(bean[1].toString());
+                    } else {
+                        map.setStatusCount("--");
+                    }
+
+                    if (bean[2] != null) {
+                        map.setFullCount(bean[2].toString());
+                    } else {
+                        map.setFullCount("--");
+                    }
+
+                    if (bean[3] != null) {
+                        map.setPercentage(bean[3].toString());
+                    } else {
+                        map.setPercentage("--");
+                    }
+
+                    dataList.add(map);
+                }
+
+            } else {
+                System.out.println("no recoreds");
+            }
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            try {
+                session.flush();
+                session.close();
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+    }
+
+    public String fullCountDate(String sDate, String eDate) {
+        String query = "";
+
+        query = "( SELECT count( * ) "
+                + "FROM mob_service_request d "
+                + "WHERE d.updated_time < '" + eDate + "' "
+                + "AND "
+                + "d.updated_time >= '" + sDate + "' )  ";
+
+        return query;
     }
 
 }
