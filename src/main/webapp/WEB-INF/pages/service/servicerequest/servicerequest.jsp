@@ -107,13 +107,7 @@
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <sj:submit  
-                                    value="Get Summary"
-                                    button="true" 
-                                    id="summaryButton"
-                                    onclick="summaryReport()"
-                                    cssClass="uinew-button-submit2"
-                                    />
+                                <input type="button" value="Get Summary" id="summaryButton" onclick="summaryReport()" class="uinew-button-submit2" />
                             </div>
                         </div>
                     </div>
