@@ -12,7 +12,64 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <title>View Service Request</title>
-            <script type="text/javascript"></script>
+            <script type="text/javascript">
+
+                function loadLatLng() {
+
+                    dialog = $("#dialog").dialog({
+                        height: 530,
+                        width: 700,
+                        modal: true,
+                        position: {my: "center center", at: "center center"},
+                        open: function (event, ui) {
+//                                $(".ui-dialog-titlebar-close", ui.dialog | ui).text("X");
+//                                $(".ui-dialog-titlebar").hide();
+
+                        },
+                        close: function () {
+                            dialog.dialog('destroy');
+                        }
+                    });
+
+//                    $.ajax({
+//                        url: '${pageContext.request.contextPath}/LoadLatLngSearch.action',
+//                        dataType: "json",
+//                        type: "POST",
+//                        success: function (data) {
+//                            dialog = $("#dialog").dialog({
+//                                height: 630,
+//                                width: 800,
+//                                modal: true,
+//                                position: {my: "center center", at: "center center"},
+//                                open: function (event, ui) {
+////                                $(".ui-dialog-titlebar-close", ui.dialog | ui).text("X");
+////                                $(".ui-dialog-titlebar").hide();
+//
+//                                },
+//                                close: function () {
+//                                    dialog.dialog('destroy');
+//                                }
+//                            });
+//                        },
+//                        error: function (data) {
+//                            dialog = $("#dialog").dialog({
+//                                height: 530,
+//                                width: 700,
+//                                modal: true,
+//                                position: {my: "center center", at: "center center"},
+//                                open: function (event, ui) {
+////                                $(".ui-dialog-titlebar-close", ui.dialog | ui).text("X");
+////                                $(".ui-dialog-titlebar").hide();
+//
+//                                },
+//                                close: function () {
+//                                    dialog.dialog('destroy');
+//                                }
+//                            });
+//                        }
+//                    });
+                }
+            </script>
     </head>
     <body>
         <s:div id="divmsgupdate">
@@ -97,10 +154,85 @@
                                     <s:label style="margin-bottom: 0px;"  value="%{serReq.createdTime}" cssClass="form-control"/>
                                 </div>  
                             </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label >button</label>
+                                    <input type="button" name="sss" value="map"  onclick="loadLatLng()" />
+                                </div>  
+                            </div>
+
                         </div>
                     </s:form>
                 </div>
             </div>
         </div>
+
+        <div id="dialog" title="Map Positions" style="display: none;background-color: #dcdcdc;margin: 0px;padding: 0">
+
+
+            <div>
+                <style>
+                    #map {
+                        height: 420px;
+                        width: 95%;
+                        margin-top: 2%;
+                        margin-left: 2%;
+                        border: 1px solid #8e8e8e;
+
+                    }
+                </style>
+                <div id="map"></div>
+                <script>
+
+                    function initMap() {
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 8,
+                            center: {lat: 7.8731, lng: 80.7718}
+                        });
+                        setMarkers(map);
+                    }
+                    function setMarkers(map) {
+
+                        var image = {
+                            url: '${pageContext.request.contextPath}/resources/images/marker4.png',
+                            // This marker is 20 pixels wide by 32 pixels high.
+                            size: new google.maps.Size(20, 32),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor for this image is the base of the flagpole at (0, 32).
+                            anchor: new google.maps.Point(0, 32)
+                        };
+                        // Shapes define the clickable region of the icon. The type defines an HTML
+                        // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+                        // The final coordinate closes the poly by connecting to the first coordinate.
+                        var shape = {
+                            coords: [1, 1, 1, 20, 18, 20, 18, 1],
+                            type: 'poly'
+                        };
+
+
+                        var marker = new google.maps.Marker({
+                            position: {lat: Number(7.8731), lng: Number(80.7718)},
+                            map: map,
+                            icon: image,
+                            shape: shape,
+                            title: "Customer name",
+                            zIndex: 3
+                        });
+
+                    }
+
+                </script>
+
+
+            </div>
+
+            <div class="form-group text-center" style="margin-top: 10px;"> 
+                <button type="button" style="width: 100px" class="btn btn-danger btn-xs" onclick="dialog.dialog('close');">Close&ensp;<i class="fa fa-times-circle" aria-hidden="true"></i></button>
+            </div>
+
+        </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDurLciCEPA4JI3O0bvFCqqEGkyCWzw5p8&callback=initMap"
+        async defer></script>
     </body>
 </html>
