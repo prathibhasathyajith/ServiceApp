@@ -147,7 +147,7 @@ public class ServiceRequestAction extends ActionSupport implements ModelDriven<O
             System.out.println("month + - "+ inputBean.getMonthPlus());
 
             dao.getSummary(inputBean);
-            inputBean.setStatusWise_req_count("hi");
+//            inputBean.setStatusWise_req_count("hi");
 
         } catch (Exception ex) {
             addActionError("ServiceRequestAction " + MessageVarlist.COMMON_ERROR_PROCESS);

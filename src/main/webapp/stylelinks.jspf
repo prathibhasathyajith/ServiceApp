@@ -112,7 +112,7 @@
         color: white !important;
         /*background: gray !important;*/
     }
-    
+
     input.ui-button {
         padding: 0 20px 0 20px ;
     }
@@ -330,11 +330,52 @@
         color: white;
         text-align: center;
     }
-    
+
+
     /*summaty report on service request*/
-    table.service-summary-table{
-        
+    table.service-summary-table > thead > tr > th{
+        padding: 3px 24px;
+        font-family: raleway;
+        font-weight: 600;
+        font-size: 13px;
+        border: 1px solid #2258a0;
+        background-color: #2258a0;
+        color: white;
+        text-align: center;
     }
+    table.service-summary-table > tbody.tblebody > tr > td{
+        padding: 3px 8px;
+        font-family: raleway;
+        font-weight: 600;
+        font-size: 13px;
+        border: 1px solid #2258a0;
+        color: black;
+        text-align: right;
+        width: 150px;
+    }
+    table.service-summary-table > tbody.tblebody > tr > td:first-child{
+        text-align: left;
+    }
+    table.service-summary-table > caption{
+        font-family: raleway;
+        font-weight: 600;
+        font-size: 13px;
+        color: black;
+    }
+    #summaryMonth{
+        background: #118ee6;
+        padding: 4px;
+        border-radius: 0px;
+        color: white;
+    }
+    .summaryNot{
+        background: red;
+        color: white;
+        width: auto;
+        text-align: center; 
+    }
+
+
 
 </style>
 

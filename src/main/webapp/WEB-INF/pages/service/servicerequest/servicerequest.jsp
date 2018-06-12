@@ -75,7 +75,7 @@
                     changeYear: true,
                     minDate: "-5 Y",
                     maxDate: "+0 Y",
-                    onSelect: function() {
+                    onSelect: function () {
                         $("#summaryButton").button("enable");
                     },
                     dateFormat: 'yy-mm'
@@ -108,8 +108,33 @@
                     dataType: "json",
                     type: "POST",
                     success: function (data) {
-                        $(".service-summary-table").show();
-                        alert(data.statusWise_req_count);
+                        alert(data.message);
+                        if (data.message === "Y") {
+                            var manthduration = " " + month + " to " + monthPlus;
+
+                            $("#summaryMonth").text("");
+                            $("#summaryMonth").append(manthduration);
+
+                            $(".summaryNot").hide();
+                            $(".service-summary-table").show();
+
+                            $('.service-summary-table > tbody.tblebody').text("");
+                            $.each(data.summaryBean, function (index, item) {
+
+                                $('.service-summary-table > tbody.tblebody').append("<tr>"
+                                        + "<td>" + item.statusDes + "</td>"
+                                        + "<td>" + item.statusCount + "</td>"
+                                        + "<td>" + item.fullCount + "</td>"
+                                        + "<td>" + item.percentage + "</td>"
+                                        + "</tr>"
+                                        );
+                            });
+
+                        } else {
+                            $(".service-summary-table").hide();
+                            $(".summaryNot").show();
+                        }
+
                     },
                     error: function (data) {
                         window.location = "${pageContext.request.contextPath}/LogoutUserLogin.action?";
@@ -150,19 +175,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row ">
+                        <div class="col-sm-3">
+                            <div class="summaryNot" style="display: none">No summary for the selected month</div>
+                        </div>
+                    </div>
+
 
                     <table class="service-summary-table" style="display: none">
-                        <tbody>
+                        <caption>Summary of month <span id="summaryMonth"></span></caption>
+                        <thead>
                             <tr>
-                                <td>Transaction Id</td>
-                                <td>:</td>
-                                <td>12231092381238401</td>
+                                <th>Status Des</th>
+                                <th>Count</th>
+                                <th>Full Count</th>
+                                <th>Percentage</th>
                             </tr>
-                            <tr>
-                                <td>Transaction RefNo</td>
-                                <td>:</td>
-                                <td>122</td>
-                            </tr>
+                        </thead>
+                        <tbody class="tblebody">
+
                         </tbody>
                     </table>
                 </div>

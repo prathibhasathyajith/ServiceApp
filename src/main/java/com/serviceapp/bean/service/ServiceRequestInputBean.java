@@ -31,6 +31,7 @@ public class ServiceRequestInputBean {
     private String oldValue;
 
     private ServiceRequestInputBean serReq;
+    private List<SummaryBean> summaryBean = new ArrayList<SummaryBean>();
 
     //summary details
     private String month;
@@ -146,6 +147,14 @@ public class ServiceRequestInputBean {
         this.serReq = serReq;
     }
 
+    public List<SummaryBean> getSummaryBean() {
+        return summaryBean;
+    }
+
+    public void setSummaryBean(List<SummaryBean> summaryBean) {
+        this.summaryBean = summaryBean;
+    }
+
     public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
@@ -189,8 +198,6 @@ public class ServiceRequestInputBean {
     public void setMonthPlus(String monthPlus) {
         this.monthPlus = monthPlus;
     }
-    
-    
 
     public String getStatusWise_req_count() {
         return statusWise_req_count;

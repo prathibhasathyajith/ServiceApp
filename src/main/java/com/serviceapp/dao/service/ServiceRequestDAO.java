@@ -216,8 +216,8 @@ public class ServiceRequestDAO {
             String sqlSearch = "";
             String sqlSearch_forCount = "";
 
-            String sdat = "2018-05";
-            String edat = "2018-06";
+            String sdat = inputBean.getMonth();
+            String edat = inputBean.getMonthPlus();
 
             sqlSearch_forCount = "SELECT count(s.service_id) AS count  "
                     + "FROM mob_service_request AS s "
@@ -226,8 +226,8 @@ public class ServiceRequestDAO {
             Query querySearchCount = session.createSQLQuery(sqlSearch_forCount);
 
             List ObjetctListCount = querySearchCount.list();
-            
-            System.out.println("cout " +ObjetctListCount.get(0).toString());
+
+            System.out.println("cout " + ObjetctListCount.get(0).toString());
 
             if (ObjetctListCount.size() > 0) {
 
@@ -240,15 +240,15 @@ public class ServiceRequestDAO {
                         + "LEFT OUTER JOIN `status` AS ss ON s.`status` = ss.status_code "
                         + "WHERE s.updated_time > '" + sdat + "' AND s.updated_time <= '" + edat + "' "
                         + "GROUP BY s.`status` ";
-                
-                System.out.println("query ---- \n "+ sqlSearch);
+
+                System.out.println("query ---- \n " + sqlSearch);
 
                 Query querySearch = session.createSQLQuery(sqlSearch);
                 List<Object[]> ObjetctList = querySearch.list();
 
                 for (Object[] bean : ObjetctList) {
                     SummaryBean map = new SummaryBean();
-                    
+
                     System.out.println("bean -- " + bean[0].toString());
 
                     if (bean[0] != null) {
@@ -278,8 +278,17 @@ public class ServiceRequestDAO {
                     dataList.add(map);
                 }
 
+                inputBean.setSummaryBean(dataList);
+
             } else {
                 System.out.println("no recoreds");
+
+            }
+
+            if (Integer.parseInt(ObjetctListCount.get(0).toString()) > 0) {
+                inputBean.setMessage("Y");
+            } else {
+                inputBean.setMessage("N");
             }
 
         } catch (Exception e) {
