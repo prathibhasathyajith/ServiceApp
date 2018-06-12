@@ -59,29 +59,29 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label >Status</label>
-                                    <s:label style="margin-bottom: 0px;"  value="%{serReq.status}" cssClass="form-control"/>
-                                </div>  
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
                                     <label >Customer Latitude</label>
                                     <s:label style="margin-bottom: 0px;"   value="%{serReq.latitude}" cssClass="form-control"/>
                                 </div>  
                             </div>
-                        </div>
-                        <div class="row ">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Customer Longitude</label>
                                     <s:label style="margin-bottom: 0px;"  value="%{serReq.longitude}" cssClass="form-control"/>
                                 </div>  
                             </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label >Status</label>
+                                    <s:label style="margin-bottom: 0px;"  value="%{serReq.status}" cssClass="form-control"/>
+                                </div>  
+                            </div>
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label >Customer Address</label>
                                     <s:label style="margin-bottom: 0px;"  value="%{serReq.custAddress}" cssClass="form-control" />
-                                    </div>  
+                                </div>  
                             </div>
                         </div>
                         <div class="row ">
