@@ -32,10 +32,12 @@ public class ServiceRequestInputBean {
 
     private ServiceRequestInputBean serReq;
     private List<SummaryBean> summaryBean = new ArrayList<SummaryBean>();
+    private List<ChartDataBean> chartBean = new ArrayList<ChartDataBean>();
 
     //summary details
     private String month;
     private String monthPlus;
+    private String monthStart;
     private String statusWise_req_count;
     private String req_charge;
     private String req_cancel_reason;
@@ -155,6 +157,14 @@ public class ServiceRequestInputBean {
         this.summaryBean = summaryBean;
     }
 
+    public List<ChartDataBean> getChartBean() {
+        return chartBean;
+    }
+
+    public void setChartBean(List<ChartDataBean> chartBean) {
+        this.chartBean = chartBean;
+    }
+
     public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
@@ -197,6 +207,14 @@ public class ServiceRequestInputBean {
 
     public void setMonthPlus(String monthPlus) {
         this.monthPlus = monthPlus;
+    }
+
+    public String getMonthStart() {
+        return monthStart;
+    }
+
+    public void setMonthStart(String monthStart) {
+        this.monthStart = monthStart;
     }
 
     public String getStatusWise_req_count() {

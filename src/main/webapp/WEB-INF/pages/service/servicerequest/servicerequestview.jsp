@@ -13,8 +13,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <title>View Service Request</title>
             <script type="text/javascript">
+                
+                var lat;
+                var lon;
 
                 function loadLatLng() {
+                    
+                    lon = $("#longitude").text();
+                    lat = $("#latitude").text();
+                    
+//                    initMap(lat,lon);
+                    initMap();
 
                     dialog = $("#dialog").dialog({
                         height: 530,
@@ -30,44 +39,6 @@
                             dialog.dialog('destroy');
                         }
                     });
-
-//                    $.ajax({
-//                        url: '${pageContext.request.contextPath}/LoadLatLngSearch.action',
-//                        dataType: "json",
-//                        type: "POST",
-//                        success: function (data) {
-//                            dialog = $("#dialog").dialog({
-//                                height: 630,
-//                                width: 800,
-//                                modal: true,
-//                                position: {my: "center center", at: "center center"},
-//                                open: function (event, ui) {
-////                                $(".ui-dialog-titlebar-close", ui.dialog | ui).text("X");
-////                                $(".ui-dialog-titlebar").hide();
-//
-//                                },
-//                                close: function () {
-//                                    dialog.dialog('destroy');
-//                                }
-//                            });
-//                        },
-//                        error: function (data) {
-//                            dialog = $("#dialog").dialog({
-//                                height: 530,
-//                                width: 700,
-//                                modal: true,
-//                                position: {my: "center center", at: "center center"},
-//                                open: function (event, ui) {
-////                                $(".ui-dialog-titlebar-close", ui.dialog | ui).text("X");
-////                                $(".ui-dialog-titlebar").hide();
-//
-//                                },
-//                                close: function () {
-//                                    dialog.dialog('destroy');
-//                                }
-//                            });
-//                        }
-//                    });
                 }
             </script>
     </head>
@@ -117,13 +88,13 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Customer Latitude</label>
-                                    <s:label style="margin-bottom: 0px;"   value="%{serReq.latitude}" cssClass="form-control"/>
+                                    <s:label style="margin-bottom: 0px;" id="latitude"  value="%{serReq.latitude}" cssClass="form-control"/>
                                 </div>  
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label >Customer Longitude</label>
-                                    <s:label style="margin-bottom: 0px;"  value="%{serReq.longitude}" cssClass="form-control"/>
+                                    <s:label style="margin-bottom: 0px;"   id="longitude" value="%{serReq.longitude}" cssClass="form-control"/>
                                 </div>  
                             </div>
                         </div>
@@ -156,7 +127,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label >button</label>
+                                    <label ><i class="material-icons">place</i></label>
                                     <input type="button" name="sss" value="map"  onclick="loadLatLng()" />
                                 </div>  
                             </div>
@@ -189,9 +160,9 @@
                             zoom: 8,
                             center: {lat: 7.8731, lng: 80.7718}
                         });
-                        setMarkers(map);
+                        setMarkers(map,lat,lon);
                     }
-                    function setMarkers(map) {
+                    function setMarkers(map,lat,lon) {
 
                         var image = {
                             url: '${pageContext.request.contextPath}/resources/images/marker4.png',
@@ -210,9 +181,8 @@
                             type: 'poly'
                         };
 
-
                         var marker = new google.maps.Marker({
-                            position: {lat: Number(7.8731), lng: Number(80.7718)},
+                            position: {lat: Number(lat), lng: Number(lon)},
                             map: map,
                             icon: image,
                             shape: shape,

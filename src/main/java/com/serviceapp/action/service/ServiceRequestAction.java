@@ -155,5 +155,27 @@ public class ServiceRequestAction extends ActionSupport implements ModelDriven<O
         }
         return "list";
     }
+    
+    public String chartdata() {
+        System.out.println("called ServiceRequestAction :chartdata");
+
+        try {
+            ServiceRequestDAO dao = new ServiceRequestDAO();
+            
+            System.out.println("month - "+ inputBean.getMonth());
+            System.out.println("month + - "+ inputBean.getMonthPlus());
+            System.out.println("month s - "+ inputBean.getMonthStart());
+
+            dao.getChartDataSummary(inputBean);
+            
+            System.out.println("total " + inputBean.getChartBean().get(1).getTotalReq());
+//            inputBean.setStatusWise_req_count("hi");
+
+        } catch (Exception ex) {
+            addActionError("ServiceRequestAction " + MessageVarlist.COMMON_ERROR_PROCESS);
+            Logger.getLogger(ServiceRequestAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "list";
+    }
 
 }
