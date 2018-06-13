@@ -166,7 +166,8 @@ public class ServiceRequestAction extends ActionSupport implements ModelDriven<O
             System.out.println("month + - "+ inputBean.getMonthPlus());
             System.out.println("month s - "+ inputBean.getMonthStart());
 
-            dao.getChartDataSummary(inputBean);
+            dao.getChartDataSummary2(inputBean);
+//            dao.getChartDataSummary(inputBean);
             
             System.out.println("total " + inputBean.getChartBean().get(1).getTotalReq());
 //            inputBean.setStatusWise_req_count("hi");

@@ -13,12 +13,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <title>View Service Request</title>
             <script type="text/javascript">
-                
+
                 var lat;
                 var lon;
 
                 function loadLatLng() {
-                    
+
                     lon = $("#longitude").text();
                     lat = $("#latitude").text();
                     
@@ -91,11 +91,17 @@
                                     <s:label style="margin-bottom: 0px;" id="latitude"  value="%{serReq.latitude}" cssClass="form-control"/>
                                 </div>  
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label >Customer Longitude</label>
-                                    <s:label style="margin-bottom: 0px;"   id="longitude" value="%{serReq.longitude}" cssClass="form-control"/>
+                                    <s:label style="margin-bottom: 0px;" id="longitude" value="%{serReq.longitude}" cssClass="form-control"/>
                                 </div>  
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-group">
+                                    <label >To map</label>
+                                    <label class="form-label" onclick="loadLatLng()"><i class="material-icons">place</i></label>
+                                </div>
                             </div>
                         </div>
                         <div class="row ">
@@ -125,12 +131,7 @@
                                     <s:label style="margin-bottom: 0px;"  value="%{serReq.createdTime}" cssClass="form-control"/>
                                 </div>  
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label ><i class="material-icons">place</i></label>
-                                    <input type="button" name="sss" value="map"  onclick="loadLatLng()" />
-                                </div>  
-                            </div>
+                            
 
                         </div>
                     </s:form>
@@ -139,8 +140,6 @@
         </div>
 
         <div id="dialog" title="Map Positions" style="display: none;background-color: #dcdcdc;margin: 0px;padding: 0">
-
-
             <div>
                 <style>
                     #map {
@@ -160,9 +159,9 @@
                             zoom: 8,
                             center: {lat: 7.8731, lng: 80.7718}
                         });
-                        setMarkers(map,lat,lon);
+                        setMarkers(map, lat, lon);
                     }
-                    function setMarkers(map,lat,lon) {
+                    function setMarkers(map, lat, lon) {
 
                         var image = {
                             url: '${pageContext.request.contextPath}/resources/images/marker4.png',
@@ -186,23 +185,19 @@
                             map: map,
                             icon: image,
                             shape: shape,
-                            title: "Customer name",
+                            title: "Point",
                             zIndex: 3
                         });
 
                     }
 
                 </script>
-
-
             </div>
-
             <div class="form-group text-center" style="margin-top: 10px;"> 
                 <button type="button" style="width: 100px" class="btn btn-danger btn-xs" onclick="dialog.dialog('close');">Close&ensp;<i class="fa fa-times-circle" aria-hidden="true"></i></button>
             </div>
 
         </div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDurLciCEPA4JI3O0bvFCqqEGkyCWzw5p8&callback=initMap"
-        async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDurLciCEPA4JI3O0bvFCqqEGkyCWzw5p8&callback=initMap" async defer></script>
     </body>
 </html>
