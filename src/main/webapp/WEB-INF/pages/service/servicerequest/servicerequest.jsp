@@ -48,6 +48,14 @@
 
             function resetAllData() {
 
+                $("#summaryMonth").text("");
+                $('.service-summary-table > tbody.tblebody').text("");
+                
+                $(".summaryNot").hide();
+                $(".service-summary-table").hide();
+                
+                $("#month").val("");
+
 
                 $('#cusfname').val("");
                 $('#bassfname').val("");
@@ -108,7 +116,7 @@
                     dataType: "json",
                     type: "POST",
                     success: function (data) {
-                        alert(data.message);
+
                         if (data.message === "Y") {
                             var manthduration = " " + month + " to " + monthPlus;
 

@@ -46,6 +46,7 @@
                 font-size: 14px;
                 font-weight: 600;
                 color: #1f4f91;
+                font-family: Raleway;
             }
         </style>
     </head>

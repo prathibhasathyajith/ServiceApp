@@ -335,7 +335,7 @@
     /*summaty report on service request*/
     table.service-summary-table > thead > tr > th{
         padding: 3px 24px;
-        font-family: raleway;
+        font-family: Raleway;
         font-weight: 600;
         font-size: 13px;
         border: 1px solid #2258a0;
@@ -345,7 +345,7 @@
     }
     table.service-summary-table > tbody.tblebody > tr > td{
         padding: 3px 8px;
-        font-family: raleway;
+        font-family: Raleway;
         font-weight: 600;
         font-size: 13px;
         border: 1px solid #2258a0;
