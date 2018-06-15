@@ -1,6 +1,6 @@
 <!--theme-->
 <sj:head jqueryui="true" jquerytheme="themeNew" customBasepath="resources/themes"/>  
-<title>Project</title>
+<title>Service App</title>
 <!--css links-->
 <!--<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/newassets/assets/favicon/favicon.png"/>-->
 <!--<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootwatch/bootstrap.css"/>-->
