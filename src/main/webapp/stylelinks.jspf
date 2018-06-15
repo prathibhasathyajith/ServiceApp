@@ -4,6 +4,7 @@
 <!--css links-->
 <!--<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/newassets/assets/favicon/favicon.png"/>-->
 <!--<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootwatch/bootstrap.css"/>-->
+<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/newassets/Login/Login_v2/images/icons/favicon.ico"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/fontawesome/css/font-awesome.css"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/bootstrap.css" rel="stylesheet"/>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/newassets/assets/css/main.css" rel="stylesheet"/>
