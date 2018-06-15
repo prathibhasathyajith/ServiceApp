@@ -18,7 +18,7 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class CustomerMgtInputBean {
 
-    // from bass data tabel
+    // from baas data tabel
     private String userId;
     private String mobUser;
     private String address;

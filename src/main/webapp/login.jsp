@@ -76,10 +76,11 @@
                 <div class="wrap-login100">
                     <form class="login100-form validate-form" id="formES" novalidate="novalidate" action="CheckUserLogin" method="post">
                         <span class="login100-form-title p-b-26">
-                            Project
+                            Top Bass
                         </span>
                         <span class="login100-form-title p-b-48">
-                            <i class="zmdi zmdi-font"></i>
+                            <!--<i class="zmdi zmdi-font"></i>-->
+                            <img src="resources/newassets/Login/Login_v2/images/login/topbaaslogo.png" width="70px" height="auto" style="background: #373536;padding: 4px;border-radius: 13px"/>
                         </span>
 
                         <div class="wrap-input100 validate-input" data-validate = "Enter Username">
