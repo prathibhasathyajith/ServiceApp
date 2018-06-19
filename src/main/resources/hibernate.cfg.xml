@@ -3,13 +3,13 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
         <!--<property name="hibernate.connection.url">jdbc:mysql://35.200.151.102:3306/service_app?autoReconnect=true&amp;useSSL=false</property>-->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/service_app?autoReconnect=true&amp;useSSL=false</property>
-        <property name="hibernate.connection.username">TESTUSER</property>
-        <property name="hibernate.connection.password">Password@123</property>
+        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/service_app?autoReconnect=true&amp;useSSL=false</property>-->
+        <!--<property name="hibernate.connection.username">TESTUSER</property>-->
+        <!--<property name="hibernate.connection.password">Password@123</property>-->
         <!--<property name="hibernate.connection.isolation">1</property>-->
-        <!--<property name="hibernate.connection.datasource">java:/service_app</property>-->
+        <property name="hibernate.connection.datasource">java:/service_app</property>
         <!--<property name="hibernate.connection.verifyServerCertificate">false</property>-->
         <!--<property name="hibernate.connection.requireSSL">false</property>-->
         <property name="hibernate.connection.autocommit">false</property>
