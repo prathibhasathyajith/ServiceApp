@@ -293,16 +293,16 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.9</version>
         </dependency> 
-        <dependency>
+<!--        <dependency>
             <groupId>org.jpos</groupId>
             <artifactId>jpos</artifactId>
             <version>1.5.0</version>
-        </dependency> 
-        <dependency>
+        </dependency> -->
+<!--        <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk16</artifactId>
             <version>143</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
