@@ -17,6 +17,13 @@
         </action>
     </package>
     
+    <package name="default" extends="pglobal" namespace="/">
+        <action name="*defaultHome" method="{1}" class="com.serviceapp.action.login.defaultAction">
+            <result name="view">/WEB-INF/pages/home.jsp</result>
+            <result name="success">/WEB-INF/pages/home.jsp</result>
+        </action>
+    </package>
+    
     <package name="usermanagement" extends="pglobal" namespace="/">
         <action name="*Systemuser" method="{1}" class="com.serviceapp.action.usermanagement.SystemuserAction" >
             <result name="message">/WEB-INF/pages/msgSpe.jsp</result>

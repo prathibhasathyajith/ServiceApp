@@ -18,7 +18,9 @@
         <script src="${pageContext.request.contextPath}/resources/highcharts/series-label.js"></script>
         <script src="${pageContext.request.contextPath}/resources/highcharts/exporting.js"></script>
         <script src="${pageContext.request.contextPath}/resources/highcharts/export-data.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/highcharts/theme1.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/highcharts/themes/dark.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/highcharts/themes/red.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/highcharts/themes/blue.js"></script>
         <style>
             .chartCss {
                 width: 100%;
@@ -34,7 +36,9 @@
                 width: 50%;
                 /*padding: 10px;*/
                 height: auto;
-                border: 1px solid white;
+                border-left: 1px solid white;
+                border-right: 1px solid white;
+                border-top: 1px solid white;
                 background: linear-gradient(to right, #2d2d2e 0%,#363638 100%);
             }
             .chart-body-title{
@@ -82,6 +86,7 @@
 
             // completed data chart
             function chartForCompleted(total, complete, monthlist) {
+                Highcharts.setOptions(Highcharts.red);
                 Highcharts.chart('containerComp', {
                     chart: {
                         type: 'areaspline'
@@ -125,7 +130,7 @@
             }
 
             function chartForAll(total, monthlist) {
-                Highcharts.setOptions(Highcharts.theme1);
+                Highcharts.setOptions(Highcharts.red);
                 Highcharts.chart('containerAll', {
                     chart: {
                         type: 'areaspline'
@@ -165,12 +170,16 @@
             }
 
             function chartForCancel(total, cancel, monthlist) {
+                Highcharts.setOptions(Highcharts.blue);
                 Highcharts.chart('containerCancel', {
                     chart: {
                         type: 'areaspline'
                     },
                     title: {
-                        text: 'Canceled Requests Count Monthly (Bass and Customer)'
+                        text: 'Canceled Requests Count Monthly'
+                    },
+                    subtitle: {
+                        text: 'Baas and Customer'
                     },
 
                     xAxis: {
@@ -209,12 +218,16 @@
             }
 
             function chartForRej(total, rej, monthlist) {
+                Highcharts.setOptions(Highcharts.blue);
                 Highcharts.chart('containerRej', {
                     chart: {
                         type: 'areaspline'
                     },
                     title: {
-                        text: 'Rejected Requests Count Monthly (Bass and Customer)'
+                        text: 'Rejected Requests Count Monthly'
+                    },
+                    subtitle: {
+                        text: 'Baas and Customer'
                     },
 
                     xAxis: {
@@ -312,13 +325,13 @@
                         monthStart = "0" + monthStart;
                     }
                 }
-                
-                startDate = yearStart+"-"+monthStart;
 
-               
+                startDate = yearStart + "-" + monthStart;
+
+
                 $.ajax({
                     url: '${pageContext.request.contextPath}/chartdataServiceRequest',
-                    data: {month: month, monthPlus: monthPlus, monthStart:startDate},
+                    data: {month: month, monthPlus: monthPlus, monthStart: startDate},
                     dataType: "json",
                     type: "POST",
                     success: function (data) {
@@ -330,7 +343,7 @@
                         var cancel = [];
                         var reject = [];
                         var monthText = "For ";
-                        
+
                         $.each(data.chartBean, function (index, item) {
                             total.push(Number(item.totalReq));
                             complete.push(Number(item.completedReq));
