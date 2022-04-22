@@ -10,7 +10,7 @@
     <name>Service_App_V1.02</name>
 
     <properties>
-        <struts2.version>2.3.15.3</struts2.version>
+        <struts2.version>2.5.30</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>        
     </properties>
